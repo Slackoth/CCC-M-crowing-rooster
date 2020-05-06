@@ -42,24 +42,47 @@
 
     <!--Color palette-->
 
-    <color name="purple_200">#bb86fc</color> <!--Color primary (dark)-->
-    <color name="purple_500">#6200ee</color> <!--Color primary (light)-->
-    <color name="purple_600">#4b01d0</color> <!--Color primary variant (dark)-->
-    <color name="purple_700">#3700b3</color> <!--Color primary variant (light)-->
+    <color name="primary">#445963</color>
+    <color name="primary_dark">#1c313a</color> <!--Color primary (dark)-->
+    <color name="primary_light">#718792</color> <!--Color primary (light)-->
+    <color name="primary_variant">#546e7a</color> <!--Color primary variant-->
+    <color name="primary_dark_variant">#29434e</color> <!--Color primary variant (dark)-->
+    <color name="primary_light_variant">#819ca9</color> <!--Color primary variant (light)-->
+    <color name="on_primary">#ffffff</color> <!--Primary Text color-->
 
-    <color name="green_200">#03dac6</color> <!--Color secondary-->
-    <color name="green_500">#018786</color> <!--Color secondary variant-->
+    <color name="secondary">#4dd0e1</color> <!--Color secondary-->
+    <color name="secondary_dark">#009faf</color> <!--Color secondary (dark-->
+    <color name="secondary_light">#88ffff</color> <!--Color secondary (light)-->
+    <color name="secondary_variant">#26d6da</color> <!--Color secondary variant-->
+    <color name="secondary_dark_variant">#0095a8</color> <!--Color primary variant (dark)-->
+    <color name="secondary_light_variant">#6ff9ff</color> <!--Color primary variant (light)-->
+    <color name="on_secondary">#000000</color> <!--Secondary Text color-->
 
-    <color name="red_200">#cf6679</color> <!--Color error (dark)-->
-    <color name="red_600">#b00020</color> <!--Color error (light)-->
+    <color name="color_error_dark">#cf6679</color> <!--Color error (dark)-->
+    <color name="color_error_light">#b00020</color> <!--Color error (light)-->
 
     <!--Color surface (light), color on error (light), -->
     <!--color on surface (dark), color on surface (dark)-->
-    <color name="white_50">#ffffff</color>
+   <!--on_primary-->
 
-    <color name="black_800">#121212</color> <!--Color surface (dark)-->
+    <color name="color_surface">#121212</color> <!--Color surface (dark)-->
     <!--Color on secondary (light), color on background (light),-->
     <!--color on surface (light)-->
-    <color name="black_900">#000000</color>
+    <!--on_secondary-->
+
+    <!--NOT SELECTED YET-->
+    <!--
+    android:colorBackground
+    colorOnBackGround
+    colorSurface
+    colorOnSurface
+    colorError
+    colorOnError
+    -->
+
+    <!--Color on secondary (light), color on background (light),-->
+    <!--color on surface (light)-->
+
+
 
 </resources>

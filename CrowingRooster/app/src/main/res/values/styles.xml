@@ -2,12 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
-        <!-- Customize your theme here. -->
-        <!--Not available
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        -->
     </style>
 
     <!--Components-->
@@ -25,6 +19,7 @@
         <item name="android:navigationBarDividerColor" tools:ignore="NewApi">@android:color/transparent</item>
         -->
     </style>
+
     <style name="Widget.MyTheme.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="shapeAppearanceOverlay">?attr/shapeAppearanceLargeComponent</item>
     </style>
@@ -34,5 +29,8 @@
         <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
     </style>
 
+    <style name="Widget.MyApp.MyButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/secondary</item>
+    </style>
 
 </resources>
