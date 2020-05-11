@@ -3,4 +3,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_menu">Menú principal</string>
+    <string name="more_options">Más opciones</string>
+    <string name="more_options_desc">Más opciones de usuario</string>
+    <string name="login">login</string>
+    <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
+    <string name="navigation_drawer_header_title">Crowing Rooster</string>
+    <string name="sales">Ventas</string>
+    <string name="clients">Clientes</string>
 </resources>

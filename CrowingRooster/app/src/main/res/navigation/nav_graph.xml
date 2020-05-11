@@ -9,5 +9,15 @@
         android:id="@+id/logInFragment"
         android:name="com.cccm.crowingrooster.LogInFragment"
         android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" />
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_sellerMainScreen"
+            app:destination="@id/sellerMainScreen" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/sellerMainScreen"
+        android:name="com.cccm.crowingrooster.SellerMainScreen"
+        android:label="fragment_seller_main_screen"
+        tools:layout="@layout/fragment_seller_main_screen" />
 </navigation>
