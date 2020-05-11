@@ -29,8 +29,13 @@
         <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
     </style>
 
+    <!--Personalized button-->
     <style name="Widget.MyApp.MyButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/secondary</item>
+        <item name="backgroundTint">@color/secondary_dark</item>
     </style>
+    <!--Personalized toolbar-->
+<!--    <style name="Widget.MyApp.MyToolbar" parent="Widget.MaterialComponents.Toolbar">-->
+<!--        <item name="background">@color/primary_light</item>-->
+<!--    </style>-->
 
 </resources>

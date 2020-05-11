@@ -29,6 +29,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        //TODO: Enables AppBarConfiguration *VERY IMPORTANT
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+            kotlinOptions {
+                jvmTarget = JavaVersion.VERSION_1_8.toString()
+            }
+        }
     }
 
 }
@@ -44,6 +56,9 @@ dependencies {
 
     //MaterialDesignComponents
     implementation 'com.google.android.material:material:1.1.0'
+
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
