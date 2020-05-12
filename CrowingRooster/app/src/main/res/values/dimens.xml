@@ -3,4 +3,10 @@
     <dimen name="navigation_drawer_header_height">192dp</dimen>
     <dimen name="small_padding">16dp</dimen>
     <dimen name="navigation_drawer_image_width">100dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="img_button_padding">20dp</dimen>
+    <dimen name="rounded_corner">10dp</dimen>
+    <dimen name="img_button_horizontal_padding">10dp</dimen>
+    <dimen name="x_small_margin">4dp</dimen>
 </resources>
