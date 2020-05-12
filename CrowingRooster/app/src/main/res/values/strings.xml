@@ -9,6 +9,10 @@
     <string name="login">login</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
-    <string name="sales">Ventas</string>
-    <string name="clients">Clientes</string>
+    <string name="sales">ventas</string>
+    <string name="clients">clientes</string>
+    <string name="profile">perfil</string>
+    <string name="chat">chat</string>
+    <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
+
 </resources>

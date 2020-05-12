@@ -29,10 +29,20 @@
         <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
     </style>
 
-    <!--Personalized button-->
+    <!--Personalized Button-->
     <style name="Widget.MyApp.MyButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/secondary_dark</item>
     </style>
+
+    <!--Personalized CardView-->
+    <style name="Widget.MyApp.MyCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/primary_light</item>
+        <item name="cardCornerRadius">@dimen/rounded_corner</item>
+    </style>
+
+    <!--Personalized ImageButton-->
+
+
     <!--Personalized toolbar-->
 <!--    <style name="Widget.MyApp.MyToolbar" parent="Widget.MaterialComponents.Toolbar">-->
 <!--        <item name="background">@color/primary_light</item>-->
