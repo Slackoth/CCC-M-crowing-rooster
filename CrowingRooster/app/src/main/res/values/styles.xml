@@ -32,6 +32,7 @@
     <!--Personalized Button-->
     <style name="Widget.MyApp.MyButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/secondary_dark</item>
+        <item name="android:textColor">@color/on_secondary</item>
     </style>
 
     <!--Personalized CardView-->
