@@ -3,10 +3,11 @@
 
 <!--TODO: Enable this navigation when the appropriate fragments are created   -->
 
-<!--    <item-->
-<!--        android:id="@+id/sales_fragment"-->
-<!--        android:title="@string/sales"-->
-<!--        />-->
+    <item
+        android:id="@+id/sellerProfileFragment"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/profile"
+        />
 <!--    <item-->
 <!--        android:id="clients_fragment"-->
 <!--        android:title="@string/clients"-->

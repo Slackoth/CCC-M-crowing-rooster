@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         navController = this.findNavController(R.id.nav_host_fragment)
 
         //TODO: Declaration of all top-level-destinations within the app.
-        val topLevelDestinations = setOf(R.id.sellerMainScreen, R.id.logInFragment)
+        val topLevelDestinations = setOf(R.id.sellerMainScreen, R.id.logInFragment, R.id.sellerProfileFragment)
 
 //        Building the top-bar configuration
 //        *Old way for building and setting the drawer-layout
@@ -73,6 +73,11 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         //Creates the more-options menu for the top bar
         menuInflater.inflate(R.menu.top_app_bar_main_screen, menu)
         return true
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        //return super.onSupportNavigateUp()
+        return NavigationUI.navigateUp(navController,appBarConfiguration)
     }
 
     /*TODO: Implementation of the interface methods to communicate with each fragment.

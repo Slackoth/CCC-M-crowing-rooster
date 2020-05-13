@@ -27,16 +27,6 @@
                     app:menu="@menu/top_app_bar_main_screen"
                     style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
-                <!--            <com.google.android.material.appbar.MaterialToolbar-->
-                <!--                android:id="@+id/top_app_bar_main_screen"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="?attr/actionBarSize"-->
-                <!--                app:title="@string/main_menu"-->
-                <!--                app:menu="@menu/top_app_bar_main_screen"-->
-                <!--                app:navigationIcon="@drawable/ic_logoff_24dp"-->
-                <!--                style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
-                <!--                />-->
-
             </com.google.android.material.appbar.AppBarLayout>
 
             <fragment
@@ -56,11 +46,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             style="@style/Widget.MaterialComponents.NavigationView"
-            app:headerLayout="@layout/nav_header">
-            <!--app:menu="@menu/drawer_menu_navigation"-->
-
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/drawer_menu_navigation">
 
         </com.google.android.material.navigation.NavigationView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
 </layout>

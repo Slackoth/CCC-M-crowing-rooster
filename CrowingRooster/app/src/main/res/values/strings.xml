@@ -14,5 +14,11 @@
     <string name="profile">perfil</string>
     <string name="chat">chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
+    <string name="change_password">cambiar contraseña</string>
+    <string name="edit">editar</string>
+    <string name="name">nombre</string>
+    <string name="code">codigo</string>
+    <string name="telephone">Teléfono</string>
+    <string name="email">correo</string>
 
 </resources>

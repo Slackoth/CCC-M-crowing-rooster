@@ -20,4 +20,10 @@
         android:name="com.cccm.crowingrooster.SellerMainScreen"
         android:label="fragment_seller_main_screen"
         tools:layout="@layout/fragment_seller_main_screen" />
+
+    <fragment
+        android:id="@+id/sellerProfileFragment"
+        android:name="com.cccm.crowingrooster.SellerProfileFragment"
+        android:label="SellerProfileFragment"
+        tools:layout="@layout/fragment_seller_profile"/>
 </navigation>
