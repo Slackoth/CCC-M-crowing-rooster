@@ -9,6 +9,7 @@
     <string name="login">login</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
+HEAD
     <string name="sales">ventas</string>
     <string name="clients">clientes</string>
     <string name="profile">perfil</string>
@@ -20,5 +21,10 @@
     <string name="code">codigo</string>
     <string name="telephone">Teléfono</string>
     <string name="email">correo</string>
-
+    <string name="sample_infobat">Las baterias Rasho, con su rasho de poder te dan un rasho que nunca esperarias del rayasho supremo. Vienen con tres polaridadeds y soportan hasta modelos de gran capacidad Rasho UWU</string>
+    <string name="rashoTitulosample">Rasho Baterias RASHO UWU</string>
+    <string name="Product_title">Rasho Batearias Rasho</string>
+    <string name="AddTocharText">Agregar Al Carrito</string>
+    <string name="Estilos" >Estilos</string>
+ProductView
 </resources>
