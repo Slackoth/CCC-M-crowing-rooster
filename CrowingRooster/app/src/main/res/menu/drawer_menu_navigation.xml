@@ -8,6 +8,10 @@
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/profile"
         />
+    <item
+        android:id="@+id/successfulSalesFragment"
+        android:icon="@drawable/ic_sales_black_filled_512dp"
+        android:title="@string/sales"/>
 <!--    <item-->
 <!--        android:id="clients_fragment"-->
 <!--        android:title="@string/clients"-->

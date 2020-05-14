@@ -26,4 +26,9 @@
         android:name="com.cccm.crowingrooster.SellerProfileFragment"
         android:label="SellerProfileFragment"
         tools:layout="@layout/fragment_seller_profile"/>
+    <fragment
+        android:id="@+id/successfulSalesFragment"
+        android:name="com.cccm.crowingrooster.SuccessfulSalesFragment"
+        android:label="SuccessfulSalesFragment"
+        tools:layout="@layout/fragment_successful_sales"/>
 </navigation>
