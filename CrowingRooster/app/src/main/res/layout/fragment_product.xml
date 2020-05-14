@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:text="@string/Product_title"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -27,18 +28,19 @@
             android:src="@drawable/ic_rooster_colored_512dp"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProductTitleText" />
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="403dp"
-            android:layout_height="182dp"
+            android:layout_width="361dp"
+            android:layout_height="177dp"
+            android:layout_marginStart="@dimen/small_padding"
+            android:layout_marginEnd="16dp"
             android:text="@string/sample_infobat"
             app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.264"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
 
