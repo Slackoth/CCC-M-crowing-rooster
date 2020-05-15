@@ -2,6 +2,7 @@ package com.cccm.crowingrooster
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), CommunicationInterface {
 
-    lateinit var navController: NavController
+    private lateinit var navController: NavController
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var  drawerLayout: DrawerLayout
 
@@ -37,7 +38,8 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         navController = this.findNavController(R.id.nav_host_fragment)
 
         //TODO: Declaration of all top-level-destinations within the app.
-        val topLevelDestinations = setOf(R.id.sellerMainScreen, R.id.logInFragment, R.id.sellerProfileFragment)
+        val topLevelDestinations = setOf(R.id.sellerMainScreen, R.id.logInFragment, R.id.sellerProfileFragment,
+        R.id.successfulSalesFragment)
 
 //        Building the top-bar configuration
 //        *Old way for building and setting the drawer-layout
