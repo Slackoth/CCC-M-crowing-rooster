@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster
 
+import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -20,8 +21,10 @@ class SuccessfulSalesFragment : Fragment() {
         const val TAG: String = "SuccessfulSalesFragment"
     }
 
-    var mName: MutableList<String> = mutableListOf()
-    var mImgUrl: MutableList<String> = mutableListOf()
+    var clientName: MutableList<String> = mutableListOf()
+    var modelName: MutableList<String> = mutableListOf()
+    var quantityNum: MutableList<Int> = mutableListOf()
+    var imgUrl: MutableList<String> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +36,7 @@ class SuccessfulSalesFragment : Fragment() {
         container, false)
 
         Log.d(TAG, "onCreate: Started")
-
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
         return bind.root
     }
 
@@ -44,19 +47,21 @@ class SuccessfulSalesFragment : Fragment() {
 
     private fun initImageBitmap() {
         Log.d(TAG, "onCreate: preparing bitmaps")
-        var name: Collection<String> = listOf("Bojack","Mr. Peanutbutter", "Princess Carolyn", "Sarah Lynn",
-            "Herb Kazzaz", "Secretariat", "Beatrice Horseman")
-        var url: Collection<String> = listOf("https://m.media-amazon.com/images/M/MV5BYWQwMDNkM2MtODU4OS00OTY3LTgwOTItNjE2Yzc0MzRkMDllXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
-        "https://66.media.tumblr.com/caec5f9863f1bdaa504381fab52cd1db/tumblr_pqhd86XMep1vfecm0o3_540.png",
-        "https://dotandline.net/wp-content/uploads/2017/09/1_W1Zpv8RMX9oSgZmiMGb-OQ-1210x642.jpeg",
-        "https://i.pinimg.com/564x/83/7f/f5/837ff5293c96e0db71204a3c12c87299.jpg",
-        "https://vignette.wikia.nocookie.net/bojackhorseman/images/e/e9/Herb_Kazazz_80s.png/revision/latest/scale-to-width-down/310?cb=20181013183030",
-            "https://vignette.wikia.nocookie.net/bojackhorseman/images/a/a6/Secretariat.png/revision/latest/scale-to-width-down/310?cb=20150721234038",
-        "https://vignette.wikia.nocookie.net/bojackhorseman/images/0/0a/Beatrice_funeral_outfit.jpeg/revision/latest/scale-to-width-down/310?cb=20171025225257")
+        val client = listOf<String>("JOSE LUIS ALBARRAN REQUENA","MIGUEL MATESANZ ARTIGAS",
+        "FELIX BARRIO RECIO","LUCIA LLORCA CAÑO","ANTONIA AGUERA PAN","CONCEPCION IBAÑEZ POSADA")
+        val model = listOf<String>("22F-30","42-330","42R-330","24-350","24R-350","27-540")
+        val quantity = listOf<Int>(1,20,300,4000,50000,6000000)
+        var url = listOf("https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB",
+        "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB",
+        "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB",
+        "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB",
+        "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB",
+        "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB")
 
-        mName.addAll(name)
-        mImgUrl.addAll(url)
-
+        clientName.addAll(client)
+        modelName.addAll(model)
+        quantityNum.addAll(quantity)
+        imgUrl.addAll(url)
         initRecyclerView()
     }
 
@@ -64,10 +69,12 @@ class SuccessfulSalesFragment : Fragment() {
         Log.d(TAG,"initRecyclerView: initialization")
 
         var recyclerView: RecyclerView = requireView().findViewById(R.id.recycler_view)
-        var adapter = RecyclerViewAdapter(requireContext(), mName,mImgUrl)
-
-        recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),R.drawable.recyclerview_divider))
+
+        var adapter = RecyclerViewAdapter(requireContext(), clientName,imgUrl,modelName,quantityNum)
+        recyclerView.adapter = adapter
+
     }
 
 }
