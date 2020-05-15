@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster
 
+import android.content.res.Configuration
 import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
 import android.util.Log
@@ -69,6 +70,12 @@ class SuccessfulSalesFragment : Fragment() {
         Log.d(TAG,"initRecyclerView: initialization")
 
         var recyclerView: RecyclerView = requireView().findViewById(R.id.recycler_view)
+        var orientation = resources.configuration.orientation
+
+//        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext(),
+//            if (orientation == Configuration.ORIENTATION_LANDSCAPE) LinearLayoutManager.HORIZONTAL
+//            else LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),R.drawable.recyclerview_divider))
 
