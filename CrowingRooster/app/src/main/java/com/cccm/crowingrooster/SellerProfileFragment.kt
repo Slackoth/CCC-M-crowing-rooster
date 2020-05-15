@@ -22,6 +22,7 @@ class SellerProfileFragment : Fragment() {
         val bind = DataBindingUtil.inflate<FragmentSellerProfileBinding>(inflater, R.layout.fragment_seller_profile,
         container, false)
 
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.profile).capitalize()
         return bind.root
     }
 
