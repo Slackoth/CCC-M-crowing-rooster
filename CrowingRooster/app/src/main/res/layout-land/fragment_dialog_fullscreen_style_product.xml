@@ -3,7 +3,7 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="10dp"
     >
 
@@ -73,6 +73,5 @@
         android:id="@+id/buscar_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MyApp.MyButton"
         android:text="@string/buscar_text" />
 </LinearLayout>

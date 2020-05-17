@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/logInFragment">
+    app:startDestination="@id/productFragment">
 
     <fragment
         android:id="@+id/logInFragment"
@@ -26,4 +26,9 @@
         android:name="com.cccm.crowingrooster.SellerProfileFragment"
         android:label="SellerProfileFragment"
         tools:layout="@layout/fragment_seller_profile"/>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.cccm.crowingrooster.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
 </navigation>

@@ -26,5 +26,14 @@
     <string name="Product_title">Rasho Batearias Rasho</string>
     <string name="AddTocharText">Agregar Al Carrito</string>
     <string name="Estilos">Estilos</string>
+    <string name="Text_polaridad">Tipo de Polaridad:</string>
+    <string name="Advertencia_polaridad">(Si no buscas un tipo de polaridad fuera del normal te recomendamos no tocar esta opción)</string>
+    <string name="positiv_izqtext">Positivo a la Izquierda</string>
+    <string name="positivo_dertext">Positivo a la derecha</string>
+    <string name="TipoBateria_text">"Tipo de Bateria: "</string>
+    <string name="buscar_text">BUSCAR</string>
+    <string name="Premium_text">Premium</string>
+    <string name="Silver_btn">Silver</string>
+    <string name="Bronze_btn">Bronze</string>
     ProductView
 </resources>

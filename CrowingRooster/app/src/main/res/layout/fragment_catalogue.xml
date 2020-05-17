@@ -8,11 +8,6 @@
         android:background="#455A64"
         tools:context=".CatalogueFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
