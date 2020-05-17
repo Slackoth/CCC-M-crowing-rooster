@@ -1,5 +1,7 @@
 package com.cccm.crowingrooster
 
+import android.app.Activity
+import android.content.Context
 import android.content.res.Configuration
 import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
@@ -9,19 +11,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentSuccessfulSalesBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class SuccessfulSalesFragment : Fragment() {
+class SuccessfulSalesFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
 
     companion object {
         const val TAG: String = "SuccessfulSalesFragment"
     }
 
+    lateinit var context: FragmentActivity
     var clientName: MutableList<String> = mutableListOf()
     var modelName: MutableList<String> = mutableListOf()
     var quantityNum: MutableList<Int> = mutableListOf()
@@ -38,6 +45,7 @@ class SuccessfulSalesFragment : Fragment() {
 
         Log.d(TAG, "onCreate: Started")
         (activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
+
         return bind.root
     }
 
@@ -79,9 +87,15 @@ class SuccessfulSalesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),R.drawable.recyclerview_divider))
 
-        var adapter = RecyclerViewAdapter(requireContext(), clientName,imgUrl,modelName,quantityNum)
+        var adapter = RecyclerViewAdapter(requireContext(), clientName,imgUrl,modelName,quantityNum,this)
         recyclerView.adapter = adapter
 
+    }
+
+    override fun onItemClickListener(view: View) {
+        val dialog = SaleDetailsDialogFragment()
+        context = activity as FragmentActivity
+        dialog.show(context.supportFragmentManager, "Dialog")
     }
 
 }

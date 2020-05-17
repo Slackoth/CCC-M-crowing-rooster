@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.text.Editable
 import android.text.InputType
@@ -10,13 +11,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import de.hdodenhof.circleimageview.CircleImageView
 
 class RecyclerViewAdapter(context: Context, clientName: MutableList<String>,
-img: MutableList<String>, modelName: MutableList<String>, quantityNum: MutableList<Int>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+img: MutableList<String>, modelName: MutableList<String>, quantityNum: MutableList<Int>,
+listener: OnItemClickListener): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
+    public interface OnItemClickListener {
+        public fun onItemClickListener(view: View)
+    }
+
     companion object {
         const val TAG: String = "RecyclerViewAdapter"
     }
@@ -26,6 +37,7 @@ img: MutableList<String>, modelName: MutableList<String>, quantityNum: MutableLi
     private var cModelName = modelName
     private var cQuantityNum = quantityNum
     private var cContext = context
+    private var cListener = listener
 
     public class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -52,17 +64,18 @@ img: MutableList<String>, modelName: MutableList<String>, quantityNum: MutableLi
         holder.client.inputType = InputType.TYPE_NULL
         holder.model.inputType = InputType.TYPE_NULL
         holder.quantity.inputType = InputType.TYPE_NULL
-
         Glide.with(cContext).asBitmap().load(cImg[position]).into(holder.img)
         holder.client.setText(cClientName[position])
         holder.model.setText(cModelName[position])
         holder.quantity.setText(cQuantityNum[position].toString())
-//        holder.imgName.text = mImageName[position]
+
         holder.parentLayout.setOnClickListener {
             Log.d(TAG,"onClick: clicked out: ${cClientName[position]}")
-            Toast.makeText(cContext,cClientName[position],Toast.LENGTH_SHORT).show()
-            //Retrieving the view from a context
-            val rootView: View = (cContext as Activity).window.decorView.findViewById(android.R.id.content)
+            cListener.onItemClickListener(it)
+
+//            Toast.makeText(cContext,cClientName[position],Toast.LENGTH_SHORT).show()
+//            Retrieving the view from a context
+//            val rootView: View = (cContext as Activity).window.decorView.findViewById(android.R.id.content)
 //            Snackbar.make(rootView.findViewById<View>(R.id.successfulSalesFragment), cClientName[position],
 //                Snackbar.LENGTH_SHORT).show()
         }
