@@ -49,4 +49,14 @@
 <!--        <item name="background">@color/primary_light</item>-->
 <!--    </style>-->
 
+    <!--
+    Dialog Theme
+    -->
+
+    <style name="DialogTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
 </resources>

@@ -9,9 +9,9 @@
     <string name="login">login</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
-HEAD
-    <string name="sales">ventas</string>
-    <string name="clients">clientes</string>
+    HEAD
+    <string name="sales">Ventas</string>
+    <string name="clients">Cientes</string>
     <string name="profile">perfil</string>
     <string name="chat">chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
@@ -25,6 +25,6 @@ HEAD
     <string name="rashoTitulosample">Rasho Baterias RASHO UWU</string>
     <string name="Product_title">Rasho Batearias Rasho</string>
     <string name="AddTocharText">Agregar Al Carrito</string>
-    <string name="Estilos" >Estilos</string>
-ProductView
+    <string name="Estilos">Estilos</string>
+    ProductView
 </resources>

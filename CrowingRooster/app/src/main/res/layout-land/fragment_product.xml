@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ProductFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/ProductTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="@string/Product_title"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="730dp"
+                    android:layout_height="198dp"
+                    android:src="@drawable/ic_rooster_colored_512dp" />
+
+                <Button
+                    android:id="@+id/Estilos"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="@string/Estilos" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="177dp"
+                    android:text="@string/sample_infobat" />
+
+                <Button
+                    android:id="@+id/AddTochart_buttom"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:text="@string/AddTocharText"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

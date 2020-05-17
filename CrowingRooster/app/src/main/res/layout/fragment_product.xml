@@ -8,6 +8,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
         <TextView
             android:id="@+id/ProductTitleText"
             android:layout_width="wrap_content"
@@ -26,7 +36,7 @@
             android:layout_width="201dp"
             android:layout_height="173dp"
             android:src="@drawable/ic_rooster_colored_512dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/Estilos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProductTitleText" />
@@ -42,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.264"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/Estilos" />
 
         <Button
             android:id="@+id/AddTochart_buttom"
@@ -56,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/Estilos"
             android:layout_width="202dp"
             android:layout_height="45dp"
             android:text="@string/Estilos"
