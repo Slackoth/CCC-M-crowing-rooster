@@ -38,7 +38,10 @@
             android:layout_width="201dp"
             android:layout_height="173dp"
             app:srcCompat="@drawable/ic_rooster_colored_512dp"
+
             app:layout_constraintBottom_toTopOf="@+id/Estilos"
+
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProductTitleText" />

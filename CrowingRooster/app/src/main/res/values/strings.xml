@@ -6,12 +6,13 @@
     <string name="main_menu">Menú principal</string>
     <string name="more_options">Más opciones</string>
     <string name="more_options_desc">Más opciones de usuario</string>
+    <string name="successful_sales">Ventas exitosas</string>
     <string name="login">login</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
-    HEAD
-    <string name="sales">Ventas</string>
-    <string name="clients">Cientes</string>
+
+    <string name="sales">ventas</string>
+    <string name="clients">clientes</string>
     <string name="profile">perfil</string>
     <string name="chat">chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
@@ -21,10 +22,18 @@
     <string name="code">codigo</string>
     <string name="telephone">Teléfono</string>
     <string name="email">correo</string>
+    <string name="title">titulo</string>
+    <string name="model">Modelo</string>
+    <string name="client">Cliente</string>
+    <string name="quantity">Cantidad</string>
+    <string name="payment">Pago</string>
+    <string name="cash">Efectivo</string>
+    <string name="price">Precio</string>
     <string name="sample_infobat">Las baterias Rasho, con su rasho de poder te dan un rasho que nunca esperarias del rayasho supremo. Vienen con tres polaridadeds y soportan hasta modelos de gran capacidad Rasho UWU</string>
     <string name="rashoTitulosample">Rasho Baterias RASHO UWU</string>
     <string name="Product_title">Rasho Batearias Rasho</string>
     <string name="AddTocharText">Agregar Al Carrito</string>
+
     <string name="Estilos">Estilos</string>
     <string name="Text_polaridad">Tipo de Polaridad:</string>
     <string name="Advertencia_polaridad">(Si no buscas un tipo de polaridad fuera del normal te recomendamos no tocar esta opción)</string>
@@ -35,5 +44,5 @@
     <string name="Premium_text">Premium</string>
     <string name="Silver_btn">Silver</string>
     <string name="Bronze_btn">Bronze</string>
-    ProductView
+
 </resources>
