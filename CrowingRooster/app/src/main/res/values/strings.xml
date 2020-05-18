@@ -10,6 +10,7 @@
     <string name="login">login</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
+
     <string name="sales">ventas</string>
     <string name="clients">clientes</string>
     <string name="profile">perfil</string>
@@ -17,10 +18,10 @@
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
     <string name="change_password">cambiar contraseña</string>
     <string name="edit">editar</string>
-    <string name="name">Nombre</string>
+    <string name="name">nombre</string>
     <string name="code">codigo</string>
     <string name="telephone">Teléfono</string>
-    <string name="email">Correo</string>
+    <string name="email">correo</string>
     <string name="title">titulo</string>
     <string name="model">Modelo</string>
     <string name="client">Cliente</string>
@@ -32,12 +33,16 @@
     <string name="rashoTitulosample">Rasho Baterias RASHO UWU</string>
     <string name="Product_title">Rasho Batearias Rasho</string>
     <string name="AddTocharText">Agregar Al Carrito</string>
+
     <string name="Estilos">Estilos</string>
-    <string name="sale_details">detalles de venta</string>
-    <string name="product">producto</string>
-    <string name="shipping">envío</string>
-    <string name="date">Fecha</string>
-    <string name="quality">Calidad</string>
-    <string name="address">Dirección</string>
-    <string name="close">close</string>
+    <string name="Text_polaridad">Tipo de Polaridad:</string>
+    <string name="Advertencia_polaridad">(Si no buscas un tipo de polaridad fuera del normal te recomendamos no tocar esta opción)</string>
+    <string name="positiv_izqtext">Positivo a la Izquierda</string>
+    <string name="positivo_dertext">Positivo a la derecha</string>
+    <string name="TipoBateria_text">"Tipo de Bateria: "</string>
+    <string name="buscar_text">BUSCAR</string>
+    <string name="Premium_text">Premium</string>
+    <string name="Silver_btn">Silver</string>
+    <string name="Bronze_btn">Bronze</string>
+
 </resources>
