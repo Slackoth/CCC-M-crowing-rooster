@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentSuccessfulSalesBinding
@@ -63,7 +64,7 @@ class SuccessfulSalesFragment : Fragment() {
             )
         )
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()/*, requireActivity()*/) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view, viewType)
             }
@@ -73,6 +74,10 @@ class SuccessfulSalesFragment : Fragment() {
                     is Sale -> R.layout.sale_item_layout
                     else -> R.layout.sale_item_layout
                 }
+            }
+
+            override fun getFragmentActivity(): FragmentActivity {
+                return requireActivity()
             }
         }
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -21,10 +22,12 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
     //A list that will contain any type of data, in this case, objects
     private var listItem: MutableList<T>
     private val cContext: Context
+    //private val cActivity: FragmentActivity
 
-    constructor(listOfObjects: MutableList<T>, context: Context) {
+    constructor(listOfObjects: MutableList<T>, context: Context/*, activity: FragmentActivity*/) {
         listItem = listOfObjects
         cContext = context
+        //cActivity = activity
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,7 +36,7 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as Binder<T>).bind(listItem[position], cContext)
+        (holder as Binder<T>).bind(listItem[position], cContext, getFragmentActivity())
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +47,9 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
 
     protected abstract fun getLayoutId(position: Int, obj: T): Int
 
+    abstract fun getFragmentActivity(): FragmentActivity
+
     internal interface Binder<T> {
-        fun bind(listObject: T, context: Context)
+        fun bind(listObject: T, context: Context, fragmentActivity: FragmentActivity)
     }
 }

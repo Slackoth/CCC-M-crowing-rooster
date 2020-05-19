@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -23,12 +25,22 @@ object ViewHolderFactory {
         private val modelEt: EditText = itemView.findViewById(R.id.model_et)
         private val quantityEt: EditText = itemView.findViewById(R.id.quantity_et)
         private val product: ImageView = itemView.findViewById(R.id.img)
+        private val layout: ConstraintLayout = itemView.findViewById(R.id.sale_item_layout)
 
-        override fun bind(sale: Sale, context: Context) {
-            clientEt.setText(sale.client)
-            modelEt.setText(sale.model)
-            quantityEt.setText(sale.quantity.toString())
-            Glide.with(context).load(sale.imgUrl).into(product)
+        override fun bind(listObject: Sale, context: Context, fragmentActivity: FragmentActivity) {
+            clientEt.setText(listObject.client)
+            modelEt.setText(listObject.model)
+            quantityEt.setText(listObject.quantity.toString())
+            Glide.with(context).load(listObject.imgUrl).into(product)
+
+            layout.setOnClickListener{
+                onLayoutClick(fragmentActivity)
+            }
+        }
+
+        private fun onLayoutClick(fragmentActivity: FragmentActivity) {
+            val dialog = SaleDetailsDialogFragment()
+            dialog.show(fragmentActivity.supportFragmentManager, "SaleDetailsDialog")
         }
     }
 
