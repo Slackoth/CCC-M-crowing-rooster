@@ -20,6 +20,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/client_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/secondary"
@@ -30,6 +31,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/client_til"
                     style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,6 +42,7 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@id/client_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Luis Manuel Calderón Perla"
@@ -48,6 +51,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_til"
                     style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,6 +62,7 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ungallocontenis@gmail.com"
@@ -66,6 +71,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/details_sale_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/secondary"
@@ -76,6 +82,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date_til"
                     style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,6 +93,7 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/date_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="02/10/1999"
@@ -94,6 +102,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/payment_til"
                     style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,6 +113,7 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/payment_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/cash"
@@ -112,6 +122,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/product_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/secondary"
@@ -132,7 +143,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/product_img"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginStart="@dimen/medium_margin"
@@ -162,6 +173,7 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@id/model_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="22F-350"
@@ -183,6 +195,7 @@
                             app:layout_constraintStart_toStartOf="@+id/guideline19">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/price_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="$5000"
@@ -204,6 +217,7 @@
                             app:layout_constraintStart_toStartOf="@id/guideline19">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/quantity_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="500"
@@ -225,6 +239,7 @@
                             app:layout_constraintStart_toStartOf="@+id/guideline19">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/quality_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Premium"
