@@ -34,7 +34,7 @@ class SuccessfulSalesFragment : Fragment() {
         )
 
         //Log.d(TAG, "onCreate: Started")
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
+        //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
 
         recyclerView = bind.recyclerView
         saleList.addAll(

@@ -27,7 +27,7 @@ class OngoingSalesFragment : Fragment() {
         val bind = DataBindingUtil.inflate<FragmentOngoingSalesBinding>(inflater, R.layout.fragment_ongoing_sales,
         container, false)
 
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.ongoing_sales)
+        //(activity as MainActivity).supportActionBar?.title = getString(R.string.ongoing_sales)
 
         recyclerView = bind.recyclerViewOsf
         saleList.addAll(

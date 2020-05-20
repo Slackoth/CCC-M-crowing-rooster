@@ -33,6 +33,7 @@ class SalesFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_sales, container, false)
 
         bind = DataBindingUtil.inflate(inflater,R.layout.fragment_sales,container, false)
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.sales).capitalize()
 
         return bind.root
     }
