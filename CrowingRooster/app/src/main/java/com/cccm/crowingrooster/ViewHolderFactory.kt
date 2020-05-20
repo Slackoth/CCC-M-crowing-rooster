@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster
 
 import android.content.Context
+import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -32,6 +33,10 @@ object ViewHolderFactory {
             modelEt.setText(listObject.model)
             quantityEt.setText(listObject.quantity.toString())
             Glide.with(context).load(listObject.imgUrl).into(product)
+
+            clientEt.inputType = InputType.TYPE_NULL
+            modelEt.inputType = InputType.TYPE_NULL
+            quantityEt.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener{
                 onLayoutClick(fragmentActivity)

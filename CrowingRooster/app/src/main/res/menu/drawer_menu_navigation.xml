@@ -9,7 +9,7 @@
         android:title="@string/profile"
         />
     <item
-        android:id="@+id/successfulSalesFragment"
+        android:id="@+id/salesFragment"
         android:icon="@drawable/ic_sales_black_filled_512dp"
         android:title="@string/sales"/>
 <!--    <item-->

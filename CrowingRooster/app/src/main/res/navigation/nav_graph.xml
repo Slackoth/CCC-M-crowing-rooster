@@ -37,5 +37,10 @@
         android:name="com.cccm.crowingrooster.SuccessfulSalesFragment"
         android:label="SuccessfulSalesFragment"
         tools:layout="@layout/fragment_successful_sales"/>
+    <fragment
+        android:id="@+id/salesFragment"
+        android:name="com.cccm.crowingrooster.SalesFragment"
+        android:label="SalesFragment"
+        tools:layout="@layout/fragment_sales"/>
 
 </navigation>

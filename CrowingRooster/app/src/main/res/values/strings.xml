@@ -48,5 +48,6 @@
     <string name="Premium_text">Premium</string>
     <string name="Silver_btn">Silver</string>
     <string name="Bronze_btn">Bronze</string>
+    <string name="ongoing_sales">Ventas pendientes</string>
 
 </resources>
