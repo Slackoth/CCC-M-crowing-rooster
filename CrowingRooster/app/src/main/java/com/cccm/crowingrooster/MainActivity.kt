@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
 //        appBarConfiguration = AppBarConfiguration.Builder(topLevelDestinations)
 //            .setDrawerLayout(drawerLayout)
 //            .build()
+
         appBarConfiguration = AppBarConfiguration(topLevelDestinations, drawerLayout)
 
 //        Set up NavigationView
