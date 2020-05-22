@@ -25,7 +25,7 @@ class LogInFragment : Fragment() {
         container,false)
 
         bind.apply {
-            loginButton.setOnClickListener {
+            loginBtt.setOnClickListener {
                 it.findNavController().navigate(R.id.action_logInFragment_to_sellerMainScreen)
             }
         }

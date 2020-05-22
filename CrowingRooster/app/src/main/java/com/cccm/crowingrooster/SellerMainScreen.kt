@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -20,9 +21,11 @@ import kotlinx.android.synthetic.main.top_app_bar_main_screen.*
  * A simple [Fragment] subclass.
  */
 class SellerMainScreen : Fragment() {
-    lateinit var materialToolbar: MaterialToolbar
-    lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var navController: NavController
+
+    lateinit var profileImgBtt: ImageButton
+    lateinit var salesImgBtt: ImageButton
+    lateinit var clientsImgBtt: ImageButton
+    lateinit var chatImgBtt: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +41,21 @@ class SellerMainScreen : Fragment() {
             showTopBar()
             supportActionBar?.title = getString(R.string.main_menu)
         }
+
+        bind.apply {
+            profileImgBtt = profileIb!!
+            salesImgBtt = salesIb!!
+            clientsImgBtt = clientsIb!!
+            chatImgBtt = chatIb!!
+        }
+
+        profileImgBtt?.setOnClickListener {
+            it.findNavController().navigate(R.id.sellerProfileFragment)
+        }
+        salesImgBtt?.setOnClickListener {
+            it.findNavController().navigate(R.id.salesFragment)
+        }
+
         return  bind.root
     }
 

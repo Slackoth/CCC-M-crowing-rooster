@@ -56,6 +56,12 @@
     <string name="home">home</string>
     <string name="confirm_order">Confirmar pedido</string>
     <string name="cancel">cancelar</string>
+    <string name="password">Contraseña</string>
+    <string name="forgotten_pass"><u>¿Has olvidado la contraseña?</u></string>
+    <string name="not_yet_registered">¿No te has registrado aún?</string>
+    <string name="user_or_email">Usaurio/Correo</string>
+    <string name="drawer_open">OPEN</string>
+    <string name="drawer_close">CLOSE</string>
 
     <string-array name="payment_array">
         <item>Efectivo</item>
