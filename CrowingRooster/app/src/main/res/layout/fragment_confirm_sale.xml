@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/primary_light">
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm_order"
+                android:textSize="18sp"
+                android:textAllCaps="true"
+                android:layout_margin="@dimen/small_margin"
+                android:textColor="@color/secondary_light"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/price_til"
+                style="@style/TextInputLayoutAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:layout_below="@+id/title_tv"
+                android:hint="@string/price">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$5000"
+                    android:textColor="@color/on_primary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/payment_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price_til"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                app:smsp_itemColor="@color/on_primary"
+                app:smsp_itemListColor="@color/on_primary"
+                app:smsp_underlineColor="@color/secondary"
+                app:smsp_arrowColor="@color/secondary"
+                app:smsp_itemListBackgroundColor="@color/primary_light"
+                app:smsp_hint="Método de pago"
+                app:smsp_hintColor="@color/on_primary"
+                app:smsp_itemListHintColor="@color/on_primary"
+                app:smsp_itemListHintBackgroundColor="@color/secondary"
+                app:smsp_alwaysShowFloatingLabel="true"
+                app:smsp_floatingLabelText="@string/payment"
+                app:smsp_floatingLabelColor="@color/secondary"
+                app:smsp_selectedItemListColor="@color/secondary_light"/>
+
+<!--            app:smsp_errorText="This is error text. You can show it as single line or multiple lines using attr smsp_multilineError"-->
+<!--            app:smsp_floatingLabelColor="@color/secondary"-->
+<!--            app:smsp_floatingLabelText="@string/payment"-->
+<!--            app:smsp_hint="Método de pago"-->
+<!--            app:smsp_hintColor="@color/on_primary"-->
+<!--            app:smsp_itemColor="@color/on_primary"-->
+<!--            app:smsp_itemListColor="@color/on_secondary"-->
+<!--            app:smsp_itemListHintBackgroundColor="@color/secondary_light"-->
+<!--            app:smsp_itemListHintColor="@color/on_secondary"-->
+<!--            app:smsp_multilineError="false"-->
+<!--            app:smsp_selectedItemListColor="@color/secondary_light"-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm"
+                android:textAllCaps="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/small_margin"
+                android:textSize="18sp"
+                android:textColor="@color/secondary_light"
+                android:id="@+id/confirm_tv"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textAllCaps="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="@dimen/small_margin"
+                android:textSize="18sp"
+                android:textColor="@color/secondary_light"
+                android:id="@+id/cancel_tv"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

@@ -54,5 +54,12 @@
     <string name="confirm">confirmar</string>
     <string name="polarity">Polaridad</string>
     <string name="home">home</string>
+    <string name="confirm_order">Confirmar pedido</string>
+    <string name="cancel">cancelar</string>
+
+    <string-array name="payment_array">
+        <item>Efectivo</item>
+        <item>Tarjeta</item>
+    </string-array>
 
 </resources>
