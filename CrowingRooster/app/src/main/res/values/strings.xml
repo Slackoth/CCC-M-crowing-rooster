@@ -49,5 +49,10 @@
     <string name="Silver_btn">Silver</string>
     <string name="Bronze_btn">Bronze</string>
     <string name="ongoing_sales">Ventas pendientes</string>
+    <string name="order_details">Detalles del pedido</string>
+    <string name="call">llamar</string>
+    <string name="confirm">confirmar</string>
+    <string name="polarity">Polaridad</string>
+    <string name="home">home</string>
 
 </resources>

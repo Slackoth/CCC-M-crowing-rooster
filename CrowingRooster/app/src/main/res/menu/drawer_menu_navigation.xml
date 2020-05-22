@@ -12,6 +12,10 @@
         android:id="@+id/salesFragment"
         android:icon="@drawable/ic_sales_black_filled_512dp"
         android:title="@string/sales"/>
+    <item
+        android:id="@+id/sellerMainScreen"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/home"/>
 <!--    <item-->
 <!--        android:id="clients_fragment"-->
 <!--        android:title="@string/clients"-->

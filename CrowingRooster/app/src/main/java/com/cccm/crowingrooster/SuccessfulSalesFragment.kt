@@ -22,6 +22,8 @@ class SuccessfulSalesFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     var saleList: MutableList<Any> = mutableListOf()
 
+    //companion object
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,7 +66,7 @@ class SuccessfulSalesFragment : Fragment() {
             )
         )
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()/*, requireActivity()*/) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, this/*, requireActivity()*/) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view, viewType)
             }

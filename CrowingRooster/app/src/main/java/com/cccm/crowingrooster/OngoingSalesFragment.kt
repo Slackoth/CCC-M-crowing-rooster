@@ -58,7 +58,7 @@ class OngoingSalesFragment : Fragment() {
         )
 
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()/*, requireActivity()*/) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, this/*, requireActivity()*/) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view, viewType)
             }
