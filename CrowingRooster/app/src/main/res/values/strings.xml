@@ -7,13 +7,13 @@
     <string name="more_options">Más opciones</string>
     <string name="more_options_desc">Más opciones de usuario</string>
     <string name="successful_sales">Ventas exitosas</string>
-    <string name="login">login</string>
+    <string name="login">ingresar</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
 
-    <string name="sales">ventas</string>
+    <string name="sales">Ventas</string>
     <string name="clients">clientes</string>
-    <string name="profile">perfil</string>
+    <string name="profile">Perfil</string>
     <string name="chat">chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
     <string name="change_password">cambiar contraseña</string>
@@ -53,15 +53,14 @@
     <string name="call">llamar</string>
     <string name="confirm">confirmar</string>
     <string name="polarity">Polaridad</string>
-    <string name="home">home</string>
+    <string name="home">Home</string>
     <string name="confirm_order">Confirmar pedido</string>
     <string name="cancel">cancelar</string>
     <string name="password">Contraseña</string>
     <string name="forgotten_pass"><u>¿Has olvidado la contraseña?</u></string>
     <string name="not_yet_registered">¿No te has registrado aún?</string>
-    <string name="user_or_email">Usaurio/Correo</string>
-    <string name="drawer_open">OPEN</string>
-    <string name="drawer_close">CLOSE</string>
+    <string name="user_or_email">Usuario/Correo</string>
+    <string name="details">Detalles</string>
 
     <string-array name="payment_array">
         <item>Efectivo</item>

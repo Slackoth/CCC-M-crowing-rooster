@@ -8,15 +8,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentSuccessfulSalesBinding
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
+
+const val TAG = "HighOrder"
+
 class SuccessfulSalesFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
@@ -66,7 +71,7 @@ class SuccessfulSalesFragment : Fragment() {
             )
         )
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, this/*, requireActivity()*/) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view, viewType)
             }
@@ -78,8 +83,9 @@ class SuccessfulSalesFragment : Fragment() {
                 }
             }
 
-            override fun getFragmentActivity(): FragmentActivity {
-                return requireActivity()
+            override fun getOnClickLayout(): () -> Unit {
+                val dialog = SaleDetailsDialogFragment()
+                return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
             }
         }
 

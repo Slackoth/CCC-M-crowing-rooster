@@ -26,6 +26,9 @@ class OngoingSalesDetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_ongoing_sales_details, container, false)
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_ongoing_sales_details, container, false)
+
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.details)
+
         bind.apply {
             confirmButton = confirmBtt
         }
@@ -33,7 +36,6 @@ class OngoingSalesDetailsFragment : Fragment() {
             val dialog = ConfirmSaleFragment()
             dialog.show(requireActivity().supportFragmentManager,"ConfirmDialog")
         }
-
 
         return bind.root
     }

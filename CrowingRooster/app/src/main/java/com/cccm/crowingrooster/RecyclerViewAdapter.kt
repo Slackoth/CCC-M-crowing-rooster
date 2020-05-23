@@ -22,11 +22,11 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
 
     //A list that will contain any type of data, in this case, objects
     private var listItem: MutableList<T>
-    private val cFragment: Fragment
+    private val cContext: Context
 
-    constructor(listOfObjects: MutableList<T>, fragment: Fragment) {
+    constructor(listOfObjects: MutableList<T>, context: Context) {
         listItem = listOfObjects
-        cFragment = fragment
+        cContext = context
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -35,7 +35,7 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as Binder<T>).bind(listItem[position], cFragment, getFragmentActivity())
+        (holder as Binder<T>).bind(listItem[position], getOnClickLayout(), cContext)
     }
 
     override fun getItemCount(): Int {
@@ -46,9 +46,9 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
 
     protected abstract fun getLayoutId(position: Int, obj: T): Int
 
-    abstract fun getFragmentActivity(): FragmentActivity
+    abstract fun getOnClickLayout(): () -> Unit
 
     internal interface Binder<T> {
-        fun bind(listObject: T, fragment: Fragment, fragmentActivity: FragmentActivity)
+        fun bind(listObject: T, func: () -> Unit, context: Context)
     }
 }
