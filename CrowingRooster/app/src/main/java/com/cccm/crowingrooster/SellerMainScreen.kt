@@ -24,10 +24,6 @@ import kotlinx.android.synthetic.main.top_app_bar_main_screen.*
  */
 class SellerMainScreen : Fragment() {
 
-    lateinit var profileImgBtt: ImageButton
-    lateinit var salesImgBtt: ImageButton
-    lateinit var clientsImgBtt: ImageButton
-    lateinit var chatImgBtt: ImageButton
     lateinit var profileBt: CardView
     lateinit var salesBt: CardView
     lateinit var clientsBt: CardView
@@ -47,34 +43,20 @@ class SellerMainScreen : Fragment() {
             showTopBar()
             supportActionBar?.title = getString(R.string.main_menu)
         }
-//        val orientation = resources.configuration.orientation
-//        bind.apply {
-//            if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//                profileBt = profileCvBtt!!
-//                salesBt = salesCvBtt!!
-//                clientsBt = clientsCvBtt!!
-//                chatBt = chatCvBtt!!
-//                profileBt?.setOnClickListener {
-//                    it.findNavController().navigate(R.id.sellerProfileFragment)
-//                }
-//                salesBt?.setOnClickListener {
-//                    it.findNavController().navigate(R.id.salesFragment)
-//                }
-//            }
-//            else {
-//                //profileImgBtt = profileIb!!
-//                salesImgBtt = salesIb!!
-//                clientsImgBtt = clientsIb!!
-//                chatImgBtt = chatIb!!
-////                profileImgBtt?.setOnClickListener {
-////                    it.findNavController().navigate(R.id.sellerProfileFragment)
-////                }
-//                salesImgBtt?.setOnClickListener {
-//                    it.findNavController().navigate(R.id.salesFragment)
-//                }
-//            }
-//        }
 
+        bind.apply {
+            profileBt = profileCvBtt
+            salesBt = salesCvBtt
+            clientsBt = clientsCvBtt
+            chatBt = chatCvBtt
+        }
+
+        profileBt.setOnClickListener {
+            it.findNavController().navigate(R.id.sellerProfileFragment)
+        }
+        salesBt.setOnClickListener {
+            it.findNavController().navigate(R.id.salesFragment)
+        }
 
 
         return  bind.root

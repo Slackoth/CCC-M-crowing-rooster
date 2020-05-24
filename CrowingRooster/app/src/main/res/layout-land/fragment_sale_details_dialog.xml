@@ -249,13 +249,15 @@
 
         </ScrollView>
 
-        <Button
+        <TextView
             android:id="@+id/close_btt"
-            style="@style/Widget.MyApp.MyButton"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.1"
             android:text="@string/close"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textColor="@color/secondary_light"
             android:layout_margin="@dimen/medium_margin"
             android:layout_gravity="end"/>
 

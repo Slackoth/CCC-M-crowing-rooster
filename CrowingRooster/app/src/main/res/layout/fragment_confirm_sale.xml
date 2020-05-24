@@ -8,8 +8,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="@color/primary_light">
+            android:layout_height="300dp"
+            android:background="@color/primary_light"
+            android:padding="@dimen/small_padding">
 
             <TextView
                 android:id="@+id/title_tv"
