@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.text.Editable
 import android.text.InputType
+import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,9 +30,10 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
         cContext = context
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return getViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.sale_item_layout,
-        parent, false), viewType)
+        return getViewHolder(LayoutInflater.from(parent.context).inflate(getLayoutId(),
+        parent, false), getLayoutId())
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -44,7 +46,7 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
 
     abstract fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder
 
-    protected abstract fun getLayoutId(position: Int, obj: T): Int
+    protected abstract fun getLayoutId(): Int
 
     abstract fun getOnClickLayout(): () -> Unit
 
