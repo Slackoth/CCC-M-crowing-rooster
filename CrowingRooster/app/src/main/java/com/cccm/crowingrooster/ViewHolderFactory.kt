@@ -7,6 +7,7 @@ import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -61,8 +62,8 @@ object ViewHolderFactory {
 
         private val product: ImageView = itemView.findViewById(R.id.Product_img_rv)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.product_item_layout)
-        private val desc: EditText= itemView.findViewById(R.id.ProductDesc_et)
-        private val ProdTitle: EditText  = itemView.findViewById(R.id.productTitle_et)
+        private val desc: TextView= itemView.findViewById(R.id.ProductDesc_et)
+        private val ProdTitle: TextView  = itemView.findViewById(R.id.productTitle_et)
 
         override fun bind(listObject: Product, onClickLayout: () -> Unit, context: Context) {
             Glide.with(context).load(listObject.ProductImg).into(product)

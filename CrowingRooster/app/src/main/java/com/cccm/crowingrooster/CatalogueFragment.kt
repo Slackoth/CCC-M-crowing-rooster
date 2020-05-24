@@ -37,19 +37,19 @@ class CatalogueFragment : Fragment() {
         productlist.addAll(
             listOf(
                 Product(
-                    "Damn", "e",
+                    "Baterias rasho", "Spicy jalapeno bacon ipsum dolor amet corned beef leberkas ribeye biltong capicola chicken shoulder meatloaf pork belly. ",
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 ),
                 Product(
-                    "Damn1", "i",
+                    "Baterias Trueno", "huck swine pancetta kevin, beef pork loin pork chop short ribs chislic pork.huck swine pancetta kevin, beef pork loin pork chop short ribs chislic pork.",
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 ),
                 Product(
-                    "Damn2", "o",
+                    "Baterias Rayito", "Brisket spare ribs alcatra short loin jowl venison pork loin beef ribs pastrami drumstick chuck",
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 ),
                 Product(
-                    "Damn33", "u",
+                    "Baterias Esclavas del Blanco", "Beef biltong kevin bacon ribeye t-bone short loin drumstick brisket shankle shank.",
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 )
 
