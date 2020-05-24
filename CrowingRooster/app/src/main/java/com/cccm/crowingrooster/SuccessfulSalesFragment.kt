@@ -73,20 +73,18 @@ class SuccessfulSalesFragment : Fragment() {
         //Creating the RecyclerView Adapter
         val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-
                 return ViewHolderFactory.bindView(view, viewType)
-            }
-
-            override fun getLayoutId(): Int {
-                return R.layout.sale_item_layout
             }
 
             override fun getOnClickLayout(): () -> Unit {
                 val dialog = SaleDetailsDialogFragment()
                 return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
             }
-        }
 
+            override fun getLayoutId(): Int {
+                return R.layout.sale_item_layout
+            }
+        }
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         //Adding the divider

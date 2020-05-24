@@ -63,5 +63,15 @@
         android:name="com.cccm.crowingrooster.OngoingSalesDetailsFragment"
         android:label="OngoingSalesDetailsFragment"
         tools:layout="@layout/fragment_ongoing_sales_details"/>
+    <fragment
+        android:id="@+id/catalogueFragment"
+        android:name="com.cccm.crowingrooster.CatalogueFragment"
+        android:label="CatalogueFragment"
+        tools:layout="@layout/fragment_catalogue"
+        >
+        <action
+            android:id="@+id/action_catalogueFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
 
 </navigation>
