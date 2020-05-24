@@ -76,16 +76,13 @@ class SuccessfulSalesFragment : Fragment() {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
-            override fun getLayoutId(position: Int, obj: Any): Int {
-                return when (obj) {
-                    is Sale -> R.layout.sale_item_layout
-                    else -> R.layout.sale_item_layout
-                }
-            }
-
             override fun getOnClickLayout(): () -> Unit {
                 val dialog = SaleDetailsDialogFragment()
                 return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
+            }
+
+            override fun getLayoutId(): Int {
+                return R.layout.sale_item_layout
             }
         }
 
