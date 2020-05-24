@@ -65,15 +65,12 @@ class OngoingSalesFragment : Fragment() {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
-            override fun getLayoutId(position: Int, obj: Any): Int {
-                return when (obj) {
-                    is Sale -> R.layout.sale_item_layout
-                    else -> R.layout.sale_item_layout
-                }
-            }
-
             override fun getOnClickLayout(): () -> Unit {
                 return { this@OngoingSalesFragment.findNavController().navigate(R.id.ongoingSalesDetailsFragment) }
+            }
+
+            override fun getLayoutId(): Int {
+                return R.id.sale_item_layout
             }
         }
 
