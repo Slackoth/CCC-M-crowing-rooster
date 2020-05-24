@@ -43,13 +43,14 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/medium_margin"
                 app:cardBackgroundColor="@color/secondary_dark"
-                app:cardCornerRadius="@dimen/rounded_corner">
+                app:cardCornerRadius="@dimen/rounded_corner"
+                android:clickable="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/profile_btt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="true">
+                    >
 
                     <ImageView
                         android:id="@+id/profile_iv"
@@ -64,7 +65,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guideline7"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_person_black_24dp" />
+                        app:srcCompat="@drawable/ic_person_white_24dp" />
 
 
                     <TextView
@@ -128,13 +129,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_margin="@dimen/medium_margin"
                     app:cardCornerRadius="@dimen/rounded_corner"
-                    app:cardBackgroundColor="@color/secondary_dark">
+                    app:cardBackgroundColor="@color/secondary_dark"
+                    android:clickable="true">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/sales_btt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:clickable="true">
+                        >
 
 
                         <androidx.constraintlayout.widget.Guideline
@@ -157,7 +159,7 @@
                             app:layout_constraintEnd_toStartOf="@+id/guideline9"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_sales_black_filled_512dp" />
+                            app:srcCompat="@drawable/ic_sales_white_filled_512dp" />
 
 
                         <TextView
@@ -205,13 +207,14 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/medium_margin"
                 app:cardBackgroundColor="@color/secondary_dark"
-                app:cardCornerRadius="@dimen/rounded_corner">
+                app:cardCornerRadius="@dimen/rounded_corner"
+                android:clickable="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clients_btt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="true">
+                    >
 
 
                     <androidx.constraintlayout.widget.Guideline
@@ -234,7 +237,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guideline11"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_client_black_filled_512dp" />
+                        app:srcCompat="@drawable/ic_client_white_filled_512dp" />
 
 
                     <TextView
@@ -281,13 +284,13 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/medium_margin"
                 app:cardBackgroundColor="@color/secondary_dark"
-                app:cardCornerRadius="@dimen/rounded_corner">
+                app:cardCornerRadius="@dimen/rounded_corner"
+                android:clickable="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/chat_btt"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true">
+                    android:layout_height="match_parent">
 
 
                     <androidx.constraintlayout.widget.Guideline
@@ -310,7 +313,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guideline12"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_chat_black_filled_512dp" />
+                        app:srcCompat="@drawable/ic_chat_white_filled_512dp" />
 
 
                     <TextView
