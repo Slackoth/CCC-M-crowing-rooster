@@ -26,11 +26,8 @@ object ViewHolderFactory {
         return when(viewType) {
             R.layout.sale_item_layout -> SaleViewHolder(view)
             R.layout.product_item_layout->ProductViewHolder(view)
-
             R.layout.chart_item_layout->ChartViewHolder(view)
-
             R.layout.client_item_layout->ClientViewHolder(view)
-
             else -> SaleViewHolder(view)
         }
     }
