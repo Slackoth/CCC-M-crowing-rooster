@@ -66,7 +66,9 @@ class OngoingSalesFragment : Fragment() {
             }
 
             override fun getOnClickLayout(): () -> Unit {
-                return { -> this@OngoingSalesFragment.findNavController().navigate(R.id.ongoingSalesDetailsFragment) }
+                return { -> this@OngoingSalesFragment.findNavController().navigate(R.id.ongoingSalesDetailsFragment)
+
+                }
             }
 
             override fun getLayoutId(): Int {
