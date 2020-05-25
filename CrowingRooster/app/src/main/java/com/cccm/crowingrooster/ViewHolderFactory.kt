@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.chat_item_layout.view.*
 import java.net.URL
 import java.text.FieldPosition
 
@@ -24,9 +25,8 @@ object ViewHolderFactory {
             R.layout.product_item_layout->ProductViewHolder(view)
             R.layout.chart_item_layout->ChartViewHolder(view)
             R.layout.client_item_layout->ClientViewHolder(view)
-
-
             R.layout.order_item_layout ->OrderViewHolder(view)
+            R.layout.chat_item_layout->ChatOrderView(view)
 
             else -> SaleViewHolder(view)
         }
@@ -177,4 +177,30 @@ object ViewHolderFactory {
         }
 
     }
+
+    class ChatOrderView(itemView: View):RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Chat>{
+
+        private val usrimg:ImageView= itemView.findViewById(R.id.profile_img)
+        private val usrname:TextView = itemView.findViewById(R.id.chatname_text)
+        private val chatmsge:TextView= itemView.findViewById(R.id.chatlastmss_text)
+        private val mssgequant:TextView= itemView.findViewById(R.id.unread_messages_text)
+        private val layout:ConstraintLayout=itemView.findViewById(R.id.chat_item_layout)
+
+        override fun bind(listObject: Chat, onClickLayout: () -> Unit, context: Context) {
+            Glide.with(context).load(listObject.ppimg).into(usrimg)
+            usrname.setText(listObject.username)
+            chatmsge.setText(listObject.Mssge)
+            mssgequant.setText(listObject.unreadmmsge.toString())
+
+            layout.setOnClickListener(){
+                onClickLayout()
+            }
+
+
+
+
+        }
+
+    }
+
 }

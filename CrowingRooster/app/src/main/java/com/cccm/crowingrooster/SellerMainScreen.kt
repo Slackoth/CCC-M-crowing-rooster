@@ -63,6 +63,9 @@ class SellerMainScreen : Fragment() {
         clientsBt.setOnClickListener {
             it.findNavController().navigate(R.id.sellerClientListFragment)
         }
+        chatBt.setOnClickListener(){
+            it.findNavController().navigate(R.id.action_sellerMainScreen_to_chatFragment)
+        }
 
         return  bind.root
     }

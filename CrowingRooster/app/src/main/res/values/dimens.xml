@@ -10,4 +10,5 @@
     <dimen name="img_button_horizontal_padding">10dp</dimen>
     <dimen name="x_small_margin">4dp</dimen>
     <dimen name="drawable_edit_text_padding">5dp</dimen>
+    <dimen name="chat_dim" >6dp</dimen>
 </resources>

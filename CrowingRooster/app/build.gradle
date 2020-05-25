@@ -87,6 +87,9 @@ dependencies {
     //circle buttom
     implementation 'com.github.markushi:circlebutton:1.1'
 
+    //circle imageview for chat
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

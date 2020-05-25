@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_sellerMainScreen_to_sellerClientListFragment"
             app:destination="@id/sellerClientListFragment" />
+        <action
+            android:id="@+id/action_sellerMainScreen_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
 
     <fragment
@@ -125,6 +128,12 @@
     <fragment
         android:id="@+id/buyerMainScreenFragment"
         android:name="com.cccm.crowingrooster.BuyerMainScreenFragment"
-        android:label="BuyerMainScreenFragment" />
+        android:label="BuyerMainScreenFragment"
+        tools:layout="@layout/fragment_buyer_main_screen"
+        />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.cccm.crowingrooster.ChatFragment"
+        android:label="ChatFragment" />
 
 </navigation>
