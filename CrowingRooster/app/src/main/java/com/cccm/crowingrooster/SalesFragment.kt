@@ -13,6 +13,7 @@ import com.cccm.crowingrooster.databinding.FragmentSalesBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -33,7 +34,13 @@ class SalesFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_sales, container, false)
 
         bind = DataBindingUtil.inflate(inflater,R.layout.fragment_sales,container, false)
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.sales).capitalize()
+
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = getString(R.string.sales).capitalize()
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
+        }
 
         return bind.root
     }
