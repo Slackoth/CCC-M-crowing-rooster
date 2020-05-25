@@ -1,23 +1,19 @@
 package com.cccm.crowingrooster
 
-import android.app.Activity
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.text.InputType
 import android.view.View
 import android.widget.*
 import androidx.appcompat.view.menu.MenuView
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
 import java.net.URL
 import java.text.FieldPosition
+
+
 
 object ViewHolderFactory {
 
@@ -28,9 +24,14 @@ object ViewHolderFactory {
             R.layout.product_item_layout->ProductViewHolder(view)
             R.layout.chart_item_layout->ChartViewHolder(view)
             R.layout.client_item_layout->ClientViewHolder(view)
+
+
+            R.layout.order_item_layout ->OrderViewHolder(view)
+
             else -> SaleViewHolder(view)
         }
     }
+
 
     //TODO: Every element from a Layout from a RecyclerView must be bind to its respective view here
     class SaleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Sale> {
@@ -125,6 +126,7 @@ object ViewHolderFactory {
         }
     }
 
+
     class ChartViewHolder(itemView: View):RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<ProductChart>{
 
 
@@ -142,13 +144,35 @@ object ViewHolderFactory {
 
             quantity.inputType=InputType.TYPE_NULL
 
+        }
+
+    }
 
 
 
 
+
+    class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Order> {
+
+        private val orderEt: EditText = itemView.findViewById(R.id.orden_et)
+        private val dateEt: EditText = itemView.findViewById(R.id.date_et)
+        private val quantityEt: EditText = itemView.findViewById(R.id.quantity_et)
+        private val product: ImageView = itemView.findViewById(R.id.img)
+        private val layout: ConstraintLayout = itemView.findViewById(R.id.order_item_layout)
+
+        override fun bind(listObject: Order, onClickLayout: () -> Unit, context: Context) {
+            orderEt.setText(listObject.num_order.toString())
+            dateEt.setText(listObject.date)
+            quantityEt.setText(listObject.quantity.toString())
+            Glide.with(context).load(listObject.imgUrl).into(product)
+
+            orderEt.inputType = InputType.TYPE_NULL
+            dateEt.inputType = InputType.TYPE_NULL
+            quantityEt.inputType = InputType.TYPE_NULL
             layout.setOnClickListener {
                 onClickLayout()
             }
+
 
         }
 

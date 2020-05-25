@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sale_item_layout"
+    android:id="@+id/order_item_layout"
     tools:background="@color/primary_dark">
 
     <ImageView
@@ -25,7 +25,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/client_input"
+        android:id="@+id/order_input"
         style="@style/TextInputLayoutAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/small_margin"
-        android:hint="@string/client"
+        android:hint="@string/num_orden"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -42,16 +42,16 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/client_et"
-            android:layout_width="match_parent"
+            android:id="@+id/orden_et"
+            android:layout_width="124dp"
             android:layout_height="wrap_content"
-            android:text="Luis Manuel Calderón Perla"
-            android:textColor="@color/on_primary"
-            android:inputType="none"/>
+            android:inputType="none"
+            android:text="0452"
+            android:textColor="@color/on_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/model_input"
+        android:id="@+id/Date_input"
         style="@style/TextInputLayoutAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -59,19 +59,19 @@
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:layout_marginBottom="@dimen/medium_margin"
-        android:hint="@string/model"
+        android:hint="@string/date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
-        app:layout_constraintTop_toBottomOf="@+id/client_input"
+        app:layout_constraintTop_toBottomOf="@+id/order_input"
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/model_et"
-            android:layout_width="match_parent"
+            android:id="@+id/date_et"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
-            android:text="22F-350"
             android:inputType="none"
+            android:text="22/05/20"
             android:textColor="@color/on_primary" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +89,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/client_input"
+        app:layout_constraintTop_toBottomOf="@+id/order_input"
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -103,12 +103,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_begin="144dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"

@@ -17,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.cccm.crowingrooster.databinding.FragmentSellerMainScreenBinding
 import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.top_app_bar_main_screen.*
 
 /**
@@ -42,6 +43,8 @@ class SellerMainScreen : Fragment() {
         (activity as MainActivity).run {
             showTopBar()
             supportActionBar?.title = getString(R.string.main_menu)
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
         bind.apply {
