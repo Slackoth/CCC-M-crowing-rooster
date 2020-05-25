@@ -20,6 +20,10 @@
         android:id="@+id/sellerClientListFragment"
         android:icon="@drawable/ic_client_black_filled_512dp"
         android:title="@string/clients"/>
+    <item
+        android:id="@+id/logInFragment"
+        android:icon="@drawable/ic_logoff_black_24dp"
+        android:title="@string/logoff"/>
 <!--        android:id="clients_fragment"-->
 <!--        android:title="@string/clients"-->
 <!--        />-->

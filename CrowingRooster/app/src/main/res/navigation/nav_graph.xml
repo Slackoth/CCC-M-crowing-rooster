@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_logInFragment_to_sellerMainScreen"
             app:destination="@id/sellerMainScreen" />
+        <action
+            android:id="@+id/action_logInFragment_to_buyerMainScreenFragment"
+            app:destination="@id/buyerMainScreenFragment" />
     </fragment>
     
     <fragment
@@ -119,5 +122,9 @@
         android:name="com.cccm.crowingrooster.CanceledOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_canceled_orders"/>
+    <fragment
+        android:id="@+id/buyerMainScreenFragment"
+        android:name="com.cccm.crowingrooster.BuyerMainScreenFragment"
+        android:label="BuyerMainScreenFragment" />
 
 </navigation>

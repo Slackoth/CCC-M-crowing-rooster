@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.cccm.crowingrooster.databinding.FragmentLogInBinding
@@ -14,6 +15,8 @@ import com.cccm.crowingrooster.databinding.FragmentLogInBinding
  * A simple [Fragment] subclass.
  */
 class LogInFragment : Fragment() {
+    private lateinit var userEditT: EditText
+    private lateinit var passEt: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +28,15 @@ class LogInFragment : Fragment() {
         container,false)
 
         bind.apply {
+            userEditT = userEt
+            passEt = passwordEt
             loginBtt.setOnClickListener {
-                it.findNavController().navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                if (userEditT.text.toString() == "seller") {
+                    it.findNavController().navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                }
+                else if(userEditT.text.toString() == "buyer") {
+                    it.findNavController().navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
+                }
             }
         }
 

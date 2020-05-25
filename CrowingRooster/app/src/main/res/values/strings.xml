@@ -71,6 +71,9 @@
     <string name="ProeedPayment">Proceder Con el Pedido</string>
     <string name="quantitydefault">1</string>
     <string name="message">mensaje</string>
+    <string name="logoff">Cerrar sesión</string>
+    <string name="search_by_battery">Búsqueda por baterías</string>
+    <string name="search_by_vehicle">Búsqueda por vehículos</string>
 
 
     <string-array name="payment_array">
