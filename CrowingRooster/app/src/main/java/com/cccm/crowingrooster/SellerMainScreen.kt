@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -22,10 +24,10 @@ import kotlinx.android.synthetic.main.top_app_bar_main_screen.*
  */
 class SellerMainScreen : Fragment() {
 
-    lateinit var profileImgBtt: ImageButton
-    lateinit var salesImgBtt: ImageButton
-    lateinit var clientsImgBtt: ImageButton
-    lateinit var chatImgBtt: ImageButton
+    lateinit var profileBt: CardView
+    lateinit var salesBt: CardView
+    lateinit var clientsBt: CardView
+    lateinit var chatBt: CardView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,17 +45,20 @@ class SellerMainScreen : Fragment() {
         }
 
         bind.apply {
-            profileImgBtt = profileIb!!
-            salesImgBtt = salesIb!!
-            clientsImgBtt = clientsIb!!
-            chatImgBtt = chatIb!!
+            profileBt = profileCvBtt
+            salesBt = salesCvBtt
+            clientsBt = clientsCvBtt
+            chatBt = chatCvBtt
         }
 
-        profileImgBtt?.setOnClickListener {
+        profileBt.setOnClickListener {
             it.findNavController().navigate(R.id.sellerProfileFragment)
         }
-        salesImgBtt?.setOnClickListener {
+        salesBt.setOnClickListener {
             it.findNavController().navigate(R.id.salesFragment)
+        }
+        clientsBt.setOnClickListener {
+            it.findNavController().navigate(R.id.sellerClientListFragment)
         }
 
         return  bind.root

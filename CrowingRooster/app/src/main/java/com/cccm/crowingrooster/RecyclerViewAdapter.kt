@@ -30,7 +30,6 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
         cContext = context
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return getViewHolder(LayoutInflater.from(parent.context).inflate(getLayoutId(),
         parent, false), getLayoutId())
