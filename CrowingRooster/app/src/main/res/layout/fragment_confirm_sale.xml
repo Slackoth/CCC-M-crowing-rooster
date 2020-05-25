@@ -8,7 +8,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="450dp"
             android:background="@color/primary_light"
             android:padding="@dimen/small_padding">
 
@@ -36,9 +36,52 @@
                 android:hint="@string/price">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/price_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="$5000"
+                    android:textColor="@color/on_primary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/date_til"
+                style="@style/TextInputLayoutAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:layout_below="@+id/price_til"
+                android:hint="@string/date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/date_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="20/08/1969"
+                    android:textColor="@color/on_primary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hour_til"
+                style="@style/TextInputLayoutAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:layout_below="@+id/date_til"
+                android:hint="@string/hour">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hour_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="04:20"
                     android:textColor="@color/on_primary" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -47,7 +90,7 @@
                 android:id="@+id/payment_sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/price_til"
+                android:layout_below="@id/hour_til"
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginLeft="@dimen/medium_margin"
                 android:layout_marginRight="@dimen/medium_margin"
@@ -65,17 +108,17 @@
                 app:smsp_floatingLabelColor="@color/secondary"
                 app:smsp_selectedItemListColor="@color/secondary_light"/>
 
-<!--            app:smsp_errorText="This is error text. You can show it as single line or multiple lines using attr smsp_multilineError"-->
-<!--            app:smsp_floatingLabelColor="@color/secondary"-->
-<!--            app:smsp_floatingLabelText="@string/payment"-->
-<!--            app:smsp_hint="Método de pago"-->
-<!--            app:smsp_hintColor="@color/on_primary"-->
-<!--            app:smsp_itemColor="@color/on_primary"-->
-<!--            app:smsp_itemListColor="@color/on_secondary"-->
-<!--            app:smsp_itemListHintBackgroundColor="@color/secondary_light"-->
-<!--            app:smsp_itemListHintColor="@color/on_secondary"-->
-<!--            app:smsp_multilineError="false"-->
-<!--            app:smsp_selectedItemListColor="@color/secondary_light"-->
+<!--&lt;!&ndash;            app:smsp_errorText="This is error text. You can show it as single line or multiple lines using attr smsp_multilineError"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_floatingLabelColor="@color/secondary"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_floatingLabelText="@string/payment"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_hint="Método de pago"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_hintColor="@color/on_primary"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_itemColor="@color/on_primary"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_itemListColor="@color/on_secondary"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_itemListHintBackgroundColor="@color/secondary_light"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_itemListHintColor="@color/on_secondary"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_multilineError="false"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:smsp_selectedItemListColor="@color/secondary_light"&ndash;&gt;-->
 
             <TextView
                 android:layout_width="wrap_content"

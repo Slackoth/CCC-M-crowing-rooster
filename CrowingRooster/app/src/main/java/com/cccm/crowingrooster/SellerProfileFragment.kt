@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.cccm.crowingrooster.databinding.FragmentSellerProfileBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -22,7 +23,12 @@ class SellerProfileFragment : Fragment() {
         val bind = DataBindingUtil.inflate<FragmentSellerProfileBinding>(inflater, R.layout.fragment_seller_profile,
         container, false)
 
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.profile).capitalize()
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = getString(R.string.profile).capitalize()
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
+        }
         return bind.root
     }
 
