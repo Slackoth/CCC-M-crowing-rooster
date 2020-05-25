@@ -61,6 +61,8 @@
     <string name="not_yet_registered">¿No te has registrado aún?</string>
     <string name="user_or_email">Usuario/Correo</string>
     <string name="details">Detalles</string>
+    <string name="ProeedPayment">Proceder Con el Pedido</string>
+    <string name="quantitydefault">1</string>
 
     <string-array name="payment_array">
         <item>Efectivo</item>

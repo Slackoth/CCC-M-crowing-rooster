@@ -16,7 +16,7 @@
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="179dp">
+        android:layout_height="159dp">
 
         <RadioButton
             android:id="@+id/Premium_btn"
@@ -67,11 +67,12 @@
             android:layout_height="wrap_content"
             android:text="@string/positivo_dertext" />
 
+        <Button
+            android:id="@+id/buscar_btn"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:text="@string/buscar_text" />
+
     </RadioGroup>
 
-    <Button
-        android:id="@+id/buscar_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/buscar_text" />
 </LinearLayout>
