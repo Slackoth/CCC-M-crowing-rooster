@@ -38,6 +38,7 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as Binder<T>).bind(listItem[position], getOnClickLayout(), cContext)
+
     }
 
     override fun getItemCount(): Int {

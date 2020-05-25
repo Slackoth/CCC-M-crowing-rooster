@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ChartFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_dark"
+        android:textAlignment="textStart">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/thechartLlayout"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ProceedPay"
+                    style="@style/Widget.MyApp.MyButton"
+                    android:layout_width="379dp"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:text="@string/ProeedPayment"
+                    android:textColor="@color/on_primary"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="652dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+    </LinearLayout>
+</layout>

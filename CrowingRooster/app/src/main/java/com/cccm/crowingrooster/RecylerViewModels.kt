@@ -4,3 +4,4 @@ package com.cccm.crowingrooster
 
 data class Sale(var client: String, var model: String, var quantity: Int, var imgUrl: String)
 data class Product(var PrductTitle:String, var ProductDesc:String, var ProductImg:String)
+data class ProductChart(var PrductTitle: String, var ProductDesc: String, var quantity: Int, var imgUrlCh: String)
