@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/logInFragment">
+    app:startDestination="@id/SearchFragment">
 
     <fragment
         android:id="@+id/logInFragment"
@@ -127,5 +127,30 @@
         android:name="com.cccm.crowingrooster.BuyerMainScreenFragment"
         android:label="BuyerMainScreenFragment"
         tools:layout="@layout/fragment_buyer_main_screen"/>
+
+    <fragment
+        android:id="@+id/SearchFragment"
+        android:name="com.cccm.crowingrooster.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search"
+        >
+        <action
+            android:id="@+id/action_SearchFragment_to_BatterySearchFragment"
+            app:destination="@id/BatterySearchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BatterySearchFragment"
+        android:name="com.cccm.crowingrooster.BatterySearchFragment"
+        android:label="SerachFragment"
+        tools:layout="@layout/fragment_battery_search"/>
+
+    <fragment
+        android:id="@+id/CarSearchFragment"
+        android:name="com.cccm.crowingrooster.CarSearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_car_search"/>
+
+
 
 </navigation>

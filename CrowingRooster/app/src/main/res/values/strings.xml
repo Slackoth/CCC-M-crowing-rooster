@@ -10,6 +10,10 @@
     <string name="successful_orders">Exitosos</string>
     <string name="ongoing_orders">Pendientes</string>
     <string name="canceled_orders">Cancelados</string>
+    <string name="battery_search">Por Bateria</string>
+    <string name="search">Busqueda</string>
+    <string name="car_search">Por Carro</string>
+
     <string name="login">ingresar</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
