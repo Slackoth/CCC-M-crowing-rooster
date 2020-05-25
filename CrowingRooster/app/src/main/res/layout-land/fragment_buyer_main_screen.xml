@@ -293,7 +293,7 @@
 <!--            app:layout_constraintTop_toTopOf="@+id/guideline2">-->
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/vehicle_cv_btt"
+            android:id="@+id/chat_cv_btt"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/small_margin"
@@ -321,7 +321,7 @@
                     app:layout_constraintGuide_percent="0.5" />
 
                 <ImageView
-                    android:id="@+id/vehicle_iv"
+                    android:id="@+id/chat_iv"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/small_margin"
@@ -333,11 +333,11 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline12"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_car_white_512dp" />
+                    app:srcCompat="@drawable/ic_chat_white_filled_512dp" />
 
 
                 <TextView
-                    android:id="@+id/vehicle_tv"
+                    android:id="@+id/chat_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/x_small_margin"
@@ -345,7 +345,7 @@
                     android:layout_marginEnd="@dimen/small_margin"
                     android:layout_marginBottom="@dimen/medium_margin"
                     android:gravity="center"
-                    android:text="@string/search_by_vehicle"
+                    android:text="@string/chat"
                     android:textAllCaps="true"
                     android:textColor="@color/on_primary"
                     android:textStyle="bold"

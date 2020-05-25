@@ -113,21 +113,25 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
-                                <Button
+                                <TextView
                                     android:id="@+id/name_btt"
-                                    style="@style/Widget.MyApp.MyButton"
+                                    android:clickable="true"
+                                    android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/small_margin"
                                     android:layout_marginEnd="@dimen/small_margin"
                                     android:layout_marginBottom="@dimen/small_margin"
                                     android:text="@string/edit"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/secondary_light"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="1.0"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintVertical_bias="0.5" />
+                                    app:layout_constraintVertical_bias="0.0"
+                                    app:strokeColor="@color/secondary_light" />
 
                                 <TextView
                                     android:id="@+id/name_desc_tv"
@@ -188,21 +192,24 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <Button
+                            <TextView
                                 android:id="@+id/tel_btt"
-                                style="@style/Widget.MyApp.MyButton"
+                                android:clickable="true"
+                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/small_margin"
                                 android:layout_marginEnd="@dimen/small_margin"
                                 android:layout_marginBottom="@dimen/small_margin"
                                 android:text="@string/edit"
+                                android:textAllCaps="true"
+                                android:textColor="@color/secondary_light"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="1.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.5" />
+                                app:layout_constraintVertical_bias="0.0" />
 
                             <TextView
                                 android:id="@+id/tel_desc_tv"
@@ -263,21 +270,24 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
-                                <Button
+                                <TextView
                                     android:id="@+id/email_btt"
-                                    style="@style/Widget.MyApp.MyButton"
+                                    android:clickable="true"
+                                    android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/small_margin"
                                     android:layout_marginEnd="@dimen/small_margin"
                                     android:layout_marginBottom="@dimen/small_margin"
                                     android:text="@string/edit"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/secondary_light"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="1.0"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintVertical_bias="0.5" />
+                                    app:layout_constraintVertical_bias="0.0" />
 
                                 <TextView
                                     android:id="@+id/email_desc_tv"

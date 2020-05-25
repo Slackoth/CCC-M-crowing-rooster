@@ -48,6 +48,7 @@
 
                 <TextView
                     android:id="@+id/profile_tv"
+                    android:textStyle="bold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small_margin"
@@ -107,6 +108,7 @@
 
                     <TextView
                         android:id="@+id/sale_tv"
+                        android:textStyle="bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_margin"
@@ -166,6 +168,7 @@
 
                     <TextView
                         android:id="@+id/client_tv"
+                        android:textStyle="bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_margin"
@@ -226,6 +229,7 @@
 
                     <TextView
                         android:id="@+id/chat_tv"
+                        android:textStyle="bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_margin"

@@ -129,11 +129,38 @@
         android:id="@+id/buyerMainScreenFragment"
         android:name="com.cccm.crowingrooster.BuyerMainScreenFragment"
         android:label="BuyerMainScreenFragment"
+
         tools:layout="@layout/fragment_buyer_main_screen"
         />
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.cccm.crowingrooster.ChatFragment"
-        android:label="ChatFragment" />
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_buyer_main_screen"/>
+
+    <fragment
+        android:id="@+id/SearchFragment"
+        android:name="com.cccm.crowingrooster.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search"
+        >
+        <action
+            android:id="@+id/action_SearchFragment_to_BatterySearchFragment"
+            app:destination="@id/BatterySearchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BatterySearchFragment"
+        android:name="com.cccm.crowingrooster.BatterySearchFragment"
+        android:label="SerachFragment"
+        tools:layout="@layout/fragment_battery_search"/>
+
+    <fragment
+        android:id="@+id/CarSearchFragment"
+        android:name="com.cccm.crowingrooster.CarSearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_car_search"/>
+
+
 
 </navigation>

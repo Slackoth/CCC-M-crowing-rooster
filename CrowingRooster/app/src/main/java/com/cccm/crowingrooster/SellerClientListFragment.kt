@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -26,7 +27,12 @@ class SellerClientListFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_seller_client_list, container, false)
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_seller_client_list, container, false)
 
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.clients)
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = getString(R.string.clients)
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
+        }
 
         recyclerView = bind.recyclerViewCl
         clientList.addAll(
