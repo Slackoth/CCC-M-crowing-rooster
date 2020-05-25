@@ -7,12 +7,16 @@
     <string name="more_options">Más opciones</string>
     <string name="more_options_desc">Más opciones de usuario</string>
     <string name="successful_sales">Ventas exitosas</string>
+    <string name="successful_orders">Exitosos</string>
+    <string name="ongoing_orders">Pendientes</string>
+    <string name="canceled_orders">Cancelados</string>
     <string name="login">ingresar</string>
     <string name="navigation_drawer_content_desc">Content description for the image that is shown at the top of the navigation drawer.</string>
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
 
     <string name="sales">Ventas</string>
     <string name="clients">Clientes</string>
+    <string name="orders">Pedidos</string>
     <string name="profile">Perfil</string>
     <string name="chat">chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
@@ -49,6 +53,7 @@
     <string name="Silver_btn">Silver</string>
     <string name="Bronze_btn">Bronze</string>
     <string name="ongoing_sales">Ventas pendientes</string>
+
     <string name="order_details">Detalles del pedido</string>
     <string name="call">llamar</string>
     <string name="confirm">confirmar</string>
@@ -61,6 +66,7 @@
     <string name="not_yet_registered">¿No te has registrado aún?</string>
     <string name="user_or_email">Usuario/Correo</string>
     <string name="details">Detalles</string>
+    <string name="num_orden">"Numero de Orden"</string>
 
     <string name="ProeedPayment">Proceder Con el Pedido</string>
     <string name="quantitydefault">1</string>

@@ -91,4 +91,33 @@
             app:destination="@id/productFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/OrdersFragment"
+        android:name="com.cccm.crowingrooster.OrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders"
+        >
+        <action
+            android:id="@+id/action_OrdersFragment_to_successfulOrdersFragment"
+            app:destination="@id/successfulOrdersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/successfulOrdersFragment"
+        android:name="com.cccm.crowingrooster.SuccessfulOrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_successful_order"/>
+
+    <fragment
+        android:id="@+id/OngoingOrdersFragment"
+        android:name="com.cccm.crowingrooster.OngoingOrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_ongoing_orders"/>
+
+    <fragment
+        android:id="@+id/CanceledOrdersFragment"
+        android:name="com.cccm.crowingrooster.CanceledOrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_canceled_orders"/>
+
 </navigation>
