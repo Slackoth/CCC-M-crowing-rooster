@@ -47,7 +47,7 @@
             android:layout_gravity="start"
             style="@style/Widget.MaterialComponents.NavigationView"
             app:headerLayout="@layout/nav_header"
-            app:menu="@menu/drawer_menu_navigation">
+            >
 
         </com.google.android.material.navigation.NavigationView>
 

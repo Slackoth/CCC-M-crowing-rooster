@@ -19,7 +19,6 @@
             android:layout_height="?attr/actionBarSize"
             app:title="@string/main_menu"
             app:menu="@menu/top_app_bar_main_screen"
-            app:navigationIcon="@drawable/ic_logoff_24dp"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             />
 
