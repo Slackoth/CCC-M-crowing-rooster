@@ -57,7 +57,9 @@ class SellerMainScreen : Fragment() {
         salesBt.setOnClickListener {
             it.findNavController().navigate(R.id.salesFragment)
         }
-
+        clientsBt.setOnClickListener {
+            it.findNavController().navigate(R.id.sellerClientListFragment)
+        }
 
         return  bind.root
     }

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/parent_layout"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="@color/primary_dark">-->
+<!--<Button-->
+<!--android:id="@+id/message_btt"-->
+<!--style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginStart="@dimen/medium_margin"-->
+<!--android:layout_marginEnd="@dimen/small_margin"-->
+<!--app:strokeColor="@android:color/transparent"-->
+<!--android:text="@string/message"-->
+<!--android:textColor="@color/secondary_light"-->
+<!--android:drawableTop="@drawable/ic_chat_secondary_light_24dp"-->
+<!--app:layout_constraintBaseline_toBaselineOf="@+id/call_btt"-->
+<!--app:layout_constraintEnd_toStartOf="@+id/call_btt"-->
+<!--app:layout_constraintHorizontal_bias="0.5"-->
+<!--app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--<Button-->
+<!--android:id="@+id/call_btt"-->
+<!--style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginStart="@dimen/small_margin"-->
+<!--android:layout_marginEnd="@dimen/medium_margin"-->
+<!--android:layout_marginBottom="@dimen/medium_margin"-->
+<!--android:drawableTop="@drawable/ic_call_secondary_light_24dp"-->
+<!--android:text="@string/call"-->
+<!--android:textColor="@color/secondary_light"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintHorizontal_bias="0.5"-->
+<!--app:layout_constraintStart_toEndOf="@+id/message_btt"-->
+<!--app:layout_constraintTop_toTopOf="@+id/guideline18"-->
+<!--app:layout_constraintVertical_bias="0.0"-->
+<!--app:strokeColor="@android:color/transparent" />-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_dark">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/client_img"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@+id/expandable_layout"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/client_input"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/client"
+        app:layout_constraintBottom_toTopOf="@+id/expandable_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/client_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="Luis Manuel Calderón Perla"
+            android:textColor="@color/on_primary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_til"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/email"
+        app:layout_constraintBottom_toTopOf="@+id/expandable_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintTop_toBottomOf="@+id/client_input"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="ungallocontenis@gmail.com"
+            android:textColor="@color/on_primary" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/guideline18"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_percent="0.7" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline18">
+
+        <Button
+            android:id="@+id/message_btt"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:drawableTop="@drawable/ic_chat_secondary_light_24dp"
+            android:text="@string/message"
+            android:textColor="@color/secondary_light"
+            app:layout_constraintBaseline_toBaselineOf="@+id/call_btt"
+            app:layout_constraintEnd_toStartOf="@+id/call_btt"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/call_btt"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:drawableTop="@drawable/ic_call_secondary_light_24dp"
+            android:text="@string/call"
+            android:textColor="@color/secondary_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/message_btt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:strokeColor="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/expandable_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="0.3">-->
+
+<!--        <Button-->
+<!--        android:id="@+id/message_btt"-->
+<!--        style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/medium_margin"-->
+<!--        android:layout_marginEnd="@dimen/small_margin"-->
+<!--        app:strokeColor="@android:color/transparent"-->
+<!--        android:text="@string/message"-->
+<!--        android:textColor="@color/secondary_light"-->
+<!--        android:drawableTop="@drawable/ic_chat_secondary_light_24dp"-->
+<!--        app:layout_constraintBaseline_toBaselineOf="@+id/call_btt"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/call_btt"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--        <Button-->
+<!--        android:id="@+id/call_btt"-->
+<!--        style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/small_margin"-->
+<!--        android:layout_marginEnd="@dimen/medium_margin"-->
+<!--        android:layout_marginBottom="@dimen/medium_margin"-->
+<!--        android:drawableTop="@drawable/ic_call_secondary_light_24dp"-->
+<!--        android:text="@string/call"-->
+<!--        android:textColor="@color/secondary_light"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/message_btt"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        app:strokeColor="@android:color/transparent" />-->
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--</LinearLayout>-->
