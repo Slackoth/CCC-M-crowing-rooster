@@ -12,7 +12,7 @@
     <string name="navigation_drawer_header_title">Crowing Rooster</string>
 
     <string name="sales">Ventas</string>
-    <string name="clients">clientes</string>
+    <string name="clients">Clientes</string>
     <string name="profile">Perfil</string>
     <string name="chat">chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
@@ -61,6 +61,7 @@
     <string name="not_yet_registered">¿No te has registrado aún?</string>
     <string name="user_or_email">Usuario/Correo</string>
     <string name="details">Detalles</string>
+    <string name="message">mensaje</string>
 
     <string-array name="payment_array">
         <item>Efectivo</item>
