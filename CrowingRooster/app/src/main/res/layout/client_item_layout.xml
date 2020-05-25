@@ -1,46 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:id="@+id/parent_layout"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:orientation="vertical"-->
-<!--    android:background="@color/primary_dark">-->
-<!--<Button-->
-<!--android:id="@+id/message_btt"-->
-<!--style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_marginStart="@dimen/medium_margin"-->
-<!--android:layout_marginEnd="@dimen/small_margin"-->
-<!--app:strokeColor="@android:color/transparent"-->
-<!--android:text="@string/message"-->
-<!--android:textColor="@color/secondary_light"-->
-<!--android:drawableTop="@drawable/ic_chat_secondary_light_24dp"-->
-<!--app:layout_constraintBaseline_toBaselineOf="@+id/call_btt"-->
-<!--app:layout_constraintEnd_toStartOf="@+id/call_btt"-->
-<!--app:layout_constraintHorizontal_bias="0.5"-->
-<!--app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--<Button-->
-<!--android:id="@+id/call_btt"-->
-<!--style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_marginStart="@dimen/small_margin"-->
-<!--android:layout_marginEnd="@dimen/medium_margin"-->
-<!--android:layout_marginBottom="@dimen/medium_margin"-->
-<!--android:drawableTop="@drawable/ic_call_secondary_light_24dp"-->
-<!--android:text="@string/call"-->
-<!--android:textColor="@color/secondary_light"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintHorizontal_bias="0.5"-->
-<!--app:layout_constraintStart_toEndOf="@+id/message_btt"-->
-<!--app:layout_constraintTop_toTopOf="@+id/guideline18"-->
-<!--app:layout_constraintVertical_bias="0.0"-->
-<!--app:strokeColor="@android:color/transparent" />-->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -52,8 +10,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/client_img"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/small_margin"
@@ -61,7 +19,7 @@
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toTopOf="@+id/expandable_layout"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
@@ -125,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.3" />
 
 <!--    <androidx.constraintlayout.widget.Guideline-->
 <!--        android:id="@+id/guideline18"-->

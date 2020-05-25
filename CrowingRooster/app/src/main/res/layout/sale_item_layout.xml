@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sale_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:background="@color/primary_dark">
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/small_margin"
@@ -18,10 +18,9 @@
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -29,49 +28,48 @@
         style="@style/TextInputLayoutAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/medium_margin"
-        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
         android:hint="@string/client"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline17"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img"
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/client_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
             android:text="Luis Manuel Calderón Perla"
-            android:textColor="@color/on_primary"
-            android:inputType="none"/>
+            android:textColor="@color/on_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/model_input"
         style="@style/TextInputLayoutAppearance"
-        android:layout_width="0dp"
+        android:layout_width="107dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_margin"
-        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:layout_marginBottom="@dimen/medium_margin"
         android:hint="@string/model"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/client_input"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
-        app:layout_constraintTop_toBottomOf="@+id/client_input"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/model_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="22F-350"
             android:inputType="none"
+            android:text="22F-350"
             android:textColor="@color/on_primary" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -82,22 +80,22 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_margin"
-        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/small_padding"
         android:layout_marginBottom="@dimen/medium_margin"
         android:hint="@string/quantity"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/client_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/client_input"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/quantity_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="100"
             android:inputType="none"
+            android:text="100"
             android:textColor="@color/on_primary" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,14 +106,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.675" />
+        app:layout_constraintGuide_percent="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

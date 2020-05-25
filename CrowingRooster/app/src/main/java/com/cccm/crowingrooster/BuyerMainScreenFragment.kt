@@ -17,7 +17,7 @@ class BuyerMainScreenFragment : Fragment() {
     private lateinit var bind: FragmentBuyerMainScreenBinding
     lateinit var profileBt: CardView
     lateinit var ordersBt: CardView
-    lateinit var vehiclesBt: CardView
+    lateinit var chatBt: CardView
     lateinit var batteryBt: CardView
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class BuyerMainScreenFragment : Fragment() {
         bind.apply {
             profileBt = profileCvBtt
             ordersBt = orderCvBtt
-            vehiclesBt = vehicleCvBtt
+            chatBt = chatCvBtt
             batteryBt = batteryCvBtt
         }
 
