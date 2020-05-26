@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            tools:context=".AscDescDialogFragment"
+            android:background="@color/primary_light"
+            android:padding="@dimen/small_padding">
+
+            <RadioGroup
+                android:id="@+id/asc_desc_rg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_centerInParent="true"
+                android:checkedButton="@id/asc_rb">
+
+                <RadioButton
+                    android:id="@+id/asc_rb"
+                    style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:buttonTint="@color/secondary"
+                    android:text="@string/ascendent"
+                    android:textColor="@color/on_primary" />
+
+                <RadioButton
+                    android:id="@+id/desc_rb"
+                    style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:buttonTint="@color/secondary"
+                    android:text="@string/descendent"
+                    android:textColor="@color/on_primary" />
+            </RadioGroup>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

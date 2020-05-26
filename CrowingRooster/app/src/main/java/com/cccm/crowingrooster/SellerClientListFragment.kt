@@ -1,10 +1,8 @@
 package com.cccm.crowingrooster
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +31,8 @@ class SellerClientListFragment : Fragment() {
             navigation_view.menu.clear()
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
+
+        setHasOptionsMenu(true)
 
         recyclerView = bind.recyclerViewCl
         clientList.addAll(
@@ -80,6 +80,11 @@ class SellerClientListFragment : Fragment() {
         recyclerView.adapter = adapter
 
         return bind.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.clients_list_more_options_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 }

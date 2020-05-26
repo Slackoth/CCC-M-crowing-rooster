@@ -72,13 +72,6 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //return super.onCreateOptionsMenu(menu)
-        //Creates the more-options menu for the top bar
-        menuInflater.inflate(R.menu.top_app_bar_main_screen, menu)
-        return true
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         //return super.onSupportNavigateUp()
         return NavigationUI.navigateUp(navController,appBarConfiguration)
@@ -94,6 +87,10 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
     override fun showTopBar() {
         supportActionBar?.show()
     }
+
+//    override fun addMoreOptions(menuId: Int, menu: Menu?) {
+//        menuInflater.inflate(menuId, menu)
+//    }
 
 }
 

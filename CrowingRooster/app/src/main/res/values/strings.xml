@@ -83,6 +83,11 @@
     <string name="defaultmssgeText">amo la idea de que sea por mayoreo</string>
 
     <string name="hour">Hora</string>
+    <string name="order_by_date">Ordernar por fecha</string>
+    <string name="order_by_client">Ordenar por cliente</string>
+    <string name="order_by_quantity">Ordenar por cantidad</string>
+    <string name="descendent">Descendente</string>
+    <string name="ascendent">Ascendente</string>
 
 
     <string-array name="payment_array">
