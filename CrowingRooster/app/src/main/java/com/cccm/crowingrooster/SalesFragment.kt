@@ -1,10 +1,8 @@
 package com.cccm.crowingrooster
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.ViewPager
@@ -40,7 +38,10 @@ class SalesFragment : Fragment() {
             supportActionBar?.title = getString(R.string.sales).capitalize()
             navigation_view.menu.clear()
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
+           //menuInflater.inflate(R.menu.top_app_bar_main_screen,)
         }
+
+        setHasOptionsMenu(true)
 
         return bind.root
     }
@@ -59,7 +60,24 @@ class SalesFragment : Fragment() {
                 else -> tab.text = "Mr. Peanutbutter's House"
             }
         }).attach()
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.successful_sales_more_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
+        return when(item.itemId) {
+            R.id.action_order_date, R.id.action_order_client -> {
+                val dialog = AscDescDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager,"AscDescDialog")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 
