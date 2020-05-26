@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.cccm.crowingrooster.databinding.FragmentBuyerMainScreenBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -41,6 +42,19 @@ class BuyerMainScreenFragment : Fragment() {
             chatBt = chatCvBtt
             batteryBt = batteryCvBtt
         }
+
+        ordersBt.setOnClickListener {
+            it.findNavController().navigate(R.id.OrdersFragment)
+        }
+
+        chatBt.setOnClickListener {
+            it.findNavController().navigate(R.id.chatFragment)
+        }
+
+        batteryBt.setOnClickListener {
+            it.findNavController().navigate(R.id.SearchFragment)
+        }
+
 
         return bind.root
     }
