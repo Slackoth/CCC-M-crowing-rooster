@@ -16,17 +16,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.12"
-                    android:background="@color/primary_light"/>
+                    android:background="@color/secondary"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.12"
+                    android:layout_weight="0.15"
                     android:background="@color/primary_dark"/>
 
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.66">
+                    android:layout_weight="0.64">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -36,9 +36,9 @@
                         <androidx.cardview.widget.CardView
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
-                            android:layout_height="75dp"
+                            android:layout_height="@dimen/profile_cv_size"
                             app:cardBackgroundColor="@color/primary_light"
-                            android:layout_marginTop="@dimen/medium_margin"
+                            android:layout_marginTop="0dp"
                             android:layout_marginRight="@dimen/medium_margin"
                             android:layout_marginLeft="@dimen/medium_margin"
                             android:layout_marginBottom="@dimen/small_margin">
@@ -66,7 +66,7 @@
                                 android:id="@+id/code_desc_tv"
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:textStyle="bold"
-                                tools:text="00082318"
+                                android:text="00082318"
                                 android:textColor="@color/on_primary"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                         <androidx.cardview.widget.CardView
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
-                            android:layout_height="75dp"
+                            android:layout_height="@dimen/profile_cv_size"
                             app:cardBackgroundColor="@color/primary_light"
                             android:layout_marginTop="@dimen/small_margin"
                             android:layout_marginRight="@dimen/medium_margin"
@@ -150,7 +150,7 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/name_tv"
                                     app:layout_constraintVertical_bias="0.5"
-                                    tools:text="Luis Manuel Calderón Perla" />
+                                    android:text="Luis Manuel Calderón Perla" />
 
                                 <androidx.constraintlayout.widget.Guideline
                                     android:id="@+id/guideline16"
@@ -166,7 +166,7 @@
                         <androidx.cardview.widget.CardView
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
-                            android:layout_height="75dp"
+                            android:layout_height="@dimen/profile_cv_size"
                             app:cardBackgroundColor="@color/primary_light"
                             android:layout_marginTop="@dimen/small_margin"
                             android:layout_marginRight="@dimen/medium_margin"
@@ -228,7 +228,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/tel_tv"
                                 app:layout_constraintVertical_bias="0.5"
-                                tools:text="####-####" />
+                                android:text="7868-0867" />
 
                             <androidx.constraintlayout.widget.Guideline
                                 android:id="@+id/guideline15"
@@ -244,7 +244,7 @@
                         <androidx.cardview.widget.CardView
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
-                            android:layout_height="75dp"
+                            android:layout_height="@dimen/profile_cv_size"
                             app:cardBackgroundColor="@color/primary_light"
                             android:layout_marginTop="@dimen/small_margin"
                             android:layout_marginRight="@dimen/medium_margin"
@@ -306,7 +306,7 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/email_tv"
                                     app:layout_constraintVertical_bias="0.5"
-                                    tools:text="ungallocontenis@gmail.com" />
+                                    android:text="ungallocontenis@gmail.com" />
 
                                 <androidx.constraintlayout.widget.Guideline
                                     android:id="@+id/guideline14"
@@ -349,17 +349,20 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_civ"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_width="@dimen/profile_photo"
+                    android:layout_height="@dimen/profile_photo"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
                     android:src="@drawable/mr_peanutbutter"
                     app:civ_border_color="@color/primary_dark"
-                    app:civ_border_width="4dp"
+                    app:civ_border_width="@dimen/x_small_margin"
                     app:layout_constraintBottom_toTopOf="@+id/guideline13"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
+                    app:layout_constraintVertical_bias="0.34"
                     app:srcCompat="@drawable/ic_key_black_filled_24dp" />
 
                 <androidx.constraintlayout.widget.Guideline
@@ -367,7 +370,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.24"/>
+                    app:layout_constraintGuide_percent="0.26"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
