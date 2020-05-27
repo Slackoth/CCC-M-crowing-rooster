@@ -36,6 +36,7 @@
                 android:hint="@string/price">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:fontFamily="@font/montserrat"
                     android:id="@+id/price_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,6 +59,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/date_et"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="20/08/1969"
@@ -79,6 +81,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/hour_et"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="04:20"
@@ -88,6 +91,7 @@
 
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
                 android:id="@+id/payment_sp"
+                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hour_til"
@@ -124,6 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/confirm"
+                android:fontFamily="@font/montserrat"
                 android:textAllCaps="true"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
@@ -133,6 +138,7 @@
                 android:id="@+id/confirm_tv"/>
 
             <TextView
+                android:fontFamily="@font/montserrat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"

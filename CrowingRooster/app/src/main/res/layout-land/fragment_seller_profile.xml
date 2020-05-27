@@ -58,14 +58,14 @@
                                     android:text="@string/code"
                                     android:textAllCaps="true"
                                     android:textColor="@color/secondary_light"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat_bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:id="@+id/code_desc_tv"
                                 style="@style/TextAppearance.AppCompat.Body1"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"
                                 android:text="00082318"
                                 android:textColor="@color/on_primary"
                                 android:layout_width="wrap_content"
@@ -109,14 +109,14 @@
                                     android:text="@string/name"
                                     android:textAllCaps="true"
                                     android:textColor="@color/secondary_light"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat_bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
                                     android:id="@+id/name_btt"
                                     android:clickable="true"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/small_margin"
@@ -143,7 +143,7 @@
                                     android:layout_marginEnd="@dimen/small_margin"
                                     android:layout_marginBottom="@dimen/small_margin"
                                     android:textColor="@color/on_primary"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/guideline16"
                                     app:layout_constraintHorizontal_bias="0.0"
@@ -188,14 +188,14 @@
                                 android:text="@string/telephone"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat_bold"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:id="@+id/tel_btt"
                                 android:clickable="true"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/small_margin"
@@ -221,7 +221,7 @@
                                 android:layout_marginEnd="@dimen/small_margin"
                                 android:layout_marginBottom="@dimen/small_margin"
                                 android:textColor="@color/on_primary"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/guideline15"
                                 app:layout_constraintHorizontal_bias="0.0"
@@ -266,14 +266,14 @@
                                     android:text="@string/email"
                                     android:textAllCaps="true"
                                     android:textColor="@color/secondary_light"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat_bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
                                     android:id="@+id/email_btt"
                                     android:clickable="true"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/small_margin"
@@ -299,7 +299,7 @@
                                     android:layout_marginEnd="@dimen/small_margin"
                                     android:layout_marginBottom="@dimen/small_margin"
                                     android:textColor="@color/on_primary"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/guideline14"
                                     app:layout_constraintHorizontal_bias="0.0"
@@ -322,6 +322,7 @@
                         <Button
                             android:id="@+id/change_pass_btt"
                             style="@style/Widget.MyApp.MyButton"
+                            android:fontFamily="@font/montserrat_bold"
                             android:text="@string/change_password"
                             android:layout_marginTop="@dimen/small_margin"
                             android:layout_marginLeft="@dimen/medium_margin"

@@ -21,6 +21,7 @@
 
                 <TextView
                     android:id="@+id/client_tv"
+                    android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/secondary"
@@ -43,6 +44,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@id/client_et"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Luis Manuel Calderón Perla"
@@ -63,6 +65,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/email_et"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ungallocontenis@gmail.com"
@@ -72,6 +75,7 @@
 
                 <TextView
                     android:id="@+id/details_sale_tv"
+                    android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/secondary"
@@ -87,6 +91,7 @@
 
                     <TextView
                         android:id="@+id/quantity_tv"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/medium_margin"
@@ -110,6 +115,7 @@
 
                     <TextView
                         android:id="@+id/model_tv"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_margin"
@@ -136,6 +142,8 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/total_tv"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_margin"
@@ -151,6 +159,8 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/total_quantity_tv"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/medium_margin"
@@ -187,6 +197,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/date_et"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="20/08/1969"
@@ -207,6 +218,7 @@
             
             <Button
                 android:id="@+id/char_btt"
+                android:fontFamily="@font/montserrat_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/message"
@@ -217,6 +229,7 @@
 
             <Button
                 android:id="@+id/confirm_btt"
+                android:fontFamily="@font/montserrat_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/confirm"
@@ -227,6 +240,7 @@
 
             <Button
                 android:id="@+id/call_btt"
+                android:fontFamily="@font/montserrat_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/call"

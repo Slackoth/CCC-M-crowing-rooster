@@ -41,6 +41,7 @@
 
         <EditText
             android:id="@+id/user_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
@@ -64,6 +65,7 @@
 
         <EditText
             android:id="@+id/password_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small_margin"
@@ -86,6 +88,7 @@
 
         <TextView
             android:id="@+id/forgot_tv"
+            android:fontFamily="@font/montserrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
@@ -101,6 +104,7 @@
 
         <TextView
             android:id="@+id/register_tv"
+            android:fontFamily="@font/montserrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
@@ -117,6 +121,7 @@
 
         <Button
             android:id="@+id/login_btt"
+            android:fontFamily="@font/montserrat_bold"
             style="@style/Widget.MyApp.MyButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
