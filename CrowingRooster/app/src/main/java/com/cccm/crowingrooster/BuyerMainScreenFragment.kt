@@ -48,7 +48,7 @@ class BuyerMainScreenFragment : Fragment() {
         }
 
         chatBt.setOnClickListener {
-            it.findNavController().navigate(R.id.chatFragment)
+            it.findNavController().navigate(R.id.action_buyerMainScreenFragment_to_chatFragment)
         }
 
         batteryBt.setOnClickListener {
