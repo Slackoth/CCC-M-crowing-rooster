@@ -204,4 +204,24 @@ object ViewHolderFactory {
 
     }
 
+    /*class OpenOrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<OpenOrder> {
+        private val openOrderDateEt: EditText = itemView.findViewById(R.id.oo_date_et)
+        private val openOrderAddressEt: EditText = itemView.findViewById(R.id.oo_address_et)
+        private val openOrderImg: ImageButton = itemView.findViewById(R.id.oo_ib)
+        private val openOrderLayout: ConstraintLayout = itemView.findViewById(R.id.oo_item_layout)
+
+        override fun bind(listObject: OpenOrder, onClickLayout: () -> Unit, context: Context) {
+            openOrderDateEt.setText(listObject.OrderDate)
+            openOrderAddressEt.setText(listObject.OrderAddress)
+            Glide.with(context).load(listObject.OrderImg).into(openOrderImg)
+
+            openOrderDateEt.inputType = InputType.TYPE_NULL
+            openOrderAddressEt.inputType = InputType.TYPE_NULL
+
+            openOrderLayout.setOnClickListener{
+                onClickLayout()
+            }
+        }
+    }*/
+
 }
