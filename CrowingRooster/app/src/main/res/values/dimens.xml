@@ -12,4 +12,7 @@
     <dimen name="drawable_edit_text_padding">5dp</dimen>
     <dimen name="chat_dim" >6dp</dimen>
     <dimen name="quantbtnsize">26sp</dimen>
+    <dimen name="round_image_size">80dp</dimen>
+    <dimen name="profile_photo">96dp</dimen>
+    <dimen name="profile_cv_size">75dp</dimen>
 </resources>

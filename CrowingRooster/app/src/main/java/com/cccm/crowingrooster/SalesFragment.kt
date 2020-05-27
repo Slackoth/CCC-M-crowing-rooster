@@ -38,7 +38,6 @@ class SalesFragment : Fragment() {
             supportActionBar?.title = getString(R.string.sales).capitalize()
             navigation_view.menu.clear()
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
-           //menuInflater.inflate(R.menu.top_app_bar_main_screen,)
         }
 
         setHasOptionsMenu(true)

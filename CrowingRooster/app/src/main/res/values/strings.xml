@@ -88,6 +88,8 @@
     <string name="order_by_quantity">Ordenar por cantidad</string>
     <string name="descendent">Descendente</string>
     <string name="ascendent">Ascendente</string>
+    <string name="total_quantity_battery">Cantidad total de baterias:</string>
+    <string name="total">total</string>
 
 
     <string-array name="payment_array">
