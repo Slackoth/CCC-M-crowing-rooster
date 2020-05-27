@@ -42,6 +42,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/client_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -66,6 +67,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -101,6 +103,7 @@
         <Button
             android:id="@+id/message_btt"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
@@ -116,6 +119,7 @@
 
         <Button
             android:id="@+id/call_btt"
+            android:fontFamily="@font/montserrat_bold"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
