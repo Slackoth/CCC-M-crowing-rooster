@@ -42,7 +42,7 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@id/client_et"
+                        android:id="@+id/fsdd_client_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Luis Manuel Calderón Perla"
