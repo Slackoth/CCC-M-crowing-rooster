@@ -198,5 +198,12 @@
         android:name="com.cccm.crowingrooster.DeliveriesFragment"
         android:label="DeliveriesFragment"
         tools:layout="@layout/fragment_deliveries"/>
+    <fragment
+        android:id="@+id/concludedOrdersFragment"
+        android:name="com.cccm.crowingrooster.ConcludedOrdersFragment"
+        android:label="ConcludedOrdersFragment"
+        tools:layout="@layout/fragment_concluded_orders">
+
+    </fragment>
 
 </navigation>

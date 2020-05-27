@@ -15,7 +15,7 @@ class DeliveriesFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentDeliveriesBinding
-    private var listOfFragment: MutableList<Fragment> = mutableListOf(OpenOrdersFragment())
+    private var listOfFragment: MutableList<Fragment> = mutableListOf(OpenOrdersFragment(), ConcludedOrdersFragment())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +45,7 @@ class DeliveriesFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
             when(position) {
                 0-> tab.text = "Entregas en curso"
-                /**1-> tab.text = "Entregas éxitosas"*/
+                1-> tab.text = "Entregas éxitosas"
                 else -> tab.text = "Defying Gravity"
             }
         }).attach()
