@@ -21,10 +21,12 @@
         android:icon="@drawable/ic_client_black_filled_512dp"
         android:title="@string/clients"/>
     <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/ic_chat_black_filled_512dp"
+        android:title="@string/chat"/>
+    <item
         android:id="@+id/logInFragment"
         android:icon="@drawable/ic_logoff_black_24dp"
         android:title="@string/logoff"/>
-<!--        android:id="clients_fragment"-->
-<!--        android:title="@string/clients"-->
-<!--        />-->
+
 </menu>

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentChatBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -30,6 +31,12 @@ class ChatFragment : Fragment() {
             container, false
         )
 
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = getString(R.string.chat).capitalize()
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
+        }
 
 
         recyclerView = bind.recyclerViewChat

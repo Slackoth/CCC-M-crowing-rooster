@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster
 
 import android.os.Bundle
+import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentOngoingSalesBinding
 import com.cccm.crowingrooster.databinding.FragmentOngoingSalesDetailsBinding
+import com.google.android.material.textfield.TextInputEditText
 
 /**
  * A simple [Fragment] subclass.
@@ -17,6 +21,11 @@ import com.cccm.crowingrooster.databinding.FragmentOngoingSalesDetailsBinding
 class OngoingSalesDetailsFragment : Fragment() {
 
     private lateinit var bind: FragmentOngoingSalesDetailsBinding
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var clientEditT: TextInputEditText
+    private lateinit var emailEditT: TextInputEditText
+    private lateinit var dateEditT: TextInputEditText
+    private var ongoingSaleList: MutableList<Any> = mutableListOf()
     private lateinit var confirmButton: Button
 
     override fun onCreateView(
@@ -31,11 +40,50 @@ class OngoingSalesDetailsFragment : Fragment() {
 
         bind.apply {
             confirmButton = confirmBtt
+            recyclerView = recyclerViewOsd
+            clientEditT = clientEt
+            emailEditT = emailEt
+            dateEditT = dateEt
         }
+
+        clientEditT.inputType = InputType.TYPE_NULL
+        emailEditT.inputType = InputType.TYPE_NULL
+        dateEditT.inputType = InputType.TYPE_NULL
+
+        ongoingSaleList.addAll(
+            listOf(
+                SaleDetails(10, "20F-Derecha-Azul"),
+                SaleDetails(15, "21D-Izquierda-Amarilla"),
+                SaleDetails(2, "22E-Derecha-Amarilla"),
+                SaleDetails(30, "23Q-Izquierda-Azul"),
+                SaleDetails(6, "24P-Derecha-Azul")
+            )
+        )
+
+
+        val adapter = object : GenericRecyclerViewAdapter<Any>(ongoingSaleList,requireContext()) {
+            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+                return ViewHolderFactory.bindView(view,viewType)
+            }
+
+            override fun getLayoutId(): Int {
+                return R.layout.sale_details_item_layout
+            }
+
+            override fun getOnClickLayout(): () -> Unit {
+                return {}
+            }
+
+        }
+
         confirmButton.setOnClickListener {
             val dialog = ConfirmSaleFragment()
             dialog.show(requireActivity().supportFragmentManager,"ConfirmDialog")
         }
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        //recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),R.drawable.recyclerview_divider))
+        recyclerView.adapter = adapter
 
         return bind.root
     }
