@@ -90,6 +90,8 @@
     <string name="ascendent">Ascendente</string>
     <string name="total_quantity_battery">Cantidad total de baterias:</string>
     <string name="total">total</string>
+    <string name="catalogo">Catalogo</string>
+    <string name="chart">Carrito De Compras</string>
 
 
     <string-array name="payment_array">

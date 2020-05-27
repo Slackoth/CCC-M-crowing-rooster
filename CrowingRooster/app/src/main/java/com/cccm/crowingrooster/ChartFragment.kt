@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentChartBinding
 import com.cccm.crowingrooster.databinding.FragmentLogInBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -29,6 +30,12 @@ class ChartFragment : Fragment() {
         val bind = DataBindingUtil.inflate<FragmentChartBinding>(inflater,R.layout.fragment_chart,
             container,false)
 
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = getString(R.string.chart)
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
+        }
 
 
         recyclerView = bind.recyclerViewChart
