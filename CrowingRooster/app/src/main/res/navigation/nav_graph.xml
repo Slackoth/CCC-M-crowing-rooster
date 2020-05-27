@@ -144,8 +144,6 @@
         tools:layout="@layout/chat_item_layout"/>
 
 
-
-
     <fragment
         android:id="@+id/SearchFragment"
         android:name="com.cccm.crowingrooster.SearchFragment"

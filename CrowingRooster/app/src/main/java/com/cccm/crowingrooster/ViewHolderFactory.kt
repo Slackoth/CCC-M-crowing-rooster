@@ -195,9 +195,7 @@ object ViewHolderFactory {
             chatmsge.text = listObject.Mssge
             mssgequant.text = listObject.unreadmmsge.toString()
 
-            layout.setOnClickListener(){
-                onClickLayout()
-            }
+
 
 
 
