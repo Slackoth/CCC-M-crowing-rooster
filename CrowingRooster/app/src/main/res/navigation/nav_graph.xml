@@ -135,6 +135,9 @@
         <action
             android:id="@+id/action_buyerMainScreenFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_buyerMainScreenFragment_to_BuyerProfileFragment"
+            app:destination="@id/BuyerProfileFragment"/>
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -166,6 +169,12 @@
         android:name="com.cccm.crowingrooster.CarSearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_car_search"/>
+
+    <fragment
+        android:id="@+id/BuyerProfileFragment"
+        android:name="com.cccm.crowingrooster.BuyerProfileFragment"
+        android:label="BuyerProfileFragment"
+        tools:layout="@layout/fragment_buyer_profile"/>
 
 
 

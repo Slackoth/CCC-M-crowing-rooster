@@ -55,6 +55,10 @@ class BuyerMainScreenFragment : Fragment() {
             it.findNavController().navigate(R.id.SearchFragment)
         }
 
+        profileBt.setOnClickListener {
+            it.findNavController().navigate(R.id.action_buyerMainScreenFragment_to_BuyerProfileFragment)
+        }
+
 
         return bind.root
     }
