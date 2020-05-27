@@ -67,7 +67,7 @@ class OpenOrdersFragment : Fragment() {
 
                 return { ->
                     this@OpenOrdersFragment.findNavController()
-                        .navigate(R.id.action_openOrdersFragment_to_openOrdersDetailsFragment)
+                        .navigate(R.id.openOrdersDetailsFragment)
                 }
             }
         }
