@@ -26,8 +26,10 @@ class OngoingSalesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bind = DataBindingUtil.inflate<FragmentOngoingSalesBinding>(inflater, R.layout.fragment_ongoing_sales,
-        container, false)
+        val bind = DataBindingUtil.inflate<FragmentOngoingSalesBinding>(
+            inflater, R.layout.fragment_ongoing_sales,
+            container, false
+        )
 
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.ongoing_sales)
 
@@ -60,13 +62,16 @@ class OngoingSalesFragment : Fragment() {
         )
 
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList,requireContext()) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
             override fun getOnClickLayout(): () -> Unit {
-                return { -> this@OngoingSalesFragment.findNavController().navigate(R.id.ongoingSalesDetailsFragment)
+                return { ->
+                    this@OngoingSalesFragment.findNavController()
+                        .navigate(R.id.ongoingSalesDetailsFragment)
+
 
                 }
             }
@@ -88,5 +93,4 @@ class OngoingSalesFragment : Fragment() {
 
         return bind.root
     }
-
 }

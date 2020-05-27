@@ -10,9 +10,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_img"
-        android:layout_width="63dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/chat_dim"
         android:layout_marginBottom="@dimen/chat_dim"
         android:src="@drawable/ic_rooster_colored_512dp"
@@ -30,26 +30,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.21" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="51dp" />
+        app:layout_constraintGuide_end="43dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ChatSum"
         style="@style/TextInputLayoutAppearance"
         android:layout_width="255dp"
-        android:layout_height="55dp"
+        android:layout_height="57dp"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_marginTop="@dimen/chat_dim"
         android:layout_marginEnd="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/drawable_edit_text_padding"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline18"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
         app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/chatname_text"
-            android:layout_width="255dp"
+            android:layout_width="match_parent"
             android:layout_height="24dp"
             android:text="@string/defaultnamechat"
             android:textColor="@color/on_primary"
@@ -74,12 +74,14 @@
 
         <TextView
             android:id="@+id/chatlastmss_text"
-            android:layout_width="255dp"
+            android:layout_width="match_parent"
             android:layout_height="27dp"
             android:layout_marginTop="@dimen/drawable_edit_text_padding"
             android:text="@string/defaultmssgeText"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/on_primary"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
