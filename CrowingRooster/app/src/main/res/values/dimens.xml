@@ -15,4 +15,5 @@
     <dimen name="round_image_size">80dp</dimen>
     <dimen name="profile_photo">96dp</dimen>
     <dimen name="profile_cv_size">75dp</dimen>
+    <dimen name="appbar_title">20sp</dimen>
 </resources>

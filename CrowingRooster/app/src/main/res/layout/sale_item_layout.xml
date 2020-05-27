@@ -41,6 +41,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/client_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -64,6 +65,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/date_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -88,6 +90,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/total_et"
+            android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"

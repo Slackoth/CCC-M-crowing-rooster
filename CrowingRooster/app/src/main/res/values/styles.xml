@@ -74,6 +74,14 @@
         <item name="actionMenuTextColor">@color/secondary_light</item>
     </style>
 
+    <!--App bar title-menu style-->
+    <style name="TitleAppBarStyle" parent="Theme.MaterialComponents">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/appbar_title</item>
+    </style>
+    <style name="TitleTabStyle" parent="Widget.Design.TabLayout">
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
 
     <!--
     Dialog Theme

@@ -9,6 +9,7 @@
         <com.google.android.material.tabs.TabLayout
             style="@style/Widget.MaterialComponents.TabLayout.Colored"
             android:id="@+id/sales_tablayout"
+            app:tabTextAppearance="@style/TitleTabStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
            />
