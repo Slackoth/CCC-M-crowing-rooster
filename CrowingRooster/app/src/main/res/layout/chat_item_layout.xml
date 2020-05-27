@@ -10,7 +10,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_img"
-        android:layout_width="52dp"
+        android:layout_width="@dimen/ppchat_width"
         android:layout_height="54dp"
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/chat_dim"

@@ -91,10 +91,10 @@
         app:cb_pressedRingWidth="8dip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toEndOf="@+id/cantidad_textchr"
         app:layout_constraintTop_toBottomOf="@+id/ProductDesc_chr"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/decrease_btn"
@@ -108,10 +108,10 @@
         app:cb_pressedRingWidth="8dip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/quantity_text_ch"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintHorizontal_bias="0.739"
         app:layout_constraintStart_toEndOf="@+id/cantidad_textchr"
         app:layout_constraintTop_toBottomOf="@+id/ProductDesc_chr"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/quantity_text_ch"
@@ -147,10 +147,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/decrease_btn"
-        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toEndOf="@+id/cantidad_textchr"
         app:layout_constraintTop_toTopOf="@+id/decrease_btn"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.26999998" />
 
     <TextView
         android:id="@+id/increase_text"
@@ -161,10 +161,10 @@
         android:textColor="@color/on_primary"
         app:layout_constraintBottom_toBottomOf="@+id/increase_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="@+id/increase_btn"
         app:layout_constraintTop_toTopOf="@+id/increase_btn"
-        app:layout_constraintVertical_bias="0.65999997" />
+        app:layout_constraintVertical_bias="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline19"
