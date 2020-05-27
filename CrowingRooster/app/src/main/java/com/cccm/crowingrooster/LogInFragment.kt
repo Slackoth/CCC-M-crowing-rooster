@@ -37,6 +37,9 @@ class LogInFragment : Fragment() {
                 else if(userEditT.text.toString() == "buyer") {
                     it.findNavController().navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
                 }
+                else if(userEditT.text.toString() == "dealer") {
+                    it.findNavController().navigate(R.id.action_logInFragment_to_openOrdersFragment)
+                }
             }
         }
 

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_logInFragment_to_buyerMainScreenFragment"
             app:destination="@id/buyerMainScreenFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_openOrdersFragment"
+            app:destination="@id/openOrdersFragment"/>
     </fragment>
     
     <fragment
@@ -176,6 +179,19 @@
         android:label="BuyerProfileFragment"
         tools:layout="@layout/fragment_buyer_profile"/>
 
-
+    <fragment
+        android:id="@+id/openOrdersFragment"
+        android:name="com.cccm.crowingrooster.OpenOrdersFragment"
+        android:label="OpenOrdersFragment"
+        tools:layout="@layout/fragment_open_orders">
+        <action
+            android:id="@+id/action_openOrdersFragment_to_openOrdersDetailsFragment"
+            app:destination="@id/openOrdersDetailsFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/openOrdersDetailsFragment"
+        android:name="com.cccm.crowingrooster.OpenOrdersDetailsFragment"
+        android:label="OpenOrdersDetailsFragment"
+        tools:layout="@layout/fragment_open_orders_details"/>
 
 </navigation>

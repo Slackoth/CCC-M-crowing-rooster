@@ -28,6 +28,7 @@ object ViewHolderFactory {
             R.layout.client_item_layout->ClientViewHolder(view)
             R.layout.order_item_layout ->OrderViewHolder(view)
             R.layout.chat_item_layout->ChatOrderView(view)
+            R.layout.open_orders_item_layout->OpenOrderViewHolder(view)
 
             else -> SaleViewHolder(view)
         }
@@ -204,7 +205,7 @@ object ViewHolderFactory {
 
     }
 
-    /*class OpenOrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<OpenOrder> {
+    class OpenOrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<OpenOrder> {
         private val openOrderDateEt: EditText = itemView.findViewById(R.id.oo_date_et)
         private val openOrderAddressEt: EditText = itemView.findViewById(R.id.oo_address_et)
         private val openOrderImg: ImageButton = itemView.findViewById(R.id.oo_ib)
@@ -222,6 +223,6 @@ object ViewHolderFactory {
                 onClickLayout()
             }
         }
-    }*/
+    }
 
 }
