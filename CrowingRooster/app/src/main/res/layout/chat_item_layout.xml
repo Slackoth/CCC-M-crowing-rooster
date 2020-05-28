@@ -36,12 +36,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="43dp" />
+        app:layout_constraintGuide_percent="0.91041666" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ChatSum"
         style="@style/TextInputLayoutAppearance"
-        android:layout_width="255dp"
+        android:layout_width="0dp"
         android:layout_height="57dp"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_marginTop="@dimen/chat_dim"
@@ -57,7 +57,7 @@
 
         <TextView
             android:id="@+id/chatname_text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="24dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/defaultnamechat"
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/chatlastmss_text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="27dp"
             android:layout_marginTop="@dimen/drawable_edit_text_padding"
             android:ellipsize="end"
