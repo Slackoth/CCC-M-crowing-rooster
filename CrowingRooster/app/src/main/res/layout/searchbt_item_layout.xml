@@ -87,6 +87,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
+        android:textColor="@color/on_primary"
         app:layout_constraintBottom_toTopOf="@+id/CCA_Et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo_Et" />
@@ -100,6 +101,7 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
+        android:textColor="@color/on_primary"
         app:layout_constraintBottom_toTopOf="@+id/voltaje_Et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -113,6 +115,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
+        android:textColor="@color/on_primary"
         app:layout_constraintBottom_toTopOf="@+id/capacidad_Et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/voltaje_Et" />
@@ -126,6 +129,7 @@
         android:layout_marginBottom="@dimen/small_margin"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
+        android:textColor="@color/on_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CCA_Et" />

@@ -1,11 +1,14 @@
 package com.cccm.crowingrooster
 
+import android.app.SearchManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -97,5 +100,45 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
 //    override fun addMoreOptions(menuId: Int, menu: Menu?) {
 //        menuInflater.inflate(menuId, menu)
 //    }
+
+
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        val inflater = menuInflater
+        inflater.inflate(R.menu.search_menu, menu)
+
+        val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView= searchItem?.actionView as SearchView
+
+        searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
+
+        searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                searchView.clearFocus()
+                searchView.setQuery( "", false)
+                val collapseActionView = searchItem.collapseActionView()
+
+                Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_LONG).show()
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+
+        return true
+
+    }*/
+
+
+
+
+
 }
 

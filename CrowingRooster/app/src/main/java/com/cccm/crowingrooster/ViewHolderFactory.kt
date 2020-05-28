@@ -20,16 +20,17 @@ object ViewHolderFactory {
 
     //TODO: Every Layout from a RecyclerView must be bind here
     fun bindView(view: View, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             R.layout.sale_item_layout -> SaleViewHolder(view)
             R.layout.sale_details_item_layout -> OngoingSaleViewHolder(view)
-            R.layout.product_item_layout->ProductViewHolder(view)
-            R.layout.chart_item_layout->ChartViewHolder(view)
-            R.layout.client_item_layout->ClientViewHolder(view)
-            R.layout.order_item_layout ->OrderViewHolder(view)
-            R.layout.order_details_item ->OngoingOrderViewHolder(view)
-            R.layout.chat_item_layout->ChatOrderView(view)
-            R.layout.open_orders_item_layout->OpenOrderViewHolder(view)
+            R.layout.product_item_layout -> ProductViewHolder(view)
+            R.layout.chart_item_layout -> ChartViewHolder(view)
+            R.layout.client_item_layout -> ClientViewHolder(view)
+            R.layout.order_item_layout -> OrderViewHolder(view)
+            R.layout.order_details_item -> OngoingOrderViewHolder(view)
+            R.layout.chat_item_layout -> ChatOrderView(view)
+            R.layout.open_orders_item_layout -> OpenOrderViewHolder(view)
+            R.layout.searchbt_item_layout -> BatteryViewHolder(view)
 
             else -> SaleViewHolder(view)
         }
@@ -37,7 +38,8 @@ object ViewHolderFactory {
 
 
     //TODO: Every element from a Layout from a RecyclerView must be bind to its respective view here
-    class SaleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Sale> {
+    class SaleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Sale> {
 
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
         private val totalEt: EditText = itemView.findViewById(R.id.total_et)
@@ -61,7 +63,8 @@ object ViewHolderFactory {
         }
     }
 
-        internal class OngoingSaleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<SaleDetails> {
+    internal class OngoingSaleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<SaleDetails> {
 
         private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
         private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
@@ -73,13 +76,15 @@ object ViewHolderFactory {
 
     }
 
-    internal class ClientViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Client> {
+    internal class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Client> {
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
         private val email: EditText = itemView.findViewById(R.id.email_et)
         private val clientImg: ImageView = itemView.findViewById(R.id.client_img)
         private val callBtt: Button = itemView.findViewById(R.id.call_btt)
         private val messageBtt: Button = itemView.findViewById(R.id.message_btt)
-        private val expandableLayout: ConstraintLayout = itemView.findViewById(R.id.expandable_layout)
+        private val expandableLayout: ConstraintLayout =
+            itemView.findViewById(R.id.expandable_layout)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.parent_layout)
         private var expanded: Boolean = false
 
@@ -99,34 +104,33 @@ object ViewHolderFactory {
                     expanded = false
                     expandableLayout.visibility = View.GONE
 
-                }
-                else {
+                } else {
                     expanded = true
                     expandableLayout.visibility = View.VISIBLE
                 }
             }
             messageBtt.setOnClickListener {
-               func()
+                func()
             }
         }
     }
 
-    class ProductViewHolder(itemView: View):RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Product>{
-
+    class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Product> {
 
 
         private val product: ImageView = itemView.findViewById(R.id.Product_img_rv)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.product_item_layout)
-        private val desc: TextView= itemView.findViewById(R.id.ProductDesc_et)
-        private val ProdTitle: TextView  = itemView.findViewById(R.id.productTitle_et)
+        private val desc: TextView = itemView.findViewById(R.id.ProductDesc_et)
+        private val ProdTitle: TextView = itemView.findViewById(R.id.productTitle_et)
 
         override fun bind(listObject: Product, onClickLayout: () -> Unit, context: Context) {
             Glide.with(context).load(listObject.ProductImg).into(product)
             desc.setText(listObject.ProductDesc)
             ProdTitle.setText(listObject.PrductTitle)
 
-            desc.inputType=InputType.TYPE_NULL
-            ProdTitle.inputType=InputType.TYPE_NULL
+            desc.inputType = InputType.TYPE_NULL
+            ProdTitle.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener {
                 onClickLayout()
@@ -136,14 +140,15 @@ object ViewHolderFactory {
     }
 
 
-    class ChartViewHolder(itemView: View):RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<ProductChart>{
+    class ChartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<ProductChart> {
 
 
         private val product: ImageView = itemView.findViewById(R.id.Product_img_ch)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.chart_item_layout)
-        private val desc: TextView= itemView.findViewById(R.id.ProductDesc_chr)
-        private val ProdTitle: TextView  = itemView.findViewById(R.id.productTitle_ch)
-        private val quantity:EditText= itemView.findViewById(R.id.quantity_text_ch)
+        private val desc: TextView = itemView.findViewById(R.id.ProductDesc_chr)
+        private val ProdTitle: TextView = itemView.findViewById(R.id.productTitle_ch)
+        private val quantity: EditText = itemView.findViewById(R.id.quantity_text_ch)
 
         override fun bind(listObject: ProductChart, onClickLayout: () -> Unit, context: Context) {
             Glide.with(context).load(listObject.imgUrlCh).into(product)
@@ -151,13 +156,14 @@ object ViewHolderFactory {
             ProdTitle.text = listObject.PrductTitle
             quantity.setText(listObject.quantity.toString())
 
-            quantity.inputType=InputType.TYPE_NULL
+            quantity.inputType = InputType.TYPE_NULL
 
         }
 
     }
 
-    class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Order> {
+    class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Order> {
 
         private val orderEt: EditText = itemView.findViewById(R.id.orden_et)
         private val dateEt: EditText = itemView.findViewById(R.id.date_et)
@@ -182,27 +188,28 @@ object ViewHolderFactory {
         }
     }
 
-        internal class OngoingOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-            GenericRecyclerViewAdapter.Binder<OrderDetails> {
+    internal class OngoingOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<OrderDetails> {
 
-            private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
-            private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
+        private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
+        private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
 
-            override fun bind(listObject: OrderDetails, func: () -> Unit, context: Context) {
-                quantityTv.text = listObject.quantity.toString()
-                modelTv.text = listObject.model
-            }
+        override fun bind(listObject: OrderDetails, func: () -> Unit, context: Context) {
+            quantityTv.text = listObject.quantity.toString()
+            modelTv.text = listObject.model
+        }
 
     }
 
 
-    class ChatOrderView(itemView: View):RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Chat>{
+    class ChatOrderView(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Chat> {
 
-        private val usrimg:ImageView= itemView.findViewById(R.id.profile_img)
-        private val usrname:TextView = itemView.findViewById(R.id.chatname_text)
-        private val chatmsge:TextView= itemView.findViewById(R.id.chatlastmss_text)
-        private val mssgequant:TextView= itemView.findViewById(R.id.unread_messages_text)
-        private val layout:ConstraintLayout=itemView.findViewById(R.id.chat_item_layout)
+        private val usrimg: ImageView = itemView.findViewById(R.id.profile_img)
+        private val usrname: TextView = itemView.findViewById(R.id.chatname_text)
+        private val chatmsge: TextView = itemView.findViewById(R.id.chatlastmss_text)
+        private val mssgequant: TextView = itemView.findViewById(R.id.unread_messages_text)
+        private val layout: ConstraintLayout = itemView.findViewById(R.id.chat_item_layout)
 
         override fun bind(listObject: Chat, onClickLayout: () -> Unit, context: Context) {
             Glide.with(context).load(listObject.ppimg).into(usrimg)
@@ -211,15 +218,12 @@ object ViewHolderFactory {
             mssgequant.text = listObject.unreadmmsge.toString()
 
 
-
-
-
-
         }
 
     }
 
-    class OpenOrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<OpenOrder> {
+    class OpenOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<OpenOrder> {
         private val openOrderDateEt: EditText = itemView.findViewById(R.id.oo_date_et)
         private val openOrderAddressEt: EditText = itemView.findViewById(R.id.oo_address_et)
         private val openOrderImg: ImageButton = itemView.findViewById(R.id.oo_ib)
@@ -233,7 +237,36 @@ object ViewHolderFactory {
             openOrderDateEt.inputType = InputType.TYPE_NULL
             openOrderAddressEt.inputType = InputType.TYPE_NULL
 
-            openOrderLayout.setOnClickListener{
+            openOrderLayout.setOnClickListener {
+                onClickLayout()
+            }
+        }
+    }
+
+
+    class BatteryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Battery> {
+
+        private val modeloEt: EditText = itemView.findViewById(R.id.modelo_Et)
+        private val voltajeEt: EditText = itemView.findViewById(R.id.voltaje_Et)
+        private val CCAEt: EditText = itemView.findViewById(R.id.CCA_Et)
+        private val capacidadEt: EditText = itemView.findViewById(R.id.capacidad_Et)
+        private val batteryimg: ImageView = itemView.findViewById(R.id.img)
+        private val layout: ConstraintLayout = itemView.findViewById(R.id.searchbt_item_layout)
+
+        override fun bind(listObject: Battery, onClickLayout: () -> Unit, context: Context) {
+            modeloEt.setText(listObject.modelo)
+            voltajeEt.setText(listObject.voltaje)
+            CCAEt.setText(listObject.CCA)
+            capacidadEt.setText(listObject.capacidad)
+            Glide.with(batteryimg.context).load(listObject.imgUrl).into(batteryimg)
+
+            modeloEt.inputType = InputType.TYPE_NULL
+            voltajeEt.inputType = InputType.TYPE_NULL
+            CCAEt.inputType = InputType.TYPE_NULL
+            capacidadEt.inputType = InputType.TYPE_NULL
+
+            layout.setOnClickListener {
                 onClickLayout()
             }
         }
