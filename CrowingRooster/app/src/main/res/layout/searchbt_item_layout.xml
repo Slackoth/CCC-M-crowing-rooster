@@ -7,132 +7,130 @@
     android:layout_height="wrap_content"
     tools:background="@color/primary_dark">
 
-
     <ImageView
         android:id="@+id/img"
-        android:layout_width="116dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
         android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@id/guideline18"
+        app:layout_constraintEnd_toStartOf="@id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/modelo_name"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:hint="@string/modelo_name"
+        app:layout_constraintStart_toStartOf="@id/guideline17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/voltaje">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/modelo_Et"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="un modelo"
+            android:textColor="@color/on_primary"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/voltaje"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/voltaje"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline17"
+        app:layout_constraintTop_toBottomOf="@id/modelo_name"
+        app:layout_constraintBottom_toTopOf="@id/guideline18">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/voltaje_Et"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="un voltaje"
+            android:textColor="@color/on_primary"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/capacidad"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/capacidad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/guideline17"
+        app:layout_constraintTop_toBottomOf="@id/guideline18"
+        app:layout_constraintVertical_bias="1.0">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/capacidad_Et"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="una capacidad"
+            android:textColor="@color/on_primary"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/CCA"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/CCA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline17"
+        app:layout_constraintTop_toBottomOf="@id/guideline18"
+        app:layout_constraintVertical_bias="1.0">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/CCA_Et"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="una cca"
+            android:textColor="@color/on_primary"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="144dp" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="266dp" />
-
-    <TextView
-        android:id="@+id/modelo_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/modelo_name"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBaseline_toBaselineOf="@+id/modelo_Et"
-        app:layout_constraintStart_toEndOf="@+id/img" />
-
-    <TextView
-        android:id="@+id/voltaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/voltaje"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBaseline_toBaselineOf="@+id/voltaje_Et"
-        app:layout_constraintStart_toEndOf="@+id/img" />
-
-    <TextView
-        android:id="@+id/CCA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/CCA"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBaseline_toBaselineOf="@+id/CCA_Et"
-        app:layout_constraintStart_toEndOf="@+id/img" />
-
-    <TextView
-        android:id="@+id/capacidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/capacidad"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBaseline_toBaselineOf="@+id/capacidad_Et"
-        app:layout_constraintStart_toEndOf="@+id/img" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/voltaje_Et"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/medium_margin"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/montserrat"
-        android:text="TextView"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/CCA_Et"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modelo_Et" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/modelo_Et"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="@dimen/small_margin"
-        android:fontFamily="@font/montserrat"
-        android:text="TextView"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/voltaje_Et"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/CCA_Et"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/montserrat"
-        android:text="TextView"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBottom_toTopOf="@+id/capacidad_Et"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voltaje_Et" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/capacidad_Et"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="@dimen/small_margin"
-        android:fontFamily="@font/montserrat"
-        android:text="TextView"
-        android:textColor="@color/on_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CCA_Et" />
-
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
