@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentConcludedOrdersBinding
@@ -49,19 +50,26 @@ class ConcludedOrdersFragment : Fragment() {
             )
         )
 
-        val adapter = object : GenericRecyclerViewAdapter<Any>(concludedOrdersList, requireContext()) {
-            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return ViewHolderFactory.bindView(view, viewType)
-            }
+        val adapter =
+            object : GenericRecyclerViewAdapter<Any>(concludedOrdersList, requireContext()) {
+                override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+                    return ViewHolderFactory.bindView(view, viewType)
+                }
 
-            override fun getLayoutId(): Int {
-                return R.layout.open_orders_item_layout
-            }
+                override fun getLayoutId(): Int {
+                    return R.layout.open_orders_item_layout
+                }
 
-            override fun getOnClickLayout(): () -> Unit {
-                return {}
+                override fun getOnClickLayout(): () -> Unit {
+                    val dialog = ConcludedOrderDetailsDialogFragment()
+                    return { ->
+                        dialog.show(
+                            requireActivity().supportFragmentManager,
+                            "ConcludeOrderDetails"
+                        )
+                    }
+                }
             }
-        }
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
