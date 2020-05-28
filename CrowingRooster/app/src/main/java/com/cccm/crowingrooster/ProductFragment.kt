@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 
 import com.cccm.crowingrooster.databinding.FragmentProductBinding
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dialog_fullscreen_style_product.view.*
 
 
@@ -25,6 +26,15 @@ class ProductFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentProductBinding>(
             inflater, R.layout.fragment_product, container, false
         )
+
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = getString(R.string.catalogo)
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
+        }
+
+
 
         binding.Estilos.setOnClickListener {
             val mydialog= LayoutInflater.from(activity).inflate(R.layout.fragment_dialog_fullscreen_style_product,null)

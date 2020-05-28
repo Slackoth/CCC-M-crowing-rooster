@@ -117,11 +117,18 @@
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_successful_order"/>
 
+
     <fragment
         android:id="@+id/OngoingOrdersFragment"
         android:name="com.cccm.crowingrooster.OngoingOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_ongoing_orders"/>
+
+    <fragment
+        android:id="@+id/ongoingOrdersDetailsFragment"
+        android:name="com.cccm.crowingrooster.OngoingOrdersDetailsFragment"
+        android:label="OngoingOrdersDetailsFragment"
+        tools:layout="@layout/fragment_ongoing_orders_details"/>
 
     <fragment
         android:id="@+id/CanceledOrdersFragment"

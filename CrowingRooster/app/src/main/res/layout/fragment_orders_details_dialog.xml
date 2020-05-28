@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SaleDetailsDialogFragment"
+        tools:context=".OrderDetailsDialogFragment"
         android:background="@color/primary_dark"
         android:orientation="vertical">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8">
+            android:layout_weight="0.9">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -20,19 +21,19 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/client_tv"
+                    android:id="@+id/seller_tv"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/secondary"
                     android:padding="@dimen/small_padding"
-                    android:text="@string/client"
+                    android:text="@string/seller"
                     android:textAllCaps="true"
                     android:textColor="@color/on_secondary"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/client_til"
+                    android:id="@+id/seller_til"
                     style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,11 +44,11 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@id/client_et"
+                        android:id="@id/seller_et"
                         android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Luis Manuel Calderón Perla"
+                        android:text="Christian Alexander Contreras Bolaños"
                         android:textColor="@color/on_primary"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -74,7 +75,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/details_sale_tv"
+                    android:id="@+id/details_order_tv"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,7 +134,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_osd"
+                    android:id="@+id/recycler_view_ssd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
@@ -149,11 +150,10 @@
                         android:layout_marginStart="@dimen/small_margin"
                         android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
-                        android:layout_marginBottom="@dimen/medium_margin"
                         android:text="@string/total"
                         android:textAllCaps="true"
                         android:textColor="@color/secondary_light"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline20"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guideline22"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -166,13 +166,59 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginEnd="@dimen/small_margin"
-                        android:layout_marginBottom="@dimen/medium_margin"
                         android:text="63"
                         android:textColor="@color/secondary_light"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline20"
                         app:layout_constraintEnd_toStartOf="@+id/guideline22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/price_til"
+                        style="@style/TextInputLayoutAppearance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/medium_margin"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:hint="@string/price"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/payment_til"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline21"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/price_et"
+                            android:fontFamily="@font/montserrat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="$400"
+                            android:textColor="@color/on_primary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/payment_til"
+                        style="@style/TextInputLayoutAppearance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/small_margin"
+                        android:layout_marginEnd="@dimen/medium_margin"
+                        android:layout_marginBottom="@dimen/medium_margin"
+                        android:hint="@string/payment"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline21"
+                        app:layout_constraintTop_toTopOf="@+id/guideline20">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/payment_et"
+                            android:fontFamily="@font/montserrat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cash"
+                            android:textColor="@color/on_primary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline22"
@@ -180,6 +226,20 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.35" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -209,46 +269,18 @@
 
         </ScrollView>
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:layout_margin="@dimen/small_margin"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/close_btt"
+            android:fontFamily="@font/montserrat"
+            android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:gravity="center">
-            
-            <Button
-                android:id="@+id/char_btt"
-                android:fontFamily="@font/montserrat_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/message"
-                app:strokeColor="@color/secondary_light"
-                android:textColor="@color/secondary_light"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                />
-
-            <Button
-                android:id="@+id/confirm_btt"
-                android:fontFamily="@font/montserrat_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/confirm"
-                app:strokeColor="@color/secondary_light"
-                android:textColor="@color/secondary_light"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                />
-
-            <Button
-                android:id="@+id/call_btt"
-                android:fontFamily="@font/montserrat_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/call"
-                app:strokeColor="@color/secondary_light"
-                android:textColor="@color/secondary_light"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
-            
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+            android:layout_weight="0.1"
+            android:text="@string/close"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textColor="@color/secondary_light"
+            android:layout_margin="@dimen/medium_margin"
+            android:layout_gravity="end"/>
 
     </LinearLayout>
 

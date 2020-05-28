@@ -55,13 +55,13 @@ class SellerMainScreen : Fragment() {
         }
 
         profileBt.setOnClickListener {
-            it.findNavController().navigate(R.id.sellerProfileFragment)
+            it.findNavController().navigate(R.id.action_sellerMainScreen_to_sellerProfileFragment)
         }
         salesBt.setOnClickListener {
-            it.findNavController().navigate(R.id.salesFragment)
+            it.findNavController().navigate(R.id.action_sellerMainScreen_to_salesFragment)
         }
         clientsBt.setOnClickListener {
-            it.findNavController().navigate(R.id.sellerClientListFragment)
+            it.findNavController().navigate(R.id.action_sellerMainScreen_to_sellerClientListFragment)
         }
         chatBt.setOnClickListener(){
             it.findNavController().navigate(R.id.action_sellerMainScreen_to_chatFragment)

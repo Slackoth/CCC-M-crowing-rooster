@@ -26,8 +26,8 @@
                     android:layout_marginTop="@dimen/medium_margin"
                     android:layout_marginEnd="@dimen/medium_margin"
                     android:layout_marginBottom="@dimen/medium_margin"
-                    android:fontFamily="@font/montserrat_bold"
                     android:text="@string/ProeedPayment"
+                    android:textAlignment="center"
                     android:textColor="@color/on_primary"
                     android:textStyle="bold" />
 
