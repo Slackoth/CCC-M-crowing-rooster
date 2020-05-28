@@ -21,11 +21,12 @@
 
         <TextView
             android:id="@+id/ProductTitleText"
+            style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/on_primary"
-            style="@style/TextAppearance.AppCompat.Body1"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/Product_title"
+            android:textColor="@color/on_primary"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,13 +49,14 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="361dp"
-            android:textColor="@color/on_primary"
             style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="361dp"
             android:layout_height="177dp"
             android:layout_marginStart="@dimen/small_padding"
             android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/sample_infobat"
+            android:textColor="@color/on_primary"
             app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.264"
@@ -63,27 +65,31 @@
 
         <Button
             android:id="@+id/AddTochart_buttom"
+            style="@style/Widget.MyApp.MyButton"
             android:layout_width="254dp"
             android:layout_height="58dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/AddTocharText"
+            android:textColor="@color/on_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            style="@style/Widget.MyApp.MyButton"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/Estilos"
+            style="@style/Widget.MyApp.MyButton"
             android:layout_width="202dp"
             android:layout_height="45dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/Estilos"
+            android:textColor="@color/on_primary"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            style="@style/Widget.MyApp.MyButton"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
