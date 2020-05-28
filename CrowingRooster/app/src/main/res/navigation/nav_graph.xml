@@ -50,7 +50,11 @@
         android:id="@+id/productFragment"
         android:name="com.cccm.crowingrooster.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_chartFragment"
+            app:destination="@id/chartFragment" />
+    </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/successfulSalesFragment"-->
 <!--        android:name="com.cccm.crowingrooster.SuccessfulSalesFragment"-->

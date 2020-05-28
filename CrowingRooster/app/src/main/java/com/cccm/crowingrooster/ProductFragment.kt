@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 
 import com.cccm.crowingrooster.databinding.FragmentProductBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,6 +50,10 @@ class ProductFragment : Fragment() {
                 mAlertDialog.dismiss()
             }
 
+        }
+
+        binding.AddTochartButtom.setOnClickListener{
+            it.findNavController().navigate(R.id.action_productFragment_to_chartFragment)
         }
 
 
