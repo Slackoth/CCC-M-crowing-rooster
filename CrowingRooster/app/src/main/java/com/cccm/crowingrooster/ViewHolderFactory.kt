@@ -27,6 +27,7 @@ object ViewHolderFactory {
             R.layout.chart_item_layout->ChartViewHolder(view)
             R.layout.client_item_layout->ClientViewHolder(view)
             R.layout.order_item_layout ->OrderViewHolder(view)
+            R.layout.order_details_item ->OngoingOrderViewHolder(view)
             R.layout.chat_item_layout->ChatOrderView(view)
 
             else -> SaleViewHolder(view)
@@ -178,8 +179,21 @@ object ViewHolderFactory {
 
 
         }
+    }
+
+        internal class OngoingOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+            GenericRecyclerViewAdapter.Binder<OrderDetails> {
+
+            private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
+            private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
+
+            override fun bind(listObject: OrderDetails, func: () -> Unit, context: Context) {
+                quantityTv.text = listObject.quantity.toString()
+                modelTv.text = listObject.model
+            }
 
     }
+
 
     class ChatOrderView(itemView: View):RecyclerView.ViewHolder(itemView), GenericRecyclerViewAdapter.Binder<Chat>{
 

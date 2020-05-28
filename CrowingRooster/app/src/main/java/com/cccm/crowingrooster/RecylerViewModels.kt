@@ -11,3 +11,4 @@ data class ProductChart(var PrductTitle: String, var ProductDesc: String, var qu
 data class Order(var num_order: Int, var quantity: Int, var imgUrl: String, var date: String)
 data class Client(var client: String, var email: String, var imgUrl: String)
 data class Chat(var username:String, var Mssge:String, var unreadmmsge:Int,var ppimg:String)
+data class OrderDetails(var quantity: Int, var model: String)
