@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
@@ -72,6 +73,7 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
 //            }
 //        }
 
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -90,10 +92,10 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         supportActionBar?.show()
     }
 
+
+
 //    override fun addMoreOptions(menuId: Int, menu: Menu?) {
 //        menuInflater.inflate(menuId, menu)
 //    }
-
-
 }
 

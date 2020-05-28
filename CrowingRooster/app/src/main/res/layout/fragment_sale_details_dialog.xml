@@ -42,19 +42,17 @@
                     android:layout_marginTop="@dimen/small_margin"
                     android:layout_marginBottom="@dimen/small_margin">
 
-                    <com.google.android.material.textfield.TextInputEditText
-<<<<<<< HEAD
-                        android:id="@+id/fsdd_client_et"
-=======
+                <com.google.android.material.textfield.TextInputEditText
+
+
                         android:id="@id/client_et"
                         android:fontFamily="@font/montserrat"
->>>>>>> 53baf03870925566fef51bfd330a9b67e095a293
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Luis Manuel Calderón Perla"
                         android:textColor="@color/on_primary"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email_til"
