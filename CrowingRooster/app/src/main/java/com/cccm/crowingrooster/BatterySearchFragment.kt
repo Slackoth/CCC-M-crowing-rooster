@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentBatterySearchBinding
@@ -50,14 +51,17 @@ class BatterySearchFragment : Fragment() {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
-            override fun getOnClickLayout(): () -> Unit {
-                val dialog = OrderDetailsDialogFragment()
-                return { -> dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog") }
-            }
-
             override fun getLayoutId(): Int {
                 return R.layout.searchbt_item_layout
             }
+
+            override fun getOnClickLayout(): () -> Unit {
+                return {
+                    this@BatterySearchFragment.findNavController()
+                        .navigate(R.id.productFragment)                }
+            }
+
+
         }
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
