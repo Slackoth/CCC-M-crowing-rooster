@@ -22,10 +22,11 @@
         <TextView
             android:id="@+id/ProductTitleText"
             style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/Product_title"
+            android:textAlignment="center"
             android:textColor="@color/on_primary"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -36,22 +37,22 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="201dp"
-            android:layout_height="173dp"
-            app:srcCompat="@drawable/ic_rooster_colored_512dp"
-
+            android:layout_width="150dp"
+            android:layout_height="131dp"
             app:layout_constraintBottom_toTopOf="@+id/Estilos"
 
-
             app:layout_constraintEnd_toEndOf="parent"
+
+
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProductTitleText" />
+            app:layout_constraintTop_toBottomOf="@+id/ProductTitleText"
+            app:srcCompat="@drawable/ic_rooster_colored_512dp" />
 
         <TextView
             android:id="@+id/textView4"
             style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="361dp"
-            android:layout_height="177dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small_padding"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
@@ -66,8 +67,12 @@
         <Button
             android:id="@+id/AddTochart_buttom"
             style="@style/Widget.MyApp.MyButton"
-            android:layout_width="254dp"
+            android:layout_width="0dp"
             android:layout_height="58dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/AddTocharText"
             android:textColor="@color/on_primary"
@@ -80,8 +85,12 @@
         <Button
             android:id="@+id/Estilos"
             style="@style/Widget.MyApp.MyButton"
-            android:layout_width="202dp"
+            android:layout_width="0dp"
             android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/Estilos"
             android:textColor="@color/on_primary"

@@ -67,7 +67,7 @@ class CanceledOrdersFragment: Fragment() {
             }
 
             override fun getOnClickLayout(): () -> Unit {
-                val dialog = OrderDetailsDialogFragment()
+                val dialog = CanceledOrderDetailsDialogFragment()
                 return { -> dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog") }
             }
 

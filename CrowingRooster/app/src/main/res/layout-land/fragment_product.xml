@@ -2,99 +2,86 @@
 <layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ProductFragment"
-    android:orientation="horizontal">
+        tools:context=".ProductFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_dark">
+        android:background="@color/primary_dark"
+        android:visibility="visible"
+        tools:visibility="visible">
 
         <ScrollView
-            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="136dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/ProductTitleText"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/Product_title"
+                    android:textAlignment="center"
+                    android:textColor="@color/on_primary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="123dp"
+
+
+                    android:textAlignment="center"
+                    app:srcCompat="@drawable/ic_rooster_colored_512dp"
+                    android:contentDescription="TODO" />
+
+                <Button
+                    android:id="@+id/Estilos"
+                    style="@style/Widget.MyApp.MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/Estilos"
+                    android:textColor="@color/on_primary" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_padding"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/sample_infobat"
+                    android:textColor="@color/on_primary" />
+
+                <Button
+                    android:id="@+id/AddTochart_buttom"
+                    style="@style/Widget.MyApp.MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/AddTocharText"
+                    android:textColor="@color/on_primary" />
             </LinearLayout>
         </ScrollView>
 
-        <TextView
-            android:id="@+id/ProductTitleText"
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="379dp"
-            android:text="@string/Product_title"
-            android:textColor="@color/on_primary"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="186dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/Estilos"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProductTitleText"
-            app:srcCompat="@drawable/ic_rooster_colored_512dp" />
-
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="684dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/sample_infobat"
-            android:textColor="@color/on_primary"
-            app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Estilos" />
-
-        <Button
-            android:id="@+id/AddTochart_buttom"
-            style="@style/Widget.MyApp.MyButton"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
-            android:text="@string/AddTocharText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <Button
-            android:id="@+id/Estilos"
-            style="@style/Widget.MyApp.MyButton"
-            android:layout_width="202dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/Estilos"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

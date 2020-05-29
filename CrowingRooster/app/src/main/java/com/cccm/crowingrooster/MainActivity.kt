@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         R.id.salesFragment,R.id.sellerClientListFragment,R.id.buyerMainScreenFragment,R.id.chatFragment, R.id.BuyerProfileFragment,
         R.id.SearchFragment, R.id.OrdersFragment, R.id.deliveriesFragment)
 
+
 //        Building the top-bar configuration
 //        *Old way for building and setting the drawer-layout
 //        appBarConfiguration = AppBarConfiguration.Builder(topLevelDestinations)
