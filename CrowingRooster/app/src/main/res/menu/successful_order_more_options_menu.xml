@@ -5,5 +5,5 @@
         android:title="@string/order_by_date" />
     <item
         android:id="@+id/action_order_idorder_so"
-        android:title="Ordenar por id" />
+        android:title="Ordenar por no." />
 </menu>

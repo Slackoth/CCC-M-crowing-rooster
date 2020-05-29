@@ -85,7 +85,7 @@ class CanceledOrdersFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
-            R.id.action_order_idorder_cao, R.id.action_order_date_cao -> {
+            R.id.action_order_date_cao -> {
                 val dialog = AscDescDialogFragment()
                 dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
                 true
