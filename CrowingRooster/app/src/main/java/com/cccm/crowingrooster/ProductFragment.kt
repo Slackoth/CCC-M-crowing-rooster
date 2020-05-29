@@ -30,7 +30,7 @@ class ProductFragment : Fragment() {
 
         (activity as MainActivity).run {
             showTopBar()
-            supportActionBar?.title = getString(R.string.catalogo)
+            supportActionBar?.title = getString(R.string.Producto)
             navigation_view.menu.clear()
             navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
         }
@@ -42,7 +42,7 @@ class ProductFragment : Fragment() {
 
             val mBuilder= AlertDialog.Builder(activity)
                 .setView(mydialog)
-                .setTitle("Filtros")
+                .setTitle("Estilos: ")
 
             val mAlertDialog= mBuilder.show()
 

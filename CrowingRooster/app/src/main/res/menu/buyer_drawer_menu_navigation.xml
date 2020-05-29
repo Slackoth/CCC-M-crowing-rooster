@@ -6,10 +6,40 @@
 <!--        android:icon="@drawable/ic_close_x_24dp"-->
 <!--        android:title="@string/product"/>-->
 
+
+
+    <item
+        android:id="@+id/buyerMainScreenFragment"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/BuyerProfileFragment"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/profile"/>
+
+    <item
+        android:id="@+id/OrdersFragment"
+        android:icon="@drawable/ic_sales_black_filled_512dp"
+        android:title="@string/orders"/>
+
+    <item
+        android:id="@+id/SearchFragment"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/search"/>
+
+
+    <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/ic_chat_black_filled_512dp"
+        android:title="@string/chat"/>
+
+
     <item
         android:id="@+id/logInFragment"
         android:icon="@drawable/ic_logoff_black_24dp"
         android:title="@string/logoff"/>
+
 
 
 </menu>
