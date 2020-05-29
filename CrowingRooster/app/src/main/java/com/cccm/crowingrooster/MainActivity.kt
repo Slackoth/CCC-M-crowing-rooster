@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
 
         //TODO: Declaration of all top-level-destinations within the app.
         val topLevelDestinations = setOf(R.id.sellerMainScreen, R.id.logInFragment, R.id.sellerProfileFragment,
-        R.id.salesFragment,R.id.sellerClientListFragment,R.id.buyerMainScreenFragment,R.id.chatFragment)
+        R.id.salesFragment,R.id.sellerClientListFragment,R.id.buyerMainScreenFragment,R.id.chatFragment, R.id.OrdersFragment)
 
 //        Building the top-bar configuration
 //        *Old way for building and setting the drawer-layout
