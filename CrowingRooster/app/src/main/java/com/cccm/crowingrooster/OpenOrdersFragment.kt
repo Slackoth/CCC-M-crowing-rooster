@@ -97,6 +97,10 @@ class OpenOrdersFragment : Fragment() {
                 dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
                 true
             }
+            R.id.action_out_oo -> {
+                findNavController().navigate(R.id.logInFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

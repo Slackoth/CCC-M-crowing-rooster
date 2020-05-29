@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -96,6 +97,10 @@ class ConcludedOrdersFragment : Fragment() {
             R.id.action_order_time_co, R.id.action_order_date_co -> {
                 val dialog = AscDescDialogFragment()
                 dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
+                true
+            }
+            R.id.action_out_co -> {
+                findNavController().navigate(R.id.logInFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

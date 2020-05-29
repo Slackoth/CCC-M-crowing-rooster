@@ -4,6 +4,9 @@
     <item
         android:id="@+id/action_order_date_oo"
         android:title="Ordenar por fecha"/>
+    <item
+        android:id="@+id/action_out_oo"
+        android:title="Cerrar sesión"/>
 
 
 </menu>

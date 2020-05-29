@@ -7,5 +7,8 @@
     <item
         android:id="@+id/action_order_time_co"
         android:title="Ordenar por hora"/>
+    <item
+        android:id="@+id/action_out_co"
+        android:title="cerrar sesión"/>
 
 </menu>
