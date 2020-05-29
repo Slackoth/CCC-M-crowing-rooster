@@ -39,7 +39,9 @@ class BatterySearchFragment : Fragment() {
         recyclerView = bind.recyclerView
         batteryList.addAll(
             listOf(
-                Battery( modelo = "22FF", voltaje = "12", CCA = "760", capacidad = "760",imgUrl = "https://te-hangarau.com/wp-content/uploads/2019/06/pila-panasonic-aa-alcalina.jpg")
+                Battery( modelo = "22FF", voltaje = "12", CCA = "760", capacidad = "760",imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg"),
+
+                Battery( modelo = "22FF", voltaje = "12", CCA = "760", capacidad = "760",imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg")
 
 
             )
