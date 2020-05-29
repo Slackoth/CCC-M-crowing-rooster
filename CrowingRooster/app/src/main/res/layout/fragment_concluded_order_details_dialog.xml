@@ -231,6 +231,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cod_date_til"
+                    style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/date"
@@ -250,6 +251,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cod_time_til"
+                    style="@style/TextInputLayoutAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Hora de entrega"

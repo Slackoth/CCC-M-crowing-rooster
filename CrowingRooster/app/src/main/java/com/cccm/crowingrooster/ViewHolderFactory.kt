@@ -226,7 +226,7 @@ object ViewHolderFactory {
         GenericRecyclerViewAdapter.Binder<OpenOrder> {
         private val openOrderDateEt: EditText = itemView.findViewById(R.id.oo_date_et)
         private val openOrderAddressEt: EditText = itemView.findViewById(R.id.oo_address_et)
-        private val openOrderImg: ImageButton = itemView.findViewById(R.id.oo_ib)
+        private val openOrderImg: ImageView = itemView.findViewById(R.id.oo_ib)
         private val openOrderLayout: ConstraintLayout = itemView.findViewById(R.id.oo_item_layout)
 
         override fun bind(listObject: OpenOrder, onClickLayout: () -> Unit, context: Context) {
