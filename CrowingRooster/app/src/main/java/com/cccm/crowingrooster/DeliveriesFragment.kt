@@ -27,6 +27,7 @@ class DeliveriesFragment : Fragment() {
         (activity as MainActivity).run {
             showTopBar()
             supportActionBar?.title = "Entregas".capitalize()
+            drawerLocked(true)
         }
 
         setHasOptionsMenu(true)
@@ -47,5 +48,10 @@ class DeliveriesFragment : Fragment() {
                 else -> tab.text = "Defying Gravity"
             }
         }).attach()
+    }
+
+    override fun onDestroyView() {
+        (activity as MainActivity).drawerLocked(false)
+        super.onDestroyView()
     }
 }

@@ -70,13 +70,13 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         setupActionBarWithNavController(navController,appBarConfiguration)
 
         //TODO: Changing the three-bar menu for a log-off icon on the nav-drawer *IT WON'T BE IMPLEMENTED BUT DON'T DELETE IT IN CASE
-//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-//            if (destination.id == R.id.sellerMainScreen) {
-//                //bind.topAppBarMainScreen.setNavigationIcon(R.drawable.ic_logoff_24dp)
-//                supportActionBar?.setHomeButtonEnabled(true)
-//                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_logoff_24dp)
-//            }
-//        }
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.id == R.id.deliveriesFragment) {
+                //bind.topAppBarMainScreen.setNavigationIcon(R.drawable.ic_logoff_24dp)
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                //supportActionBar?.setHomeAsUpIndicator()
+            }
+        }
 
 
     }
@@ -97,6 +97,14 @@ class MainActivity : AppCompatActivity(), CommunicationInterface {
         supportActionBar?.show()
     }
 
+    override fun drawerLocked(Locked: Boolean) {
+        if(Locked) {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        }
+        else {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        }
+    }
 
 
 //    override fun addMoreOptions(menuId: Int, menu: Menu?) {
