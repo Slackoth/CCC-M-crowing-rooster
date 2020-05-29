@@ -37,7 +37,7 @@ class CanceledOrdersFragment: Fragment() {
                     date = "22/04/2020"
                 ),
                 Canceled_Order( quantity = 300,
-                    imgUrl = "hhttps://s.mxmcdn.net/images-storage/albums4/4/0/2/2/4/9/44942204_800_800.jpg",
+                    imgUrl = "https://s.mxmcdn.net/images-storage/albums4/4/0/2/2/4/9/44942204_800_800.jpg",
                     date = "22/04/2020"
                 )
 
