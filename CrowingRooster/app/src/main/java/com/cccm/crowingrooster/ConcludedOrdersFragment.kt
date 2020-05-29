@@ -1,15 +1,14 @@
 package com.cccm.crowingrooster
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentConcludedOrdersBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class ConcludedOrdersFragment : Fragment() {
 
@@ -27,6 +26,8 @@ class ConcludedOrdersFragment : Fragment() {
             container,
             false
         )
+
+        setHasOptionsMenu(true)
 
         recyclerView = bind.recyclerViewCo
         concludedOrdersList.addAll(
@@ -83,5 +84,21 @@ class ConcludedOrdersFragment : Fragment() {
         recyclerView.adapter = adapter
 
         return bind.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.concluded_orders_more_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_order_time_co, R.id.action_order_date_co -> {
+                val dialog = AscDescDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -1,9 +1,7 @@
 package com.cccm.crowingrooster
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +25,8 @@ class SuccessfulOrdersFragment : Fragment() {
             inflater, R.layout.fragment_successful_order,
             container, false
         )
+
+        setHasOptionsMenu(true)
 
         //Log.d(TAG, "onCreate: Started")
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
@@ -95,6 +95,23 @@ class SuccessfulOrdersFragment : Fragment() {
 
         return bind.root
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.successful_order_more_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_order_idorder_so, R.id.action_order_date_so -> {
+                val dialog = AscDescDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }
 
 

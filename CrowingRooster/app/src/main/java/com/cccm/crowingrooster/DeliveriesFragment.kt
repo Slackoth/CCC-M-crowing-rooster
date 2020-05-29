@@ -27,8 +27,6 @@ class DeliveriesFragment : Fragment() {
         (activity as MainActivity).run {
             showTopBar()
             supportActionBar?.title = "Entregas".capitalize()
-            navigation_view.menu.clear()
-            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
         setHasOptionsMenu(true)

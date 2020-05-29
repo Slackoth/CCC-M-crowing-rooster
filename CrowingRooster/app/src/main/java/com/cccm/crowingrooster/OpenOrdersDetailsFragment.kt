@@ -34,7 +34,7 @@ class OpenOrdersDetailsFragment : Fragment() {
             false
         )
 
-        //(activity as MainActivity).supportActionBar?.title = "Detalles de entrega"
+        (activity as MainActivity).supportActionBar?.title = "Detalles de entrega"
 
         bind.apply {
             concludeButton = ooDetailConcludeBtt
