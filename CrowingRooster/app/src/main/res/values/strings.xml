@@ -11,7 +11,7 @@
     <string name="ongoing_orders">Pendientes</string>
     <string name="canceled_orders">Cancelados</string>
     <string name="battery_search">Por Bateria</string>
-    <string name="search">Busqueda</string>
+    <string name="search">Búsqueda</string>
     <string name="car_search">Por Carro</string>
 
     <string name="login">ingresar</string>
@@ -22,7 +22,7 @@
     <string name="clients">Clientes</string>
     <string name="orders">Pedidos</string>
     <string name="profile">Perfil</string>
-    <string name="chat">chat</string>
+    <string name="chat">Chat</string>
     <string name="img_button_content_desc">Content description for the image that is shown on the ImageButton.</string>
     <string name="change_password">cambiar contraseña</string>
     <string name="edit">editar</string>
