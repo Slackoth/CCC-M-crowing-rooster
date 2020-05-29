@@ -7,72 +7,85 @@
     android:padding="10dp"
     >
 
-    <TextView
-        android:id="@+id/TipoBateria_text"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/TipoBateria_text"
-        android:textSize="18sp" />
+        android:layout_height="match_parent">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="179dp">
-
-        <RadioButton
-            android:id="@+id/Premium_btn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Premium_text" />
+            android:orientation="vertical" >
 
-        <RadioButton
-            android:id="@+id/Silver_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Silver_btn" />
+            <TextView
+                android:id="@+id/TipoBateria_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TipoBateria_text"
+                android:textSize="18sp" />
 
-        <RadioButton
-            android:id="@+id/Bronze_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Bronze_btn" />
-    </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="179dp">
 
-    <TextView
-        android:id="@+id/Polaridad_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Text_polaridad"
-        android:textSize="18sp" />
+                <RadioButton
+                    android:id="@+id/Premium_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Premium_text" />
 
-    <TextView
-        android:id="@+id/advertencia_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Advertencia_polaridad"
-        android:textSize="10sp" />
+                <RadioButton
+                    android:id="@+id/Silver_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Silver_btn" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="134dp">
+                <RadioButton
+                    android:id="@+id/Bronze_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Bronze_btn" />
+            </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/positiv_izqtext" />
+            <TextView
+                android:id="@+id/Polaridad_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Text_polaridad"
+                android:textSize="18sp" />
 
-        <RadioButton
-            android:id="@+id/PosderButtom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/positivo_dertext" />
+            <TextView
+                android:id="@+id/advertencia_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Advertencia_polaridad"
+                android:textSize="10sp" />
 
-    </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="134dp">
 
-    <Button
-        android:id="@+id/buscar_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MyApp.MyButton"
-        android:text="@string/buscar_text" />
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/positiv_izqtext" />
+
+                <RadioButton
+                    android:id="@+id/PosderButtom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/positivo_dertext" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/buscar_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MyApp.MyButton"
+                android:text="@string/buscar_text" />
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
