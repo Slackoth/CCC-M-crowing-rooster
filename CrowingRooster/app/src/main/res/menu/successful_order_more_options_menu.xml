@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_order_date_so"
+        android:title="@string/order_by_date" />
+    <item
+        android:id="@+id/action_order_idorder_so"
+        android:title="Ordenar por id" />
+</menu>

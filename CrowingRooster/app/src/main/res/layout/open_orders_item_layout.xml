@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     tools:background="@color/primary_dark">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/oo_ib"
         android:layout_width="0dp"
         android:layout_height="0dp"
