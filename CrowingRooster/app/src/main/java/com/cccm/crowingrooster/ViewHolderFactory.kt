@@ -27,10 +27,12 @@ object ViewHolderFactory {
             R.layout.chart_item_layout -> ChartViewHolder(view)
             R.layout.client_item_layout -> ClientViewHolder(view)
             R.layout.order_item_layout -> OrderViewHolder(view)
+            R.layout.canceled_order_item_layout -> CanceledOrderViewHolder(view)
             R.layout.order_details_item -> OngoingOrderViewHolder(view)
             R.layout.chat_item_layout -> ChatOrderView(view)
             R.layout.open_orders_item_layout -> OpenOrderViewHolder(view)
             R.layout.searchbt_item_layout -> BatteryViewHolder(view)
+
 
             else -> SaleViewHolder(view)
         }
@@ -187,6 +189,57 @@ object ViewHolderFactory {
 
         }
     }
+
+    /*class CanceledOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Canceled_Order> {
+
+        private val dateEt: EditText = itemView.findViewById(R.id.date_et)
+        private val quantityEt: EditText = itemView.findViewById(R.id.quantity_et)
+        private val product: ImageView = itemView.findViewById(R.id.img)
+        private val layout: ConstraintLayout = itemView.findViewById(R.id.canceled_order_item_layout)
+
+        override fun bind(listObject: Canceled_Order, onClickLayout: () -> Unit, context: Context) {
+
+            dateEt.setText(listObject.date)
+            quantityEt.setText(listObject.quantity.toString())
+            Glide.with(context).load(listObject.imgUrl).into(product)
+
+
+            dateEt.inputType = InputType.TYPE_NULL
+            quantityEt.inputType = InputType.TYPE_NULL
+            layout.setOnClickListener {
+                onClickLayout()
+            }
+
+
+        }
+    }*/
+
+
+    internal class CanceledOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Canceled_Order> {
+
+        private val usrimg: ImageView = itemView.findViewById(R.id.img)
+        private val canceledOrderLayout: ConstraintLayout = itemView.findViewById(R.id.canceled_order_item_layout)
+        private val dateEt: EditText = itemView.findViewById(R.id.date_et)
+        private val quantityEt: EditText = itemView.findViewById(R.id.quantity_et)
+
+
+
+        override fun bind(listObject: Canceled_Order, onClickLayout: () -> Unit, context: Context) {
+
+            Glide.with(context).load(listObject.imgUrl).into(usrimg)
+            dateEt.setText(listObject.date)
+            quantityEt.setText(listObject.quantity.toString())
+
+            canceledOrderLayout.setOnClickListener {
+                onClickLayout()
+            }
+
+        }
+
+    }
+
 
     internal class OngoingOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         GenericRecyclerViewAdapter.Binder<OrderDetails> {

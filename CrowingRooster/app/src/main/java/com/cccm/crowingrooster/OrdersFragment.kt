@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.databinding.FragmentOrdersBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_main.*
 
 class OrdersFragment : Fragment () {
     private lateinit var tabLayout: TabLayout
@@ -24,7 +25,14 @@ class OrdersFragment : Fragment () {
         //return inflater.inflate(R.layout.fragment_sales, container, false)
 
         bind = DataBindingUtil.inflate(inflater,R.layout.fragment_orders,container, false)
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.orders).capitalize()
+        (activity as MainActivity).run {supportActionBar?.title = getString(R.string.orders).capitalize()
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
+            showTopBar()
+        }
+
+
+
 
 
         return bind.root
