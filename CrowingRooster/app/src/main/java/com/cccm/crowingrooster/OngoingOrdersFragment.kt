@@ -1,9 +1,7 @@
 package com.cccm.crowingrooster
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -30,7 +28,7 @@ class OngoingOrdersFragment : Fragment () {
             container, false
 
         )
-
+        setHasOptionsMenu(true)
         //Log.d(TAG, "onCreate: Started")
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
 
@@ -103,9 +101,23 @@ class OngoingOrdersFragment : Fragment () {
         return bind.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.ongoing_orders_more_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
 
-
+        return when(item.itemId) {
+            R.id.action_order_date, R.id.action_order_idorder -> {
+                val dialog = AscDescDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager,"AscDescDialog")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 
 
