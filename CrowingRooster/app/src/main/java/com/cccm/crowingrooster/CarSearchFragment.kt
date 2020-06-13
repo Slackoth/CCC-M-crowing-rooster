@@ -12,6 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentBatterySearchBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 
 class CarSearchFragment : Fragment() {
 

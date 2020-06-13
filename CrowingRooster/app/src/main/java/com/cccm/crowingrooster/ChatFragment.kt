@@ -10,6 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentChatBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Chat
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -43,7 +47,7 @@ class ChatFragment : Fragment() {
         chatList.addAll(
             listOf(
                 Chat(
-                    "Doña Pipo", "Spicy jalapeno bacon ipsum dolor amet corne",1,
+                    "Doña Pipo", "Spicy jalapeno bacon ipsum dolor amet corne", 1,
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 ),
                 Chat(
@@ -55,7 +59,7 @@ class ChatFragment : Fragment() {
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 ),
                 Chat(
-                    "Mr. Luisillo pillín", "Se sabe el nombre de las baterias con un rayo?" , 2,
+                    "Mr. Luisillo pillín", "Se sabe el nombre de las baterias con un rayo?", 2,
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 )
 

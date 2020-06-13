@@ -5,12 +5,14 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentOngoingOrdersDetailsBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OrderDetails
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.google.android.material.textfield.TextInputEditText
 
 class OngoingOrdersDetailsFragment : Fragment() {
@@ -49,11 +51,26 @@ class OngoingOrdersDetailsFragment : Fragment() {
 
         ongoingOrderList.addAll(
             listOf(
-                OrderDetails(10, "20F-Derecha-Azul"),
-                OrderDetails(15, "21D-Izquierda-Amarilla"),
-                OrderDetails(2, "22E-Derecha-Amarilla"),
-                OrderDetails(30, "23Q-Izquierda-Azul"),
-                OrderDetails(6, "24P-Derecha-Azul")
+                OrderDetails(
+                    10,
+                    "20F-Derecha-Azul"
+                ),
+                OrderDetails(
+                    15,
+                    "21D-Izquierda-Amarilla"
+                ),
+                OrderDetails(
+                    2,
+                    "22E-Derecha-Amarilla"
+                ),
+                OrderDetails(
+                    30,
+                    "23Q-Izquierda-Azul"
+                ),
+                OrderDetails(
+                    6,
+                    "24P-Derecha-Azul"
+                )
             )
         )
 

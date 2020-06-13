@@ -11,10 +11,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.R
-import com.cccm.crowingrooster.SaleDetails
-import com.cccm.crowingrooster.ViewHolderFactory
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.SaleDetails
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.databinding.FragmentSaleDetailsDialogBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -61,14 +61,26 @@ class SaleDetailsDialogFragment : DialogFragment() {
 
         successfulSaleList.addAll(
             listOf(
-                SaleDetails(10, "20F-Derecha-Azul"),
+                SaleDetails(
+                    10,
+                    "20F-Derecha-Azul"
+                ),
                 SaleDetails(
                     15,
                     "21D-Izquierda-Amarilla"
                 ),
-                SaleDetails(2, "22E-Derecha-Amarilla"),
-                SaleDetails(30, "23Q-Izquierda-Azul"),
-                SaleDetails(6, "24P-Derecha-Azul")
+                SaleDetails(
+                    2,
+                    "22E-Derecha-Amarilla"
+                ),
+                SaleDetails(
+                    30,
+                    "23Q-Izquierda-Azul"
+                ),
+                SaleDetails(
+                    6,
+                    "24P-Derecha-Azul"
+                )
             )
         )
 

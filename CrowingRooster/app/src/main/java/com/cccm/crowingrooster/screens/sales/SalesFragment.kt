@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentSalesBinding
+import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
+import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 import com.cccm.crowingrooster.screens.sales.ongoing_sales.OngoingSalesFragment
 import com.cccm.crowingrooster.screens.sales.successful_sales.SuccessfulSalesFragment
 import com.google.android.material.tabs.TabLayout
@@ -51,7 +53,10 @@ class SalesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //super.onViewCreated(view, savedInstanceState)
         val tabAdapter =
-            GenericTabAdapter(listOfFragment, this)
+            GenericTabAdapter(
+                listOfFragment,
+                this
+            )
         viewPager = bind.salesPager
         tabLayout = bind.salesTablayout
 
@@ -75,7 +80,8 @@ class SalesFragment : Fragment() {
 
         return when(item.itemId) {
             R.id.action_order_date, R.id.action_order_client -> {
-                val dialog = AscDescDialogFragment()
+                val dialog =
+                    AscDescDialogFragment()
                 dialog.show(requireActivity().supportFragmentManager,"AscDescDialog")
                 true
             }

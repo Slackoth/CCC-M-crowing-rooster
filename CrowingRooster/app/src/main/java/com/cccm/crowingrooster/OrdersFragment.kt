@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.databinding.FragmentOrdersBinding
+import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,7 +41,11 @@ class OrdersFragment : Fragment () {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //super.onViewCreated(view, savedInstanceState)
-        val tabAdapter = GenericTabAdapter(listOfFragment,this)
+        val tabAdapter =
+            GenericTabAdapter(
+                listOfFragment,
+                this
+            )
         viewPager = bind.ordersPager
         tabLayout = bind.ordersTablayout
 

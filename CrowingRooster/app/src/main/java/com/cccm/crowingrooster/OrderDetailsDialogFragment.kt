@@ -11,6 +11,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentOrdersDetailsDialogBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OrderDetails
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.google.android.material.textfield.TextInputEditText
 
 class OrderDetailsDialogFragment : DialogFragment() {
@@ -52,11 +55,26 @@ class OrderDetailsDialogFragment : DialogFragment() {
 
         successfulOrderList.addAll(
             listOf(
-                OrderDetails(10, "20F-Derecha-Azul"),
-                OrderDetails(15, "21D-Izquierda-Amarilla"),
-                OrderDetails(2, "22E-Derecha-Amarilla"),
-                OrderDetails(30, "23Q-Izquierda-Azul"),
-                OrderDetails(6, "24P-Derecha-Azul")
+                OrderDetails(
+                    10,
+                    "20F-Derecha-Azul"
+                ),
+                OrderDetails(
+                    15,
+                    "21D-Izquierda-Amarilla"
+                ),
+                OrderDetails(
+                    2,
+                    "22E-Derecha-Amarilla"
+                ),
+                OrderDetails(
+                    30,
+                    "23Q-Izquierda-Azul"
+                ),
+                OrderDetails(
+                    6,
+                    "24P-Derecha-Azul"
+                )
             )
         )
 

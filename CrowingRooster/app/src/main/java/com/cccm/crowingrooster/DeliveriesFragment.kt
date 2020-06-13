@@ -6,9 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.databinding.FragmentDeliveriesBinding
+import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DeliveriesFragment : Fragment() {
 
@@ -36,7 +36,11 @@ class DeliveriesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val tabAdapter = GenericTabAdapter(listOfFragment, this)
+        val tabAdapter =
+            GenericTabAdapter(
+                listOfFragment,
+                this
+            )
         viewPager = bind.deliveriesPager
         tabLayout = bind.deliveriesTablayout
 

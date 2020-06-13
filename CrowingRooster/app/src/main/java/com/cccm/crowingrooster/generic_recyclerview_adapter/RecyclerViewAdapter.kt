@@ -1,23 +1,10 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.generic_recyclerview_adapter
 
-import android.app.Activity
 import android.content.Context
-import android.text.Editable
-import android.text.InputType
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.appcompat.view.menu.ActionMenuItemView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
-import de.hdodenhof.circleimageview.CircleImageView
 
 abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

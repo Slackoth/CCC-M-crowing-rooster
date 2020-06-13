@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.generic_recyclerview_adapter.models
 
 //TODO: Every element inside a Layout for a RecylerView must be transformed into a data class
 

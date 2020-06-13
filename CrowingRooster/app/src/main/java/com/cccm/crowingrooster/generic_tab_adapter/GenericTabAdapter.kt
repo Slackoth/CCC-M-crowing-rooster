@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.generic_tab_adapter
 
 import android.content.Context
 import android.view.View
