@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details
 
 import android.os.Bundle
 import android.text.InputType
@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.RadioButton
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.databinding.FragmentOngoingSalesBinding
+import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentOngoingSalesDetailsBinding
+import com.cccm.crowingrooster.screens.sales.ongoing_sales.confirm_sale.ConfirmSaleFragment
 import com.google.android.material.textfield.TextInputEditText
 
 /**
@@ -34,9 +34,12 @@ class OngoingSalesDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_ongoing_sales_details, container, false)
-        bind = DataBindingUtil.inflate(inflater, R.layout.fragment_ongoing_sales_details, container, false)
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_ongoing_sales_details, container, false)
 
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.details)
+        (activity as MainActivity).supportActionBar?.title = getString(
+            R.string.details
+        )
 
         bind.apply {
             confirmButton = confirmBtt
@@ -53,7 +56,10 @@ class OngoingSalesDetailsFragment : Fragment() {
         ongoingSaleList.addAll(
             listOf(
                 SaleDetails(10, "20F-Derecha-Azul"),
-                SaleDetails(15, "21D-Izquierda-Amarilla"),
+                SaleDetails(
+                    15,
+                    "21D-Izquierda-Amarilla"
+                ),
                 SaleDetails(2, "22E-Derecha-Amarilla"),
                 SaleDetails(30, "23Q-Izquierda-Azul"),
                 SaleDetails(6, "24P-Derecha-Azul")
@@ -63,7 +69,10 @@ class OngoingSalesDetailsFragment : Fragment() {
 
         val adapter = object : GenericRecyclerViewAdapter<Any>(ongoingSaleList,requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return ViewHolderFactory.bindView(view,viewType)
+                return ViewHolderFactory.bindView(
+                    view,
+                    viewType
+                )
             }
 
             override fun getLayoutId(): Int {
@@ -77,7 +86,8 @@ class OngoingSalesDetailsFragment : Fragment() {
         }
 
         confirmButton.setOnClickListener {
-            val dialog = ConfirmSaleFragment()
+            val dialog =
+                ConfirmSaleFragment()
             dialog.show(requireActivity().supportFragmentManager,"ConfirmDialog")
         }
 

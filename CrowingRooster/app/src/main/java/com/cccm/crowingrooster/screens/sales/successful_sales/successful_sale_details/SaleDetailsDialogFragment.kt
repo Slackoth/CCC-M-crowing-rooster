@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details
 
 import android.app.Dialog
 import android.os.Bundle
@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.SaleDetails
+import com.cccm.crowingrooster.ViewHolderFactory
 import com.cccm.crowingrooster.databinding.FragmentSaleDetailsDialogBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -35,7 +38,7 @@ class SaleDetailsDialogFragment : DialogFragment() {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_sale_details_dialog, container, false)
         val bind = DataBindingUtil.inflate<FragmentSaleDetailsDialogBinding>(inflater,
-        R.layout.fragment_sale_details_dialog, container, false)
+            R.layout.fragment_sale_details_dialog, container, false)
 
         bind.apply {
             recyclerView = recyclerViewSsd
@@ -59,7 +62,10 @@ class SaleDetailsDialogFragment : DialogFragment() {
         successfulSaleList.addAll(
             listOf(
                 SaleDetails(10, "20F-Derecha-Azul"),
-                SaleDetails(15, "21D-Izquierda-Amarilla"),
+                SaleDetails(
+                    15,
+                    "21D-Izquierda-Amarilla"
+                ),
                 SaleDetails(2, "22E-Derecha-Amarilla"),
                 SaleDetails(30, "23Q-Izquierda-Azul"),
                 SaleDetails(6, "24P-Derecha-Azul")
@@ -69,7 +75,10 @@ class SaleDetailsDialogFragment : DialogFragment() {
 
         val adapter = object : GenericRecyclerViewAdapter<Any>(successfulSaleList,requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return ViewHolderFactory.bindView(view,viewType)
+                return ViewHolderFactory.bindView(
+                    view,
+                    viewType
+                )
             }
 
             override fun getLayoutId(): Int {

@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/sellerProfileFragment"
-        android:name="com.cccm.crowingrooster.SellerProfileFragment"
+        android:name="com.cccm.crowingrooster.screens.seller_profile.SellerProfileFragment"
         android:label="SellerProfileFragment"
         tools:layout="@layout/fragment_seller_profile"/>
     <fragment
@@ -57,17 +57,17 @@
     </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/successfulSalesFragment"-->
-<!--        android:name="com.cccm.crowingrooster.SuccessfulSalesFragment"-->
+<!--        android:name="com.cccm.crowingrooster.screens.sales.successful_sales.SuccessfulSalesFragment"-->
 <!--        android:label="SuccessfulSalesFragment"-->
 <!--        tools:layout="@layout/fragment_successful_sales"/>-->
     <fragment
         android:id="@+id/salesFragment"
-        android:name="com.cccm.crowingrooster.SalesFragment"
+        android:name="com.cccm.crowingrooster.screens.sales.SalesFragment"
         android:label="SalesFragment"
         tools:layout="@layout/fragment_sales"/>
     <fragment
         android:id="@+id/ongoingSalesFragment"
-        android:name="com.cccm.crowingrooster.OngoingSalesFragment"
+        android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.OngoingSalesFragment"
         android:label="OngoingSalesFragment"
         tools:layout="@layout/fragment_ongoing_sales">
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/ongoingSalesDetailsFragment"
-        android:name="com.cccm.crowingrooster.OngoingSalesDetailsFragment"
+        android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details.OngoingSalesDetailsFragment"
         android:label="OngoingSalesDetailsFragment"
         tools:layout="@layout/fragment_ongoing_sales_details"/>
     <fragment

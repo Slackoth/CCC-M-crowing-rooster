@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
+import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -65,7 +66,8 @@ class SellerClientListFragment : Fragment() {
             }
 
             override fun getOnClickLayout(): () -> Unit {
-                val dialog = SaleDetailsDialogFragment()
+                val dialog =
+                    SaleDetailsDialogFragment()
                 return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
             }
         }
