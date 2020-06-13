@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:background="@color/primary_dark"
         android:orientation="vertical"
-        tools:context=".ChartFragment"
+        tools:context=".screens.chart.ChartFragment"
         >
 
                 <Button

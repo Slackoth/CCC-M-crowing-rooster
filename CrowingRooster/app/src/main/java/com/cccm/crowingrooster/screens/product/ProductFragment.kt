@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.product
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 
 import com.cccm.crowingrooster.databinding.FragmentProductBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +27,8 @@ class ProductFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentProductBinding>(
-            inflater, R.layout.fragment_product, container, false
+            inflater,
+            R.layout.fragment_product, container, false
         )
 
         (activity as MainActivity).run {

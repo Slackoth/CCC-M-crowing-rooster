@@ -48,7 +48,7 @@
     <fragment
 
         android:id="@+id/productFragment"
-        android:name="com.cccm.crowingrooster.ProductFragment"
+        android:name="com.cccm.crowingrooster.screens.product.ProductFragment"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" >
         <action
@@ -81,7 +81,7 @@
         tools:layout="@layout/fragment_ongoing_sales_details"/>
     <fragment
         android:id="@+id/catalogueFragment"
-        android:name="com.cccm.crowingrooster.CatalogueFragment"
+        android:name="com.cccm.crowingrooster.screens.catalogue.CatalogueFragment"
         android:label="CatalogueFragment"
         tools:layout="@layout/fragment_catalogue"
         >
@@ -96,7 +96,7 @@
         tools:layout="@layout/fragment_seller_client_list"/>
     <fragment
         android:id="@+id/chartFragment"
-        android:name="com.cccm.crowingrooster.ChartFragment"
+        android:name="com.cccm.crowingrooster.screens.chart.ChartFragment"
         android:label="fragment_chart"
         tools:layout="@layout/fragment_chart" >
         <action
@@ -156,7 +156,7 @@
 
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.cccm.crowingrooster.ChatFragment"
+        android:name="com.cccm.crowingrooster.screens.chat.ChatFragment"
         android:label="ChatFragment"
 
         tools:layout="@layout/chat_item_layout"/>
