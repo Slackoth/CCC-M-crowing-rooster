@@ -1,43 +1,49 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.sales.successful_sales
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.databinding.FragmentOngoingSalesBinding
+import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.databinding.FragmentSuccessfulSalesBinding
+import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 
 /**
  * A simple [Fragment] subclass.
  */
-class OngoingSalesFragment : Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
-    private var saleList: MutableList<Any> = mutableListOf()
+const val TAG = "HighOrder"
+
+class SuccessfulSalesFragment : Fragment() {
+
+    lateinit var recyclerView: RecyclerView
+    var saleList: MutableList<Any> = mutableListOf()
+
+    //companion object
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bind = DataBindingUtil.inflate<FragmentOngoingSalesBinding>(
-            inflater, R.layout.fragment_ongoing_sales,
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_successful_sales, container, false)
+        val bind = DataBindingUtil.inflate<FragmentSuccessfulSalesBinding>(
+            inflater, R.layout.fragment_successful_sales,
             container, false
         )
 
-        //(activity as MainActivity).supportActionBar?.title = getString(R.string.ongoing_sales)
+        //Log.d(TAG, "onCreate: Started")
+        //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
 
-        recyclerView = bind.recyclerViewOsf
+        recyclerView = bind.recyclerView
         saleList.addAll(
             listOf(
                 Sale(
-                    "Mr. Peanutbutter", "20/08/1969", 5,
+                    "Rene", "20/08/1969", 5,
                     "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
                 ),
                 Sale(
@@ -60,20 +66,19 @@ class OngoingSalesFragment : Fragment() {
                 )
             )
         )
-
         //Creating the RecyclerView Adapter
         val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return ViewHolderFactory.bindView(view, viewType)
+                return ViewHolderFactory.bindView(
+                    view,
+                    viewType
+                )
             }
 
             override fun getOnClickLayout(): () -> Unit {
-                return { ->
-                    this@OngoingSalesFragment.findNavController()
-                        .navigate(R.id.ongoingSalesDetailsFragment)
-
-
-                }
+                val dialog =
+                    SaleDetailsDialogFragment()
+                return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
             }
 
             override fun getLayoutId(): Int {
@@ -90,6 +95,11 @@ class OngoingSalesFragment : Fragment() {
             )
         )
         recyclerView.adapter = adapter
+
+//        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext(),
+//            if (orientation == Configuration.ORIENTATION_LANDSCAPE) LinearLayoutManager.HORIZONTAL
+//            else LinearLayoutManager.VERTICAL, false)
 
         return bind.root
     }

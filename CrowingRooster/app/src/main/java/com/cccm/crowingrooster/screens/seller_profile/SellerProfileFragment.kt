@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.seller_profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentSellerProfileBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,7 +22,8 @@ class SellerProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_seller_profile, container, false)
-        val bind = DataBindingUtil.inflate<FragmentSellerProfileBinding>(inflater, R.layout.fragment_seller_profile,
+        val bind = DataBindingUtil.inflate<FragmentSellerProfileBinding>(inflater,
+            R.layout.fragment_seller_profile,
         container, false)
 
         (activity as MainActivity).run {

@@ -1,14 +1,14 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.sales
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentSalesBinding
-import com.google.android.material.appbar.AppBarLayout
+import com.cccm.crowingrooster.screens.sales.ongoing_sales.OngoingSalesFragment
+import com.cccm.crowingrooster.screens.sales.successful_sales.SuccessfulSalesFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,8 +21,10 @@ class SalesFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentSalesBinding
-    private var listOfFragment: MutableList<Fragment> = mutableListOf(SuccessfulSalesFragment(),
-        OngoingSalesFragment())
+    private var listOfFragment: MutableList<Fragment> = mutableListOf(
+        SuccessfulSalesFragment(),
+        OngoingSalesFragment()
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +33,8 @@ class SalesFragment : Fragment() {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_sales, container, false)
 
-        bind = DataBindingUtil.inflate(inflater,R.layout.fragment_sales,container, false)
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_sales,container, false)
 
         (activity as MainActivity).run {
             showTopBar()
@@ -47,7 +50,8 @@ class SalesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //super.onViewCreated(view, savedInstanceState)
-        val tabAdapter = GenericTabAdapter(listOfFragment,this)
+        val tabAdapter =
+            GenericTabAdapter(listOfFragment, this)
         viewPager = bind.salesPager
         tabLayout = bind.salesTablayout
 
