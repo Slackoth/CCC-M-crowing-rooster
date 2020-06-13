@@ -1,19 +1,16 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.generic_recyclerview_adapter
 
 import android.content.Context
 import android.text.InputType
 import android.view.View
 import android.widget.*
-import androidx.appcompat.view.menu.MenuView
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.chat_item_layout.view.*
-import java.net.URL
-import java.text.FieldPosition
-
+import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 
 
 object ViewHolderFactory {
@@ -21,20 +18,44 @@ object ViewHolderFactory {
     //TODO: Every Layout from a RecyclerView must be bind here
     fun bindView(view: View, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            R.layout.sale_item_layout -> SaleViewHolder(view)
-            R.layout.sale_details_item_layout -> OngoingSaleViewHolder(view)
-            R.layout.product_item_layout -> ProductViewHolder(view)
-            R.layout.chart_item_layout -> ChartViewHolder(view)
-            R.layout.client_item_layout -> ClientViewHolder(view)
-            R.layout.order_item_layout -> OrderViewHolder(view)
-            R.layout.canceled_order_item_layout -> CanceledOrderViewHolder(view)
-            R.layout.order_details_item -> OngoingOrderViewHolder(view)
-            R.layout.chat_item_layout -> ChatOrderView(view)
-            R.layout.open_orders_item_layout -> OpenOrderViewHolder(view)
-            R.layout.searchbt_item_layout -> BatteryViewHolder(view)
+            R.layout.sale_item_layout -> SaleViewHolder(
+                view
+            )
+            R.layout.sale_details_item_layout -> OngoingSaleViewHolder(
+                view
+            )
+            R.layout.product_item_layout -> ProductViewHolder(
+                view
+            )
+            R.layout.chart_item_layout -> ChartViewHolder(
+                view
+            )
+            R.layout.client_item_layout -> ClientViewHolder(
+                view
+            )
+            R.layout.order_item_layout -> OrderViewHolder(
+                view
+            )
+            R.layout.canceled_order_item_layout -> CanceledOrderViewHolder(
+                view
+            )
+            R.layout.order_details_item -> OngoingOrderViewHolder(
+                view
+            )
+            R.layout.chat_item_layout -> ChatOrderView(
+                view
+            )
+            R.layout.open_orders_item_layout -> OpenOrderViewHolder(
+                view
+            )
+            R.layout.searchbt_item_layout -> BatteryViewHolder(
+                view
+            )
 
 
-            else -> SaleViewHolder(view)
+            else -> SaleViewHolder(
+                view
+            )
         }
     }
 

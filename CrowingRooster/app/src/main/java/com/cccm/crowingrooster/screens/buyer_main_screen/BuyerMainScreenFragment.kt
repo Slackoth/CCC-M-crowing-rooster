@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.buyer_main_screen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentBuyerMainScreenBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,7 +29,8 @@ class BuyerMainScreenFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_buyer_main_screen, container, false)
-        bind = DataBindingUtil.inflate(inflater,R.layout.fragment_buyer_main_screen,container,false)
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_buyer_main_screen,container,false)
 
         (activity as MainActivity).run {
             showTopBar()

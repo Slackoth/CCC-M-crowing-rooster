@@ -1,6 +1,5 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.login
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentLogInBinding
 
 /**
@@ -24,7 +25,8 @@ class LogInFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_log_in, container, false)
-        val bind = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,R.layout.fragment_log_in,
+        val bind = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
+            R.layout.fragment_log_in,
         container,false)
 
         bind.apply {

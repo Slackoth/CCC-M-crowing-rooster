@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.cccm.crowingrooster.LogInFragment"
+        android:name="com.cccm.crowingrooster.screens.login.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -23,7 +23,7 @@
     
     <fragment
         android:id="@+id/sellerMainScreen"
-        android:name="com.cccm.crowingrooster.SellerMainScreen"
+        android:name="com.cccm.crowingrooster.screens.seller_main_screen.SellerMainScreen"
         android:label="fragment_seller_main_screen"
         tools:layout="@layout/fragment_seller_main_screen" >
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/sellerClientListFragment"
-        android:name="com.cccm.crowingrooster.SellerClientListFragment"
+        android:name="com.cccm.crowingrooster.screens.seller_client_list.SellerClientListFragment"
         android:label="SellerClientListFragment"
         tools:layout="@layout/fragment_seller_client_list"/>
     <fragment
@@ -141,7 +141,7 @@
         tools:layout="@layout/fragment_canceled_orders"/>
     <fragment
         android:id="@+id/buyerMainScreenFragment"
-        android:name="com.cccm.crowingrooster.BuyerMainScreenFragment"
+        android:name="com.cccm.crowingrooster.screens.buyer_main_screen.BuyerMainScreenFragment"
         android:label="BuyerMainScreenFragment"
 
         tools:layout="@layout/fragment_buyer_main_screen"

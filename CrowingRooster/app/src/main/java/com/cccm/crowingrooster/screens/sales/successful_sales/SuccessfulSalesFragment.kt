@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentSuccessfulSalesBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Sale
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 
 /**

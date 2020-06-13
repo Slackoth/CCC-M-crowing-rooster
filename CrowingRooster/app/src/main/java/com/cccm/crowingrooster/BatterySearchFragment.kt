@@ -12,6 +12,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentBatterySearchBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Battery
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 
 
 class BatterySearchFragment : Fragment() {
@@ -39,9 +43,21 @@ class BatterySearchFragment : Fragment() {
         recyclerView = bind.recyclerView
         batteryList.addAll(
             listOf(
-                Battery( modelo = "22FF", voltaje = "12", CCA = "760", capacidad = "760",imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg"),
+                Battery(
+                    modelo = "22FF",
+                    voltaje = "12",
+                    CCA = "760",
+                    capacidad = "760",
+                    imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg"
+                ),
 
-                Battery( modelo = "22FF", voltaje = "12", CCA = "760", capacidad = "760",imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg")
+                Battery(
+                    modelo = "22FF",
+                    voltaje = "12",
+                    CCA = "760",
+                    capacidad = "760",
+                    imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg"
+                )
 
 
             )

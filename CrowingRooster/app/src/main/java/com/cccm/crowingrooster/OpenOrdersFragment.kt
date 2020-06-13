@@ -8,6 +8,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentOpenOrdersBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OpenOrder
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 
 class OpenOrdersFragment : Fragment() {
 
@@ -93,7 +98,8 @@ class OpenOrdersFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.action_order_date_oo -> {
-                val dialog = AscDescDialogFragment()
+                val dialog =
+                    AscDescDialogFragment()
                 dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
                 true
             }

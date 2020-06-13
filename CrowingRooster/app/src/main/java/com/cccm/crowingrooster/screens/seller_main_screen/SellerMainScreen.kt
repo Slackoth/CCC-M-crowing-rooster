@@ -1,24 +1,17 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.seller_main_screen
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentSellerMainScreenBinding
-import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.top_app_bar_main_screen.*
 
 /**
  * A simple [Fragment] subclass.
@@ -36,7 +29,8 @@ class SellerMainScreen : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_seller_main_screen, container, false)
-        val bind = DataBindingUtil.inflate<FragmentSellerMainScreenBinding>(inflater, R.layout.fragment_seller_main_screen,
+        val bind = DataBindingUtil.inflate<FragmentSellerMainScreenBinding>(inflater,
+            R.layout.fragment_seller_main_screen,
         container, false)
 
         //(activity as MainActivity).showTopBar()

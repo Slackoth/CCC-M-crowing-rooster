@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.ascending_descending_search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentAscDescDialogBinding
 
 /**
@@ -24,7 +25,8 @@ class AscDescDialogFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_asc_desc_dialog, container, false)
-        bind = DataBindingUtil.inflate(inflater,R.layout.fragment_asc_desc_dialog,container,false)
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_asc_desc_dialog,container,false)
 
         bind.apply {
             ascRadBtt = ascRb

@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.databinding.FragmentCanceledOrdersBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Canceled_Order
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 
 class CanceledOrdersFragment: Fragment() {
 
@@ -32,11 +37,13 @@ class CanceledOrdersFragment: Fragment() {
         recyclerView = bind.recyclerView
         canceled_orderList.addAll(
             listOf(
-                Canceled_Order( quantity = 300,
+                Canceled_Order(
+                    quantity = 300,
                     imgUrl = "https://i.musicaimg.com/letras/200/2482445.jpg",
                     date = "22/04/2020"
                 ),
-                Canceled_Order( quantity = 300,
+                Canceled_Order(
+                    quantity = 300,
                     imgUrl = "https://s.mxmcdn.net/images-storage/albums4/4/0/2/2/4/9/44942204_800_800.jpg",
                     date = "22/04/2020"
                 )
@@ -86,7 +93,8 @@ class CanceledOrdersFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.action_order_date_cao -> {
-                val dialog = AscDescDialogFragment()
+                val dialog =
+                    AscDescDialogFragment()
                 dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
                 true
             }

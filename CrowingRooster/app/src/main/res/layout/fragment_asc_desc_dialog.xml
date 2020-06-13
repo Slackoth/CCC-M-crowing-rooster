@@ -7,7 +7,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            tools:context=".AscDescDialogFragment"
+            tools:context=".screens.ascending_descending_search.AscDescDialogFragment"
             android:background="@color/primary_light"
             android:padding="@dimen/small_padding">
 

@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentOngoingSalesBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
+import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Sale
+import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 
 /**
  * A simple [Fragment] subclass.
