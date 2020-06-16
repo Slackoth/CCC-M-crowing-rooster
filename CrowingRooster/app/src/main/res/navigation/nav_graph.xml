@@ -213,7 +213,11 @@
         android:id="@+id/deliveriesFragment"
         android:name="com.cccm.crowingrooster.DeliveriesFragment"
         android:label="DeliveriesFragment"
-        tools:layout="@layout/fragment_deliveries"/>
+        tools:layout="@layout/fragment_deliveries">
+        <action
+            android:id="@+id/action_deliveriesFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/concludedOrdersFragment"
         android:name="com.cccm.crowingrooster.ConcludedOrdersFragment"

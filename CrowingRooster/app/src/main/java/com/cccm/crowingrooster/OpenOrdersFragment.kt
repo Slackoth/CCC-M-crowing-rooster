@@ -90,25 +90,4 @@ class OpenOrdersFragment : Fragment() {
         return bind.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.open_orders_more_options_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.action_order_date_oo -> {
-                val dialog =
-                    AscDescDialogFragment()
-                dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
-                true
-            }
-            R.id.action_out_oo -> {
-                findNavController().navigate(R.id.logInFragment)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
 }

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.databinding.FragmentDeliveriesBinding
 import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
+import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -57,5 +59,26 @@ class DeliveriesFragment : Fragment() {
     override fun onDestroyView() {
         (activity as MainActivity).drawerLocked(false)
         super.onDestroyView()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.open_orders_more_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+                R.id.action_log_off -> {
+                    findNavController().navigate(DeliveriesFragmentDirections.actionDeliveriesFragmentToLogInFragment())
+                    return true
+                }
+                R.id.action_order_by_date -> {
+                    val dialog = AscDescDialogFragment()
+                    dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
+                    true
+                }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
