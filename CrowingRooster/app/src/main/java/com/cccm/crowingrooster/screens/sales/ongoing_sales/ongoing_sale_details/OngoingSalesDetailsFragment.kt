@@ -30,11 +30,10 @@ class OngoingSalesDetailsFragment : Fragment() {
     private lateinit var bind: FragmentOngoingSalesDetailsBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: OngoingSalesDetailsViewModel
-    private lateinit var clientEditT: TextInputEditText
-    private lateinit var emailEditT: TextInputEditText
-    private lateinit var dateEditT: TextInputEditText
-    private var ongoingSaleList: MutableList<Any> = mutableListOf()
-    private lateinit var confirmButton: Button
+//    private lateinit var clientEditT: TextInputEditText
+//    private lateinit var emailEditT: TextInputEditText
+//    private lateinit var dateEditT: TextInputEditText
+//    private lateinit var confirmButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,6 +68,8 @@ class OngoingSalesDetailsFragment : Fragment() {
             }
         }
 
+        initRecyclerView()
+
         viewModel.name.observe(viewLifecycleOwner, Observer {
             bind.clientEt.setText(it)
         })
@@ -80,6 +81,9 @@ class OngoingSalesDetailsFragment : Fragment() {
         })
         viewModel.date.observe(viewLifecycleOwner, Observer {
             bind.dateEt.setText(it)
+        })
+        viewModel.orders.observe(viewLifecycleOwner, Observer {
+            recyclerView.adapter?.notifyDataSetChanged()
         })
 
 //        bind.apply {
@@ -94,38 +98,11 @@ class OngoingSalesDetailsFragment : Fragment() {
 //        emailEditT.inputType = InputType.TYPE_NULL
 //        dateEditT.inputType = InputType.TYPE_NULL
 
-        ongoingSaleList.addAll(
-            listOf(
-                SaleDetails(
-                    10,
-                    "20F-Derecha-Azul"
-                ),
-                SaleDetails(
-                    15,
-                    "21D-Izquierda-Amarilla"
-                ),
-                SaleDetails(
-                    2,
-                    "22E-Derecha-Amarilla"
-                ),
-                SaleDetails(
-                    30,
-                    "23Q-Izquierda-Azul"
-                ),
-                SaleDetails(
-                    6,
-                    "24P-Derecha-Azul"
-                )
-            )
-        )
-
-        initRecyclerView()
-
         return bind.root
     }
 
     private fun initRecyclerView() {
-        val adapter = object : GenericRecyclerViewAdapter<Any>(ongoingSaleList,requireContext()) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(viewModel.orders.value!!,requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,

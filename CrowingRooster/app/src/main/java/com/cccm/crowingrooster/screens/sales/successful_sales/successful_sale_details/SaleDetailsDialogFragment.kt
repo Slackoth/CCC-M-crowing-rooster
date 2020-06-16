@@ -60,6 +60,8 @@ class SaleDetailsDialogFragment : DialogFragment() {
             }
         }
 
+        initRecyclerView()
+
         viewModel.name.observe(viewLifecycleOwner, Observer {
             bind.nameEt.setText(it)
         })
@@ -77,6 +79,9 @@ class SaleDetailsDialogFragment : DialogFragment() {
         })
         viewModel.date.observe(viewLifecycleOwner, Observer {
             bind.dateEt.setText(it)
+        })
+        viewModel.orders.observe(viewLifecycleOwner, Observer {
+            recyclerView.adapter?.notifyDataSetChanged()
         })
 
 
@@ -98,34 +103,6 @@ class SaleDetailsDialogFragment : DialogFragment() {
 //        priceEditT.inputType = InputType.TYPE_NULL
 //        paymentEditT.inputType = InputType.TYPE_NULL
 
-
-        successfulSaleList.addAll(
-            listOf(
-                SaleDetails(
-                    10,
-                    "20F-Derecha-Azul"
-                ),
-                SaleDetails(
-                    15,
-                    "21D-Izquierda-Amarilla"
-                ),
-                SaleDetails(
-                    2,
-                    "22E-Derecha-Amarilla"
-                ),
-                SaleDetails(
-                    30,
-                    "23Q-Izquierda-Azul"
-                ),
-                SaleDetails(
-                    6,
-                    "24P-Derecha-Azul"
-                )
-            )
-        )
-
-        initRecyclerView()
-
         return bind.root
     }
 
@@ -140,7 +117,7 @@ class SaleDetailsDialogFragment : DialogFragment() {
     }
 
     private fun initRecyclerView() {
-        val adapter = object : GenericRecyclerViewAdapter<Any>(successfulSaleList,requireContext()) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(viewModel.orders.value!!,requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,
