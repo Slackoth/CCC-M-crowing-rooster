@@ -20,7 +20,7 @@
 
     <item
         android:id="@+id/OrdersFragment"
-        android:icon="@drawable/ic_sales_black_filled_512dp"
+        android:icon="@drawable/ic_order_white_512dp"
         android:title="@string/orders"/>
 
     <item
