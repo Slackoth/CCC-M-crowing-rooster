@@ -43,9 +43,7 @@
                     android:layout_marginBottom="@dimen/small_margin">
 
                 <com.google.android.material.textfield.TextInputEditText
-
-
-                        android:id="@id/client_et"
+                        android:id="@+id/name_et"
                         android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -135,7 +133,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_ssd"
+                    android:id="@+id/sale_details_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 

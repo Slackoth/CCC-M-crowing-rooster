@@ -78,7 +78,11 @@
         android:id="@+id/ongoingSalesDetailsFragment"
         android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details.OngoingSalesDetailsFragment"
         android:label="OngoingSalesDetailsFragment"
-        tools:layout="@layout/fragment_ongoing_sales_details"/>
+        tools:layout="@layout/fragment_ongoing_sales_details">
+        <action
+            android:id="@+id/action_ongoingSalesDetailsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
         android:name="com.cccm.crowingrooster.screens.catalogue.CatalogueFragment"
@@ -209,7 +213,11 @@
         android:id="@+id/deliveriesFragment"
         android:name="com.cccm.crowingrooster.DeliveriesFragment"
         android:label="DeliveriesFragment"
-        tools:layout="@layout/fragment_deliveries"/>
+        tools:layout="@layout/fragment_deliveries">
+        <action
+            android:id="@+id/action_deliveriesFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/concludedOrdersFragment"
         android:name="com.cccm.crowingrooster.ConcludedOrdersFragment"
