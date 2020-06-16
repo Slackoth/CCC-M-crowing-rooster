@@ -28,8 +28,7 @@ class SellerClientListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_seller_client_list, container, false)
+
         bind = DataBindingUtil.inflate(inflater,
             R.layout.fragment_seller_client_list, container, false)
 
@@ -42,7 +41,7 @@ class SellerClientListFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        recyclerView = bind.recyclerViewCl
+        recyclerView = bind.clientRv
         clientList.addAll(
             listOf(
                 Client(
@@ -63,6 +62,30 @@ class SellerClientListFragment : Fragment() {
                 )
             )
         )
+
+        initRecyclerview()
+
+        return bind.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.clients_list_more_options_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when(item.itemId) {
+            R.id.action_order_client -> {
+                val dialog = AscDescDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager,"ClientOrderDialog")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun initRecyclerview() {
         val adapter = object : GenericRecyclerViewAdapter<Any>(clientList, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
@@ -90,26 +113,6 @@ class SellerClientListFragment : Fragment() {
         )
 
         recyclerView.adapter = adapter
-
-        return bind.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.clients_list_more_options_menu,menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return when(item.itemId) {
-            R.id.action_order_client -> {
-                val dialog =
-                    AscDescDialogFragment()
-                dialog.show(requireActivity().supportFragmentManager,"ClientOrderDialog")
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
 }

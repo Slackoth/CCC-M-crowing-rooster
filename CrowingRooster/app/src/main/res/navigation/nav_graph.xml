@@ -78,7 +78,11 @@
         android:id="@+id/ongoingSalesDetailsFragment"
         android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details.OngoingSalesDetailsFragment"
         android:label="OngoingSalesDetailsFragment"
-        tools:layout="@layout/fragment_ongoing_sales_details"/>
+        tools:layout="@layout/fragment_ongoing_sales_details">
+        <action
+            android:id="@+id/action_ongoingSalesDetailsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
         android:name="com.cccm.crowingrooster.CatalogueFragment"
