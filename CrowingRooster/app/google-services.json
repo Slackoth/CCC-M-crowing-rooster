@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "682589931096",
+    "firebase_url": "https://mychatproject-e1e97.firebaseio.com",
+    "project_id": "mychatproject-e1e97",
+    "storage_bucket": "mychatproject-e1e97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682589931096:android:1fdaea47aa4178a678ac2d",
+        "android_client_info": {
+          "package_name": "com.cccm.crowingrooster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682589931096-pa36qk8u3c9tf5a01i5ff4hsjtel8k9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuuHc0J1bNdjMqh97rTPYKYFjLRsv8nY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682589931096-pa36qk8u3c9tf5a01i5ff4hsjtel8k9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

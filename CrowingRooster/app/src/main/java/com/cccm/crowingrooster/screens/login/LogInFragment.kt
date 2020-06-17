@@ -1,6 +1,8 @@
 package com.cccm.crowingrooster.screens.login
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentLogInBinding
+import com.google.firebase.auth.FirebaseAuth
 
 /**
  * A simple [Fragment] subclass.
@@ -33,23 +37,40 @@ class LogInFragment : Fragment() {
             userEditT = userEt
             passEt = passwordEt
             loginBtt.setOnClickListener {
-                if (userEditT.text.toString() == "seller") {
+                ProcessSignIn()
+                if(userEt.text.toString().toUpperCase()=="SELLER@EXAMPLE.COM"){
                     it.findNavController().navigate(R.id.action_logInFragment_to_sellerMainScreen)
                 }
-                else if(userEditT.text.toString() == "buyer") {
+                if (userEt.text.toString().toUpperCase()=="BUYER@EXAMPLE.COM"){
                     it.findNavController().navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
                 }
-                else if(userEditT.text.toString() == "dealer") {
+                if (userEt.text.toString().toUpperCase()=="BUYER@EXAMPLE.COM"){
                     it.findNavController().navigate(R.id.action_logInFragment_to_openOrdersFragment)
                 }
             }
-        }
-
         (activity as MainActivity).run {
             hideTopBar()
         }
         return bind.root
-    }
+        }
 
+    }
+    private fun ProcessSignIn(){
+        val email= userEditT.text.toString()
+        val pswd= passEt.text.toString()
+        Log.d("MainActivity","User: "+email)
+        Log.d("MainActivity","Password: "+pswd)
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,pswd)
+            .addOnCompleteListener{
+                Log.d("MainActivity", "User Auth Correct")
+                //SigInActivity(email)
+                if(!it.isSuccessful) return@addOnCompleteListener
+            }
+            .addOnFailureListener{
+                Log.d("MainActivity", "User Credentials incorrect")
+                //Toast.makeText(this@LogInFragment, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
+            }
+    }
 
 }
