@@ -1,11 +1,13 @@
 package com.cccm.crowingrooster.screens.chat
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +18,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Chat
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -69,6 +72,14 @@ class ChatFragment : Fragment() {
             )
         )
 
+        //FireBaseAuth return to login
+        val uid = FirebaseAuth.getInstance().uid
+        if (uid==null){
+            view?.findNavController()?.navigate(R.id.logInFragment)
+        }
+
+
+
         //Creating the RecyclerView Adapter
         val adapter = object : GenericRecyclerViewAdapter<Any>(chatList, requireContext()) {
 
@@ -84,7 +95,7 @@ class ChatFragment : Fragment() {
             override fun getOnClickLayout(): () -> Unit {
                 return {
                     this@ChatFragment.findNavController()
-                        .navigate(R.id.productFragment)                }
+                        .navigate(R.id.action_chatFragment_to_chatLogFragment)                }
             }
         }
 
@@ -100,5 +111,7 @@ class ChatFragment : Fragment() {
 
         return bind.root
     }
+
+
 
 }

@@ -159,7 +159,11 @@
         android:name="com.cccm.crowingrooster.screens.chat.ChatFragment"
         android:label="ChatFragment"
 
-        tools:layout="@layout/chat_item_layout"/>
+        tools:layout="@layout/chat_item_layout">
+        <action
+            android:id="@+id/action_chatFragment_to_chatLogFragment"
+            app:destination="@id/chatLogFragment" />
+    </fragment>
 
 
     <fragment
@@ -216,5 +220,9 @@
         android:label="ConcludedOrdersFragment"
         tools:layout="@layout/fragment_concluded_orders">
     </fragment>
+    <fragment
+        android:id="@+id/chatLogFragment"
+        android:name="com.cccm.crowingrooster.screens.chat.ChatLogFragment"
+        android:label="ChatLogFragment" />
 
 </navigation>

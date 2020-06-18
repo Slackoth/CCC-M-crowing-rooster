@@ -100,6 +100,8 @@
     <string name="catalogo">Catalogo</string>
     <string name="Producto">Producto</string>
     <string name="chart">Carrito De Compras</string>
+    <string name="EnterMssge_text">Enter Message</string>
+    <string name="send_text">Send</string>
 
 
     <string-array name="payment_array">

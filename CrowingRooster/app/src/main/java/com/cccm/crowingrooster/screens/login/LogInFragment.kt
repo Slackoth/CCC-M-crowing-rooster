@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -36,6 +37,7 @@ class LogInFragment : Fragment() {
         bind.apply {
             userEditT = userEt
             passEt = passwordEt
+
             loginBtt.setOnClickListener {
                 ProcessSignIn()
                 if(userEt.text.toString().toUpperCase()=="SELLER@EXAMPLE.COM"){
@@ -44,7 +46,7 @@ class LogInFragment : Fragment() {
                 if (userEt.text.toString().toUpperCase()=="BUYER@EXAMPLE.COM"){
                     it.findNavController().navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
                 }
-                if (userEt.text.toString().toUpperCase()=="BUYER@EXAMPLE.COM"){
+                if (userEt.text.toString().toUpperCase()=="DEALER@EXAMPLE.COM"){
                     it.findNavController().navigate(R.id.action_logInFragment_to_openOrdersFragment)
                 }
             }
@@ -58,6 +60,8 @@ class LogInFragment : Fragment() {
     private fun ProcessSignIn(){
         val email= userEditT.text.toString()
         val pswd= passEt.text.toString()
+
+
         Log.d("MainActivity","User: "+email)
         Log.d("MainActivity","Password: "+pswd)
 
