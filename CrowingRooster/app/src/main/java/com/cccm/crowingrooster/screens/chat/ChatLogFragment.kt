@@ -87,7 +87,15 @@ class ChatLogFragment : Fragment() {
                     //TODO("Not yet implemented")
                     val chatMessage= p0.getValue(ChatMessage::class.java)
                     if (chatMessage != null) {
-                        adapter.add(ChatFromItem(chatMessage.mssge))
+                        if (chatMessage.from_uid==FirebaseAuth.getInstance().uid){
+                            adapter.add(ChatToItem(chatMessage.mssge)   )
+                        }
+                        else{
+                            adapter.add(ChatFromItem(chatMessage.mssge)   )
+                        }
+
+
+
                     }
 
 
