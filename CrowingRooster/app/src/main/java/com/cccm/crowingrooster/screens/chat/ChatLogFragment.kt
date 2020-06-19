@@ -41,13 +41,10 @@ class ChatLogFragment : Fragment() {
 
         adapter.add(ChatFromItem())
         adapter.add(ChatToItem())
-        adapter.add(ChatFromItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatFromItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatFromItem())
-        adapter.add(ChatToItem())
 
+        adapter.add(ChatFromItem())
+        adapter.add(ChatToItem())
+        
         adapter.notifyDataSetChanged()
 
         recyclerView.adapter=adapter
