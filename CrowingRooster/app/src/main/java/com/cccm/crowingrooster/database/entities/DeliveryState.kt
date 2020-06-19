@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "delivery_state")
 data class DeliveryState(
-    @PrimaryKey(autoGenerate = true) val state_id: Int,
+    @PrimaryKey(autoGenerate = true) val state_id: Int = 0,
     @ColumnInfo val state: String
 )

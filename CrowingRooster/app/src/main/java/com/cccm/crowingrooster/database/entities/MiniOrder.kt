@@ -29,7 +29,7 @@ import androidx.room.PrimaryKey
     )
 ])
 data class MiniOrder(
-    @PrimaryKey(autoGenerate = true) val order_number: Int,
+    @PrimaryKey(autoGenerate = true) val order_number: Int = 0,
     @ColumnInfo val buyer_owner: String,
     @ColumnInfo val order_battery: Int,
     @ColumnInfo val order_owner: Int

@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "quality")
 data class Quality(
-    @PrimaryKey(autoGenerate = true) val quality_id: Int,
+    @PrimaryKey(autoGenerate = true) val quality_id: Int = 0,
     @ColumnInfo val type: String
 )

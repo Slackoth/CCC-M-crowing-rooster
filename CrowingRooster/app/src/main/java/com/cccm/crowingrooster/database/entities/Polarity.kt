@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "polarity")
 data class Polarity(
-    @PrimaryKey(autoGenerate = true) val polarity_id: Int,
+    @PrimaryKey(autoGenerate = true) val polarity_id: Int = 0,
     @ColumnInfo val type: String
 )

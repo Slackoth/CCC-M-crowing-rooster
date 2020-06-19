@@ -15,6 +15,6 @@ import androidx.room.PrimaryKey
         )
 ])
 data class Delivery(
-    @PrimaryKey(autoGenerate = true) val delivery_id: Int,
+    @PrimaryKey(autoGenerate = true) val delivery_id: Int = 0,
     @ColumnInfo val state: Int
 )

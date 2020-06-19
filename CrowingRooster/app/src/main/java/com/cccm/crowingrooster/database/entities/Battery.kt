@@ -25,7 +25,7 @@ data class Dimensions(
     )
 ])
 data class Battery(
-    @PrimaryKey(autoGenerate = true) val battery_id: Int,
+    @PrimaryKey(autoGenerate = true) val battery_id: Int = 0,
     @Embedded val dimensions: Dimensions,
     @ColumnInfo val reserve_capacity: Int,
     @ColumnInfo val amperage: Int,

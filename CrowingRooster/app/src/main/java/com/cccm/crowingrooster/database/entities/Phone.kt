@@ -22,7 +22,7 @@ import androidx.room.PrimaryKey
     )
 ])
 data class Phone(
-    @PrimaryKey(autoGenerate = true) val phone_id: Int,
+    @PrimaryKey(autoGenerate = true) val phone_id: Int = 0,
     @ColumnInfo val phone_number: String,
     @ColumnInfo val seller_owner: String?,
     @ColumnInfo val delivery_man_owner: String?

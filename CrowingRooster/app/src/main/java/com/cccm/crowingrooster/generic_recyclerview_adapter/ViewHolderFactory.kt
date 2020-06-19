@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.database.entities.Buyer
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 
 
@@ -100,7 +101,7 @@ object ViewHolderFactory {
     }
 
     internal class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Client> {
+        GenericRecyclerViewAdapter.Binder<Buyer> {
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
         private val email: EditText = itemView.findViewById(R.id.email_et)
         private val clientImg: ImageView = itemView.findViewById(R.id.client_img)
@@ -113,10 +114,13 @@ object ViewHolderFactory {
 
         private fun isExpanded(): Boolean = expanded
 
-        override fun bind(listObject: Client, func: () -> Unit, context: Context) {
-            clientEt.setText(listObject.client)
+        override fun bind(listObject: /*Client*/Buyer, func: () -> Unit, context: Context) {
+//            clientEt.setText(listObject.client)
+//            email.setText(listObject.email)
+//            Glide.with(clientImg.context).load(listObject.imgUrl).into(clientImg)
+
+            clientEt.setText(listObject.buyer_id)
             email.setText(listObject.email)
-            Glide.with(clientImg.context).load(listObject.imgUrl).into(clientImg)
 
             clientEt.inputType = InputType.TYPE_NULL
             email.inputType = InputType.TYPE_NULL
