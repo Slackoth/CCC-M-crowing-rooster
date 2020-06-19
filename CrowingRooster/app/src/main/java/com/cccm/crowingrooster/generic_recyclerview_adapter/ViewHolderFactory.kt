@@ -52,7 +52,6 @@ object ViewHolderFactory {
                 view
             )
 
-
             else -> SaleViewHolder(
                 view
             )
@@ -348,5 +347,6 @@ object ViewHolderFactory {
             }
         }
     }
+
 
 }
