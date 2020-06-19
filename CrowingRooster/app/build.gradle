@@ -142,6 +142,8 @@ dependencies {
 
     //Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+    implementation 'com.google.firebase:firebase-database:19.1.0'
+
 
     //multidex
     implementation 'com.android.support:multidex:1.0.3'
