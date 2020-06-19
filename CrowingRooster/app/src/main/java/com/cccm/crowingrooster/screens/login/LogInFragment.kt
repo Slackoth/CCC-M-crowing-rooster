@@ -23,11 +23,9 @@ class LogInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_log_in, container, false)
         val bind = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in,
-        container,false)
+            container,false)
 
         bind.apply {
             userEditT = userEt
