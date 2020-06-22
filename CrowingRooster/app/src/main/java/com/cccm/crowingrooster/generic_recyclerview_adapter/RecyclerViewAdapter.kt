@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     //A list that will contain any type of data, in this case, objects
-    private var listItem: MutableList<T>
+    private var listItem: MutableList<T>?
     private val cContext: Context
 
-    constructor(listOfObjects: MutableList<T>, context: Context) {
+    constructor(listOfObjects: MutableList<T>?, context: Context) {
         listItem = listOfObjects
         cContext = context
     }
@@ -23,12 +23,17 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as Binder<T>).bind(listItem[position], getOnClickLayout(), cContext)
+        listItem?.get(position)?.let { (holder as Binder<T>).bind(it, getOnClickLayout(), cContext) }
 
     }
 
     override fun getItemCount(): Int {
-        return listItem.size
+        return listItem?.size ?: 0
+    }
+
+    fun setDataSource(newList: MutableList<T>?) {
+        listItem = newList
+        notifyDataSetChanged()
     }
 
     abstract fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder

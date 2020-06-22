@@ -12,7 +12,14 @@ import androidx.room.PrimaryKey
         parentColumns = ["company_id"],
         childColumns = ["company"],
         onDelete = ForeignKey.NO_ACTION
-    )
+    )/*,
+    //TODO: Buyer-User
+    ForeignKey(
+        entity = User::class,
+        parentColumns = ["user_id"],
+        childColumns = ["buyer_id"],
+        onDelete = ForeignKey.CASCADE
+    )*/
 ])
 data class Buyer(
     @PrimaryKey val buyer_id: String,
