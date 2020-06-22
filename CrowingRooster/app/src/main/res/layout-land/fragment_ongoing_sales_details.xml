@@ -133,7 +133,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_osd"
+                    android:id="@+id/ongoing_sale_details_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
@@ -237,16 +237,6 @@
                 android:textColor="@color/secondary_light"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 />
-
-            <Button
-                android:id="@+id/call_btt"
-                android:fontFamily="@font/montserrat_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/call"
-                app:strokeColor="@color/secondary_light"
-                android:textColor="@color/secondary_light"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
             
         </com.google.android.material.button.MaterialButtonToggleGroup>
 

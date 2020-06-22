@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_order_date_oo"
-        android:title="Ordenar por fecha"/>
-    <item
-        android:id="@+id/action_out_oo"
-        android:title="Cerrar sesión"/>
+        android:id="@+id/action_log_off"
+        android:title="Cerrar sesion"
+        android:icon="@drawable/ic_log_off_white_24dp"
+        app:showAsAction="always"
+        android:contentDescription="A"
+        />
 
+    <item
+        android:id="@+id/action_order_by_date"
+        android:title="Ordenar por fecha"
+        app:showAsAction="never"/>
 
 </menu>

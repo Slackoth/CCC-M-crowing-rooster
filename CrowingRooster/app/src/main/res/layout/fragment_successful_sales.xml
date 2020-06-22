@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_dark">
+        android:background="@color/primary_dark"
+        android:orientation="vertical">
+
+<!--        <Button-->
+<!--            android:id="@+id/add_btt"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="add" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_view">
+            android:layout_height="wrap_content"
+            android:id="@+id/succesful_sales_rv">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+
 
     </LinearLayout>
 
