@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.BuyerDao
+import com.cccm.crowingrooster.database.daos.UserDao
 import com.cccm.crowingrooster.database.entities.Buyer
 import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Client
@@ -35,7 +36,10 @@ class SellerClientListFragment : Fragment() {
     private lateinit var viewModelFactory: SellerClientViewModelFactory
     private lateinit var viewModel: SellerClientListViewModel
     private lateinit var app: Application
-    private lateinit var dataSource: BuyerDao
+    private lateinit var buyerSource: BuyerDao
+    private lateinit var userSource: UserDao
+    private lateinit var adapter: GenericRecyclerViewAdapter<Buyer>
+    //val b: MutableList<Any> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,28 +59,46 @@ class SellerClientListFragment : Fragment() {
         setHasOptionsMenu(true)
 
         app = requireActivity().application
-        dataSource = CrowingRoosterDataBase.getInstance(app).buyerDao
-        var a = CrowingRoosterDataBase.getInstance(app)
+        buyerSource = CrowingRoosterDataBase.getInstance(app).buyerDao
+        userSource = CrowingRoosterDataBase.getInstance(app).userDao
 
-        viewModelFactory = SellerClientViewModelFactory(dataSource,app)
+        //var a = CrowingRoosterDataBase.getInstance(app)
+
+        viewModelFactory = SellerClientViewModelFactory(buyerSource,userSource,app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerClientListViewModel::class.java)
 
-        Log.d("COMPANY","${a.companyDao.getAll()}")
-        Log.d("DSTATE","${a.deliveryStateDao.getAll()}")
-        Log.d("PAYMENT","${a.paymentMethodDao.getAll()}")
-        Log.d("POLAR","${a.polarityDao.getAll()}")
-        Log.d("QUA","${a.qualityDao.getAll()}")
+//        Log.d("BUYER","${a.buyerDao.getAll().value}")
+//        Log.d("COMPANY","${a.companyDao.getAll()}")
+//        Log.d("DSTATE","${a.deliveryStateDao.getAll()}")
+//        Log.d("PAYMENT","${a.paymentMethodDao.getAll()}")
+//        Log.d("POLAR","${a.polarityDao.getAll()}")
+//        Log.d("QUA","${a.qualityDao.getAll()}")
 
-        recyclerView = bind.clientRv
-//        bind.button.setOnClickListener {
-//            viewModel.insertClient(Buyer("C","C","C",1))
-//            viewModel.getClient()
-//        }
+        bind.apply {
+            recyclerView = clientRv
+            lifecycleOwner = this@SellerClientListFragment
+            sellerClientListViewModel = viewModel
+        }
+        bind.button.setOnClickListener {
+            //viewModel.test()
+            Log.d("ESPALDA","${viewModel.clients.value}")
+            viewModel.uiScope.launch {
+                viewModel.addBuyer()
+            }
+        }
 
         initRecyclerview()
 
         viewModel.clients.observe(viewLifecycleOwner, Observer {
-            recyclerView.adapter?.notifyDataSetChanged()
+            adapter.setDataSource(it)
+
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                true -> bind.clientListProgressBar.visibility = View.VISIBLE
+                else -> bind.clientListProgressBar.visibility = View.GONE
+            }
         })
 
         return bind.root
@@ -101,7 +123,7 @@ class SellerClientListFragment : Fragment() {
 
     private fun initRecyclerview() {
 
-        val adapter = object : GenericRecyclerViewAdapter<Any>(viewModel.clients.value!!, requireContext()) {
+        adapter = object : GenericRecyclerViewAdapter<Buyer>(viewModel.clients.value, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,

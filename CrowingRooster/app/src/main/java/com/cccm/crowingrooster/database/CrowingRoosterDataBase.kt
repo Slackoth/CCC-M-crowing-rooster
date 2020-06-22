@@ -16,7 +16,7 @@ import java.util.concurrent.Executors
     CanceledOrder::class,Company::class,Delivery::class,DeliveryState::class,DeliveryMan::class,
     DeliveryManAndDelivery::class,Seller::class/*,Email::class*/,MiniOrder::class,Order::class,
     OngoingOrder::class,OngoingSale::class,Phone::class,PaymentMethod::class,Sales::class,
-    SuccessfulOrder::class,SuccessfulSale::class,SuccessfulSaleAndDelivery::class],version = 10,exportSchema = false)
+    SuccessfulOrder::class,SuccessfulSale::class,SuccessfulSaleAndDelivery::class],version = 11,exportSchema = false)
 abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val userDao: UserDao
     abstract val qualityDao: QualityDao
@@ -66,24 +66,6 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
             )
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
-                /*.addCallback(object : Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
-                        Executors.newSingleThreadExecutor().execute {
-                            getInstance(context).companyDao.insertCompany(Company(company_name = "Cronora"))
-//                            INSTANCE?.companyDao?.insertCompany(Company(company_name = "Microno"))
-//                            INSTANCE?.companyDao?.insertCompany(Company(company_name = "Cronoa"))
-//                            INSTANCE?.deliveryStateDao?.insertDeliveryState(DeliveryState(state = "Confirmada"))
-//                            INSTANCE?.deliveryStateDao?.insertDeliveryState(DeliveryState(state = "Pendiente"))
-//                            INSTANCE?.paymentMethodDao?.insertPaymentMethod(PaymentMethod(payment_method = "Efectivo"))
-//                            INSTANCE?.paymentMethodDao?.insertPaymentMethod(PaymentMethod(payment_method = "Tarjeta"))
-//                            INSTANCE?.polarityDao?.insertPolarity(Polarity(type = "Derecha"))
-//                            INSTANCE?.polarityDao?.insertPolarity(Polarity(type = "Izquierda"))
-//                            INSTANCE?.qualityDao?.insertQuality(Quality(type = "Azul"))
-//                            INSTANCE?.qualityDao?.insertQuality(Quality(type = "Amarilla"))
-                        }
-                    }
-                })*/
                 .build()
         }
 
@@ -111,6 +93,10 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
             if (INSTANCE?.qualityDao?.getAll()?.isEmpty()!!) {
                 INSTANCE?.qualityDao?.insertQuality(Quality(type = "Azul"))
                 INSTANCE?.qualityDao?.insertQuality(Quality(type = "Amarilla"))
+            }
+            if(/*INSTANCE?.userDao?.getAll() == null*/INSTANCE?.buyerDao?.getAll() == null) {
+                //INSTANCE?.userDao?.insertUser(User("A","A","Pipo","A","Buyer"))
+                INSTANCE?.buyerDao?.insertBuyer(Buyer("A","A","@uca.edu.sv",1))
             }
         }
     }
