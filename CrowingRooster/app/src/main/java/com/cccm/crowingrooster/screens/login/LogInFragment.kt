@@ -48,8 +48,14 @@ class LogInFragment : Fragment() {
                     it.findNavController().navigate(R.id.action_logInFragment_to_openOrdersFragment)
                 }
             }
+
+            registerTv.setOnClickListener{
+                it.findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
+
+            }
         (activity as MainActivity).run {
             hideTopBar()
+
         }
         return bind.root
         }

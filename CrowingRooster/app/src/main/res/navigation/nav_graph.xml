@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_logInFragment_to_openOrdersFragment"
             app:destination="@id/deliveriesFragment"/>
+        <action
+            android:id="@+id/action_logInFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     
     <fragment
@@ -232,5 +235,10 @@
         android:id="@+id/chatLogFragment"
         android:name="com.cccm.crowingrooster.screens.chat.ChatLogFragment"
         android:label="ChatLogFragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.cccm.crowingrooster.screens.Register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 
 </navigation>
