@@ -38,7 +38,7 @@ class LogInFragment : Fragment() {
 
             loginBtt.setOnClickListener {
                 if (userEditT.text.toString().isEmpty() || passEt.text.toString().isEmpty()) {
-                    Toast.makeText(context, "Please fill out email/pw.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Porfavor llenar Ambos campos.", Toast.LENGTH_SHORT).show()
 
                 }
                 else {
@@ -73,8 +73,6 @@ class LogInFragment : Fragment() {
         private fun ProcessSignIn(){
         val email= userEditT.text.toString()
         val pswd= passEt.text.toString()
-
-
 
         Log.d("MainActivity","User: "+email)
         Log.d("MainActivity","Password: "+pswd)
