@@ -1,5 +1,9 @@
 package com.cccm.crowingrooster.generic_recyclerview_adapter.models
 
+import android.net.Uri
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 //TODO: Every element inside a Layout for a RecylerView must be transformed into a data class
 
 data class Sale(var client: String, var date: String, var total: Int, var imgUrl: String)
@@ -14,4 +18,12 @@ data class OpenOrder(var OrderDate: String, var OrderAddress: String, var OrderI
 data class OrderDetails(var quantity: Int, var model: String)
 data class Battery(var modelo: String, var voltaje: String, var CCA: String, var capacidad: String, var imgUrl: String)
 
+
+@Parcelize
+class User(
+    val uid: String,
+    val status:String, val username: String, val profileImageUrl: String
+): Parcelable {
+    constructor() : this("", "", "","")
+}
 

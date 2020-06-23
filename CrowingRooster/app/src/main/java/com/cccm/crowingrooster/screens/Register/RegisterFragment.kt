@@ -1,29 +1,27 @@
 package com.cccm.crowingrooster.screens.Register
 
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.graphics.createBitmap
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentRegisterBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.User
 import com.cccm.crowingrooster.screens.sales.successful_sales.TAG
+
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_register.*
 import java.util.*
-import android.content.ContentProvider as ContentProvider
 
 class RegisterFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -51,7 +49,7 @@ class RegisterFragment : Fragment() {
             }
 
             registerButtonRegister.setOnClickListener{
-
+                performRegister()
             }
         }
 
@@ -80,5 +78,75 @@ class RegisterFragment : Fragment() {
         }
 
         Toast.makeText(context, "F no sale", Toast.LENGTH_LONG).show()
+    }
+
+
+    private fun performRegister(){
+        val email = email_edittext_register.text.toString()
+        val password = password_edittext_register.text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(context, "Please enter text in email/pw", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        Log.d(TAG, "Attempting to create user with email: $email")
+
+        // Firebase Authentication to create a user with email and password
+        //recordar el tolowercase para estatus, saludos
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (!it.isSuccessful) return@addOnCompleteListener
+
+                // else if successful
+                Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
+
+                uploadimageCloud()
+            }
+            .addOnFailureListener{
+                Log.d(TAG, "Failed to create user: ${it.message}")
+                Toast.makeText(context, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun uploadimageCloud(){
+        if (uri == null) return
+
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+
+        ref.putFile(uri!!)
+            .addOnSuccessListener {
+                Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
+
+                ref.downloadUrl.addOnSuccessListener {
+                    Log.d(TAG, "File Location: $it")
+
+                    saveUserToDatabase(it.toString())
+                }
+            }
+            .addOnFailureListener {
+                Log.d(TAG, "Failed to upload image to storage: ${it.message}")
+            }
+    }
+
+
+    private fun saveUserToDatabase(profileImageUrl:String){
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+
+        //uio status username profile
+        val user = User(uid,"buyer",username_edittext_register.text.toString(), profileImageUrl )
+
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d(TAG, "Finally we saved the user to Firebase Database")
+
+
+
+            }
+            .addOnFailureListener {
+                Log.d(TAG, "Failed to set value to database: ${it.message}")
+            }
     }
 }
