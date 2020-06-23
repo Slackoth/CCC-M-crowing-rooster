@@ -37,15 +37,24 @@ class LogInFragment : Fragment() {
             passEt = passwordEt
 
             loginBtt.setOnClickListener {
-                ProcessSignIn()
-                if(userEt.text.toString().toUpperCase()=="SELLER@EXAMPLE.COM"){
-                    it.findNavController().navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                if (userEditT.text.toString().isEmpty() || passEt.text.toString().isEmpty()) {
+                    Toast.makeText(context, "Please fill out email/pw.", Toast.LENGTH_SHORT).show()
+
                 }
-                if (userEt.text.toString().toUpperCase()=="BUYER@EXAMPLE.COM"){
-                    it.findNavController().navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
-                }
-                if (userEt.text.toString().toUpperCase()=="DEALER@EXAMPLE.COM"){
-                    it.findNavController().navigate(R.id.action_logInFragment_to_openOrdersFragment)
+                else {
+                    ProcessSignIn()
+                    if (userEt.text.toString().toUpperCase() == "SELLER@EXAMPLE.COM") {
+                        it.findNavController()
+                            .navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                    }
+                    if (userEt.text.toString().toUpperCase() == "BUYER@EXAMPLE.COM") {
+                        it.findNavController()
+                            .navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
+                    }
+                    if (userEt.text.toString().toUpperCase() == "DEALER@EXAMPLE.COM") {
+                        it.findNavController()
+                            .navigate(R.id.action_logInFragment_to_openOrdersFragment)
+                    }
                 }
             }
 
@@ -61,7 +70,7 @@ class LogInFragment : Fragment() {
         }
 
     }
-    private fun ProcessSignIn(){
+        private fun ProcessSignIn(){
         val email= userEditT.text.toString()
         val pswd= passEt.text.toString()
 
@@ -72,13 +81,13 @@ class LogInFragment : Fragment() {
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,pswd)
             .addOnCompleteListener{
-                Log.d("MainActivity", "User Auth Correct")
+                Log.d("MainActivity", "User Auth Process Correct")
                 //SigInActivity(email)
                 if(!it.isSuccessful) return@addOnCompleteListener
             }
             .addOnFailureListener{
                 Log.d("MainActivity", "User Credentials incorrect")
-                //Toast.makeText(this@LogInFragment, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
             }
     }
 
