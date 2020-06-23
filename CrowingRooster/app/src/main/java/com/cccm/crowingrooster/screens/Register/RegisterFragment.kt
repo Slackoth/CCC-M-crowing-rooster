@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentRegisterBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.User
@@ -71,7 +72,8 @@ class RegisterFragment : Fragment() {
             val inputStream = uri?.let { activity?.contentResolver?.openInputStream(it) }
             val drawable = Drawable.createFromStream(inputStream, uri.toString())
 
-            selectphoto_imageview_register.setBackgroundDrawable(drawable)
+            //selectphoto_imageview_register.setBackgroundDrawable(drawable)
+            context?.let { Glide.with(it).load(uri.toString()).into(selectphoto_imageview_register) }
             selectphoto_button_register.alpha = 0f
 
         //selectphoto_button_register.setBackgroundDrawable(//bitmapDrawable)
