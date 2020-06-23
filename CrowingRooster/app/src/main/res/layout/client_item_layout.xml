@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:text="Luis Manuel Calderón Perla"
+            tools:text="Luis Manuel Calderón Perla"
             android:textColor="@color/on_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:text="ungallocontenis@gmail.com"
+            tools:text="ungallocontenis@gmail.com"
             android:textColor="@color/on_primary" />
 
     </com.google.android.material.textfield.TextInputLayout>

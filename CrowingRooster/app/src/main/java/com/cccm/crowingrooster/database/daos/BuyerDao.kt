@@ -11,10 +11,11 @@ interface BuyerDao {
     @Insert
     fun insertBuyer(buyer: Buyer)
 
-    @Query("SELECT * FROM buyer WHERE buyer_id = :id")
-    fun getBuyer(id: String): Buyer
+//    @Query("SELECT * FROM buyer WHERE buyer_id = :id")
+//    fun getBuyer(id: String): LiveData<Buyer>
 
     @Query("SELECT * FROM buyer")
-    fun getClientsForSeller(): MutableList<Buyer>
+    //@Query("SELECT u.name, b.email FROM buyer b INNER JOIN user u ON b.buyer_id = u.user_id ")
+    fun getAll(): LiveData<MutableList<Buyer>>
 
 }
