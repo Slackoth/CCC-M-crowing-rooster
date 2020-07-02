@@ -3,7 +3,7 @@ package com.cccm.crowingrooster
 //import android.app.Application
 //import android.app.Instrumentation
 //import androidx.room.Room
-//import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+//import com.cccm.crowingrooster.data.db.CrowingRoosterDataBase
 //import com.cccm.crowingrooster.database.daos.UserDao
 //import org.junit.Test
 //import androidx.test.platform.app.InstrumentationRegistry
