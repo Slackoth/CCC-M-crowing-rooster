@@ -9,9 +9,6 @@ import retrofit2.http.GET
 
 private const val BASE_URL = "http://192.168.1.5:3000/users/"
 
-//private val okHttpClient = OkHttpClient.Builder()
-//    .addInterceptor(con)
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()

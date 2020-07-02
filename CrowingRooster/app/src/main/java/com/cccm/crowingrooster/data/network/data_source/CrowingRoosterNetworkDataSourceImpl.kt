@@ -9,10 +9,12 @@ import com.cccm.crowingrooster.data.db.entities.SellerClient
 import java.lang.Exception
 
 class CrowingRoosterNetworkDataSourceImpl : CrowingRoosterNetworkDataSource {
+    /*TODO: SellerClient LiveData*/
     private val _downloadedSellerClients = MutableLiveData<List<SellerClient>>()
-
     override val downloadedSellerClients: LiveData<List<SellerClient>>
         get() = _downloadedSellerClients
+
+    /*TODO: SellerClient functions*/
 
     @SuppressLint("LogNotTimber")
     override suspend fun fetchSellerClients() {
@@ -26,6 +28,8 @@ class CrowingRoosterNetworkDataSourceImpl : CrowingRoosterNetworkDataSource {
             Log.d("Connection","No connection: ${e.message}")
         }
     }
+
+    /*TODO: INSTANCE*/
 
     companion object {
         private var INSTANCE: CrowingRoosterNetworkDataSourceImpl? = null

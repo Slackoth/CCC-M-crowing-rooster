@@ -17,10 +17,13 @@ class CrowingRoosterRepositoryImpl(
 ) : CrowingRoosterRepository {
 
     init {
+        /*TODO: SellerClient observe*/
         crowingRoosterNetworkDataSource.downloadedSellerClients.observeForever {
             persistFetchedSellerClients(it)
         }
     }
+
+    /*TODO: SellerClient functions*/
 
     override suspend fun getAllSellerClients(): List<SellerClient> {
         initSellerClientData()
@@ -46,10 +49,14 @@ class CrowingRoosterRepositoryImpl(
             fetchSellerClients()
     }
 
+    /*TODO: Util functions*/
+
     private fun isFetchedNeeded(lastFetch: ZonedDateTime): Boolean {
         val thirtyMinAgo = ZonedDateTime.now().minusMinutes(30)
         return lastFetch.isBefore(thirtyMinAgo)
     }
+
+    /*TODO: INSTANCE*/
 
     companion object {
         private var INSTANCE: CrowingRoosterRepositoryImpl? = null

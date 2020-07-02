@@ -1,6 +1,5 @@
 package com.cccm.crowingrooster.data.db.daos
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,7 +13,4 @@ interface SellerClientDao {
 
     @Query("SELECT * FROM seller_client")
     fun getAllSellerClients(): List<SellerClient>
-
-    @Query("SELECT * FROM seller_client WHERE name = :n")
-    fun ptm(n: String): SellerClient
 }
