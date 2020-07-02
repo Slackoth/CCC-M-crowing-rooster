@@ -4,36 +4,46 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.cccm.crowingrooster.database.daos.BuyerDao
-import com.cccm.crowingrooster.database.daos.UserDao
-import com.cccm.crowingrooster.database.entities.Buyer
-import com.cccm.crowingrooster.database.entities.User
+import com.cccm.crowingrooster.database.daos.SellerClientDao
+import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.network.repository.CrowingRoosterRepository
 import kotlinx.coroutines.*
 
 class SellerClientListViewModel(
-    private val buyerSource: BuyerDao,
-    private val userSource: UserDao,
+    private val crowingRoosterRepository: CrowingRoosterRepository,
     private val app: Application
 ): AndroidViewModel(app) {
     private val viewModelJob: CompletableJob = Job()
     val uiScope: CoroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val clients: LiveData<MutableList<Buyer>> = buyerSource.getAll()
+    private val _clients = MutableLiveData<List<SellerClient>>()
+    val clients: LiveData<List<SellerClient>>
+        get() = _clients
+
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    private fun getSellerClient() {
+        _clients.value = listOf()
+        uiScope.launch {
+            val clientList = crowingRoosterRepository.getAllSellerClient()
 
-    suspend fun addBuyer() {
-        _isLoading.value = true
-        withContext(Dispatchers.IO) {
-            Thread.sleep(2000)
-            userSource.insertUser(User("B","B","Luis","B","Buyer"))
-            buyerSource.insertBuyer(Buyer("B","B","@gmail.com",1))
-            //_clients.postValue(buyerSource.getAll().value)
-            _isLoading.postValue(false)
+            _clients.postValue(clientList.value)
         }
     }
+
+
+//    suspend fun addBuyer() {
+//        _isLoading.value = true
+//        withContext(Dispatchers.IO) {
+//            Thread.sleep(2000)
+//            userSource.insertUser(User("B","B","Luis","B","Buyer"))
+//            buyerSource.insertBuyer(Buyer("B","B","@gmail.com",1))
+//            //_clients.postValue(buyerSource.getAll().value)
+//            _isLoading.postValue(false)
+//        }
+//    }
 
 }

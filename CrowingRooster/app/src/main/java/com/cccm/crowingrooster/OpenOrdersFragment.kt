@@ -12,7 +12,6 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoratio
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OpenOrder
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
-import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 
 class OpenOrdersFragment : Fragment() {
 
