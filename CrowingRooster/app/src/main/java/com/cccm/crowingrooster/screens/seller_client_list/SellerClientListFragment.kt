@@ -19,6 +19,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewA
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.network.repository.CrowingRoosterRepository
 import com.cccm.crowingrooster.network.repository.CrowingRoosterRepositoryImpl
+import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,9 +34,8 @@ class SellerClientListFragment : Fragment() {
     private lateinit var viewModel: SellerClientListViewModel
     private lateinit var app: Application
     private lateinit var sellerClientDao: SellerClientDao
-    private lateinit var crowingRoosterRepository: CrowingRoosterRepository
+    private lateinit var sellerClientRepository: SellerClientRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SellerClient>
-    //val b: MutableList<Any> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,38 +57,18 @@ class SellerClientListFragment : Fragment() {
         app = requireActivity().application
         sellerClientDao = CrowingRoosterDataBase.getInstance(app).sellerClientDao
 
-        crowingRoosterRepository = CrowingRoosterRepositoryImpl.getInstance(sellerClientDao)
-
-        viewModelFactory = SellerClientViewModelFactory(crowingRoosterRepository,app)
+        sellerClientRepository = SellerClientRepository.getInstance(sellerClientDao)
+        viewModelFactory = SellerClientViewModelFactory(sellerClientRepository,app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerClientListViewModel::class.java)
-//        buyerSource = CrowingRoosterDataBase.getInstance(app).buyerDao
-//        userSource = CrowingRoosterDataBase.getInstance(app).userDao
-//
-//        //var a = CrowingRoosterDataBase.getInstance(app)
-//
-//        viewModelFactory = SellerClientViewModelFactory(buyerSource,userSource,app)
-//        viewModel = ViewModelProvider(this,viewModelFactory).get(SellerClientListViewModel::class.java)
-//
 
         bind.apply {
             recyclerView = clientRv
             lifecycleOwner = this@SellerClientListFragment
             sellerClientListViewModel = viewModel
         }
-//        bind.button.setOnClickListener {
-//            //viewModel.test()
-//            Log.d("ESPALDA","${viewModel.clients.value}")
-//            viewModel.uiScope.launch {
-//                viewModel.addBuyer()
-//            }
-//        }
 
         initRecyclerview()
 
-//        viewModel.clients.observe(viewLifecycleOwner, Observer {
-//            adapter.setDataSource(it)
-//
-//        })
         viewModel.clients.observe(viewLifecycleOwner, Observer {
             adapter.setDataSource(it)
         })

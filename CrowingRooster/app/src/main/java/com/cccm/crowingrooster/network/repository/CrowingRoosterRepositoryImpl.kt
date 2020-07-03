@@ -17,14 +17,14 @@ class CrowingRoosterRepositoryImpl(
 ) : CrowingRoosterRepository {
     override suspend fun getAllSellerClient(): LiveData<List<SellerClient>> {
         refreshSellerClient()
-        return sellerClientDao.getAllSellerClients()
+        return sellerClientDao.getAll()
     }
 
     private suspend fun refreshSellerClient() {
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             try {
                 val fetch = CrowingRoosterApiService.CrowingRoosterApi
-                    .retrofitService.getAllSellerClientsAsync()
+                    .retrofitService.getAllSellerClientAsync()
                 for (client in fetch) {
                     sellerClientDao.insert(client)
                 }
