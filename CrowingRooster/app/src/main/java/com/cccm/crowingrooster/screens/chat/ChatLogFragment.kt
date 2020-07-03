@@ -46,6 +46,7 @@ class ChatLogFragment : Fragment() {
             Log.d("ChatLogFragment",bind.edittextChatLog.text.toString())
 
             actionSendMessage(bind.edittextChatLog.text.toString())
+            bind.edittextChatLog.text.clear()
         }
 
         //setContentView<FragmentChatLogBinding>(Activity(),R.layout.fragment_chat_log) // add this line
@@ -65,19 +66,27 @@ class ChatLogFragment : Fragment() {
     private fun actionSendMessage(mensaje:String){
         //val reference= FirebaseDatabase.getInstance().getReference("/messages").push()
         val fromId= FirebaseAuth.getInstance().uid.toString()
-        val reference= FirebaseDatabase.getInstance().getReference("/user_messages/$fromId/W0PqXizI6oPuOY2wzxUPd41nOcU2").push()
+        val toId= "yjyiWwhW5RXPvbs65YvxN1zTJSX2"
+        val reference= FirebaseDatabase.getInstance().getReference("/user_messages/$fromId/$toId").push()
         val chatMessage= ChatMessage(reference.key!!, mensaje, fromId,"W0PqXizI6oPuOY2wzxUPd41nOcU2", System.currentTimeMillis()/1000)
-
+        val toReference= FirebaseDatabase.getInstance().getReference("/user_messages/$toId/$fromId").push()
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d("ChatLogFragment","Mensaje Subido perros!!!!!!!")
 
+
+            }
+        toReference.setValue(chatMessage)
+            .addOnSuccessListener {
+                Log.d("ChatFragment","DoublePenetration ready!")
             }
 
     }
 
     private fun listenAllMessages(){
-        val ref = FirebaseDatabase.getInstance().getReference("messages")
+        val fromId= FirebaseAuth.getInstance().uid.toString()
+        val toId= "4awXCfrkKKcBwORmVMo7mU8IPL13"
+        val ref = FirebaseDatabase.getInstance().getReference("/user_messages/$fromId/$toId")
             ref.addChildEventListener(object: ChildEventListener{
                 override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                     //TODO("Not yet implemented")
@@ -85,7 +94,7 @@ class ChatLogFragment : Fragment() {
                     if (chatMessage != null) {
                         if (chatMessage.from_uid==FirebaseAuth.getInstance().uid){
 
-                            ///NO URGENTE, NO MEE DETECTA LA LLAMADA DE FIREBASE AUTH USER ID, HACERLO POR FB REALTIME
+                            ///NO URGENTE, NO MEE DETECTA LA LLAMADA DE FIREBASE AUTH USER ID, HACERLO POR FB REALTIME  ------Arreglado
 
                             val phtouser:String= ChatFragment.currentUser?.profileImageUrl.toString()
                             adapter.add(ChatToItem(chatMessage.mssge,phtouser )   )
@@ -95,11 +104,7 @@ class ChatLogFragment : Fragment() {
                             adapter.add(ChatFromItem(chatMessage.mssge)   )
                         }
 
-
-
                     }
-
-
 
                 }
 
