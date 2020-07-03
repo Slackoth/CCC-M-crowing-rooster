@@ -2,7 +2,6 @@ package com.cccm.crowingrooster.screens.seller_client_list
 
 import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
@@ -12,20 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
-import com.cccm.crowingrooster.database.daos.BuyerDao
-import com.cccm.crowingrooster.database.daos.UserDao
-import com.cccm.crowingrooster.database.entities.Buyer
+import com.cccm.crowingrooster.database.daos.SellerClientDao
+import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Client
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * A simple [Fragment] subclass.
@@ -36,10 +31,9 @@ class SellerClientListFragment : Fragment() {
     private lateinit var viewModelFactory: SellerClientViewModelFactory
     private lateinit var viewModel: SellerClientListViewModel
     private lateinit var app: Application
-    private lateinit var buyerSource: BuyerDao
-    private lateinit var userSource: UserDao
-    private lateinit var adapter: GenericRecyclerViewAdapter<Buyer>
-    //val b: MutableList<Any> = mutableListOf()
+    private lateinit var sellerClientDao: SellerClientDao
+    private lateinit var sellerClientRepository: SellerClientRepository
+    private lateinit var adapter: GenericRecyclerViewAdapter<SellerClient>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,47 +53,30 @@ class SellerClientListFragment : Fragment() {
         setHasOptionsMenu(true)
 
         app = requireActivity().application
-        buyerSource = CrowingRoosterDataBase.getInstance(app).buyerDao
-        userSource = CrowingRoosterDataBase.getInstance(app).userDao
+        sellerClientDao = CrowingRoosterDataBase.getInstance(app).sellerClientDao
 
-        //var a = CrowingRoosterDataBase.getInstance(app)
-
-        viewModelFactory = SellerClientViewModelFactory(buyerSource,userSource,app)
+        sellerClientRepository = SellerClientRepository.getInstance(sellerClientDao)
+        viewModelFactory = SellerClientViewModelFactory(sellerClientRepository,app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerClientListViewModel::class.java)
-
-//        Log.d("BUYER","${a.buyerDao.getAll().value}")
-//        Log.d("COMPANY","${a.companyDao.getAll()}")
-//        Log.d("DSTATE","${a.deliveryStateDao.getAll()}")
-//        Log.d("PAYMENT","${a.paymentMethodDao.getAll()}")
-//        Log.d("POLAR","${a.polarityDao.getAll()}")
-//        Log.d("QUA","${a.qualityDao.getAll()}")
 
         bind.apply {
             recyclerView = clientRv
             lifecycleOwner = this@SellerClientListFragment
             sellerClientListViewModel = viewModel
         }
-        bind.button.setOnClickListener {
-            //viewModel.test()
-            Log.d("ESPALDA","${viewModel.clients.value}")
-            viewModel.uiScope.launch {
-                viewModel.addBuyer()
-            }
-        }
 
         initRecyclerview()
 
         viewModel.clients.observe(viewLifecycleOwner, Observer {
             adapter.setDataSource(it)
-
         })
 
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            when(it) {
-                true -> bind.clientListProgressBar.visibility = View.VISIBLE
-                else -> bind.clientListProgressBar.visibility = View.GONE
-            }
-        })
+//        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+//            when(it) {
+//                true -> bind.clientListProgressBar.visibility = View.VISIBLE
+//                else -> bind.clientListProgressBar.visibility = View.GONE
+//            }
+//        })
 
         return bind.root
     }
@@ -123,7 +100,7 @@ class SellerClientListFragment : Fragment() {
 
     private fun initRecyclerview() {
 
-        adapter = object : GenericRecyclerViewAdapter<Buyer>(viewModel.clients.value, requireContext()) {
+        adapter = object : GenericRecyclerViewAdapter<SellerClient>(viewModel.clients.value, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,

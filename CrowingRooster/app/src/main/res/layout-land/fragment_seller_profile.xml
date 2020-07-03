@@ -66,7 +66,7 @@
                                 android:id="@+id/code_desc_tv"
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:fontFamily="@font/montserrat"
-                                android:text="00082318"
+                                tools:text="00082318"
                                 android:textColor="@color/on_primary"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -131,8 +131,7 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintVertical_bias="0.0"
-                                    app:strokeColor="@color/secondary_light"
-                                    android:onClick="@{() -> sellerProfileViewModel.editName()}"/>
+                                    app:strokeColor="@color/secondary_light" />
 
                                 <TextView
                                     android:id="@+id/name_desc_tv"
@@ -151,7 +150,7 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/name_tv"
                                     app:layout_constraintVertical_bias="0.5"
-                                    android:text="Luis Manuel Calderón Perla" />
+                                    tools:text="Luis Manuel Calderón Perla" />
 
                                 <androidx.constraintlayout.widget.Guideline
                                     android:id="@+id/guideline16"
@@ -210,8 +209,7 @@
                                 app:layout_constraintHorizontal_bias="1.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0"
-                                android:onClick="@{() -> sellerProfileViewModel.editPhone()}"/>
+                                app:layout_constraintVertical_bias="0.0" />
 
                             <TextView
                                 android:id="@+id/tel_desc_tv"
@@ -290,7 +288,7 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintVertical_bias="0.0"
-                                    android:onClick="@{() -> sellerProfileViewModel.editEmail()}"/>
+                                    />
 
                                 <TextView
                                     android:id="@+id/email_desc_tv"

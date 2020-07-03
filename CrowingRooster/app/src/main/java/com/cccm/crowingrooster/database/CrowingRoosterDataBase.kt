@@ -1,45 +1,19 @@
 package com.cccm.crowingrooster.database
-
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.cccm.crowingrooster.database.daos.*
-import com.cccm.crowingrooster.database.daos.SuccessfulSaleAndDeliveryDao
-import com.cccm.crowingrooster.database.entities.*
-import java.util.concurrent.Executors
+import com.cccm.crowingrooster.database.daos.SellerClientDao
+import com.cccm.crowingrooster.database.daos.SellerDao
+import com.cccm.crowingrooster.database.entities.Seller
+import com.cccm.crowingrooster.database.entities.SellerClient
 
 
-@Database(entities = [User::class,Quality::class,Polarity::class,Battery::class,Buyer::class,
-    CanceledOrder::class,Company::class,Delivery::class,DeliveryState::class,DeliveryMan::class,
-    DeliveryManAndDelivery::class,Seller::class/*,Email::class*/,MiniOrder::class,Order::class,
-    OngoingOrder::class,OngoingSale::class,Phone::class,PaymentMethod::class,Sales::class,
-    SuccessfulOrder::class,SuccessfulSale::class,SuccessfulSaleAndDelivery::class],version = 11,exportSchema = false)
+@Database(entities = [SellerClient::class,Seller::class],version = 1,exportSchema = false)
 abstract class CrowingRoosterDataBase: RoomDatabase() {
-    abstract val userDao: UserDao
-    abstract val qualityDao: QualityDao
-    abstract val polarityDao: PolarityDao
-    abstract val batteryDao: BatteryDao
-    abstract val buyerDao: BuyerDao
-    abstract val canceledOrderDao: CanceledOrderDao
-    abstract val companyDao: CompanyDao
-    abstract val deliveryDao: DeliveryDao
-    abstract val deliveryStateDao: DeliveryStateDao
-    abstract val deliveryManDao: DeliveryManDao
-    abstract val deliveryManAndDeliveryDao: DeliveryManAndDeliveryDao
+
+    abstract val sellerClientDao: SellerClientDao
     abstract val sellerDao: SellerDao
-    abstract val miniOrderDao: MiniOrderDao
-    abstract val orderDao: OrderDao
-    abstract val ongoingSaleDao: OngoingSaleDao
-    abstract val ongoingOrderDao: OngoingOrderDao
-    abstract val phoneDao: PhoneDao
-    abstract val paymentMethodDao: PaymentMethodDao
-    abstract val salesDao: SalesDao
-    abstract val successfulOrderDao: SuccessfulOrderDao
-    abstract val successfulSaleDao: SuccessfulSaleDao
-    abstract val successfulSaleAndDeliveryDao: SuccessfulSaleAndDeliveryDao
 
     companion object {
         @Volatile
@@ -51,7 +25,6 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
                 if (instance == null) {
                     instance = buildDataBase(context)
                     INSTANCE = instance
-                    INSTANCE?.populate()
                 }
 
                 return instance
@@ -62,42 +35,12 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
             return Room.databaseBuilder(
                 context.applicationContext,
                 CrowingRoosterDataBase::class.java,
-                "sleep_history_database"
+                "crowing_rooster_db"
             )
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build()
         }
 
-    }
-
-    private fun populate() {
-        Executors.newSingleThreadExecutor().execute {
-            if(INSTANCE?.companyDao?.getAll()?.isEmpty()!!) {
-                INSTANCE?.companyDao?.insertCompany(Company(company_name = "Cronora"))
-                INSTANCE?.companyDao?.insertCompany(Company(company_name = "Microno"))
-                INSTANCE?.companyDao?.insertCompany(Company(company_name = "Cronoa"))
-            }
-            if (INSTANCE?.deliveryStateDao?.getAll()?.isEmpty()!!) {
-                INSTANCE?.deliveryStateDao?.insertDeliveryState(DeliveryState(state = "Confirmada"))
-                INSTANCE?.deliveryStateDao?.insertDeliveryState(DeliveryState(state = "Pendiente"))
-            }
-            if(INSTANCE?.paymentMethodDao?.getAll()?.isEmpty()!!) {
-                INSTANCE?.paymentMethodDao?.insertPaymentMethod(PaymentMethod(payment_method = "Efectivo"))
-                INSTANCE?.paymentMethodDao?.insertPaymentMethod(PaymentMethod(payment_method = "Tarjeta"))
-            }
-            if(INSTANCE?.polarityDao?.getAll()?.isEmpty()!!) {
-                INSTANCE?.polarityDao?.insertPolarity(Polarity(type = "Derecha"))
-                INSTANCE?.polarityDao?.insertPolarity(Polarity(type = "Izquierda"))
-            }
-            if (INSTANCE?.qualityDao?.getAll()?.isEmpty()!!) {
-                INSTANCE?.qualityDao?.insertQuality(Quality(type = "Azul"))
-                INSTANCE?.qualityDao?.insertQuality(Quality(type = "Amarilla"))
-            }
-            if(/*INSTANCE?.userDao?.getAll() == null*/INSTANCE?.buyerDao?.getAll() == null) {
-                //INSTANCE?.userDao?.insertUser(User("A","A","Pipo","A","Buyer"))
-                INSTANCE?.buyerDao?.insertBuyer(Buyer("A","A","@uca.edu.sv",1))
-            }
-        }
     }
 }

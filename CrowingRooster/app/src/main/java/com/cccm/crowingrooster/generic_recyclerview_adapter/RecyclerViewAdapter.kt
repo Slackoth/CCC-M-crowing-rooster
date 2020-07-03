@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.database.entities.SellerClient
 
 abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     //A list that will contain any type of data, in this case, objects
-    private var listItem: MutableList<T>?
+    private var listItem: List<T>?
     private val cContext: Context
 
-    constructor(listOfObjects: MutableList<T>?, context: Context) {
+    constructor(listOfObjects: List<T>?, context: Context) {
         listItem = listOfObjects
         cContext = context
     }
@@ -31,7 +32,7 @@ abstract class GenericRecyclerViewAdapter<T>: RecyclerView.Adapter<RecyclerView.
         return listItem?.size ?: 0
     }
 
-    fun setDataSource(newList: MutableList<T>?) {
+    fun setDataSource(newList: List<T>?) {
         listItem = newList
         notifyDataSetChanged()
     }
