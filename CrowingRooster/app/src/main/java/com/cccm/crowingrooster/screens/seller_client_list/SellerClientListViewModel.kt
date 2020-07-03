@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.cccm.crowingrooster.database.daos.SellerClientDao
 import com.cccm.crowingrooster.database.entities.SellerClient
-import com.cccm.crowingrooster.network.repository.CrowingRoosterRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import kotlinx.coroutines.*
 

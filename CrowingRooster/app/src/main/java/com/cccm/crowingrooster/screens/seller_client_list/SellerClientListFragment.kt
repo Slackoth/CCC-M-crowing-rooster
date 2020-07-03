@@ -17,8 +17,6 @@ import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
-import com.cccm.crowingrooster.network.repository.CrowingRoosterRepository
-import com.cccm.crowingrooster.network.repository.CrowingRoosterRepositoryImpl
 import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
