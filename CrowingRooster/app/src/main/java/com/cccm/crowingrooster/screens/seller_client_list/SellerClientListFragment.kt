@@ -10,18 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
-import com.cccm.crowingrooster.data.db.entities.SellerClient
-import com.cccm.crowingrooster.data.db.daos.SellerClientDao
-import com.cccm.crowingrooster.data.network.data_source.CrowingRoosterNetworkDataSource
-import com.cccm.crowingrooster.data.network.data_source.CrowingRoosterNetworkDataSourceImpl
-import com.cccm.crowingrooster.data.repository.CrowingRoosterRepository
-import com.cccm.crowingrooster.data.repository.CrowingRoosterRepositoryImpl
-import com.cccm.crowingrooster.data.db.CrowingRoosterDataBase
-//import com.cccm.crowingrooster.database.entities.Buyer
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.SellerClientDao
+import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,8 +32,7 @@ class SellerClientListFragment : Fragment() {
     private lateinit var viewModel: SellerClientListViewModel
     private lateinit var app: Application
     private lateinit var sellerClientDao: SellerClientDao
-    private lateinit var crowingRoosterRepository: CrowingRoosterRepository
-    private lateinit var crowingRoosterNetworkDataSource: CrowingRoosterNetworkDataSource
+    private lateinit var sellerClientRepository: SellerClientRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SellerClient>
 
     override fun onCreateView(
@@ -60,12 +55,9 @@ class SellerClientListFragment : Fragment() {
         app = requireActivity().application
         sellerClientDao = CrowingRoosterDataBase.getInstance(app).sellerClientDao
 
-        crowingRoosterNetworkDataSource = CrowingRoosterNetworkDataSourceImpl.getInstance()
-        crowingRoosterRepository = CrowingRoosterRepositoryImpl.getInstance(sellerClientDao,crowingRoosterNetworkDataSource)
-
-        viewModelFactory = SellerClientViewModelFactory(crowingRoosterRepository,app)
+        sellerClientRepository = SellerClientRepository.getInstance(sellerClientDao)
+        viewModelFactory = SellerClientViewModelFactory(sellerClientRepository,app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerClientListViewModel::class.java)
-
 
         bind.apply {
             recyclerView = clientRv
@@ -77,15 +69,14 @@ class SellerClientListFragment : Fragment() {
 
         viewModel.clients.observe(viewLifecycleOwner, Observer {
             adapter.setDataSource(it)
-
         })
 
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            when(it) {
-                true -> bind.clientListProgressBar.visibility = View.VISIBLE
-                else -> bind.clientListProgressBar.visibility = View.GONE
-            }
-        })
+//        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+//            when(it) {
+//                true -> bind.clientListProgressBar.visibility = View.VISIBLE
+//                else -> bind.clientListProgressBar.visibility = View.GONE
+//            }
+//        })
 
         return bind.root
     }

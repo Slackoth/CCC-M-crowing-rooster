@@ -3,10 +3,10 @@ package com.cccm.crowingrooster.screens.seller_client_list
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.cccm.crowingrooster.data.repository.CrowingRoosterRepository
+import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 
 class SellerClientViewModelFactory(
-    private val sellerClientRepository: CrowingRoosterRepository,
+    private val sellerClientRepository: SellerClientRepository,
     private val app: Application
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

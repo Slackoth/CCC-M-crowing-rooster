@@ -10,8 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
-import com.cccm.crowingrooster.data.db.entities.SellerClient
-//import com.cccm.crowingrooster.database.entities.Buyer
+import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 
 
