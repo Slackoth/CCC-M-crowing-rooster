@@ -149,13 +149,22 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.0.0'
 
 
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.6.0'
 
+    //Moshi
+    implementation("com.squareup.moshi:moshi:1.9.3")
+    implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
 
     //multidex
     implementation 'com.android.support:multidex:1.0.3'
 
     //grpupie
     implementation "com.xwray:groupie:2.8.0"
+
+    //ThreeTenABP
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
