@@ -14,6 +14,7 @@ import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentLogInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 /**
  * A simple [Fragment] subclass.
@@ -41,6 +42,15 @@ class LogInFragment : Fragment() {
                 }
                 else {
                     ProcessSignIn()
+
+                    val useruid= FirebaseAuth.getInstance().uid
+                    val userType= FirebaseDatabase.getInstance().getReference("/users/$useruid")
+
+
+
+
+
+
                     if (userEt.text.toString().toUpperCase() == "SELLER@EXAMPLE.COM") {
                         it.findNavController()
                             .navigate(R.id.action_logInFragment_to_sellerMainScreen)
@@ -78,12 +88,13 @@ class LogInFragment : Fragment() {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,pswd)
             .addOnCompleteListener{
                 Log.d("MainActivity", "User Auth Process Correct")
-                //SigInActivity(email)
+
                 if(!it.isSuccessful) return@addOnCompleteListener
             }
             .addOnFailureListener{
                 Log.d("MainActivity", "User Credentials incorrect")
                 Toast.makeText(context, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
+                return@addOnFailureListener
             }
     }
 
