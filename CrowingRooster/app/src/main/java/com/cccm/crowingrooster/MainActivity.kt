@@ -26,10 +26,9 @@ import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), CommunicationInterface {
-
     private lateinit var navController: NavController
-    lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var  drawerLayout: DrawerLayout
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var  drawerLayout: DrawerLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
