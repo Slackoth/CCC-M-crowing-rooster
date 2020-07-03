@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.entities.Buyer
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
+import com.cccm.crowingrooster.screens.chat.Messages.ChatMessage
 
 
 object ViewHolderFactory {
@@ -43,9 +44,9 @@ object ViewHolderFactory {
             R.layout.order_details_item -> OngoingOrderViewHolder(
                 view
             )
-            R.layout.chat_item_layout -> ChatOrderView(
+           /* R.layout.chat_item_layout -> ChatOrderView(
                 view
-            )
+            )*/
             R.layout.open_orders_item_layout -> OpenOrderViewHolder(
                 view
             )
@@ -279,8 +280,8 @@ object ViewHolderFactory {
     }
 
 
-    class ChatOrderView(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Chat> {
+    /*class ChatOrderView(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<ChatMessage> {
 
         private val usrimg: ImageView = itemView.findViewById(R.id.profile_img)
         private val usrname: TextView = itemView.findViewById(R.id.chatname_text)
@@ -288,7 +289,7 @@ object ViewHolderFactory {
         private val mssgequant: TextView = itemView.findViewById(R.id.unread_messages_text)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.chat_item_layout)
 
-        override fun bind(listObject: Chat, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: ChatMessage, onClickLayout: () -> Unit, context: Context) {
             Glide.with(context).load(listObject.ppimg).into(usrimg)
             usrname.text = listObject.username
             chatmsge.text = listObject.Mssge
@@ -300,7 +301,7 @@ object ViewHolderFactory {
 
         }
 
-    }
+    }*/
 
     class OpenOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         GenericRecyclerViewAdapter.Binder<OpenOrder> {
