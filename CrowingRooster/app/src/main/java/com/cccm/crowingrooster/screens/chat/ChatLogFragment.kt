@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentChatLogBinding
 import com.cccm.crowingrooster.screens.chat.Messages.ChatMessage
+import com.cccm.crowingrooster.screens.sales.successful_sales.TAG
 import com.firebase.ui.auth.data.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlin.math.log
 
 
 class ChatLogFragment : Fragment() {
@@ -60,15 +62,17 @@ class ChatLogFragment : Fragment() {
 
         recyclerView.adapter=adapter
 
+        Log.d("tagazo",ChatFragment.clickedUser?.uid.toString() )
+
         return bind.root
     }
 
     private fun actionSendMessage(mensaje:String){
         //val reference= FirebaseDatabase.getInstance().getReference("/messages").push()
         val fromId= FirebaseAuth.getInstance().uid.toString()
-        val toId= "yjyiWwhW5RXPvbs65YvxN1zTJSX2"
+        val toId= ChatFragment.clickedUser!!.uid
         val reference= FirebaseDatabase.getInstance().getReference("/user_messages/$fromId/$toId").push()
-        val chatMessage= ChatMessage(reference.key!!, mensaje, fromId,"W0PqXizI6oPuOY2wzxUPd41nOcU2", System.currentTimeMillis()/1000)
+        val chatMessage= ChatMessage(reference.key!!, mensaje, fromId,toId, System.currentTimeMillis()/1000)
         val toReference= FirebaseDatabase.getInstance().getReference("/user_messages/$toId/$fromId").push()
         reference.setValue(chatMessage)
             .addOnSuccessListener {
@@ -81,11 +85,17 @@ class ChatLogFragment : Fragment() {
                 Log.d("ChatFragment","DoublePenetration ready!")
             }
 
+        val latestmessagesref= FirebaseDatabase.getInstance().getReference("/latest_messages/$fromId/$toId")
+        latestmessagesref.setValue(chatMessage)
+        val latestmssagesrefto= FirebaseDatabase.getInstance().getReference("/latest_messages/$toId/$fromId")
+        latestmssagesrefto.setValue(chatMessage)
+
     }
 
     private fun listenAllMessages(){
         val fromId= FirebaseAuth.getInstance().uid.toString()
-        val toId= "4awXCfrkKKcBwORmVMo7mU8IPL13"
+        //val toId= "4awXCfrkKKcBwORmVMo7mU8IPL13"// uid de seller, por ahorita
+        val toId= ChatFragment.clickedUser?.uid
         val ref = FirebaseDatabase.getInstance().getReference("/user_messages/$fromId/$toId")
             ref.addChildEventListener(object: ChildEventListener{
                 override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -133,6 +143,7 @@ class ChatLogFragment : Fragment() {
 class ChatFromItem(var text: String): Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         val MssgefromText:TextView=viewHolder.itemView.findViewById(R.id.textview_from_row)
+        Glide.with(viewHolder.itemView).load(ChatFragment.clickedUser?.profileImageUrl).into(viewHolder.itemView.findViewById(R.id.imageview_chat_from_row))
 
         MssgefromText.text=text
     }

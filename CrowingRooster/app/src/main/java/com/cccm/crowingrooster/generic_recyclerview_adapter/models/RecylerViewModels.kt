@@ -20,7 +20,7 @@ data class Battery(var modelo: String, var voltaje: String, var CCA: String, var
 
 
 @Parcelize
-class User(
+class UserDatabase(
     val uid: String,
     val status:String, val username: String, val profileImageUrl: String
 ): Parcelable {

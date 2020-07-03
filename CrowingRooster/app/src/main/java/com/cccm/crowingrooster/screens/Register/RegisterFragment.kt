@@ -15,7 +15,7 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentRegisterBinding
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.User
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.UserDatabase
 import com.cccm.crowingrooster.screens.sales.successful_sales.TAG
 
 import com.google.firebase.auth.FirebaseAuth
@@ -138,7 +138,7 @@ class RegisterFragment : Fragment() {
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
         //uio status username profile
-        val user = User(uid,"buyer",username_edittext_register.text.toString(), profileImageUrl )
+        val user = UserDatabase(uid,"buyer",username_edittext_register.text.toString(), profileImageUrl )
 
         ref.setValue(user)
             .addOnSuccessListener {
