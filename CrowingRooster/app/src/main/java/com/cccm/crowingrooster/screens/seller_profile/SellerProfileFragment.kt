@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
@@ -55,11 +56,11 @@ class SellerProfileFragment : Fragment() {
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerProfileViewModel::class.java)
 
         viewModel.seller.observe(viewLifecycleOwner, Observer {
-            bind.codeDescTv.text = it.sellerId
+            bind.codeDescTv.text = it.code
             bind.nameDescTv.text = it.name
-            bind.telDescTv.text = it.phoneNumber
+            bind.telDescTv.text = it.phone
             bind.emailDescTv.text = it.email
-
+            Glide.with(bind.profileCiv.context).load(it.img).into(bind.profileCiv)
         })
         //bind.sellerProfileViewModel = viewModel
 

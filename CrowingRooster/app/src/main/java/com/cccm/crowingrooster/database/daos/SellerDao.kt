@@ -12,6 +12,6 @@ interface SellerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(seller: Seller)
 
-    @Query("SELECT * FROM seller WHERE seller_id = :id")
-    fun getSeller(id: String): LiveData<Seller>
+    @Query("SELECT * FROM seller WHERE code = :code")
+    fun getSeller(code: String): LiveData<Seller>
 }

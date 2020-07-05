@@ -9,7 +9,7 @@ import com.cccm.crowingrooster.database.entities.Seller
 import com.cccm.crowingrooster.database.entities.SellerClient
 
 
-@Database(entities = [SellerClient::class,Seller::class],version = 1,exportSchema = false)
+@Database(entities = [SellerClient::class,Seller::class],version = 2,exportSchema = false)
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
     abstract val sellerClientDao: SellerClientDao

@@ -102,6 +102,7 @@
     <string name="chart">Carrito De Compras</string>
     <string name="EnterMssge_text">Enter Message</string>
     <string name="send_text">Send</string>
+    <string name="company">Compañía</string>
 
 
     <string-array name="payment_array">

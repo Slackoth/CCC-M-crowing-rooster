@@ -102,27 +102,26 @@ object ViewHolderFactory {
     internal class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         GenericRecyclerViewAdapter.Binder<SellerClient> {
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
-        private val email: EditText = itemView.findViewById(R.id.email_et)
-        private val clientImg: ImageView = itemView.findViewById(R.id.client_img)
+        private val emailEt: EditText = itemView.findViewById(R.id.email_et)
+        private val companyEt: EditText = itemView.findViewById(R.id.company_et)
+        private val img: ImageView = itemView.findViewById(R.id.client_img)
         private val callBtt: Button = itemView.findViewById(R.id.call_btt)
         private val messageBtt: Button = itemView.findViewById(R.id.message_btt)
-        private val expandableLayout: ConstraintLayout =
-            itemView.findViewById(R.id.expandable_layout)
+        private val expandableLayout: ConstraintLayout = itemView.findViewById(R.id.expandable_layout)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.parent_layout)
         private var expanded: Boolean = false
 
         private fun isExpanded(): Boolean = expanded
 
-        override fun bind(listObject: /*Client*/SellerClient, func: () -> Unit, context: Context) {
-//            clientEt.setText(listObject.client)
-//            email.setText(listObject.email)
-//            Glide.with(clientImg.context).load(listObject.imgUrl).into(clientImg)
-
+        override fun bind(listObject: SellerClient, func: () -> Unit, context: Context) {
+            companyEt.setText(listObject.company)
             clientEt.setText(listObject.name)
-            email.setText(listObject.email)
+            emailEt.setText(listObject.email)
+            Glide.with(img.context).load(listObject.img).into(img)
 
             clientEt.inputType = InputType.TYPE_NULL
-            email.inputType = InputType.TYPE_NULL
+            emailEt.inputType = InputType.TYPE_NULL
+            companyEt.inputType = InputType.TYPE_NULL
             expandableLayout.visibility = View.GONE
 
             layout.setOnClickListener {

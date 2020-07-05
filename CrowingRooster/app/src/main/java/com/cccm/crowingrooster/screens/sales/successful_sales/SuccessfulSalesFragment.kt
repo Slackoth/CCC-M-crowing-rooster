@@ -44,13 +44,7 @@ class SuccessfulSalesFragment : Fragment() {
 
         bind.apply {
             recyclerView = succesfulSalesRv
-//            addBtt.setOnClickListener {
-//                viewModel.addSale(Sale(
-//                    "Mr. Peanutbutter",
-//                    "20/08/1969",
-//                    69,
-//                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"))
-//            }
+            lifecycleOwner = this@SuccessfulSalesFragment
         }
 
         initRecyclerview()

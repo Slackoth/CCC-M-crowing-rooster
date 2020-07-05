@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://192.168.1.5:3000/users/"
+private const val BASE_URL = "http://192.168.1.5:3000/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -21,12 +21,12 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CrowingRoosterApiService {
-    @GET("buyer")
+    @GET("sellerclient/all")
     suspend fun getAllSellerClientAsync(): List<SellerClient>
 
-    @GET("seller")
+    @GET("seller/specific")
     suspend fun getSellerAsync(
-        @Query("id") id: String
+        @Query("codigo") codigo: String
     ): List<Seller>
 
     object CrowingRoosterApi {
