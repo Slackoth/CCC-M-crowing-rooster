@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 
@@ -62,19 +63,19 @@ object ViewHolderFactory {
 
     //TODO: Every element from a Layout from a RecyclerView must be bind to its respective view here
     class SaleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Sale> {
+        GenericRecyclerViewAdapter.Binder<SalePreview> {
 
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
         private val totalEt: EditText = itemView.findViewById(R.id.total_et)
         private val dateEt: EditText = itemView.findViewById(R.id.date_et)
-        private val product: ImageView = itemView.findViewById(R.id.img)
+        private val img: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.sale_item_layout)
 
-        override fun bind(listObject: Sale, onClickLayout: () -> Unit, context: Context) {
-            clientEt.setText(listObject.client)
+        override fun bind(listObject: SalePreview, onClickLayout: () -> Unit, context: Context) {
+            clientEt.setText(listObject.name)
             totalEt.setText(listObject.total.toString())
-            dateEt.setText(listObject.date)
-            Glide.with(product.context).load(listObject.imgUrl).into(product)
+            dateEt.setText(listObject.pendingDate)
+            Glide.with(img.context).load(listObject.img).into(img)
 
             clientEt.inputType = InputType.TYPE_NULL
             totalEt.inputType = InputType.TYPE_NULL

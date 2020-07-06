@@ -13,18 +13,6 @@ class SellerClientRepository (private val sellerClientDao: SellerClientDao) {
     fun getAll(): LiveData<List<SellerClient>> {
         refreshSellerClient()
         return sellerClientDao.getAll()
-//        val clientList = MutableLiveData<List<SellerClient>>()
-//        GlobalScope.launch {
-//            try {
-//                val clients = CrowingRoosterApiService.CrowingRoosterApi
-//                    .retrofitService.getAllSellerClientAsync()
-//                clientList.value = clients
-//            }
-//            catch (e: Exception) {
-//                Log.d("Connection","No connection: ${e.message}")
-//            }
-//        }
-//        return clientList
     }
 
     private fun refreshSellerClient() {

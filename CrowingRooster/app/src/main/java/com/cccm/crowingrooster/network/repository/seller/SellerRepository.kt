@@ -22,6 +22,7 @@ class SellerRepository(private val sellerDao: SellerDao) {
                 try {
                     val sellers = CrowingRoosterApiService.CrowingRoosterApi
                         .retrofitService.getSellerAsync(code)
+
                     for (seller in sellers) {
                         sellerDao.insert(seller)
                     }

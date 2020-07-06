@@ -1,70 +1,93 @@
 package com.cccm.crowingrooster.screens.sales.ongoing_sales
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.SalePreviewDao
+import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.databinding.FragmentOngoingSalesBinding
+import com.cccm.crowingrooster.databinding.FragmentSellerClientListBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Sale
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.repository.seller.SalePreviewRepository
+import com.cccm.crowingrooster.screens.seller_client_list.SellerClientListViewModel
+import com.cccm.crowingrooster.screens.seller_client_list.SellerClientViewModelFactory
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class OngoingSalesFragment : Fragment() {
 
+    private lateinit var bind: FragmentOngoingSalesBinding
     private lateinit var recyclerView: RecyclerView
-    private var saleList: MutableList<Any> = mutableListOf()
+    private lateinit var viewModelFactory: OngoingSalesViewModelFactory
+    private lateinit var viewModel: OngoingSalesViewModel
+    private lateinit var app: Application
+    private lateinit var salePreviewDao: SalePreviewDao
+    private lateinit var salePreviewRepository: SalePreviewRepository
+    private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bind = DataBindingUtil.inflate<FragmentOngoingSalesBinding>(
+        bind = DataBindingUtil.inflate(
             inflater, R.layout.fragment_ongoing_sales,
             container, false
         )
 
-        //(activity as MainActivity).supportActionBar?.title = getString(R.string.ongoing_sales)
+//        (activity as MainActivity).run {
+//            showTopBar()
+//            supportActionBar?.title = getString(R.string.ongoing_sales)
+//            navigation_view.menu.clear()
+//            navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
+//        }
 
-        recyclerView = bind.recyclerViewOsf
-        saleList.addAll(
-            listOf(
-                Sale(
-                    "Mr. Peanutbutter", "20/08/1969", 5,
-                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-                ),
-                Sale(
-                    "Luis",
-                    "20/08/1969",
-                    10,
-                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-                ),
-                Sale(
-                    "Christian",
-                    "20/08/1969",
-                    15,
-                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-                ),
-                Sale(
-                    "Pipo",
-                    "20/08/1969",
-                    20,
-                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-                )
-            )
-        )
+        bind.apply {
+            recyclerView = salePreviewRv
+            lifecycleOwner = this@OngoingSalesFragment
+        }
 
+        app = requireActivity().application
+        salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
+        salePreviewRepository = SalePreviewRepository.getInstance(salePreviewDao)
+
+        viewModelFactory = OngoingSalesViewModelFactory(salePreviewRepository,app)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(OngoingSalesViewModel::class.java)
+
+        initRecyclerview()
+
+        viewModel.salePreviews.observe(viewLifecycleOwner, Observer {
+            adapter.setDataSource(it)
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                true -> bind.salePreviewListProgressBar.visibility = View.VISIBLE
+                else -> bind.salePreviewListProgressBar.visibility = View.GONE
+            }
+        })
+
+
+        return bind.root
+    }
+
+    private fun initRecyclerview() {
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(saleList, requireContext()) {
+        adapter = object : GenericRecyclerViewAdapter<SalePreview>(viewModel.salePreviews.value, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,
@@ -95,7 +118,5 @@ class OngoingSalesFragment : Fragment() {
             )
         )
         recyclerView.adapter = adapter
-
-        return bind.root
     }
 }

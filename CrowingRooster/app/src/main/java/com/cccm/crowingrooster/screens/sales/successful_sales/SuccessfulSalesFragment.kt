@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.screens.sales.successful_sales
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,10 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.SalePreviewDao
+import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.databinding.FragmentSuccessfulSalesBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.repository.seller.SalePreviewRepository
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogFragment
 
 /**
@@ -28,6 +33,11 @@ class SuccessfulSalesFragment : Fragment() {
     private lateinit var bind: FragmentSuccessfulSalesBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: SuccessfulSalesViewModel
+    private lateinit var viewModelFactory: SuccessfulSalesViewModelFactory
+    private lateinit var app: Application
+    private lateinit var salePreviewDao: SalePreviewDao
+    private lateinit var salePreviewRepository: SalePreviewRepository
+    private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
 
 
     @SuppressLint("LogNotTimber")
@@ -40,7 +50,16 @@ class SuccessfulSalesFragment : Fragment() {
             container, false
         )
 
-        viewModel = ViewModelProvider(this).get(SuccessfulSalesViewModel::class.java)
+        app = requireActivity().application
+        salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
+        salePreviewRepository = SalePreviewRepository.getInstance(salePreviewDao)
+
+        viewModelFactory =
+            SuccessfulSalesViewModelFactory(
+                salePreviewRepository,
+                app
+            )
+        viewModel = ViewModelProvider(this,viewModelFactory).get(SuccessfulSalesViewModel::class.java)
 
         bind.apply {
             recyclerView = succesfulSalesRv
@@ -49,8 +68,15 @@ class SuccessfulSalesFragment : Fragment() {
 
         initRecyclerview()
 
-        viewModel.successfulSalesViewModel.observe(viewLifecycleOwner, Observer {
-            recyclerView.adapter?.notifyDataSetChanged()
+        viewModel.salePreviews.observe(viewLifecycleOwner, Observer {
+            adapter.setDataSource(it)
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                true -> bind.salePreviewListProgressBar.visibility = View.VISIBLE
+                else -> bind.salePreviewListProgressBar.visibility = View.GONE
+            }
         })
 
 //        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
@@ -63,7 +89,7 @@ class SuccessfulSalesFragment : Fragment() {
 
     private fun initRecyclerview() {
         //Creating the RecyclerView Adapter
-         val adapter = object : GenericRecyclerViewAdapter<Any>(viewModel.successfulSalesViewModel.value!!, requireContext()) {
+         adapter = object : GenericRecyclerViewAdapter<SalePreview>(viewModel.salePreviews.value, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,
