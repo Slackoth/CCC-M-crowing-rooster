@@ -1,5 +1,7 @@
 package com.cccm.crowingrooster.network
 
+import com.cccm.crowingrooster.database.entities.SaleDetails
+import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.Seller
 import com.cccm.crowingrooster.database.entities.SellerClient
 import com.squareup.moshi.Moshi
@@ -9,7 +11,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://192.168.1.5:3000/users/"
+private const val BASE_URL = "http://192.168.1.22:3000/"
+    //"http://192.168.1.5:3000/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -21,13 +24,39 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CrowingRoosterApiService {
-    @GET("buyer")
-    suspend fun getAllSellerClientAsync(): List<SellerClient>
+    @GET("sellerclient/all")
+    suspend fun getAllSellerClientAsync(
+        @Query("codigo") codigo: String
+    ): List<SellerClient>
 
-    @GET("seller")
+    @GET("seller/specific")
     suspend fun getSellerAsync(
-        @Query("id") id: String
+        @Query("codigo") codigo: String
     ): List<Seller>
+
+    @GET("salepreview/successful")
+    suspend fun getSuccessfulSalePreviewAsync(
+        @Query("codigo") codigo: String
+        //@Query("estado") estado: String
+    ): List<SalePreview>
+
+    @GET("salepreview/ongoing")
+    suspend fun getOngoingSalePreviewAsync(
+        @Query("codigo") codigo: String
+        //@Query("estado") estado: String
+    ): List<SalePreview>
+
+    @GET("saledetails/successful")
+    suspend fun getSuccessfulSaleDetailsAsync(
+        @Query("codigo") codigo: String,
+        @Query("ordenId") ordenId: String
+    ): List<SaleDetails>
+
+    @GET("saledetails/ongoing")
+    suspend fun getOngoingSaleDetailsAsync(
+        @Query("codigo") codigo: String,
+        @Query("ordenId") ordenId: String
+    ): List<SaleDetails>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

@@ -5,13 +5,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.cccm.crowingrooster.database.entities.Seller
+import com.cccm.crowingrooster.database.entities.SalePreview
 
 @Dao
-interface SellerDao {
+interface SalePreviewDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(seller: Seller)
+    fun insert(salePreview: SalePreview)
 
-    @Query("SELECT * FROM seller WHERE code = :code")
-    fun getSeller(code: String): LiveData<Seller>
+    @Query("SELECT * FROM sale_preview where state = :state")
+    fun getAll(state: String): LiveData<List<SalePreview>>
 }

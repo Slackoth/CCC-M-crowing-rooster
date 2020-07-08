@@ -71,12 +71,12 @@ class SellerClientListFragment : Fragment() {
             adapter.setDataSource(it)
         })
 
-//        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-//            when(it) {
-//                true -> bind.clientListProgressBar.visibility = View.VISIBLE
-//                else -> bind.clientListProgressBar.visibility = View.GONE
-//            }
-//        })
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                true -> bind.clientListProgressBar.visibility = View.VISIBLE
+                else -> bind.clientListProgressBar.visibility = View.GONE
+            }
+        })
 
         return bind.root
     }

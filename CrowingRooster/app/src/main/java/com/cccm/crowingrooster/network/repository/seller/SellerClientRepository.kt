@@ -10,29 +10,17 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.ZonedDateTime
 
 class SellerClientRepository (private val sellerClientDao: SellerClientDao) {
-    fun getAll(): LiveData<List<SellerClient>> {
-        refreshSellerClient()
+    fun getAll(code: String): LiveData<List<SellerClient>> {
+        refreshSellerClient(code)
         return sellerClientDao.getAll()
-//        val clientList = MutableLiveData<List<SellerClient>>()
-//        GlobalScope.launch {
-//            try {
-//                val clients = CrowingRoosterApiService.CrowingRoosterApi
-//                    .retrofitService.getAllSellerClientAsync()
-//                clientList.value = clients
-//            }
-//            catch (e: Exception) {
-//                Log.d("Connection","No connection: ${e.message}")
-//            }
-//        }
-//        return clientList
     }
 
-    private fun refreshSellerClient() {
+    private fun refreshSellerClient(code: String) {
         GlobalScope.launch {
             if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
                 try {
                     val clients = CrowingRoosterApiService.CrowingRoosterApi
-                        .retrofitService.getAllSellerClientAsync()
+                        .retrofitService.getAllSellerClientAsync(code)
                     for (client in clients) {
                         sellerClientDao.insert(client)
                     }

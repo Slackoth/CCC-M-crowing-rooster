@@ -11,21 +11,22 @@ import org.threeten.bp.ZonedDateTime
 
 class SellerRepository(private val sellerDao: SellerDao) {
 
-    fun getSpecific(id: String): LiveData<Seller> {
-        refreshSeller(id)
-        return sellerDao.getSeller(id)
+    fun getSpecific(code: String): LiveData<Seller> {
+        refreshSeller(code)
+        return sellerDao.getSeller(code)
     }
 
-    private fun refreshSeller(id: String) {
+    private fun refreshSeller(code: String) {
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             GlobalScope.launch {
                 try {
                     val sellers = CrowingRoosterApiService.CrowingRoosterApi
-                        .retrofitService.getSellerAsync(id)
+                        .retrofitService.getSellerAsync(code)
+                    Log.d("sellers","${sellers}")
                     for (seller in sellers) {
+                        Log.d("seller","${seller}")
                         sellerDao.insert(seller)
                     }
-                    Log.d("PTM2","${sellers[0].sellerId}")
                 }
                 catch (e: Exception) {
                     Log.d("Connection","No connection: ${e.message}")

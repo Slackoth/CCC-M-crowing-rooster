@@ -1,7 +1,10 @@
 package com.cccm.crowingrooster.generic_recyclerview_adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.widget.*
 import android.widget.EditText
@@ -10,7 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.database.entities.SaleMiniOrders
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 import com.cccm.crowingrooster.screens.chat.Messages.ChatMessage
 
@@ -23,7 +28,7 @@ object ViewHolderFactory {
             R.layout.sale_item_layout -> SaleViewHolder(
                 view
             )
-            R.layout.sale_details_item_layout -> OngoingSaleViewHolder(
+            R.layout.sale_details_item_layout -> SaleMiniOrderViewHolder(
                 view
             )
             R.layout.product_item_layout -> ProductViewHolder(
@@ -63,19 +68,19 @@ object ViewHolderFactory {
 
     //TODO: Every element from a Layout from a RecyclerView must be bind to its respective view here
     class SaleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Sale> {
+        GenericRecyclerViewAdapter.Binder<SalePreview> {
 
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
         private val totalEt: EditText = itemView.findViewById(R.id.total_et)
         private val dateEt: EditText = itemView.findViewById(R.id.date_et)
-        private val product: ImageView = itemView.findViewById(R.id.img)
+        private val img: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.sale_item_layout)
 
-        override fun bind(listObject: Sale, onClickLayout: () -> Unit, context: Context) {
-            clientEt.setText(listObject.client)
+        override fun bind(listObject: SalePreview, onClickLayout: () -> Unit, context: Context) {
+            clientEt.setText(listObject.name)
             totalEt.setText(listObject.total.toString())
             dateEt.setText(listObject.date)
-            Glide.with(product.context).load(listObject.imgUrl).into(product)
+            Glide.with(img.context).load(listObject.img).into(img)
 
             clientEt.inputType = InputType.TYPE_NULL
             totalEt.inputType = InputType.TYPE_NULL
@@ -87,15 +92,21 @@ object ViewHolderFactory {
         }
     }
 
-    internal class OngoingSaleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<SaleDetails> {
+    internal class SaleMiniOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<SaleMiniOrders> {
 
         private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
         private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
 
-        override fun bind(listObject: SaleDetails, func: () -> Unit, context: Context) {
+        override fun bind(listObject: SaleMiniOrders, func: () -> Unit, context: Context) {
+            Log.d("listObject","$listObject")
             quantityTv.text = listObject.quantity.toString()
-            modelTv.text = listObject.model
+            modelTv.text = modelTv.context.resources.getString(
+                R.string.show_battery_format,
+                listObject.model,
+                listObject.polarity,
+                listObject.quality
+            )
         }
 
     }
@@ -103,27 +114,26 @@ object ViewHolderFactory {
     internal class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         GenericRecyclerViewAdapter.Binder<SellerClient> {
         private val clientEt: EditText = itemView.findViewById(R.id.client_et)
-        private val email: EditText = itemView.findViewById(R.id.email_et)
-        private val clientImg: ImageView = itemView.findViewById(R.id.client_img)
+        private val emailEt: EditText = itemView.findViewById(R.id.email_et)
+        private val companyEt: EditText = itemView.findViewById(R.id.company_et)
+        private val img: ImageView = itemView.findViewById(R.id.client_img)
         private val callBtt: Button = itemView.findViewById(R.id.call_btt)
         private val messageBtt: Button = itemView.findViewById(R.id.message_btt)
-        private val expandableLayout: ConstraintLayout =
-            itemView.findViewById(R.id.expandable_layout)
+        private val expandableLayout: ConstraintLayout = itemView.findViewById(R.id.expandable_layout)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.parent_layout)
         private var expanded: Boolean = false
 
         private fun isExpanded(): Boolean = expanded
 
-        override fun bind(listObject: /*Client*/SellerClient, func: () -> Unit, context: Context) {
-//            clientEt.setText(listObject.client)
-//            email.setText(listObject.email)
-//            Glide.with(clientImg.context).load(listObject.imgUrl).into(clientImg)
-
+        override fun bind(listObject: SellerClient, func: () -> Unit, context: Context) {
+            companyEt.setText(listObject.company)
             clientEt.setText(listObject.name)
-            email.setText(listObject.email)
+            emailEt.setText(listObject.email)
+            Glide.with(img.context).load(listObject.img).into(img)
 
             clientEt.inputType = InputType.TYPE_NULL
-            email.inputType = InputType.TYPE_NULL
+            emailEt.inputType = InputType.TYPE_NULL
+            companyEt.inputType = InputType.TYPE_NULL
             expandableLayout.visibility = View.GONE
 
             layout.setOnClickListener {
