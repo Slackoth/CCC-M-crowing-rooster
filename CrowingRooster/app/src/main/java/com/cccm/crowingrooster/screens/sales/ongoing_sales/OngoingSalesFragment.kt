@@ -2,6 +2,7 @@ package com.cccm.crowingrooster.screens.sales.ongoing_sales
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ import com.cccm.crowingrooster.network.repository.seller.SalePreviewRepository
 import com.cccm.crowingrooster.screens.seller_client_list.SellerClientListViewModel
 import com.cccm.crowingrooster.screens.seller_client_list.SellerClientViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 /**
  * A simple [Fragment] subclass.
@@ -97,9 +99,29 @@ class OngoingSalesFragment : Fragment() {
 
             override fun getOnClickLayout(): () -> Unit {
                 return { ->
-                    this@OngoingSalesFragment.findNavController()
-                        .navigate(R.id.ongoingSalesDetailsFragment)
+//                    var action = OngoingSalesFragmentDirections
+//                        .actionOngoingSalesFragmentToOngoingSalesDetailsFragment()
+                    val globalAction = NavGraphDirections.actionGlobalOngoingSalesFragmentToOngoingSalesDetailsFragment()
+                    globalAction.code = "V-2020-0"
+                    globalAction.orderId = "O-2020-1"
+                    globalAction.saleId = "VT-2020-2"
 
+//                    action.code = "V-2020-0"
+//                    action.orderId = "O-2020-1"
+//                    action.saleId = "VT-2020-2"
+
+                    try {
+                        this@OngoingSalesFragment.findNavController().navigate(globalAction)
+//                      findNavController()
+//                        .navigate(action)
+//                      this@OngoingSalesFragment.findNavController()
+//                        .navigate(action)
+                        //R.id.ongoingSalesDetailsFragment
+                    }
+                    catch (e: Exception) {
+                        Log.d("Target","${R.id.ongoingSalesDetailsFragment}")
+                        Log.d("Emensaje","${e.message}")
+                    }
 
                 }
             }

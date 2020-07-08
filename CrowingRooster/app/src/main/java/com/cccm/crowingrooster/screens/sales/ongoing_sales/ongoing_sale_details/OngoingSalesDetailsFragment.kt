@@ -57,12 +57,14 @@ class OngoingSalesDetailsFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
+        val args = arguments?.let { OngoingSalesDetailsFragmentArgs.fromBundle(it) }
+
         app = requireActivity().application
         saleDetailsDao = CrowingRoosterDataBase.getInstance(app).saleDetailsDao
         saleMiniOrdersDao = CrowingRoosterDataBase.getInstance(app).saleMiniOrdersDao
         saleDetailsRepository = SaleDetailsRepository.getInstance(saleDetailsDao,saleMiniOrdersDao)
 
-        viewModelFactory = OngoingSaleDetailsViewModelFactory(saleDetailsRepository,app)
+        viewModelFactory = OngoingSaleDetailsViewModelFactory(saleDetailsRepository,app,args?.code ?: "",args?.orderId ?: "",args?.saleId ?: "")
         viewModel = ViewModelProvider(this,viewModelFactory).get(OngoingSalesDetailsViewModel::class.java)
 
         bind.apply {

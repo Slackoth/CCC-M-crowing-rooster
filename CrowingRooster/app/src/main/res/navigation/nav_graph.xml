@@ -5,6 +5,9 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/logInFragment">
 
+    <action android:id="@+id/action_global_ongoingSalesFragment_to_ongoingSalesDetailsFragment"
+        app:destination="@+id/ongoingSalesDetailsFragment"/>
+
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.cccm.crowingrooster.screens.login.LogInFragment"
@@ -85,6 +88,18 @@
         <action
             android:id="@+id/action_ongoingSalesDetailsFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <argument
+            android:name="code"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="orderId"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="saleId"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/catalogueFragment"

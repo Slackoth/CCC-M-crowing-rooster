@@ -8,11 +8,14 @@ import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_de
 
 class OngoingSaleDetailsViewModelFactory(
     private val saleDetailsRepository: SaleDetailsRepository,
-    private val app: Application
+    private val app: Application,
+    private val code: String?,
+    private val orderId: String?,
+    private val saleId: String?
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(OngoingSalesDetailsViewModel::class.java)) {
-            return OngoingSalesDetailsViewModel(saleDetailsRepository,app) as T
+            return OngoingSalesDetailsViewModel(saleDetailsRepository,app,code,orderId,saleId) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

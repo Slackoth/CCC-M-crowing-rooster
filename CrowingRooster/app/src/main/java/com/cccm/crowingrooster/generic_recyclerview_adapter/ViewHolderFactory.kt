@@ -3,6 +3,7 @@ package com.cccm.crowingrooster.generic_recyclerview_adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
+import android.os.SystemClock
 import android.text.InputType
 import android.util.Log
 import android.view.View
@@ -75,8 +76,10 @@ object ViewHolderFactory {
         private val dateEt: EditText = itemView.findViewById(R.id.date_et)
         private val img: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.sale_item_layout)
+        var lastClickTime: Long = 0;
 
         override fun bind(listObject: SalePreview, onClickLayout: () -> Unit, context: Context) {
+
             clientEt.setText(listObject.name)
             totalEt.setText(listObject.total.toString())
             dateEt.setText(listObject.date)
@@ -87,6 +90,10 @@ object ViewHolderFactory {
             dateEt.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener {
+                if(SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return@setOnClickListener
+                }
+                lastClickTime = SystemClock.elapsedRealtime()
                 onClickLayout()
             }
         }
