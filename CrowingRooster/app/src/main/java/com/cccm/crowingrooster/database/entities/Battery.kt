@@ -16,6 +16,7 @@ data class Battery(
     val capacidad_reserva:Int,
     val tipo:String,
     val amperaje:Int,
-    val cca:Int
+    val cca:Int,
+    val product_img:String
 )
 

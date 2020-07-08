@@ -31,12 +31,10 @@ interface CrowingRoosterApiService {
         @Query("codigo") codigo: String
     ): List<SellerClient>
 
-    @GET("seller/specific")
+        @GET("seller/specific")
     suspend fun getSellerAsync(
         @Query("codigo") codigo: String
     ): List<Seller>
-
-
 
 
     @GET("salepreview/successful")

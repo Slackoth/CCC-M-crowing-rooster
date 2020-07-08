@@ -13,7 +13,6 @@ interface BatteryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(battery: Battery)
 
-
     @Query("SELECT * FROM battery WHERE id_bateria = :id_bateria")
     fun getBattery(id_bateria:Int): LiveData<Battery>
 }

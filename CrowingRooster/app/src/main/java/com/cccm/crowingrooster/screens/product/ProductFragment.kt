@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
@@ -20,6 +21,7 @@ import com.cccm.crowingrooster.database.daos.SellerDao
 import com.cccm.crowingrooster.databinding.FragmentProductBinding
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
+import com.cccm.crowingrooster.screens.chat.ChatFragment
 import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModel
 import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -63,13 +65,11 @@ class ProductFragment : Fragment() {
 
 
         viewModel.battery.observe(viewLifecycleOwner, Observer {
-//            bind.codeDescTv.text = it.sellerId
-//            bind.nameDescTv.text = it.name
-//            bind.telDescTv.text = it.phoneNumber
-//            bind.emailDescTv.text = it.email
+            binding.ProductTitleText.text=it.modelo
+            binding.descriptionProduct.text= "Las Baterias ${it.modelo} poseen dimensiones estandares de ${it.dimensiones} con una polaridad ${it.direccion}  una capacidad de reserva ${it.capacidad_reserva} y un amperaje de ${it.amperaje} siento esta una opcion de calidad ${it.tipo}"
+//           context?.let { it1 -> Glide.with(it1).load(it.product_img).into(binding.productImg) }
 
-//            binding.ProductTitleText.text=it.modelo
-
+            Glide.with(binding.productImg.context).load(it.product_img).into(binding.productImg)
         })
 
 

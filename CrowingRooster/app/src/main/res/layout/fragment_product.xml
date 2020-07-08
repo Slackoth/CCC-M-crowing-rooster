@@ -29,14 +29,14 @@
             android:textAlignment="center"
             android:textColor="@color/on_primary"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toTopOf="@+id/product_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/product_img"
             android:layout_width="150dp"
             android:layout_height="131dp"
             app:layout_constraintBottom_toTopOf="@+id/Estilos"
@@ -49,7 +49,7 @@
             app:srcCompat="@drawable/ic_rooster_colored_512dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/description_product"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/description_product" />
 
         <Button
             android:id="@+id/Estilos"
@@ -94,11 +94,11 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/Estilos"
             android:textColor="@color/on_primary"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintBottom_toTopOf="@+id/description_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/product_img" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

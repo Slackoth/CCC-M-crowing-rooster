@@ -27,12 +27,18 @@ fun getSpecific(id: Int): LiveData<Battery> {
 
 
     private fun refreshBattery(id: Int) {
+        Log.d("Caca", "Batteries.toString()")
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
+            Log.d("Caca", "*x2")
             GlobalScope.launch {
+                Log.d("Caca", "suputamadre")
                 try {
+                    Log.d("Caca", "Suputamadre*2")
                     val Batteries = CrowingRoosterApiService.CrowingRoosterApi
                         .retrofitService.getProductAsync(id)
+                    Log.d("Caca", Batteries.toString())
                     for (Battery in Batteries) {
+                        Log.d("Caca", "pipomelachupas")
                         BatteryDao.insert(Battery)
                     }
                     Log.d("Bttry", "${Batteries[0].modelo}")
@@ -40,6 +46,8 @@ fun getSpecific(id: Int): LiveData<Battery> {
                     Log.d("Connection", "No connection: ${e.message}")
                 }
             }
+        }else{
+            Log.d("Caca", "Cacth la log")
         }
     }
 
