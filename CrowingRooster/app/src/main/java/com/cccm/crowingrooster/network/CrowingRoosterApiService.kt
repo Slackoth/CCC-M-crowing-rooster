@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster.network
 
+import com.cccm.crowingrooster.database.entities.SaleDetails
 import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.Seller
 import com.cccm.crowingrooster.database.entities.SellerClient
@@ -24,18 +25,38 @@ private val retrofit = Retrofit.Builder()
 
 interface CrowingRoosterApiService {
     @GET("sellerclient/all")
-    suspend fun getAllSellerClientAsync(): List<SellerClient>
+    suspend fun getAllSellerClientAsync(
+        @Query("codigo") codigo: String
+    ): List<SellerClient>
 
     @GET("seller/specific")
     suspend fun getSellerAsync(
         @Query("codigo") codigo: String
     ): List<Seller>
 
-    @GET("salepreview/all")
-    suspend fun getAllSalePreviewAsync(
-        @Query("codigo") codigo: String,
-        @Query("estado") estado: String
+    @GET("salepreview/successful")
+    suspend fun getSuccessfulSalePreviewAsync(
+        @Query("codigo") codigo: String
+        //@Query("estado") estado: String
     ): List<SalePreview>
+
+    @GET("salepreview/ongoing")
+    suspend fun getOngoingSalePreviewAsync(
+        @Query("codigo") codigo: String
+        //@Query("estado") estado: String
+    ): List<SalePreview>
+
+    @GET("saledetails/successful")
+    suspend fun getSuccessfulSaleDetailsAsync(
+        @Query("codigo") codigo: String,
+        @Query("ordenId") ordenId: String
+    ): List<SaleDetails>
+
+    @GET("saledetails/ongoing")
+    suspend fun getOngoingSaleDetailsAsync(
+        @Query("codigo") codigo: String,
+        @Query("ordenId") ordenId: String
+    ): List<SaleDetails>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

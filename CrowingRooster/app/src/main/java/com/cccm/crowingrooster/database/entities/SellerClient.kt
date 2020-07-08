@@ -6,7 +6,7 @@ import com.squareup.moshi.Json
 
 @Entity(tableName = "seller_client")
 data class SellerClient(
-    @Json(name = "codigo")
+    @Json(name = "comprador_codigo")
     @PrimaryKey
     val code: String,
     @Json(name = "nombre")

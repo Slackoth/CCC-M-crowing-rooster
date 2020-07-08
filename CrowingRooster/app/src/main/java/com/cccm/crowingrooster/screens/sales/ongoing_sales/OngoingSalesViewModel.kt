@@ -20,7 +20,7 @@ class OngoingSalesViewModel(
 
     init {
         _isLoading.value = true
-        salePreviews = salePreviewRepository.getAll("V-00000000","Pendiente")
+        salePreviews = salePreviewRepository.getAll("V-2020-0","Pendiente")
             .also { _isLoading.postValue(false) }
     }
 

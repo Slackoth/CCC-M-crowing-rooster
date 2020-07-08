@@ -9,6 +9,6 @@ class SellerProfileViewModel(
     sellerRepository: SellerRepository,
     app: Application
 ): AndroidViewModel(app) {
-    val seller = sellerRepository.getSpecific("V-00000000")
+    val seller = sellerRepository.getSpecific("V-2020-0")
 
 }

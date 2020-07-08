@@ -7,12 +7,18 @@ import com.squareup.moshi.Json
 
 @Entity(tableName = "sale_preview")
 data class SalePreview(
+    @Json(name = "id_venta")
+    @PrimaryKey var saleId: String,
     @Json(name = "nombre")
-    @PrimaryKey val name: String,
-    @Json(name = "fecha_pedido")
-    @ColumnInfo(name = "pending_date")
-    val pendingDate: String,
-    val total: Int,
-    val img: String
+    var name: String,
+    @Json(name = "fecha")
+    var date: String,
+    var total: Int,
+    var img: String,
+    @Json(name = "codigo_orden")
+    var orderCode: String,
+    @Json(name = "estado")
+    var state: String
+
 
 )

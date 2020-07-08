@@ -23,7 +23,7 @@ class SuccessfulSalesViewModel(
 
     init {
         _isLoading.value = true
-        salePreviews = salePreviewRepository.getAll("V-00000000","Exitosa")
+        salePreviews = salePreviewRepository.getAll("V-2020-0","Exitosa")
             .also { _isLoading.postValue(false) }
     }
 }

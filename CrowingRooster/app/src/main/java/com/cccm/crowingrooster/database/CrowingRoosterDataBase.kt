@@ -3,20 +3,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.cccm.crowingrooster.database.daos.SalePreviewDao
-import com.cccm.crowingrooster.database.daos.SellerClientDao
-import com.cccm.crowingrooster.database.daos.SellerDao
-import com.cccm.crowingrooster.database.entities.SalePreview
-import com.cccm.crowingrooster.database.entities.Seller
-import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.database.daos.*
+import com.cccm.crowingrooster.database.entities.*
 
 
-@Database(entities = [SellerClient::class,Seller::class,SalePreview::class],version = 3,exportSchema = false)
+@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class],version = 17,exportSchema = false)
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
     abstract val sellerClientDao: SellerClientDao
     abstract val sellerDao: SellerDao
     abstract val salePreviewDao: SalePreviewDao
+    abstract val saleDetailsDao: SaleDetailsDao
+    abstract val saleMiniOrdersDao: SaleMiniOrdersDao
 
     companion object {
         @Volatile

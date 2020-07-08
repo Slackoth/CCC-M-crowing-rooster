@@ -1,7 +1,10 @@
 package com.cccm.crowingrooster.generic_recyclerview_adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.widget.*
 import android.widget.EditText
@@ -12,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.database.entities.SaleMiniOrders
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 
 
@@ -23,7 +27,7 @@ object ViewHolderFactory {
             R.layout.sale_item_layout -> SaleViewHolder(
                 view
             )
-            R.layout.sale_details_item_layout -> OngoingSaleViewHolder(
+            R.layout.sale_details_item_layout -> SaleMiniOrderViewHolder(
                 view
             )
             R.layout.product_item_layout -> ProductViewHolder(
@@ -74,7 +78,7 @@ object ViewHolderFactory {
         override fun bind(listObject: SalePreview, onClickLayout: () -> Unit, context: Context) {
             clientEt.setText(listObject.name)
             totalEt.setText(listObject.total.toString())
-            dateEt.setText(listObject.pendingDate)
+            dateEt.setText(listObject.date)
             Glide.with(img.context).load(listObject.img).into(img)
 
             clientEt.inputType = InputType.TYPE_NULL
@@ -87,15 +91,21 @@ object ViewHolderFactory {
         }
     }
 
-    internal class OngoingSaleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<SaleDetails> {
+    internal class SaleMiniOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<SaleMiniOrders> {
 
         private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
         private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
 
-        override fun bind(listObject: SaleDetails, func: () -> Unit, context: Context) {
+        override fun bind(listObject: SaleMiniOrders, func: () -> Unit, context: Context) {
+            Log.d("listObject","$listObject")
             quantityTv.text = listObject.quantity.toString()
-            modelTv.text = listObject.model
+            modelTv.text = modelTv.context.resources.getString(
+                R.string.show_battery_format,
+                listObject.model,
+                listObject.polarity,
+                listObject.quality
+            )
         }
 
     }

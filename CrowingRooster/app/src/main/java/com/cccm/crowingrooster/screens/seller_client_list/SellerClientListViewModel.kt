@@ -25,7 +25,7 @@ class SellerClientListViewModel(
 
     init {
         _isLoading.value = true
-        clients = sellerClientRepository.getAll().also { _isLoading.postValue(false) }
+        clients = sellerClientRepository.getAll("V-2020-0").also { _isLoading.postValue(false) }
     }
 
 }

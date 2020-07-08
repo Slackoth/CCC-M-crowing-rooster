@@ -18,6 +18,7 @@ import com.cccm.crowingrooster.database.daos.SellerDao
 import com.cccm.crowingrooster.databinding.FragmentSellerProfileBinding
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.log
 
 /**
  * A simple [Fragment] subclass.
@@ -56,11 +57,16 @@ class SellerProfileFragment : Fragment() {
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerProfileViewModel::class.java)
 
         viewModel.seller.observe(viewLifecycleOwner, Observer {
-            bind.codeDescTv.text = it.code
-            bind.nameDescTv.text = it.name
-            bind.telDescTv.text = it.phone
-            bind.emailDescTv.text = it.email
-            Glide.with(bind.profileCiv.context).load(it.img).into(bind.profileCiv)
+            if (it != null) {
+                bind.codeDescTv.text = it.code
+                bind.nameDescTv.text = it.name
+                bind.telDescTv.text = it.phone
+                bind.emailDescTv.text = it.email
+                Glide.with(bind.profileCiv.context).load(it.img).into(bind.profileCiv)
+            }
+            else {
+                Log.d("profileFragment","NO SE QUE PASO")
+            }
         })
         //bind.sellerProfileViewModel = viewModel
 

@@ -103,6 +103,7 @@
     <string name="EnterMssge_text">Enter Message</string>
     <string name="send_text">Send</string>
     <string name="company">Compañía</string>
+    <string name="show_battery_format">%1$s-%2$s-%3$s</string>
 
 
     <string-array name="payment_array">
