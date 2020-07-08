@@ -76,20 +76,20 @@ class ProductFragment : Fragment() {
 
 
 
-        binding.Estilos.setOnClickListener {
-            val mydialog= LayoutInflater.from(activity).inflate(R.layout.fragment_dialog_fullscreen_style_product,null)
-
-            val mBuilder= AlertDialog.Builder(activity)
-                .setView(mydialog)
-                .setTitle("Estilos: ")
-
-            val mAlertDialog= mBuilder.show()
-
-            mydialog.buscar_btn.setOnClickListener {
-                mAlertDialog.dismiss()
-            }
-
-        }
+    //        binding.Estilos.setOnClickListener {
+    //            val mydialog= LayoutInflater.from(activity).inflate(R.layout.fragment_dialog_fullscreen_style_product,null)
+    //
+    //            val mBuilder= AlertDialog.Builder(activity)
+    //                .setView(mydialog)
+    //                .setTitle("Estilos: ")
+    //
+    //            val mAlertDialog= mBuilder.show()
+    //
+    //            mydialog.buscar_btn.setOnClickListener {
+    //                mAlertDialog.dismiss()
+    //            }
+    //
+    //        }
 
         binding.AddTochartButtom.setOnClickListener{
             it.findNavController().navigate(R.id.action_productFragment_to_chartFragment)

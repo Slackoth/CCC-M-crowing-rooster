@@ -10,13 +10,13 @@ import kotlin.reflect.jvm.internal.impl.renderer.KeywordStringsGenerated
 @Entity
 data class Battery(
     @PrimaryKey val id_bateria:Int,
-    val modelo:String,
-    val dimensiones:String,
-    val direccion:String,
-    val capacidad_reserva:Int,
-    val tipo:String,
-    val amperaje:Int,
-    val cca:Int,
-    val product_img:String
+    var modelo:String,
+    var dimensiones:String,
+    var direccion:String,
+    var capacidad_reserva:Int,
+    var tipo:String,
+    var amperaje:Int,
+    var cca:Int,
+    var product_img:String
 )
 

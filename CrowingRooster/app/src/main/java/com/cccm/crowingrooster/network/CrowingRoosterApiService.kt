@@ -70,6 +70,12 @@ interface CrowingRoosterApiService {
         @Query("codigo") id:Int
     ): List<Battery>
 
+    @GET("product/info")
+    suspend fun getProductInfoAsync(
+        @Query("codigo") id:Int
+    ): List<Battery>
+
+
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
