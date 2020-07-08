@@ -39,6 +39,9 @@ class SaleDetailsDialogFragment : DialogFragment() {
     private lateinit var saleMiniOrdersDao: SaleMiniOrdersDao
     private lateinit var saleDetailsRepository: SaleDetailsRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SaleMiniOrders>
+    private var sellerCode: String? = ""
+    private var orderId: String? = ""
+    private var saleId: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,12 +52,20 @@ class SaleDetailsDialogFragment : DialogFragment() {
         bind = DataBindingUtil.inflate(inflater,
             R.layout.fragment_sale_details_dialog, container, false)
 
+        if (arguments != null) {
+            arguments?.apply {
+                sellerCode = getString("code")
+                orderId = getString("orderId")
+                saleId = getString("saleId")
+            }
+        }
+
         app = requireActivity().application
         saleDetailsDao = CrowingRoosterDataBase.getInstance(app).saleDetailsDao
         saleMiniOrdersDao = CrowingRoosterDataBase.getInstance(app).saleMiniOrdersDao
         saleDetailsRepository = SaleDetailsRepository.getInstance(saleDetailsDao,saleMiniOrdersDao)
 
-        viewModelFactory = SaleDetailsDialogViewModelFactory(saleDetailsRepository,app)
+        viewModelFactory = SaleDetailsDialogViewModelFactory(saleDetailsRepository,app,sellerCode,orderId,saleId)
         viewModel = ViewModelProvider(this,viewModelFactory).get(SaleDetailsDialogViewModel::class.java)
 
         bind.apply {

@@ -100,6 +100,11 @@ class SuccessfulSalesFragment : Fragment() {
             override fun getOnClickLayout(): () -> Unit {
                 val dialog =
                     SaleDetailsDialogFragment()
+                val args = Bundle()
+                args.putString("code","V-2020-0")
+                args.putString("orderId","O-2020-0")
+                args.putString("saleId","VT-2020-0")
+                dialog.arguments = args
                 return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
             }
 

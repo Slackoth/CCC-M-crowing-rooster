@@ -48,14 +48,14 @@ interface CrowingRoosterApiService {
 
     @GET("saledetails/successful")
     suspend fun getSuccessfulSaleDetailsAsync(
-        @Query("codigo") codigo: String,
-        @Query("ordenId") ordenId: String
+        @Query("codigo") codigo: String?,
+        @Query("ordenId") ordenId: String?
     ): List<SaleDetails>
 
     @GET("saledetails/ongoing")
     suspend fun getOngoingSaleDetailsAsync(
-        @Query("codigo") codigo: String,
-        @Query("ordenId") ordenId: String
+        @Query("codigo") codigo: String?,
+        @Query("ordenId") ordenId: String?
     ): List<SaleDetails>
 
     object CrowingRoosterApi {

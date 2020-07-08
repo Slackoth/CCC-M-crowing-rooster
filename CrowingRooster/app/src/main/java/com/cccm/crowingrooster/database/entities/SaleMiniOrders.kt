@@ -1,20 +1,30 @@
 package com.cccm.crowingrooster.database.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
 @Entity(tableName = "sale_mini_orders")
 data class SaleMiniOrders(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    //@PrimaryKey(autoGenerate = true) val id: Int = 0,
     @Json(name = "estado")
-    val state: String,
+    var state: String,
     @Json(name = "modelo")
-    val model: String,
+    var model: String,
     @Json(name = "calidad")
-    val quality: String,
+    var quality: String,
     @Json(name = "cantidad")
-    val quantity: Int,
+    var quantity: Int,
+    @Json(name = "id_venta")
+    @ColumnInfo(name = "sale_id")
+    var saleId: String,
+    @Json(name = "comprador")
+    var buyer: String,
+    @Json(name = "id_pedido")
+    @PrimaryKey @ColumnInfo(name = "id")
+    var miniOrderId: Long,
     @Json(name = "polaridad")
-    val polarity: String
+    var polarity: String
+
 )

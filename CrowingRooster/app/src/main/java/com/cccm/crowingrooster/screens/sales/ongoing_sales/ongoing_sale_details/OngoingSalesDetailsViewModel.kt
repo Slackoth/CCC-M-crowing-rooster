@@ -22,7 +22,7 @@ class OngoingSalesDetailsViewModel(
 
     init {
         _isLoading.value = true
-        miniOrders = saleDetailsRepository.getAll("Pendiente")
+        miniOrders = saleDetailsRepository.getAll("Pendiente","VT-2020-3")
         saleDetails = saleDetailsRepository.getSpecific("V-2020-0","O-2020-1","Pendiente")
     }
 }

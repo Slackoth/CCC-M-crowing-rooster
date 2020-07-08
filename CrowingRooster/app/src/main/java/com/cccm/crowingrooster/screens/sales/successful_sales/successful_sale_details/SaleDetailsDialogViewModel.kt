@@ -11,7 +11,10 @@ import com.cccm.crowingrooster.network.repository.seller.SaleDetailsRepository
 
 class SaleDetailsDialogViewModel(
     private val saleDetailsRepository: SaleDetailsRepository,
-    private val app: Application
+    private val app: Application,
+    private val code: String?,
+    private val orderId: String?,
+    private val saleId: String?
 ): AndroidViewModel(app) {
 
     val saleDetails: LiveData<SaleDetails>
@@ -23,8 +26,8 @@ class SaleDetailsDialogViewModel(
 
     init {
         _isLoading.value = true
-        miniOrders = saleDetailsRepository.getAll("Exitosa")
-        saleDetails = saleDetailsRepository.getSpecific("V-2020-0","O-2020-0","Exitosa")
+        miniOrders = saleDetailsRepository.getAll("Exitosa",saleId)
+        saleDetails = saleDetailsRepository.getSpecific(code,orderId,"Exitosa")
     }
 
 }
