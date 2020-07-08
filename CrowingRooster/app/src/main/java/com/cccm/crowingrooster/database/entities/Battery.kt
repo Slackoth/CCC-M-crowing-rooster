@@ -12,9 +12,9 @@ data class Battery(
     @PrimaryKey val id_bateria:Int,
     val modelo:String,
     val dimensiones:String,
-    val polaridad:String,
+    val direccion:String,
     val capacidad_reserva:Int,
-    val calidad:String,
+    val tipo:String,
     val amperaje:Int,
     val cca:Int
 )

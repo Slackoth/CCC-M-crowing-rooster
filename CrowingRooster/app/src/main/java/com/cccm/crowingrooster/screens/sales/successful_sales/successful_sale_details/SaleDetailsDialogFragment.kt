@@ -1,8 +1,10 @@
 package com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details
 
+import android.app.Application
 import android.app.Dialog
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.SaleMiniOrdersDao
+import com.cccm.crowingrooster.database.daos.SaleDetailsDao
+import com.cccm.crowingrooster.database.entities.SaleMiniOrders
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.databinding.FragmentSaleDetailsDialogBinding
+import com.cccm.crowingrooster.network.repository.seller.SaleDetailsRepository
 
 /**
  * A simple [Fragment] subclass.
@@ -26,12 +33,12 @@ class SaleDetailsDialogFragment : DialogFragment() {
     private lateinit var bind: FragmentSaleDetailsDialogBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: SaleDetailsDialogViewModel
-//    private lateinit var clientEditT: TextInputEditText
-//    private lateinit var emailEditT: TextInputEditText
-//    private lateinit var dateEditT: TextInputEditText
-//    private lateinit var priceEditT: TextInputEditText
-//    private lateinit var paymentEditT: TextInputEditText
-    private var successfulSaleList: MutableList<Any> = mutableListOf()
+    private lateinit var viewModelFactory: SaleDetailsDialogViewModelFactory
+    private lateinit var app: Application
+    private lateinit var saleDetailsDao: SaleDetailsDao
+    private lateinit var saleMiniOrdersDao: SaleMiniOrdersDao
+    private lateinit var saleDetailsRepository: SaleDetailsRepository
+    private lateinit var adapter: GenericRecyclerViewAdapter<SaleMiniOrders>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +46,16 @@ class SaleDetailsDialogFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_sale_details_dialog, container, false)
-        bind = DataBindingUtil.inflate<FragmentSaleDetailsDialogBinding>(inflater,
+        bind = DataBindingUtil.inflate(inflater,
             R.layout.fragment_sale_details_dialog, container, false)
 
-        viewModel = ViewModelProvider(this).get(SaleDetailsDialogViewModel::class.java)
+        app = requireActivity().application
+        saleDetailsDao = CrowingRoosterDataBase.getInstance(app).saleDetailsDao
+        saleMiniOrdersDao = CrowingRoosterDataBase.getInstance(app).saleMiniOrdersDao
+        saleDetailsRepository = SaleDetailsRepository.getInstance(saleDetailsDao,saleMiniOrdersDao)
+
+        viewModelFactory = SaleDetailsDialogViewModelFactory(saleDetailsRepository,app)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(SaleDetailsDialogViewModel::class.java)
 
         bind.apply {
             nameEt.inputType = InputType.TYPE_NULL
@@ -59,46 +72,38 @@ class SaleDetailsDialogFragment : DialogFragment() {
 
         initRecyclerView()
 
-        viewModel.name.observe(viewLifecycleOwner, Observer {
-            bind.nameEt.setText(it)
-        })
-        viewModel.email.observe(viewLifecycleOwner, Observer {
-            bind.emailEt.setText(it)
-        })
-        viewModel.totalQuantity.observe(viewLifecycleOwner, Observer {
-            bind.totalQuantityTv.text = it.toString()
-        })
-        viewModel.price.observe(viewLifecycleOwner, Observer {
-            bind.priceEt.setText(it.toString())
-        })
-        viewModel.payment.observe(viewLifecycleOwner, Observer {
-            bind.paymentEt.setText(it)
-        })
-        viewModel.date.observe(viewLifecycleOwner, Observer {
-            bind.dateEt.setText(it)
-        })
-        viewModel.orders.observe(viewLifecycleOwner, Observer {
-            recyclerView.adapter?.notifyDataSetChanged()
+        viewModel.saleDetails.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                bind.nameEt.setText(it.name)
+                bind.emailEt.setText(it.email)
+                bind.dateEt.setText(it.date)
+                bind.priceEt.setText(it.price)
+                bind.paymentEt.setText(it.payment)
+                bind.totalQuantityTv.text = it.totalQuantity.toString()
+            }
+            else {
+                Log.d("ERROR","NO SIRVE")
+            }
+
         })
 
+        viewModel.miniOrders.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                Log.d("MINI","$it")
+                adapter.setDataSource(it)
+            }
+            else {
+                Log.d("ERROR","NO SIRVE")
+            }
 
-//        bind.apply {
-//            recyclerView = recyclerViewSsd
-//            clientEditT = clientEt!!
-//            emailEditT = emailEt
-//            dateEditT = dateEt
-//            priceEditT = priceEt
-//            paymentEditT = paymentEt
-//            closeBtt.setOnClickListener {
-//                dialog?.dismiss()
+        })
+
+//        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+//            when(it) {
+//                true -> bind.salePreviewListProgressBar.visibility = View.VISIBLE
+//                else -> bind.salePreviewListProgressBar.visibility = View.GONE
 //            }
-//        }
-
-//        clientEditT.inputType = InputType.TYPE_NULL
-//        emailEditT.inputType = InputType.TYPE_NULL
-//        dateEditT.inputType = InputType.TYPE_NULL
-//        priceEditT.inputType = InputType.TYPE_NULL
-//        paymentEditT.inputType = InputType.TYPE_NULL
+//        })
 
         return bind.root
     }
@@ -114,7 +119,7 @@ class SaleDetailsDialogFragment : DialogFragment() {
     }
 
     private fun initRecyclerView() {
-        val adapter = object : GenericRecyclerViewAdapter<Any>(viewModel.orders.value!!,requireContext()) {
+        adapter = object : GenericRecyclerViewAdapter<SaleMiniOrders>(viewModel.miniOrders.value,requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(
                     view,

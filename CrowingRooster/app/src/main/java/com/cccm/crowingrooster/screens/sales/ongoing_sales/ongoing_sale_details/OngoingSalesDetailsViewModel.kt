@@ -1,67 +1,28 @@
 package com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.cccm.crowingrooster.database.entities.SaleMiniOrders
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.SaleDetails
+import com.cccm.crowingrooster.network.repository.seller.SaleDetailsRepository
 
-class OngoingSalesDetailsViewModel: ViewModel() {
-    private var _name: MutableLiveData<String> = MutableLiveData()
-    val name: LiveData<String>
-        get() = _name
+class OngoingSalesDetailsViewModel(
+    private val saleDetailsRepository: SaleDetailsRepository,
+    private val app: Application
+): AndroidViewModel(app) {
+    val saleDetails: LiveData<com.cccm.crowingrooster.database.entities.SaleDetails>
+    val miniOrders: LiveData<List<SaleMiniOrders>>
 
-    private var _email: MutableLiveData<String> = MutableLiveData()
-    val email: LiveData<String>
-        get() = _email
-
-    private var _totalQuantity: MutableLiveData<Int> = MutableLiveData()
-    val totalQuantity: LiveData<Int>
-        get() = _totalQuantity
-
-    private var _date: MutableLiveData<String> = MutableLiveData()
-    val date: LiveData<String>
-        get() = _date
-
-    private var __orders: MutableLiveData<MutableList<Any>> = MutableLiveData()
-    val orders: LiveData<MutableList<Any>>
-        get() = __orders
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     init {
-        _name.value = "Mr. Peanutbutter"
-        _email.value = "ungallocontenis@gmail.com"
-        _totalQuantity.value = 69
-        _date.value = "20/08/1969"
-        __orders.value = setOrders()
+        _isLoading.value = true
+        miniOrders = saleDetailsRepository.getAll("Pendiente")
+        saleDetails = saleDetailsRepository.getSpecific("V-2020-0","O-2020-1","Pendiente")
     }
-
-    private fun setOrders(): MutableList<Any> {
-        val ordersList = mutableListOf<Any>()
-        ordersList.addAll(
-            listOf(
-                SaleDetails(
-                    10,
-                    "20F-Derecha-Azul"
-                ),
-                SaleDetails(
-                    15,
-                    "21D-Izquierda-Amarilla"
-                ),
-                SaleDetails(
-                    2,
-                    "22E-Derecha-Amarilla"
-                ),
-                SaleDetails(
-                    30,
-                    "23Q-Izquierda-Azul"
-                ),
-                SaleDetails(
-                    6,
-                    "24P-Derecha-Azul"
-                )
-            )
-        )
-        return ordersList
-    }
-
-
 }

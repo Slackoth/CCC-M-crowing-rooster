@@ -24,16 +24,9 @@
             android:id="@+id/client_list_progress_bar"
             style="?android:attr/progressBarStyle"
             android:layout_centerInParent="true"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Button" />
 
     </RelativeLayout>
 </layout>

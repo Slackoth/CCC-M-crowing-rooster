@@ -23,6 +23,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/company_input"
+        style="@style/TextInputLayoutAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:hint="@string/company"
+        app:layout_constraintBottom_toTopOf="@+id/client_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/company_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/on_primary"
+            tools:text="Un gallo con tenis" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/client_input"
@@ -55,24 +79,24 @@
         style="@style/TextInputLayoutAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/medium_margin"
         android:hint="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/client_input"
+        app:layout_constraintBottom_toTopOf="@+id/expandable_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline17"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/client_input">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_et"
-            android:fontFamily="@font/montserrat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
             android:inputType="none"
-            tools:text="ungallocontenis@gmail.com"
-            android:textColor="@color/on_primary" />
+            android:textColor="@color/on_primary"
+            tools:text="ungallocontenis@gmail.com" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <!--    <androidx.constraintlayout.widget.Guideline-->
     <!--        android:id="@+id/guideline18"-->

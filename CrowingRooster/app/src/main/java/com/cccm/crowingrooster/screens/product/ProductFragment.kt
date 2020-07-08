@@ -68,7 +68,7 @@ class ProductFragment : Fragment() {
 //            bind.telDescTv.text = it.phoneNumber
 //            bind.emailDescTv.text = it.email
 
-            binding.ProductTitleText.text=it.modelo
+//            binding.ProductTitleText.text=it.modelo
 
         })
 

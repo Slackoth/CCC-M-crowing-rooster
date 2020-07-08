@@ -1,5 +1,8 @@
 package com.cccm.crowingrooster.network
 
+
+import com.cccm.crowingrooster.database.entities.SaleDetails
+import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.Battery
 import com.cccm.crowingrooster.database.entities.Seller
 import com.cccm.crowingrooster.database.entities.SellerClient
@@ -10,7 +13,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://192.168.0.11:3000/"
+private const val BASE_URL = "http://192.168.0.11:3000/"
+    //"http://192.168.1.5:3000/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -22,21 +26,51 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CrowingRoosterApiService {
-    @GET("buyer")
-    suspend fun getAllSellerClientAsync(): List<SellerClient>
+    @GET("sellerclient/all")
+    suspend fun getAllSellerClientAsync(
+        @Query("codigo") codigo: String
+    ): List<SellerClient>
 
-    @GET("seller")
+    @GET("seller/specific")
     suspend fun getSellerAsync(
-        @Query("id") id: String
+        @Query("codigo") codigo: String
     ): List<Seller>
 
 
 
-    @GET("product")
-    suspend fun getProductAsync(
-        @Query("id") id:Int
-    ): List<Battery>
 
+    @GET("salepreview/successful")
+    suspend fun getSuccessfulSalePreviewAsync(
+        @Query("codigo") codigo: String
+        //@Query("estado") estado: String
+    ): List<SalePreview>
+
+    @GET("salepreview/ongoing")
+    suspend fun getOngoingSalePreviewAsync(
+        @Query("codigo") codigo: String
+        //@Query("estado") estado: String
+    ): List<SalePreview>
+
+    @GET("saledetails/successful")
+    suspend fun getSuccessfulSaleDetailsAsync(
+        @Query("codigo") codigo: String,
+        @Query("ordenId") ordenId: String
+    ): List<SaleDetails>
+
+    @GET("saledetails/ongoing")
+    suspend fun getOngoingSaleDetailsAsync(
+        @Query("codigo") codigo: String,
+        @Query("ordenId") ordenId: String
+    ): List<SaleDetails>
+
+
+
+    //product
+
+    @GET("product/specific")
+    suspend fun getProductAsync(
+        @Query("codigo") id:Int
+    ): List<Battery>
 
 
     object CrowingRoosterApi {
