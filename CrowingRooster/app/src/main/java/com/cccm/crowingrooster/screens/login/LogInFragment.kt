@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase
 class LogInFragment : Fragment() {
     private lateinit var userEditT: EditText
     private lateinit var passEt: EditText
+    private lateinit var viewModel: LogInViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,7 @@ class LogInFragment : Fragment() {
         val bind = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in,
             container,false)
+        viewModel= ViewModelProvider(this).get(LogInViewModel::class.java)
 
         bind.apply {
             userEditT = userEt
@@ -45,10 +48,6 @@ class LogInFragment : Fragment() {
 
                     val useruid= FirebaseAuth.getInstance().uid
                     val userType= FirebaseDatabase.getInstance().getReference("/users/$useruid")
-
-
-
-
 
 
                     if (userEt.text.toString().toUpperCase() == "SELLER@EXAMPLE.COM") {
@@ -82,17 +81,17 @@ class LogInFragment : Fragment() {
         val email= userEditT.text.toString()
         val pswd= passEt.text.toString()
 
-        Log.d("MainActivity","User: "+email)
-        Log.d("MainActivity","Password: "+pswd)
+        //Log.d("MainActivity","User: "+email)
+        //Log.d("MainActivity","Password: "+pswd)
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,pswd)
             .addOnCompleteListener{
-                Log.d("MainActivity", "User Auth Process Correct")
+                //Log.d("MainActivity", "User Auth Process Correct")
 
                 if(!it.isSuccessful) return@addOnCompleteListener
             }
             .addOnFailureListener{
-                Log.d("MainActivity", "User Credentials incorrect")
+                //Log.d("MainActivity", "User Credentials incorrect")
                 Toast.makeText(context, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
                 return@addOnFailureListener
             }

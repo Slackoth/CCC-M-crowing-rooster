@@ -233,7 +233,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatLogFragment"
-        android:name="com.cccm.crowingrooster.screens.chat.ChatLogFragment"
+        android:name="com.cccm.crowingrooster.screens.chat.ChatLog.ChatLogFragment"
         android:label="ChatLogFragment" />
     <fragment
         android:id="@+id/registerFragment"
