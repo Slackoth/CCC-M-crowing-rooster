@@ -10,7 +10,8 @@ import kotlinx.coroutines.*
 
 class OngoingSalesViewModel(
     private val salePreviewRepository: SalePreviewRepository,
-    app: Application
+    app: Application,
+    private val sellerCode: String?
 ): AndroidViewModel(app) {
     private val viewModelJob: CompletableJob = Job()
     val uiScope: CoroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -23,18 +24,17 @@ class OngoingSalesViewModel(
 
     init {
         _isLoading.value = true
-        salePreviews = salePreviewRepository.getAll("V-2020-0","Pendiente")
+        salePreviews = salePreviewRepository.getAll(sellerCode,"Pendiente")
             .also { _isLoading.postValue(false) }
     }
 
     fun refresh() {
         //_isLoading.value = true
         //uiScope.launch(Dispatchers.IO) {
-            salePreviews = salePreviewRepository.getAll("V-2020-0","Pendiente")
+            salePreviews = salePreviewRepository.getAll(sellerCode,"Pendiente")
             //Thread.sleep(4000)
           //  _isLoading.postValue(false)
         //}
-
     }
 
 }

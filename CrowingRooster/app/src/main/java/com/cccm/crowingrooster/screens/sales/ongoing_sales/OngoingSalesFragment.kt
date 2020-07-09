@@ -43,6 +43,8 @@ class OngoingSalesFragment : Fragment() {
     private lateinit var salePreviewRepository: SalePreviewRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
     private lateinit var refreshLayout: SwipeRefreshLayout
+    private var sellerCode: String? = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +54,12 @@ class OngoingSalesFragment : Fragment() {
             inflater, R.layout.fragment_ongoing_sales,
             container, false
         )
+
+        if (arguments != null) {
+            sellerCode = arguments?.getString("sellerCode")
+        }
+
+        Log.d("ongoingsales","$sellerCode")
 
 //        (activity as MainActivity).run {
 //            showTopBar()
@@ -70,7 +78,7 @@ class OngoingSalesFragment : Fragment() {
         salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
         salePreviewRepository = SalePreviewRepository.getInstance(salePreviewDao)
 
-        viewModelFactory = OngoingSalesViewModelFactory(salePreviewRepository,app)
+        viewModelFactory = OngoingSalesViewModelFactory(salePreviewRepository,app,sellerCode)
         viewModel = ViewModelProvider(this,viewModelFactory).get(OngoingSalesViewModel::class.java)
 
         initRecyclerview()
@@ -105,30 +113,19 @@ class OngoingSalesFragment : Fragment() {
                 )
             }
 
-            override fun getOnClickLayout(): () -> Unit {
-                return { ->
-//                    var action = OngoingSalesFragmentDirections
-//                        .actionOngoingSalesFragmentToOngoingSalesDetailsFragment()
+            override fun getOnClickLayout(): (params: List<Any>) -> Unit {
+                return { params ->
                     val globalAction = NavGraphDirections.
                     actionGlobalOngoingSalesFragmentToOngoingSalesDetailsFragment()
-                    globalAction.code = "V-2020-0"
-                    globalAction.orderId = "O-2020-3"
-                    globalAction.saleId = "VT-2020-3"
 
-//                    action.code = "V-2020-0"
-//                    action.orderId = "O-2020-1"
-//                    action.saleId = "VT-2020-2"
+                    globalAction.sellerCode = sellerCode.toString()
+                    globalAction.orderId = params[0].toString()
+                    globalAction.saleId = params[1].toString()
 
                     try {
                         this@OngoingSalesFragment.findNavController().navigate(globalAction)
-//                      findNavController()
-//                        .navigate(action)
-//                      this@OngoingSalesFragment.findNavController()
-//                        .navigate(action)
-                        //R.id.ongoingSalesDetailsFragment
                     }
                     catch (e: Exception) {
-                        Log.d("Target","${R.id.ongoingSalesDetailsFragment}")
                         Log.d("Emensaje","${e.message}")
                     }
 

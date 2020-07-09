@@ -73,7 +73,7 @@ class BatterySearchFragment : Fragment() {
                 return R.layout.searchbt_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {
                     this@BatterySearchFragment.findNavController()
                         .navigate(R.id.productFragment)                }

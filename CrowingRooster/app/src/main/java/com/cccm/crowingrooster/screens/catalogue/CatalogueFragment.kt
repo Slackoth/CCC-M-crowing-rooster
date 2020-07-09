@@ -77,10 +77,11 @@ class CatalogueFragment : Fragment() {
                 return R.layout.product_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {
                     this@CatalogueFragment.findNavController()
-                        .navigate(R.id.action_catalogueFragment_to_productFragment)                }
+                        .navigate(R.id.action_catalogueFragment_to_productFragment)
+                }
             }
         }
 

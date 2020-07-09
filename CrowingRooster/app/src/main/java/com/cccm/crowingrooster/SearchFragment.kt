@@ -44,7 +44,8 @@ class SearchFragment : Fragment () {
         val tabAdapter =
             GenericTabAdapter(
                 listOfFragment,
-                this
+                this,
+                ""
             )
         viewPager = bind.searchPager
         tabLayout = bind.searchTablayout

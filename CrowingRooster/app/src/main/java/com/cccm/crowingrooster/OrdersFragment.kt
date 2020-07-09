@@ -44,7 +44,8 @@ class OrdersFragment : Fragment () {
         val tabAdapter =
             GenericTabAdapter(
                 listOfFragment,
-                this
+                this,
+                ""
             )
         viewPager = bind.ordersPager
         tabLayout = bind.ordersTablayout

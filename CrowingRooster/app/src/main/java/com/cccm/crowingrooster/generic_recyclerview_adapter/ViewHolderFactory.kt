@@ -1,8 +1,6 @@
 package com.cccm.crowingrooster.generic_recyclerview_adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Resources
 import android.os.SystemClock
 import android.text.InputType
 import android.util.Log
@@ -18,7 +16,6 @@ import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.database.entities.SaleMiniOrders
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
-import com.cccm.crowingrooster.screens.chat.Messages.ChatMessage
 
 
 object ViewHolderFactory {
@@ -78,7 +75,7 @@ object ViewHolderFactory {
         private val layout: ConstraintLayout = itemView.findViewById(R.id.sale_item_layout)
         var lastClickTime: Long = 0;
 
-        override fun bind(listObject: SalePreview, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: SalePreview, onClickLayout: (List<Any>) -> Unit, context: Context) {
 
             clientEt.setText(listObject.name)
             totalEt.setText(listObject.total.toString())
@@ -94,7 +91,8 @@ object ViewHolderFactory {
                     return@setOnClickListener
                 }
                 lastClickTime = SystemClock.elapsedRealtime()
-                onClickLayout()
+                val params = listOf<Any>(listObject.orderCode,listObject.saleId)
+                onClickLayout(params)
             }
         }
     }
@@ -105,7 +103,7 @@ object ViewHolderFactory {
         private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
         private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
 
-        override fun bind(listObject: SaleMiniOrders, func: () -> Unit, context: Context) {
+        override fun bind(listObject: SaleMiniOrders, func: (List<Any>) -> Unit, context: Context) {
             Log.d("listObject","$listObject")
             quantityTv.text = listObject.quantity.toString()
             modelTv.text = modelTv.context.resources.getString(
@@ -132,7 +130,7 @@ object ViewHolderFactory {
 
         private fun isExpanded(): Boolean = expanded
 
-        override fun bind(listObject: SellerClient, func: () -> Unit, context: Context) {
+        override fun bind(listObject: SellerClient, func: (List<Any>) -> Unit, context: Context) {
             companyEt.setText(listObject.company)
             clientEt.setText(listObject.name)
             emailEt.setText(listObject.email)
@@ -154,7 +152,7 @@ object ViewHolderFactory {
                 }
             }
             messageBtt.setOnClickListener {
-                func()
+                func(listOf<Any>())
             }
         }
     }
@@ -168,7 +166,7 @@ object ViewHolderFactory {
         private val desc: TextView = itemView.findViewById(R.id.ProductDesc_et)
         private val ProdTitle: TextView = itemView.findViewById(R.id.productTitle_et)
 
-        override fun bind(listObject: Product, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: Product, onClickLayout: (List<Any>) -> Unit, context: Context) {
             Glide.with(context).load(listObject.ProductImg).into(product)
             desc.setText(listObject.ProductDesc)
             ProdTitle.setText(listObject.PrductTitle)
@@ -177,7 +175,7 @@ object ViewHolderFactory {
             ProdTitle.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener {
-                onClickLayout()
+                onClickLayout(listOf<Any>())
             }
 
         }
@@ -194,7 +192,7 @@ object ViewHolderFactory {
         private val ProdTitle: TextView = itemView.findViewById(R.id.productTitle_ch)
         private val quantity: EditText = itemView.findViewById(R.id.quantity_text_ch)
 
-        override fun bind(listObject: ProductChart, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: ProductChart, onClickLayout: (List<Any>) -> Unit, context: Context) {
             Glide.with(context).load(listObject.imgUrlCh).into(product)
             desc.text = listObject.ProductDesc
             ProdTitle.text = listObject.PrductTitle
@@ -215,7 +213,7 @@ object ViewHolderFactory {
         private val product: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.order_item_layout)
 
-        override fun bind(listObject: Order, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: Order, onClickLayout: (List<Any>) -> Unit, context: Context) {
             orderEt.setText(listObject.num_order.toString())
             dateEt.setText(listObject.date)
             quantityEt.setText(listObject.quantity.toString())
@@ -225,7 +223,7 @@ object ViewHolderFactory {
             dateEt.inputType = InputType.TYPE_NULL
             quantityEt.inputType = InputType.TYPE_NULL
             layout.setOnClickListener {
-                onClickLayout()
+                onClickLayout(listOf<Any>())
             }
 
 
@@ -268,14 +266,14 @@ object ViewHolderFactory {
 
 
 
-        override fun bind(listObject: Canceled_Order, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: Canceled_Order, onClickLayout: (List<Any>) -> Unit, context: Context) {
 
             Glide.with(context).load(listObject.imgUrl).into(usrimg)
             dateEt.setText(listObject.date)
             quantityEt.setText(listObject.quantity.toString())
 
             canceledOrderLayout.setOnClickListener {
-                onClickLayout()
+                onClickLayout(listOf<Any>())
             }
 
         }
@@ -289,7 +287,7 @@ object ViewHolderFactory {
         private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
         private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
 
-        override fun bind(listObject: OrderDetails, func: () -> Unit, context: Context) {
+        override fun bind(listObject: OrderDetails, func: (List<Any>) -> Unit, context: Context) {
             quantityTv.text = listObject.quantity.toString()
             modelTv.text = listObject.model
         }
@@ -327,7 +325,7 @@ object ViewHolderFactory {
         private val openOrderImg: ImageView = itemView.findViewById(R.id.oo_ib)
         private val openOrderLayout: ConstraintLayout = itemView.findViewById(R.id.oo_item_layout)
 
-        override fun bind(listObject: OpenOrder, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: OpenOrder, onClickLayout: (List<Any>) -> Unit, context: Context) {
             openOrderDateEt.setText(listObject.OrderDate)
             openOrderAddressEt.setText(listObject.OrderAddress)
             Glide.with(context).load(listObject.OrderImg).into(openOrderImg)
@@ -336,7 +334,7 @@ object ViewHolderFactory {
             openOrderAddressEt.inputType = InputType.TYPE_NULL
 
             openOrderLayout.setOnClickListener {
-                onClickLayout()
+                onClickLayout(listOf<Any>())
             }
         }
     }
@@ -352,7 +350,7 @@ object ViewHolderFactory {
         private val batteryimg: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.searchbt_item_layout)
 
-        override fun bind(listObject: Battery, onClickLayout: () -> Unit, context: Context) {
+        override fun bind(listObject: Battery, onClickLayout: (List<Any>) -> Unit, context: Context) {
             modeloEt.setText(listObject.modelo)
             voltajeEt.setText(listObject.voltaje)
             CCAEt.setText(listObject.CCA)
@@ -365,7 +363,7 @@ object ViewHolderFactory {
             capacidadEt.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener {
-                onClickLayout()
+                onClickLayout(listOf<Any>())
             }
         }
     }

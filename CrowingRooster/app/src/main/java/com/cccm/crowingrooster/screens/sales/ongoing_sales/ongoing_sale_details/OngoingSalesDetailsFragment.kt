@@ -64,12 +64,14 @@ class OngoingSalesDetailsFragment : Fragment() {
 
         args = arguments?.let { OngoingSalesDetailsFragmentArgs.fromBundle(it) }
 
+        Log.d("ongoingsaledetails","${args?.sellerCode}-${args?.orderId}-${args?.saleId}")
+
         app = requireActivity().application
         saleDetailsDao = CrowingRoosterDataBase.getInstance(app).saleDetailsDao
         saleMiniOrdersDao = CrowingRoosterDataBase.getInstance(app).saleMiniOrdersDao
         saleDetailsRepository = SaleDetailsRepository.getInstance(saleDetailsDao,saleMiniOrdersDao)
 
-        viewModelFactory = OngoingSaleDetailsViewModelFactory(saleDetailsRepository,app,args?.code ?: "",args?.orderId ?: "",args?.saleId ?: "")
+        viewModelFactory = OngoingSaleDetailsViewModelFactory(saleDetailsRepository,app,args?.sellerCode ?: "",args?.orderId ?: "",args?.saleId ?: "")
         viewModel = ViewModelProvider(this,viewModelFactory).get(OngoingSalesDetailsViewModel::class.java)
 
         bind.apply {
@@ -83,7 +85,7 @@ class OngoingSalesDetailsFragment : Fragment() {
                 val dialog = ConfirmSaleFragment()
                 val dialogArgs = Bundle()
                 dialogArgs.putString("saleId",args?.saleId)
-                dialogArgs.putString("code",args?.code)
+                dialogArgs.putString("sellerCode",args?.sellerCode)
                 dialog.arguments = dialogArgs
                 dialog.show(requireActivity().supportFragmentManager,"ConfirmDialog")
             }
@@ -136,7 +138,7 @@ class OngoingSalesDetailsFragment : Fragment() {
                 return R.layout.sale_details_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {}
             }
 

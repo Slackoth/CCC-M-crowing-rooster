@@ -79,8 +79,8 @@ class OngoingOrdersFragment : Fragment () {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
-            override fun getOnClickLayout(): () -> Unit {
-                return { ->
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
+                return { it ->
                     this@OngoingOrdersFragment.findNavController()
                         .navigate(R.id.ongoingOrdersDetailsFragment)
 

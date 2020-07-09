@@ -41,7 +41,7 @@ class ConfirmSaleFragment: DialogFragment() {
     private lateinit var confirmSaleRepository: ConfirmSaleRepository
     private lateinit var app: Application
     private var saleId: String? = ""
-    private var code: String? = ""
+    private var sellerCode: String? = ""
     private var flag: Boolean = false
 
     override fun onCreateView(
@@ -58,8 +58,10 @@ class ConfirmSaleFragment: DialogFragment() {
 
         arguments?.apply {
             saleId = getString("saleId")
-            code = getString("code")
+            sellerCode = getString("sellerCode")
         }
+
+        Log.d("confirm","$saleId $sellerCode")
 
         app = requireActivity().application
         confirmSaleRepository = ConfirmSaleRepository.getInstance()

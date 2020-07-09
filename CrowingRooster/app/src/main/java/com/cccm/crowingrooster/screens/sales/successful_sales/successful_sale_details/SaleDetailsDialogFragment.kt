@@ -54,11 +54,13 @@ class SaleDetailsDialogFragment : DialogFragment() {
 
         if (arguments != null) {
             arguments?.apply {
-                sellerCode = getString("code")
+                sellerCode = getString("sellerCode")
                 orderId = getString("orderId")
                 saleId = getString("saleId")
             }
         }
+
+        Log.d("ongoingsaledetails","${sellerCode}-${orderId}-${saleId}")
 
         app = requireActivity().application
         saleDetailsDao = CrowingRoosterDataBase.getInstance(app).saleDetailsDao
@@ -142,7 +144,7 @@ class SaleDetailsDialogFragment : DialogFragment() {
                 return R.layout.sale_details_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {}
             }
 

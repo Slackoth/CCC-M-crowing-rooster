@@ -40,6 +40,7 @@ class SuccessfulSalesFragment : Fragment() {
     private lateinit var salePreviewRepository: SalePreviewRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
     private lateinit var refreshLayout: SwipeRefreshLayout
+    private var sellerCode: String? = ""
 
 
     @SuppressLint("LogNotTimber")
@@ -51,6 +52,10 @@ class SuccessfulSalesFragment : Fragment() {
             inflater, R.layout.fragment_successful_sales,
             container, false
         )
+
+        if (arguments != null) {
+            sellerCode = arguments?.getString("sellerCode")
+        }
 
         app = requireActivity().application
         salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
@@ -107,15 +112,17 @@ class SuccessfulSalesFragment : Fragment() {
                 )
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 val dialog =
                     SaleDetailsDialogFragment()
                 val args = Bundle()
-                args.putString("code","V-2020-0")
-                args.putString("orderId","O-2020-0")
-                args.putString("saleId","VT-2020-0")
-                dialog.arguments = args
-                return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
+                return { params ->
+                    args.putString("sellerCode",sellerCode)
+                    args.putString("orderId",params[0].toString())
+                    args.putString("saleId",params[1].toString())
+                    dialog.arguments = args
+                    dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog")
+                }
             }
 
             override fun getLayoutId(): Int {

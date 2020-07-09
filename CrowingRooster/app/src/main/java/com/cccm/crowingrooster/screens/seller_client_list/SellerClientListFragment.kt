@@ -2,6 +2,7 @@ package com.cccm.crowingrooster.screens.seller_client_list
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
@@ -9,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SellerClientDao
@@ -34,6 +36,8 @@ class SellerClientListFragment : Fragment() {
     private lateinit var sellerClientDao: SellerClientDao
     private lateinit var sellerClientRepository: SellerClientRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SellerClient>
+    private lateinit var refreshLayout: SwipeRefreshLayout
+    private var args: SellerClientListFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,22 +54,34 @@ class SellerClientListFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
+        args = arguments?.let {
+            SellerClientListFragmentArgs.fromBundle(it)
+        }
+
+        Log.d("clientlist","${args?.sellerCode}")
+
         setHasOptionsMenu(true)
 
         app = requireActivity().application
         sellerClientDao = CrowingRoosterDataBase.getInstance(app).sellerClientDao
 
         sellerClientRepository = SellerClientRepository.getInstance(sellerClientDao)
-        viewModelFactory = SellerClientViewModelFactory(sellerClientRepository,app)
+        viewModelFactory = SellerClientViewModelFactory(sellerClientRepository,app,args?.sellerCode)
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerClientListViewModel::class.java)
 
         bind.apply {
             recyclerView = clientRv
             lifecycleOwner = this@SellerClientListFragment
             sellerClientListViewModel = viewModel
+            refreshLayout = clientSrl
         }
 
         initRecyclerview()
+
+        refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
 
         viewModel.clients.observe(viewLifecycleOwner, Observer {
             adapter.setDataSource(it)
@@ -112,10 +128,10 @@ class SellerClientListFragment : Fragment() {
                 return R.layout.client_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 val dialog =
                     SaleDetailsDialogFragment()
-                return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
+                return { it -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
             }
         }
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

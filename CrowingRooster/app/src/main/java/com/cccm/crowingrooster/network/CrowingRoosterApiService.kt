@@ -1,9 +1,6 @@
 package com.cccm.crowingrooster.network
 
-import com.cccm.crowingrooster.database.entities.SaleDetails
-import com.cccm.crowingrooster.database.entities.SalePreview
-import com.cccm.crowingrooster.database.entities.Seller
-import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.database.entities.*
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -26,23 +23,23 @@ private val retrofit = Retrofit.Builder()
 interface CrowingRoosterApiService {
     @GET("sellerclient/all")
     suspend fun getAllSellerClientAsync(
-        @Query("codigo") codigo: String
+        @Query("codigo") codigo: String?
     ): List<SellerClient>
 
     @GET("seller/specific")
     suspend fun getSellerAsync(
-        @Query("codigo") codigo: String
+        @Query("codigo") codigo: String?
     ): List<Seller>
 
     @GET("salepreview/successful")
     suspend fun getSuccessfulSalePreviewAsync(
-        @Query("codigo") codigo: String
+        @Query("codigo") codigo: String?
         //@Query("estado") estado: String
     ): List<SalePreview>
 
     @GET("salepreview/ongoing")
     suspend fun getOngoingSalePreviewAsync(
-        @Query("codigo") codigo: String
+        @Query("codigo") codigo: String?
         //@Query("estado") estado: String
     ): List<SalePreview>
 
@@ -63,6 +60,11 @@ interface CrowingRoosterApiService {
         @Body confirmSaleBody: ConfirmSaleBody,
         @Query("ventaId") ventaId: String?
     )
+
+    @GET("users")
+    suspend fun verifyUser(
+        //@Query("email") email: String
+    ): List<User>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
