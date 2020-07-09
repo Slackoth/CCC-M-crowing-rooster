@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
+import com.cccm.crowingrooster.database.entities.Pedido
 import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.database.entities.SaleMiniOrders
@@ -178,7 +179,7 @@ object ViewHolderFactory {
 
 
     class ChartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<ProductChart> {
+        GenericRecyclerViewAdapter.Binder<Pedido> {
 
 
         private val product: ImageView = itemView.findViewById(R.id.Product_img_ch)
@@ -187,13 +188,14 @@ object ViewHolderFactory {
         private val ProdTitle: TextView = itemView.findViewById(R.id.productTitle_ch)
         private val quantity: EditText = itemView.findViewById(R.id.quantity_text_ch)
 
-        override fun bind(listObject: ProductChart, onClickLayout: () -> Unit, context: Context) {
-            Glide.with(context).load(listObject.imgUrlCh).into(product)
-            desc.text = listObject.ProductDesc
-            ProdTitle.text = listObject.PrductTitle
-            quantity.setText(listObject.quantity.toString())
-
+        override fun bind(listObject: Pedido, onClickLayout: () -> Unit, context: Context) {
+            Log.d("ChartObject","Si lo tira carajoajaoajoaj")
+            Glide.with(context).load(listObject.desc_bateria).into(product)
+            desc.text = listObject.img_bateria
+            ProdTitle.text = listObject.titulo
+            quantity.setText(listObject.cantidad_bateria.toString())
             quantity.inputType = InputType.TYPE_NULL
+
 
         }
 

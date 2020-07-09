@@ -4,41 +4,36 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.cccm.crowingrooster.database.daos.BatteryDao
 import com.cccm.crowingrooster.database.daos.BatteryInfoDao
-import com.cccm.crowingrooster.database.daos.SellerClientDao
 import com.cccm.crowingrooster.database.entities.Battery
-import com.cccm.crowingrooster.database.entities.Seller
-import com.cccm.crowingrooster.database.entities.SellerClient
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Product
+import com.cccm.crowingrooster.database.entities.BatteryInfo
 import com.cccm.crowingrooster.network.CrowingRoosterApiService
-import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.threeten.bp.ZonedDateTime
 
-class BatteryRepository (private val BatteryDao: BatteryDao){
+class BatteryInfoRepository (val BatteryInfoDao: BatteryInfoDao){
 
-fun getSpecific(id: Int): LiveData<Battery> {
-    refreshBattery(id)
-    return BatteryDao.getBattery(id)
-}
-
-    private fun refreshBattery(id: Int) {
-        Log.d("Caca", "Batteries.toString()")
+    fun getSpecific(modelo: String): LiveData<BatteryInfo> {
+        refreshBattery(modelo)
+        return BatteryInfoDao.getBattery(modelo)
+    }
+    private fun refreshBattery(model: String) {
+        Log.d("Caca2", "Batteries.toString()")
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
-            Log.d("Caca", "*x2")
+            Log.d("Caca2", "*x2")
             GlobalScope.launch {
-                Log.d("Caca", "suputamadre")
+                Log.d("Caca2", "suputamadre")
                 try {
-                    Log.d("Caca", "Suputamadre*2")
+                    Log.d("Caca2", "Suputamadre*2")
                     val Batteries = CrowingRoosterApiService.CrowingRoosterApi
-                        .retrofitService.getProductAsync(id)
-                    Log.d("Caca", Batteries.toString())
+                        .retrofitService.getProductInfoAsync(model)
+                    Log.d("Caca2", Batteries.toString())
 
                     for (Battery in Batteries) {
-                        Log.d("Caca", "pues funciona eel batteries")
-                        BatteryDao.insert(Battery)
+                        Log.d("Caca2", "pipomelachupas")
+                        BatteryInfoDao.insert(Battery)
                     }
-                    Log.d("Bttry", "${Batteries[0].modelo}")
+                    Log.d("Bttry", "${Batteries[0].direccion}")
                 } catch (e: Exception) {
                     Log.d("Connection", "No connection: ${e.message}")
                 }
@@ -55,22 +50,24 @@ fun getSpecific(id: Int): LiveData<Battery> {
 
 
     companion object {
-        private var INSTANCE: BatteryRepository? = null
+        private var INSTANCE: BatteryInfoRepository? = null
 
         fun getInstance(
-            BatteryDao: BatteryDao
+            BatteryInfoDao: BatteryInfoDao
         ) = INSTANCE
             ?: createInstance(
-                BatteryDao
+                BatteryInfoDao
             ).also {
                 INSTANCE = it
             }
 
         private fun createInstance(
-            BatteryDao: BatteryDao
+            BatteryInfoDao: BatteryInfoDao
         ) =
-            BatteryRepository(
-                BatteryDao
+            BatteryInfoRepository(
+                BatteryInfoDao
             )
     }
+
+
 }

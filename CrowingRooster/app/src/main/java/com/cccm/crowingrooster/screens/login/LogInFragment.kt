@@ -88,7 +88,10 @@ class LogInFragment : Fragment() {
             .addOnCompleteListener{
                 //Log.d("MainActivity", "User Auth Process Correct")
 
-                if(!it.isSuccessful) return@addOnCompleteListener
+
+
+
+                if(!it.isSuccessful)    return@addOnCompleteListener
             }
             .addOnFailureListener{
                 //Log.d("MainActivity", "User Credentials incorrect")

@@ -15,16 +15,13 @@ class SaleDetailsRepository(
     private val saleDetailsDao: SaleDetailsDao,
     private val saleMiniOrdersDao: SaleMiniOrdersDao
 ) {
-
     fun getSpecific(code: String, orderId: String, state: String): LiveData<SaleDetails> {
         refreshSuccessfulSaleDetails(code,orderId,state)
         return saleDetailsDao.getSpecific(code)
     }
-
     fun getAll(state: String): LiveData<List<SaleMiniOrders>> {
         return saleMiniOrdersDao.getAll(state)
     }
-
     private fun refreshSuccessfulSaleDetails(code: String, orderId: String, state: String) {
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             GlobalScope.launch {

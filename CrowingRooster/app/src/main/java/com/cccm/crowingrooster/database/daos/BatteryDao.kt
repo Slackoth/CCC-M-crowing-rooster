@@ -15,4 +15,5 @@ interface BatteryDao {
 
     @Query("SELECT * FROM battery WHERE id_bateria = :id_bateria")
     fun getBattery(id_bateria:Int): LiveData<Battery>
+
 }

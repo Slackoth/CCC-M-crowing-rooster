@@ -3,10 +3,13 @@ package com.cccm.crowingrooster.screens.product
 import android.app.AlertDialog
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,9 +19,13 @@ import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.BatteryDao
+import com.cccm.crowingrooster.database.daos.BatteryInfoDao
+import com.cccm.crowingrooster.database.daos.PedidoDao
 import com.cccm.crowingrooster.database.daos.SellerDao
 
 import com.cccm.crowingrooster.databinding.FragmentProductBinding
+import com.cccm.crowingrooster.network.repository.pedido.PedidoRepository
+import com.cccm.crowingrooster.network.repository.product.BatteryInfoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
 import com.cccm.crowingrooster.screens.chat.ChatFragment
@@ -35,9 +42,13 @@ class ProductFragment : Fragment() {
 
     private lateinit var app: Application
     private lateinit var batteryRepository: BatteryRepository
+//    private lateinit var batteryInfoRepository: BatteryInfoRepository
+    private lateinit var PedidoRepository:PedidoRepository
     private lateinit var viewModelFactory: ProductViewModelFactory
     private lateinit var viewModel: ProductViewModel
     private lateinit var batteryDao: BatteryDao
+    private lateinit var pedidoDao: PedidoDao
+    lateinit var spinner: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,23 +71,57 @@ class ProductFragment : Fragment() {
         app = requireActivity().application
         batteryDao = CrowingRoosterDataBase.getInstance(app).batteryDao
         batteryRepository = BatteryRepository.getInstance(batteryDao)
-        viewModelFactory = ProductViewModelFactory(batteryRepository,app)
+        pedidoDao= CrowingRoosterDataBase.getInstance(app).PedidoDao
+//        batteryInfoRepository= BatteryInfoRepository(batteryInfoDao)
+        PedidoRepository= PedidoRepository(pedidoDao)
+        viewModelFactory = ProductViewModelFactory(batteryRepository,PedidoRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ProductViewModel::class.java)
 
+        var uid="16"
+        var Buid:Int=0
+        var cant:Int=0
+        var Desc:String=""
+        var img:String=""
+        var titulo:String=""
+            viewModel.battery.observe(viewLifecycleOwner, Observer {
+                if (it!=null) {
+                    Desc=    "Las Baterias ${it.modelo} poseen dimensiones estandares de ${it.dimensiones} con una polaridad ${it.direccion}  una capacidad de reserva ${it.capacidad_reserva} y un amperaje de ${it.amperaje} siento esta una opcion de calidad ${it.tipo}"
+                    binding.descriptionProduct.text =Desc
 
-        viewModel.battery.observe(viewLifecycleOwner, Observer {
-            binding.ProductTitleText.text=it.modelo
-            binding.descriptionProduct.text= "Las Baterias ${it.modelo} poseen dimensiones estandares de ${it.dimensiones} con una polaridad ${it.direccion}  una capacidad de reserva ${it.capacidad_reserva} y un amperaje de ${it.amperaje} siento esta una opcion de calidad ${it.tipo}"
-//           context?.let { it1 -> Glide.with(it1).load(it.product_img).into(binding.productImg) }
+                    binding.ProductTitleText.text = it.modelo
+                    Glide.with(binding.productImg.context).load(it.product_img)
+                        .into(binding.productImg)
+                    Buid= it.id_bateria
+                    cant= 1
+                    img= it.product_img
+                    titulo=it.modelo
+                }else{
+                    Log.d("su putatatamjdasjdm", "me")
+                }
+            })
 
-            Glide.with(binding.productImg.context).load(it.product_img).into(binding.productImg)
-        })
+
+
+        var Estilo:String
+        var ArrayEstilos:ArrayList<String>
+
+//        viewModel.batteryInfo.observe(viewLifecycleOwner, Observer {
+//            if(it!=null){
+//            Estilo="Estilo:  ${it.direccion} ; ${it.tipo}"
+//            ArrayEstilos.add(Estilo)
+//
+//            }else{
+//                Log.d("Product", "SeJodio")
+//            }
+//
+//        })
 
 
 
 
 
-    //        binding.Estilos.setOnClickListener {
+
+        //        binding.Estilos.setOnClickListener {
     //            val mydialog= LayoutInflater.from(activity).inflate(R.layout.fragment_dialog_fullscreen_style_product,null)
     //
     //            val mBuilder= AlertDialog.Builder(activity)
@@ -92,9 +137,18 @@ class ProductFragment : Fragment() {
     //        }
 
         binding.AddTochartButtom.setOnClickListener{
+            viewModel.SetIntoChart(cant,uid, Buid,pedidoDao, img, Desc, titulo)
             it.findNavController().navigate(R.id.action_productFragment_to_chartFragment)
         }
-
+//        binding.apply {
+//            spinner= Estilos
+//        }
+//        ArrayAdapter.createFromResource(requireContext(),
+//            R.array.ArrayEstilos,
+//            android.R.layout.simple_spinner_item).also {
+//            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            spinner.adapter = it
+//        }
 
 
 

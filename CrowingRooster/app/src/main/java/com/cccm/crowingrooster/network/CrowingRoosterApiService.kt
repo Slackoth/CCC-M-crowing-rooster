@@ -1,19 +1,17 @@
 package com.cccm.crowingrooster.network
 
 
-import com.cccm.crowingrooster.database.entities.SaleDetails
-import com.cccm.crowingrooster.database.entities.SalePreview
-import com.cccm.crowingrooster.database.entities.Battery
-import com.cccm.crowingrooster.database.entities.Seller
-import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.database.entities.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://192.168.0.11:3000/"
+private const val BASE_URL = "http://192.168.0.14:3000/"
     //"http://192.168.1.5:3000/"
 
 private val moshi = Moshi.Builder()
@@ -35,7 +33,6 @@ interface CrowingRoosterApiService {
     suspend fun getSellerAsync(
         @Query("codigo") codigo: String
     ): List<Seller>
-
 
     @GET("salepreview/successful")
     suspend fun getSuccessfulSalePreviewAsync(
@@ -62,9 +59,6 @@ interface CrowingRoosterApiService {
     ): List<SaleDetails>
 
 
-
-    //product
-
     @GET("product/specific")
     suspend fun getProductAsync(
         @Query("codigo") id:Int
@@ -72,9 +66,14 @@ interface CrowingRoosterApiService {
 
     @GET("product/info")
     suspend fun getProductInfoAsync(
-        @Query("codigo") id:Int
-    ): List<Battery>
+        @Query("codigo") model:String
+    ): List<BatteryInfo>
 
+
+//    //pedido
+//    @POST("pedido/insert")
+//        suspend fun sendInsertPedido(@Body PedidoBody:PedidoBody)
+//
 
 
     object CrowingRoosterApi {

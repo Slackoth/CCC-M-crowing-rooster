@@ -111,5 +111,9 @@
         <item>Efectivo</item>
         <item>Tarjeta</item>
     </string-array>
+    <string-array name="ArrayEstilos">
+        <item>Standard</item>
+        <item>Premium</item>
+    </string-array>
 
 </resources>

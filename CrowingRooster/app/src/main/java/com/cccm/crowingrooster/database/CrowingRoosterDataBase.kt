@@ -17,7 +17,7 @@ import com.cccm.crowingrooster.database.daos.*
 import com.cccm.crowingrooster.database.entities.*
 
 
-@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,  Battery::class],version = 22 ,exportSchema = false)
+@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,  Battery::class, BatteryInfo::class, Pedido::class],version = 26 ,exportSchema = false)
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
@@ -27,6 +27,9 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val salePreviewDao: SalePreviewDao
     abstract val saleDetailsDao: SaleDetailsDao
     abstract val saleMiniOrdersDao: SaleMiniOrdersDao
+    abstract val BatteryInfoDao:BatteryInfoDao
+    abstract val PedidoDao:PedidoDao
+
 
 
     companion object {
