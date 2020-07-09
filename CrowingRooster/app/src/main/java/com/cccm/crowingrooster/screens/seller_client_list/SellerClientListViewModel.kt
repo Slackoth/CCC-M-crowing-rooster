@@ -10,22 +10,27 @@ import kotlinx.coroutines.*
 
 class SellerClientListViewModel(
     private val sellerClientRepository: SellerClientRepository,
-    app: Application
+    app: Application,
+    private val sellerCode: String?
 ): AndroidViewModel(app) {
     private val viewModelJob: CompletableJob = Job()
     val uiScope: CoroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     //val clients: LiveData<List<SellerClient>> = sellerClientRepository.getAll().also { _isLoading.postValue(false) }
     //private val _clients: MutableLiveData<List<SellerClient>> = MutableLiveData()
-    val clients: LiveData<List<SellerClient>>
+    var clients: LiveData<List<SellerClient>>
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
     init {
-        _isLoading.value = true
-        clients = sellerClientRepository.getAll("V-2020-0").also { _isLoading.postValue(false) }
+        //_isLoading.value = true
+        clients = sellerClientRepository.getAll(sellerCode).also { _isLoading.postValue(false) }
+    }
+
+    fun refresh() {
+        clients = sellerClientRepository.getAll(sellerCode)
     }
 
 }

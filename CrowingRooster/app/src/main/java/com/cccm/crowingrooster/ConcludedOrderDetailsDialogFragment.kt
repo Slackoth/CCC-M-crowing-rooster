@@ -94,7 +94,7 @@ class ConcludedOrderDetailsDialogFragment : DialogFragment() {
                 return R.layout.sale_details_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {}
             }
         }

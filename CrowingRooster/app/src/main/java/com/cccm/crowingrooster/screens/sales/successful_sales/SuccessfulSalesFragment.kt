@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SalePreviewDao
@@ -38,6 +39,8 @@ class SuccessfulSalesFragment : Fragment() {
     private lateinit var salePreviewDao: SalePreviewDao
     private lateinit var salePreviewRepository: SalePreviewRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
+    private lateinit var refreshLayout: SwipeRefreshLayout
+    private var sellerCode: String? = ""
 
 
     @SuppressLint("LogNotTimber")
@@ -49,6 +52,10 @@ class SuccessfulSalesFragment : Fragment() {
             inflater, R.layout.fragment_successful_sales,
             container, false
         )
+
+        if (arguments != null) {
+            sellerCode = arguments?.getString("sellerCode")
+        }
 
         app = requireActivity().application
         salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
@@ -63,6 +70,7 @@ class SuccessfulSalesFragment : Fragment() {
 
         bind.apply {
             recyclerView = succesfulSalesRv
+            refreshLayout = succesfulSalesSrl
             lifecycleOwner = this@SuccessfulSalesFragment
         }
 
@@ -78,6 +86,13 @@ class SuccessfulSalesFragment : Fragment() {
                 else -> bind.salePreviewListProgressBar.visibility = View.GONE
             }
         })
+
+        refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
+
+
 
 //        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
 //        recyclerView.layoutManager = LinearLayoutManager(requireContext(),
@@ -97,10 +112,17 @@ class SuccessfulSalesFragment : Fragment() {
                 )
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 val dialog =
                     SaleDetailsDialogFragment()
-                return { -> dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog") }
+                val args = Bundle()
+                return { params ->
+                    args.putString("sellerCode",sellerCode)
+                    args.putString("orderId",params[0].toString())
+                    args.putString("saleId",params[1].toString())
+                    dialog.arguments = args
+                    dialog.show(requireActivity().supportFragmentManager, "SaleDetailsDialog")
+                }
             }
 
             override fun getLayoutId(): Int {

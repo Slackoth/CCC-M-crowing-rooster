@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,7 +14,6 @@
         tools:context=".screens.Register.RegisterFragment"
         android:background="@color/primary_dark"
         >
-
 
         <EditText
             android:id="@+id/username_edittext_register"
@@ -121,4 +123,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>

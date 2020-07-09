@@ -57,9 +57,9 @@ class CanceledOrdersFragment: Fragment() {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 val dialog = CanceledOrderDetailsDialogFragment()
-                return { -> dialog.show(requireActivity().supportFragmentManager, "CanceledOrderDetailsDialog") }
+                return { it -> dialog.show(requireActivity().supportFragmentManager, "CanceledOrderDetailsDialog") }
             }
 
             override fun getLayoutId(): Int {

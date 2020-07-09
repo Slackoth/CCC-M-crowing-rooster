@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.screens.seller_main_screen
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,8 @@ class SellerMainScreen : Fragment() {
     lateinit var salesBt: CardView
     lateinit var clientsBt: CardView
     lateinit var chatBt: CardView
+    //private var sellerCode: String? = ""
+    private var args: SellerMainScreenArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +44,12 @@ class SellerMainScreen : Fragment() {
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
+        args = arguments?.let {
+            SellerMainScreenArgs.fromBundle(it)
+        }
+
+        Log.d("sellermain","${args?.sellerCode}")
+
         bind.apply {
             profileBt = profileCvBtt
             salesBt = salesCvBtt
@@ -49,13 +58,26 @@ class SellerMainScreen : Fragment() {
         }
 
         profileBt.setOnClickListener {
-            it.findNavController().navigate(R.id.action_sellerMainScreen_to_sellerProfileFragment)
+            val action = SellerMainScreenDirections
+                .actionSellerMainScreenToSellerProfileFragment()
+            action.sellerCode = args?.sellerCode.toString()
+            it.findNavController().navigate(action)
+                //.navigate(R.id.action_sellerMainScreen_to_sellerProfileFragment)
         }
         salesBt.setOnClickListener {
-            it.findNavController().navigate(R.id.action_sellerMainScreen_to_salesFragment)
+            val action = SellerMainScreenDirections
+                .actionSellerMainScreenToSalesFragment()
+            action.sellerCode = args?.sellerCode.toString()
+
+            it.findNavController().navigate(action)
+                //.navigate(R.id.action_sellerMainScreen_to_salesFragment)
         }
         clientsBt.setOnClickListener {
-            it.findNavController().navigate(R.id.action_sellerMainScreen_to_sellerClientListFragment)
+            val action = SellerMainScreenDirections
+                .actionSellerMainScreenToSellerClientListFragment()
+            action.sellerCode = args?.sellerCode.toString()
+            it.findNavController().navigate(action)
+                //.navigate(R.id.action_sellerMainScreen_to_sellerClientListFragment)
         }
         chatBt.setOnClickListener(){
             it.findNavController().navigate(R.id.action_sellerMainScreen_to_chatFragment)

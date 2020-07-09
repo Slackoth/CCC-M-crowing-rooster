@@ -13,6 +13,6 @@ interface SaleMiniOrdersDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(saleMiniOrders: SaleMiniOrders)
 
-    @Query("SELECT * FROM sale_mini_orders WHERE state = :state")
-    fun getAll(state: String): LiveData<List<SaleMiniOrders>>
+    @Query("SELECT * FROM sale_mini_orders WHERE state = :state and sale_id = :saleId")
+    fun getAll(state: String,saleId: String?): LiveData<List<SaleMiniOrders>>
 }

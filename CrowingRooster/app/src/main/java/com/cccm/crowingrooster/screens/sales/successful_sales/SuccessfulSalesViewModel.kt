@@ -15,7 +15,7 @@ class SuccessfulSalesViewModel(
     private val salePreviewRepository: SalePreviewRepository,
     app: Application
 ): AndroidViewModel(app) {
-    val salePreviews: LiveData<List<SalePreview>>
+    var salePreviews: LiveData<List<SalePreview>>
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean>
@@ -25,5 +25,9 @@ class SuccessfulSalesViewModel(
         _isLoading.value = true
         salePreviews = salePreviewRepository.getAll("V-2020-0","Exitosa")
             .also { _isLoading.postValue(false) }
+    }
+
+    fun refresh() {
+        salePreviews = salePreviewRepository.getAll("V-2020-0","Exitosa")
     }
 }

@@ -87,7 +87,7 @@ class ChartFragment : Fragment() {
                 return R.layout.chart_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {
                     this@ChartFragment.findNavController()
                         .navigate(R.id.action_chartFragment_to_productFragment)

@@ -17,6 +17,7 @@ import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SellerDao
 import com.cccm.crowingrooster.databinding.FragmentSellerProfileBinding
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
+import com.cccm.crowingrooster.screens.seller_main_screen.SellerMainScreenArgs
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.log
 
@@ -30,6 +31,7 @@ class SellerProfileFragment : Fragment() {
     private lateinit var viewModelFactory: SellerProfileViewModelFactory
     private lateinit var viewModel: SellerProfileViewModel
     private lateinit var sellerDao: SellerDao
+    private var args: SellerMainScreenArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +50,18 @@ class SellerProfileFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
+        args = arguments?.let {
+            SellerMainScreenArgs.fromBundle(it)
+        }
+
+        Log.d("profile","${args?.sellerCode}")
+
         app = requireActivity().application
         sellerDao = CrowingRoosterDataBase.getInstance(app).sellerDao
         sellerRepository = SellerRepository.getInstance(sellerDao)
 
 
-        viewModelFactory = SellerProfileViewModelFactory(sellerRepository,app)
+        viewModelFactory = SellerProfileViewModelFactory(sellerRepository,app,args?.sellerCode ?: "")
         viewModel = ViewModelProvider(this,viewModelFactory).get(SellerProfileViewModel::class.java)
 
         viewModel.seller.observe(viewLifecycleOwner, Observer {

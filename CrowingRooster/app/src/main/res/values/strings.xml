@@ -104,6 +104,7 @@
     <string name="send_text">Send</string>
     <string name="company">Compañía</string>
     <string name="show_battery_format">%1$s-%2$s-%3$s</string>
+    <string name="address">Dirección</string>
 
 
     <string-array name="payment_array">

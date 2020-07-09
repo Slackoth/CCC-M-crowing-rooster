@@ -86,7 +86,7 @@ class CanceledOrderDetailsDialogFragment : DialogFragment() {
                 return R.layout.order_details_item
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {}
             }
 

@@ -4,11 +4,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="wrap_content"
             android:background="@color/primary_light"
             android:padding="@dimen/small_padding">
 
@@ -45,30 +45,97 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/date_til"
-                style="@style/TextInputLayoutAppearance"
+            <EditText
+                android:id="@+id/date_ett"
+                android:clickable="true"
+                android:focusable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_margin"
-                android:layout_marginRight="@dimen/medium_margin"
-                android:layout_marginLeft="@dimen/medium_margin"
-                android:layout_marginBottom="@dimen/small_margin"
                 android:layout_below="@+id/price_til"
-                android:hint="@string/date">
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:hint="Ingrese la fecha"
+                android:textColorHint="@color/on_primary"
+                />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/date_et"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="20/08/1969"
-                    android:textColor="@color/on_primary" />
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/date_til"-->
+<!--                style="@style/TextInputLayoutAppearance"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/small_margin"-->
+<!--                android:layout_marginRight="@dimen/medium_margin"-->
+<!--                android:layout_marginLeft="@dimen/medium_margin"-->
+<!--                android:layout_marginBottom="@dimen/small_margin"-->
+<!--                android:layout_below="@+id/price_til"-->
+<!--                android:hint="@string/date">-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/date_et"-->
+<!--                    android:fontFamily="@font/montserrat"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="20/08/1969"-->
+<!--                    android:textColor="@color/on_primary"-->
+<!--                   />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TimePicker-->
+<!--                android:id="@+id/time_tp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/date_til"-->
+<!--                android:layout_alignParentStart="false"-->
+<!--                android:layout_alignParentEnd="false"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginLeft="@dimen/medium_margin"-->
+<!--                android:layout_marginTop="@dimen/small_margin"-->
+<!--                android:layout_marginRight="@dimen/medium_margin"-->
+<!--                android:timePickerMode="spinner" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/hour_til"-->
+<!--                style="@style/TextInputLayoutAppearance"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/small_margin"-->
+<!--                android:layout_marginRight="@dimen/medium_margin"-->
+<!--                android:layout_marginLeft="@dimen/medium_margin"-->
+<!--                android:layout_marginBottom="@dimen/small_margin"-->
+<!--                android:layout_below="@+id/date_til"-->
+<!--                android:hint="@string/hour">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/hour_et"-->
+<!--                    android:fontFamily="@font/montserrat"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    -->
+<!--                    android:hint="ingrese"-->
+<!--                    android:textColor="@color/on_primary" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <EditText
+                android:id="@+id/hour_et"
+                android:clickable="true"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date_ett"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:hint="Ingrese la hora"
+                android:textColorHint="@color/on_primary"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/hour_til"
+                android:id="@+id/address_til"
                 style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,15 +143,15 @@
                 android:layout_marginRight="@dimen/medium_margin"
                 android:layout_marginLeft="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/small_margin"
-                android:layout_below="@+id/date_til"
-                android:hint="@string/hour">
+                android:layout_below="@+id/hour_et"
+                android:hint="@string/address">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/hour_et"
                     android:fontFamily="@font/montserrat"
+                    android:id="@+id/address_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="04:20"
+                    tools:text="802 Winding Way Street Minot, ND 58701"
                     android:textColor="@color/on_primary" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -94,7 +161,7 @@
                 android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/hour_til"
+                android:layout_below="@id/address_til"
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginLeft="@dimen/medium_margin"
                 android:layout_marginRight="@dimen/medium_margin"

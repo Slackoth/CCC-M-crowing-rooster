@@ -27,6 +27,7 @@ class SalesFragment : Fragment() {
         SuccessfulSalesFragment(),
         OngoingSalesFragment()
     )
+    private var args: SalesFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +46,10 @@ class SalesFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
+        args = arguments?.let {
+            SalesFragmentArgs.fromBundle(it)
+        }
+
         setHasOptionsMenu(true)
 
         return bind.root
@@ -55,7 +60,8 @@ class SalesFragment : Fragment() {
         val tabAdapter =
             GenericTabAdapter(
                 listOfFragment,
-                this
+                this,
+                args?.sellerCode
             )
         viewPager = bind.salesPager
         tabLayout = bind.salesTablayout
