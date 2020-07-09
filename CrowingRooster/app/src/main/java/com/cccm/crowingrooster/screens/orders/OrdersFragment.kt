@@ -1,12 +1,16 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.orders
 
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentOrdersBinding
 import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
+import com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersFragment
+import com.cccm.crowingrooster.screens.orders.canceled_orders.CanceledOrdersFragment
+import com.cccm.crowingrooster.screens.orders.successful_orders.SuccessfulOrdersFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,8 +19,11 @@ class OrdersFragment : Fragment () {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentOrdersBinding
-    private var listOfFragment: MutableList<Fragment> = mutableListOf(SuccessfulOrdersFragment(),
-        OngoingOrdersFragment(), CanceledOrdersFragment())
+    private var listOfFragment: MutableList<Fragment> = mutableListOf(
+        SuccessfulOrdersFragment(),
+        OngoingOrdersFragment(),
+        CanceledOrdersFragment()
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +32,11 @@ class OrdersFragment : Fragment () {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_sales, container, false)
 
-        bind = DataBindingUtil.inflate(inflater,R.layout.fragment_orders,container, false)
-        (activity as MainActivity).run {supportActionBar?.title = getString(R.string.orders).capitalize()
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_orders,container, false)
+        (activity as MainActivity).run {supportActionBar?.title = getString(
+            R.string.orders
+        ).capitalize()
             navigation_view.menu.clear()
             navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
             showTopBar()

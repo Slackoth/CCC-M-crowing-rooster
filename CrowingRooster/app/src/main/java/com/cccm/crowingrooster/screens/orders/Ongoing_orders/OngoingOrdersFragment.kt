@@ -1,12 +1,14 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.orders.Ongoing_orders
 
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.databinding.FragmentSuccessfulOrderBinding
+import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.databinding.FragmentOngoingOrdersBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Order
@@ -14,7 +16,8 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
 
 
-class SuccessfulOrdersFragment : Fragment() {
+class OngoingOrdersFragment : Fragment () {
+
 
     lateinit var recyclerView: RecyclerView
     var orderList: MutableList<Any> = mutableListOf()
@@ -25,13 +28,13 @@ class SuccessfulOrdersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_successful_orders, container, false)
-        val bind = DataBindingUtil.inflate<FragmentSuccessfulOrderBinding>(
-            inflater, R.layout.fragment_successful_order,
+        val bind = DataBindingUtil.inflate<FragmentOngoingOrdersBinding>(
+
+            inflater, R.layout.fragment_ongoing_orders,
             container, false
+
         )
-
         setHasOptionsMenu(true)
-
         //Log.d(TAG, "onCreate: Started")
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
 
@@ -78,8 +81,12 @@ class SuccessfulOrdersFragment : Fragment() {
             }
 
             override fun getOnClickLayout(): (List<Any>) -> Unit {
-                val dialog = OrderDetailsDialogFragment()
-                return { it -> dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog") }
+                return { it ->
+                    this@OngoingOrdersFragment.findNavController()
+                        .navigate(R.id.ongoingOrdersDetailsFragment)
+
+
+                }
             }
 
             override fun getLayoutId(): Int {
@@ -106,28 +113,24 @@ class SuccessfulOrdersFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.successful_order_more_options_menu, menu)
+        inflater.inflate(R.menu.ongoing_orders_more_options_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
         return when(item.itemId) {
-            R.id.action_order_idorder_so, R.id.action_order_date_so -> {
+            R.id.action_order_date, R.id.action_order_idorder -> {
                 val dialog =
                     AscDescDialogFragment()
-                dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
+                dialog.show(requireActivity().supportFragmentManager,"AscDescDialog")
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+
+
 }
-
-
-
-
-
-
-
-

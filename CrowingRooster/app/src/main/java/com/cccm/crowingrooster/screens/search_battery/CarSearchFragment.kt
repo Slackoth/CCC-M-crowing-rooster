@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.search_battery
 
 import android.app.SearchManager
 import android.content.Context
@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentBatterySearchBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter

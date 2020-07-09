@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.orders.successful_orders
 
 import android.app.Dialog
 import android.os.Bundle
@@ -10,13 +10,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentOrdersDetailsDialogBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OrderDetails
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.google.android.material.textfield.TextInputEditText
 
-class OrderDetailsDialogFragment : DialogFragment() {
+class SuccessfulOrderDetailsDialogFragment : DialogFragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var clientEditT: TextInputEditText
     private lateinit var emailEditT: TextInputEditText

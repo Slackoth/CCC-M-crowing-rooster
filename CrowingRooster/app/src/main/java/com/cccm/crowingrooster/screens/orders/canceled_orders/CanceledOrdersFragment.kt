@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.orders.canceled_orders
 
 import android.os.Bundle
 import android.view.*
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentCanceledOrdersBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Canceled_Order
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
@@ -60,6 +61,7 @@ class CanceledOrdersFragment: Fragment() {
             override fun getOnClickLayout(): (List<Any>) -> Unit {
                 val dialog = CanceledOrderDetailsDialogFragment()
                 return { it -> dialog.show(requireActivity().supportFragmentManager, "CanceledOrderDetailsDialog") }
+
             }
 
             override fun getLayoutId(): Int {

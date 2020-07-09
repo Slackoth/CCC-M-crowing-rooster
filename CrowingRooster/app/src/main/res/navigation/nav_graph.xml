@@ -154,7 +154,7 @@
 
     <fragment
         android:id="@+id/OrdersFragment"
-        android:name="com.cccm.crowingrooster.OrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.OrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_orders"
         >
@@ -165,26 +165,26 @@
 
     <fragment
         android:id="@+id/successfulOrdersFragment"
-        android:name="com.cccm.crowingrooster.SuccessfulOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.successful_orders.SuccessfulOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_successful_order"/>
 
 
     <fragment
         android:id="@+id/OngoingOrdersFragment"
-        android:name="com.cccm.crowingrooster.OngoingOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_ongoing_orders"/>
 
     <fragment
         android:id="@+id/ongoingOrdersDetailsFragment"
-        android:name="com.cccm.crowingrooster.OngoingOrdersDetailsFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersDetailsFragment"
         android:label="OngoingOrdersDetailsFragment"
         tools:layout="@layout/fragment_ongoing_orders_details"/>
 
     <fragment
         android:id="@+id/CanceledOrdersFragment"
-        android:name="com.cccm.crowingrooster.CanceledOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.canceled_orders.CanceledOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_canceled_orders"/>
     <fragment
@@ -220,7 +220,7 @@
 
     <fragment
         android:id="@+id/SearchFragment"
-        android:name="com.cccm.crowingrooster.SearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search"
         >
@@ -231,13 +231,13 @@
 
     <fragment
         android:id="@+id/BatterySearchFragment"
-        android:name="com.cccm.crowingrooster.BatterySearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.BatterySearchFragment"
         android:label="SerachFragment"
         tools:layout="@layout/fragment_battery_search"/>
 
     <fragment
         android:id="@+id/CarSearchFragment"
-        android:name="com.cccm.crowingrooster.CarSearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.CarSearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_car_search"/>
 
