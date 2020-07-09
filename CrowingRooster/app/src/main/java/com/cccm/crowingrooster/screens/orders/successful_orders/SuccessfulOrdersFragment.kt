@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster.screens.orders.successful_orders
 
+import android.app.Application
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -7,18 +8,29 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.order.OrderPreviewDao
+import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.databinding.FragmentSuccessfulOrderBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Order
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.repository.order.OrderPreviewRepository
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
+import com.cccm.crowingrooster.screens.orders.successful_orders.successful_order_details.SuccessfulOrderDetailsDialogFragment
 
 
 class SuccessfulOrdersFragment : Fragment() {
 
-    lateinit var recyclerView: RecyclerView
-    var orderList: MutableList<Any> = mutableListOf()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewModel: SuccessfulOrdersViewModel
+    private lateinit var viewModelFactory: SuccessfulOrdersViewModelFactory
+    private lateinit var orderPreviewRepository: OrderPreviewRepository
+    private lateinit var orderPreviewDao: OrderPreviewDao
+    private lateinit var app: Application
+    private lateinit var adapter: GenericRecyclerViewAdapter<OrderPreview>
+    private var buyerCode: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,71 +45,19 @@ class SuccessfulOrdersFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        //Log.d(TAG, "onCreate: Started")
-        //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
-
-        recyclerView = bind.recyclerView
-        orderList.addAll(
-            listOf(
-                Order(
-                    num_order = 72, quantity = 100,
-                    imgUrl = "https://i.musicaimg.com/letras/200/2482445.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 71, quantity = 8,
-                    imgUrl = "https://s.mxmcdn.net/images-storage/albums4/4/0/2/2/4/9/44942204_800_800.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 70, quantity = 5,
-                    imgUrl = "https://s.mxmcdn.net/images-storage/albums5/3/0/6/2/9/4/46492603_500_500.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 69, quantity = 80,
-                    imgUrl = "https://s.mxmcdn.net/images-storage/albums5/0/7/1/7/7/2/48277170_500_500.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 78, quantity = 70,
-                    imgUrl = "https://i.musicaimg.com/letras/200/2482445.jpg",
-                    date = "22/04/2020"
-                )
-
-            )
-        )
-
-        //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(orderList, requireContext()) {
-            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return ViewHolderFactory.bindView(view, viewType)
-            }
-
-            override fun getOnClickLayout(): (List<Any>) -> Unit {
-                val dialog = SuccessfulOrderDetailsDialogFragment()
-                return { it -> dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog") }
-
-            }
-
-            override fun getLayoutId(): Int {
-                return R.layout.order_item_layout
-            }
+        if (arguments != null) {
+            buyerCode = arguments?.getString("code")
         }
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        //Adding the divider
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                requireContext(),
-                R.drawable.recyclerview_divider
-            )
-        )
-        recyclerView.adapter = adapter
+        recyclerView = bind.recyclerView
+
+        initRecyclerview()
+
+        app = requireActivity().application
+        orderPreviewDao = CrowingRoosterDataBase.getInstance(app).orderPreviewDao
+        orderPreviewRepository = OrderPreviewRepository.getInstance(orderPreviewDao)
+
+        viewModelFactory = SuccessfulOrdersViewModelFactory(orderPreviewRepository,app,buyerCode)
 
 //        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
 //        recyclerView.layoutManager = LinearLayoutManager(requireContext(),
@@ -122,6 +82,42 @@ class SuccessfulOrdersFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun initRecyclerview() {
+        //Creating the RecyclerView Adapter
+        adapter = object : GenericRecyclerViewAdapter<OrderPreview>(viewModel.orderPreviews.value, requireContext()) {
+            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+                return ViewHolderFactory.bindView(view, viewType)
+            }
+
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
+                val dialog = SuccessfulOrderDetailsDialogFragment()
+                val dialogArgs = Bundle()
+                return { params ->
+                    dialogArgs.putString("buyerCode",buyerCode)
+//                    dialogArgs.putString("buyerCode",buyerCode)
+//                    dialogArgs.putString("buyerCode",buyerCode)
+//
+                    dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog")
+                }
+
+            }
+
+            override fun getLayoutId(): Int {
+                return R.layout.order_item_layout
+            }
+        }
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        //Adding the divider
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                R.drawable.recyclerview_divider
+            )
+        )
+        recyclerView.adapter = adapter
     }
 
 }

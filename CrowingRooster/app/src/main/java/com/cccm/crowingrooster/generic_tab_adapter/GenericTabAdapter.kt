@@ -11,7 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class GenericTabAdapter(
     listOfFragment: MutableList<Fragment>,
     fragment: Fragment,
-    private val sellerCode: String?
+    private val code: String?
 ) : FragmentStateAdapter(fragment) {
 
     private var listFragment: MutableList<Fragment> = listOfFragment
@@ -23,7 +23,7 @@ class GenericTabAdapter(
     override fun createFragment(position: Int): Fragment {
         var cont = 0
         val fragArgs = Bundle()
-        fragArgs.putString("sellerCode",sellerCode)
+        fragArgs.putString("code",code)
         for (fragment in listFragment) {
             fragment.arguments = fragArgs
             if (position == cont) break else cont++

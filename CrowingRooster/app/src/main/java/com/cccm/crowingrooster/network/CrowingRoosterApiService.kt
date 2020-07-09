@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.network
 
 import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -67,6 +68,21 @@ interface CrowingRoosterApiService {
     suspend fun verifyUser(
         //@Query("email") email: String
     ): List<User>
+
+    @GET("orderpreview/successful")
+    suspend fun getSuccessfulOrderPreviewAsync(
+        @Query("codigo") codigo: String?
+    ): List<OrderPreview>
+
+    @GET("orderpreview/ongoing")
+    suspend fun getOngoingOrderPreviewAsync(
+        @Query("codigo") codigo: String?
+    ): List<OrderPreview>
+
+    @GET("orderpreview/canceled")
+    suspend fun getCanceledOrderPreviewAsync(
+        @Query("codigo") codigo: String?
+    ): List<OrderPreview>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

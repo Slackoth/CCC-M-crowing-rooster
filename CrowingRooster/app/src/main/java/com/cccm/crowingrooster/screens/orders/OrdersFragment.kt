@@ -3,6 +3,7 @@ package com.cccm.crowingrooster.screens.orders
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.*
@@ -24,15 +25,14 @@ class OrdersFragment : Fragment () {
         OngoingOrdersFragment(),
         CanceledOrdersFragment()
     )
+    private var args: OrdersFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_sales, container, false)
 
-        bind = DataBindingUtil.inflate(inflater,
+        bind = inflate(inflater,
             R.layout.fragment_orders,container, false)
         (activity as MainActivity).run {supportActionBar?.title = getString(
             R.string.orders
@@ -42,9 +42,9 @@ class OrdersFragment : Fragment () {
             showTopBar()
         }
 
-
-
-
+        args = arguments?.let {
+            OrdersFragmentArgs.fromBundle(it)
+        }
 
         return bind.root
     }
@@ -55,7 +55,7 @@ class OrdersFragment : Fragment () {
             GenericTabAdapter(
                 listOfFragment,
                 this,
-                ""
+                args?.buyerCode
             )
         viewPager = bind.ordersPager
         tabLayout = bind.ordersTablayout

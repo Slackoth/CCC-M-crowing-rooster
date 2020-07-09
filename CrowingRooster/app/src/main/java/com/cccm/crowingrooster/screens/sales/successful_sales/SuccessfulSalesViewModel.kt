@@ -13,7 +13,8 @@ import com.cccm.crowingrooster.network.repository.seller.SalePreviewRepository
 
 class SuccessfulSalesViewModel(
     private val salePreviewRepository: SalePreviewRepository,
-    app: Application
+    app: Application,
+    private val sellerCode: String?
 ): AndroidViewModel(app) {
     var salePreviews: LiveData<List<SalePreview>>
 
@@ -23,11 +24,11 @@ class SuccessfulSalesViewModel(
 
     init {
         _isLoading.value = true
-        salePreviews = salePreviewRepository.getAll("V-2020-0","Exitosa")
+        salePreviews = salePreviewRepository.getAll(sellerCode,"Exitosa")
             .also { _isLoading.postValue(false) }
     }
 
     fun refresh() {
-        salePreviews = salePreviewRepository.getAll("V-2020-0","Exitosa")
+        salePreviews = salePreviewRepository.getAll(sellerCode,"Exitosa")
     }
 }

@@ -4,11 +4,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cccm.crowingrooster.database.daos.*
+import com.cccm.crowingrooster.database.daos.order.OrderPreviewDao
 import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
-User::class],version = 20,exportSchema = false)
+User::class,OrderPreview::class],version = 21,exportSchema = false)
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
     abstract val sellerClientDao: SellerClientDao
@@ -17,6 +19,7 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val saleDetailsDao: SaleDetailsDao
     abstract val saleMiniOrdersDao: SaleMiniOrdersDao
     abstract val userDao: UserDao
+    abstract val orderPreviewDao: OrderPreviewDao
 
     companion object {
         @Volatile
