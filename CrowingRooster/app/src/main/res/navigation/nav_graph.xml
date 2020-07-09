@@ -161,6 +161,10 @@
         <action
             android:id="@+id/action_OrdersFragment_to_successfulOrdersFragment"
             app:destination="@id/successfulOrdersFragment" />
+        <argument
+            android:name="buyerCode"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
 
     <fragment
@@ -178,7 +182,7 @@
 
     <fragment
         android:id="@+id/ongoingOrdersDetailsFragment"
-        android:name="com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersDetailsFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.Ongoing_orders.ongoing_order_details.OngoingOrdersDetailsFragment"
         android:label="OngoingOrdersDetailsFragment"
         tools:layout="@layout/fragment_ongoing_orders_details"/>
 
@@ -204,6 +208,9 @@
             android:name="buyerCode"
             app:argType="string"
             android:defaultValue="default" />
+        <action
+            android:id="@+id/action_buyerMainScreenFragment_to_OrdersFragment"
+            app:destination="@id/OrdersFragment" />
     </fragment>
 
     <fragment

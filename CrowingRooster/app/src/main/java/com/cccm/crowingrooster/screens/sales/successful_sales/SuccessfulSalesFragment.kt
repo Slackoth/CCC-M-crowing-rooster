@@ -54,7 +54,7 @@ class SuccessfulSalesFragment : Fragment() {
         )
 
         if (arguments != null) {
-            sellerCode = arguments?.getString("sellerCode")
+            sellerCode = arguments?.getString("code")
         }
 
         app = requireActivity().application
@@ -64,7 +64,8 @@ class SuccessfulSalesFragment : Fragment() {
         viewModelFactory =
             SuccessfulSalesViewModelFactory(
                 salePreviewRepository,
-                app
+                app,
+                sellerCode
             )
         viewModel = ViewModelProvider(this,viewModelFactory).get(SuccessfulSalesViewModel::class.java)
 

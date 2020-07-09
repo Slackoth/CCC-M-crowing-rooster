@@ -13,6 +13,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoratio
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
+import com.cccm.crowingrooster.screens.orders.canceled_orders.canceled_order_details.CanceledOrderDetailsDialogFragment
 
 class CanceledOrdersFragment: Fragment() {
 
@@ -59,7 +60,8 @@ class CanceledOrdersFragment: Fragment() {
             }
 
             override fun getOnClickLayout(): (List<Any>) -> Unit {
-                val dialog = CanceledOrderDetailsDialogFragment()
+                val dialog =
+                    CanceledOrderDetailsDialogFragment()
                 return { it -> dialog.show(requireActivity().supportFragmentManager, "CanceledOrderDetailsDialog") }
 
             }

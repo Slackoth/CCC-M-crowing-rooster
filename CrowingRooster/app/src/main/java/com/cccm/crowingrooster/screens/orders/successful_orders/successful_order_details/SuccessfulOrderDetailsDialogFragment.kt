@@ -1,60 +1,60 @@
-package com.cccm.crowingrooster.screens.orders.Ongoing_orders
+package com.cccm.crowingrooster.screens.orders.successful_orders.successful_order_details
 
+import android.app.Dialog
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
-import com.cccm.crowingrooster.databinding.FragmentOngoingOrdersDetailsBinding
+import com.cccm.crowingrooster.databinding.FragmentOrdersDetailsDialogBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OrderDetails
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.google.android.material.textfield.TextInputEditText
 
-class OngoingOrdersDetailsFragment : Fragment() {
-
-
-
-    private lateinit var bind: FragmentOngoingOrdersDetailsBinding
+class SuccessfulOrderDetailsDialogFragment : DialogFragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var clientEditT: TextInputEditText
     private lateinit var emailEditT: TextInputEditText
     private lateinit var dateEditT: TextInputEditText
-    private var ongoingOrderList: MutableList<Any> = mutableListOf()
-
+    private lateinit var priceEditT: TextInputEditText
+    private lateinit var paymentEditT: TextInputEditText
+    private var successfulOrderList: MutableList<Any> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_ongoing_sales_details, container, false)
-        bind = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_ongoing_orders_details, container, false)
-
-        (activity as MainActivity).supportActionBar?.title = getString(
-            R.string.details
-        )
+        //return inflater.inflate(R.layout.fragment_sale_details_dialog, container, false)
+        val bind = DataBindingUtil.inflate<FragmentOrdersDetailsDialogBinding>(inflater,
+            R.layout.fragment_orders_details_dialog, container, false)
 
         bind.apply {
-
-            recyclerView = recyclerViewOsd
-            clientEditT = sellerEt
+            recyclerView = recyclerViewSsd
+            clientEditT = sellerEt!!
             emailEditT = emailEt
             dateEditT = dateEt
+            priceEditT = priceEt
+            paymentEditT = paymentEt
+            closeBtt.setOnClickListener {
+                dialog?.dismiss()
+            }
         }
 
         clientEditT.inputType = InputType.TYPE_NULL
         emailEditT.inputType = InputType.TYPE_NULL
         dateEditT.inputType = InputType.TYPE_NULL
+        priceEditT.inputType = InputType.TYPE_NULL
+        paymentEditT.inputType = InputType.TYPE_NULL
 
-        ongoingOrderList.addAll(
+
+        successfulOrderList.addAll(
             listOf(
                 OrderDetails(
                     10,
@@ -80,7 +80,7 @@ class OngoingOrdersDetailsFragment : Fragment() {
         )
 
 
-        val adapter = object : GenericRecyclerViewAdapter<Any>(ongoingOrderList,requireContext()) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(successfulOrderList,requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view,viewType)
             }
@@ -100,5 +100,15 @@ class OngoingOrdersDetailsFragment : Fragment() {
         recyclerView.adapter = adapter
 
         return bind.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        var dialog: Dialog = requireDialog()
+        dialog?.apply {
+            var width = ViewGroup.LayoutParams.MATCH_PARENT
+            var height = ViewGroup.LayoutParams.MATCH_PARENT
+            this.window?.setLayout(width, height)
+        }
     }
 }

@@ -56,7 +56,7 @@ class OngoingSalesFragment : Fragment() {
         )
 
         if (arguments != null) {
-            sellerCode = arguments?.getString("sellerCode")
+            sellerCode = arguments?.getString("code")
         }
 
         Log.d("ongoingsales","$sellerCode")
