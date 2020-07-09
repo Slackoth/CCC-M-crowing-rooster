@@ -177,7 +177,6 @@ object ViewHolderFactory {
         }
     }
 
-
     class ChartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         GenericRecyclerViewAdapter.Binder<Pedido> {
 

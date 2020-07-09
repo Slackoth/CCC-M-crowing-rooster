@@ -19,7 +19,9 @@ import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.BatteryDao
 import com.cccm.crowingrooster.database.daos.PedidoDao
+import com.cccm.crowingrooster.database.daos.SellerFreeDao
 import com.cccm.crowingrooster.database.entities.Pedido
+import com.cccm.crowingrooster.database.entities.SellerFree
 import com.cccm.crowingrooster.databinding.FragmentChartBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
@@ -27,6 +29,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.models.ProductChart
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.network.repository.pedido.PedidoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
+import com.cccm.crowingrooster.network.repository.seller.SellerFreeRepository
 import com.cccm.crowingrooster.screens.product.ProductViewModel
 import com.cccm.crowingrooster.screens.product.ProductViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,11 +43,11 @@ class ChartFragment : Fragment() {
     private var chartList: MutableList<Any> = mutableListOf()
     private lateinit var app: Application
     private lateinit var batteryRepository: BatteryRepository
-    //    private lateinit var batteryInfoRepository: BatteryInfoRepository
+    private lateinit var SellerFreeRepository:SellerFreeRepository
     private lateinit var PedidoRepository:PedidoRepository
     private lateinit var viewModelFactory: ChartViewModelFactory
     private lateinit var viewModel: ChartViewModel
-    private lateinit var batteryDao: BatteryDao
+    private lateinit var SellerFreeDao:SellerFreeDao
     private lateinit var pedidoDao: PedidoDao
     private lateinit var adapter: GenericRecyclerViewAdapter<Pedido>
 
@@ -69,10 +72,11 @@ class ChartFragment : Fragment() {
 
         app = requireActivity().application
         pedidoDao = CrowingRoosterDataBase.getInstance(app).PedidoDao
-
+        SellerFreeDao= CrowingRoosterDataBase.getInstance(app).sellerFreeDao
 //        batteryInfoRepository= BatteryInfoRepository(batteryInfoDao)
         PedidoRepository= PedidoRepository(pedidoDao)
-        viewModelFactory = ChartViewModelFactory(PedidoRepository, app)
+        SellerFreeRepository= SellerFreeRepository(SellerFreeDao)
+        viewModelFactory = ChartViewModelFactory(PedidoRepository,SellerFreeRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ChartViewModel::class.java)
 
        viewModel.pedidos.observe(viewLifecycleOwner, Observer {

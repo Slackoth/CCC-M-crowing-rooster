@@ -25,18 +25,14 @@ class ProductViewModel(
 
     var battery: LiveData<Battery> = BatteryRepository.getSpecific(2)
 
-
-
-
-
-
     fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String){
         var Pedido: Pedido= Pedido(0,cant, id_battery,IdUser,img,Desc, titulo)
-        if(PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value!=null){
+        if(PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value==null){
             Log.d("Pedido", "Ta lleno")
             PedidoRepository.getInstance(pedidoDao).Insertar(Pedido)
         }else{
             Log.d("Pedido", "Ta vacio")
+            Pedido=PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value!!
             Pedido.cantidad_bateria= Pedido.cantidad_bateria+1
             PedidoRepository.getInstance(pedidoDao).update(Pedido)
         }
