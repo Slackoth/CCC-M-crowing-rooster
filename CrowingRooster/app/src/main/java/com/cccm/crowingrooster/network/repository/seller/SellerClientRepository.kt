@@ -10,12 +10,12 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.ZonedDateTime
 
 class SellerClientRepository (private val sellerClientDao: SellerClientDao) {
-    fun getAll(code: String): LiveData<List<SellerClient>> {
+    fun getAll(code: String?): LiveData<List<SellerClient>> {
         refreshSellerClient(code)
         return sellerClientDao.getAll()
     }
 
-    private fun refreshSellerClient(code: String) {
+    private fun refreshSellerClient(code: String?) {
         GlobalScope.launch {
             if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
                 try {

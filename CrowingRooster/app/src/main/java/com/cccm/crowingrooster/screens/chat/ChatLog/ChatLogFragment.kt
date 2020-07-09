@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster.screens.chat
+package com.cccm.crowingrooster.screens.chat.ChatLog
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentChatLogBinding
+import com.cccm.crowingrooster.screens.chat.ChatFragment
 import com.cccm.crowingrooster.screens.chat.Messages.ChatMessage
-import com.cccm.crowingrooster.screens.sales.successful_sales.TAG
-import com.firebase.ui.auth.data.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -26,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import kotlin.math.log
 
 
 class ChatLogFragment : Fragment() {
@@ -62,7 +59,8 @@ class ChatLogFragment : Fragment() {
 
         recyclerView.adapter=adapter
 
-        Log.d("tagazo",ChatFragment.clickedUser?.uid.toString() )
+        Log.d("tagazo",
+            ChatFragment.clickedUser?.uid.toString() )
 
         return bind.root
     }
@@ -107,11 +105,20 @@ class ChatLogFragment : Fragment() {
                             ///NO URGENTE, NO MEE DETECTA LA LLAMADA DE FIREBASE AUTH USER ID, HACERLO POR FB REALTIME  ------Arreglado
 
                             val phtouser:String= ChatFragment.currentUser?.profileImageUrl.toString()
-                            adapter.add(ChatToItem(chatMessage.mssge,phtouser )   )
+                            adapter.add(
+                                ChatToItem(
+                                    chatMessage.mssge,
+                                    phtouser
+                                )
+                            )
                         }
                         //debo setear un else if para el usuario que recibe
                         else{
-                            adapter.add(ChatFromItem(chatMessage.mssge)   )
+                            adapter.add(
+                                ChatFromItem(
+                                    chatMessage.mssge
+                                )
+                            )
                         }
 
                     }

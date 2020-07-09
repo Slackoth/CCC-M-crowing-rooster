@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.orders.canceled_orders.canceled_order_details
 
 import android.app.Dialog
 import android.os.Bundle
@@ -10,19 +10,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.databinding.FragmentOrdersDetailsDialogBinding
+import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.databinding.FragmentCanceledOrdersDetailsBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.OrderDetails
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.google.android.material.textfield.TextInputEditText
 
-class OrderDetailsDialogFragment : DialogFragment() {
+class CanceledOrderDetailsDialogFragment : DialogFragment() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var clientEditT: TextInputEditText
     private lateinit var emailEditT: TextInputEditText
     private lateinit var dateEditT: TextInputEditText
-    private lateinit var priceEditT: TextInputEditText
-    private lateinit var paymentEditT: TextInputEditText
+
     private var successfulOrderList: MutableList<Any> = mutableListOf()
 
     override fun onCreateView(
@@ -31,16 +32,15 @@ class OrderDetailsDialogFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_sale_details_dialog, container, false)
-        val bind = DataBindingUtil.inflate<FragmentOrdersDetailsDialogBinding>(inflater,
-            R.layout.fragment_orders_details_dialog, container, false)
+        val bind = DataBindingUtil.inflate<FragmentCanceledOrdersDetailsBinding>(inflater,
+            R.layout.fragment_canceled_orders_details, container, false)
 
         bind.apply {
             recyclerView = recyclerViewSsd
             clientEditT = sellerEt!!
             emailEditT = emailEt
             dateEditT = dateEt
-            priceEditT = priceEt
-            paymentEditT = paymentEt
+
             closeBtt.setOnClickListener {
                 dialog?.dismiss()
             }
@@ -49,8 +49,7 @@ class OrderDetailsDialogFragment : DialogFragment() {
         clientEditT.inputType = InputType.TYPE_NULL
         emailEditT.inputType = InputType.TYPE_NULL
         dateEditT.inputType = InputType.TYPE_NULL
-        priceEditT.inputType = InputType.TYPE_NULL
-        paymentEditT.inputType = InputType.TYPE_NULL
+
 
 
         successfulOrderList.addAll(
@@ -88,7 +87,7 @@ class OrderDetailsDialogFragment : DialogFragment() {
                 return R.layout.order_details_item
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {}
             }
 

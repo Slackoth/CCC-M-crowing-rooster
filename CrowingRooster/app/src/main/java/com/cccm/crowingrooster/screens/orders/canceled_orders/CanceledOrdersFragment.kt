@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.orders.canceled_orders
 
 import android.os.Bundle
 import android.view.*
@@ -6,18 +6,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cccm.crowingrooster.databinding.FragmentSuccessfulOrderBinding
+import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.databinding.FragmentCanceledOrdersBinding
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Canceled_Order
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Order
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
+import com.cccm.crowingrooster.screens.orders.canceled_orders.canceled_order_details.CanceledOrderDetailsDialogFragment
 
-
-class SuccessfulOrdersFragment : Fragment() {
+class CanceledOrdersFragment: Fragment() {
 
     lateinit var recyclerView: RecyclerView
-    var orderList: MutableList<Any> = mutableListOf()
+    var canceled_orderList: MutableList<Any> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +26,8 @@ class SuccessfulOrdersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_successful_orders, container, false)
-        val bind = DataBindingUtil.inflate<FragmentSuccessfulOrderBinding>(
-            inflater, R.layout.fragment_successful_order,
+        val bind = DataBindingUtil.inflate<FragmentCanceledOrdersBinding>(
+            inflater, R.layout.fragment_canceled_orders,
             container, false
         )
 
@@ -36,35 +37,16 @@ class SuccessfulOrdersFragment : Fragment() {
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
 
         recyclerView = bind.recyclerView
-        orderList.addAll(
+        canceled_orderList.addAll(
             listOf(
-                Order(
-                    num_order = 72, quantity = 100,
+                Canceled_Order(
+                    quantity = 300,
                     imgUrl = "https://i.musicaimg.com/letras/200/2482445.jpg",
                     date = "22/04/2020"
                 ),
-
-                Order(
-                    num_order = 71, quantity = 8,
+                Canceled_Order(
+                    quantity = 300,
                     imgUrl = "https://s.mxmcdn.net/images-storage/albums4/4/0/2/2/4/9/44942204_800_800.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 70, quantity = 5,
-                    imgUrl = "https://s.mxmcdn.net/images-storage/albums5/3/0/6/2/9/4/46492603_500_500.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 69, quantity = 80,
-                    imgUrl = "https://s.mxmcdn.net/images-storage/albums5/0/7/1/7/7/2/48277170_500_500.jpg",
-                    date = "22/04/2020"
-                ),
-
-                Order(
-                    num_order = 78, quantity = 70,
-                    imgUrl = "https://i.musicaimg.com/letras/200/2482445.jpg",
                     date = "22/04/2020"
                 )
 
@@ -72,18 +54,20 @@ class SuccessfulOrdersFragment : Fragment() {
         )
 
         //Creating the RecyclerView Adapter
-        val adapter = object : GenericRecyclerViewAdapter<Any>(orderList, requireContext()) {
+        val adapter = object : GenericRecyclerViewAdapter<Any>(canceled_orderList, requireContext()) {
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
                 return ViewHolderFactory.bindView(view, viewType)
             }
 
-            override fun getOnClickLayout(): () -> Unit {
-                val dialog = OrderDetailsDialogFragment()
-                return { -> dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog") }
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
+                val dialog =
+                    CanceledOrderDetailsDialogFragment()
+                return { it -> dialog.show(requireActivity().supportFragmentManager, "CanceledOrderDetailsDialog") }
+
             }
 
             override fun getLayoutId(): Int {
-                return R.layout.order_item_layout
+                return R.layout.canceled_order_item_layout
             }
         }
 
@@ -106,13 +90,13 @@ class SuccessfulOrdersFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.successful_order_more_options_menu, menu)
+        inflater.inflate(R.menu.canceled_order_more_options_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
-            R.id.action_order_idorder_so, R.id.action_order_date_so -> {
+            R.id.action_order_date_cao -> {
                 val dialog =
                     AscDescDialogFragment()
                 dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
@@ -123,11 +107,3 @@ class SuccessfulOrdersFragment : Fragment() {
     }
 
 }
-
-
-
-
-
-
-
-

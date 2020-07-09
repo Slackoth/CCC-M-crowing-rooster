@@ -67,9 +67,9 @@ class OpenOrdersFragment : Fragment() {
                 return R.layout.open_orders_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
 
-                return { ->
+                return { it ->
                     this@OpenOrdersFragment.findNavController()
                         .navigate(R.id.openOrdersDetailsFragment)
                 }

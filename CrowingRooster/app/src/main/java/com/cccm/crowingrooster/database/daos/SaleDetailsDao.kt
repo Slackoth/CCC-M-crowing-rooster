@@ -12,7 +12,7 @@ interface SaleDetailsDao {
     fun insert(saleDetails: SaleDetails)
 
     @Query("SELECT * FROM successful_sale_details WHERE code = :code")
-    fun getSpecific(code:String): LiveData<SaleDetails>
+    fun getSpecific(code:String?): LiveData<SaleDetails>
 
 //    @Transaction
 //    @Query("SELECT * FROM successful_sale_details WHERE code = :code")

@@ -14,12 +14,12 @@ import org.threeten.bp.ZonedDateTime
 class SalePreviewRepository(private val salePreviewDao: SalePreviewDao) {
 
 
-    fun getAll(code: String, state: String): LiveData<List<SalePreview>> {
+    fun getAll(code: String?, state: String): LiveData<List<SalePreview>> {
         refreshSalePreview(code,state)
         return salePreviewDao.getAll(state)
     }
 
-    private fun refreshSalePreview(code: String,state: String) {
+    private fun refreshSalePreview(code: String?,state: String) {
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             GlobalScope.launch {
                 try {

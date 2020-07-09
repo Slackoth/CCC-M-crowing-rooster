@@ -128,6 +128,7 @@ dependencies {
     //SmartMaterialSpinner
     implementation 'com.github.chivorns.androidx:smartmaterialspinner:1.2.1'
 
+
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
 

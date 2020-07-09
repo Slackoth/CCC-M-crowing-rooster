@@ -22,6 +22,7 @@ class BuyerMainScreenFragment : Fragment() {
     lateinit var ordersBt: CardView
     lateinit var chatBt: CardView
     lateinit var batteryBt: CardView
+    private var args: BuyerMainScreenFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,8 +47,19 @@ class BuyerMainScreenFragment : Fragment() {
             batteryBt = batteryCvBtt
         }
 
+        args = arguments?.let {
+            BuyerMainScreenFragmentArgs.fromBundle(it)
+        }
+
+
+
         ordersBt.setOnClickListener {
-            it.findNavController().navigate(R.id.OrdersFragment)
+            val action = BuyerMainScreenFragmentDirections
+                .ActionBuyerMainScreenFragmentToOrdersFragment()
+            action.buyerCode = args?.buyerCode.toString()
+
+            it.findNavController().navigate(action)
+                //.navigate(R.id.OrdersFragment)
         }
 
         chatBt.setOnClickListener {

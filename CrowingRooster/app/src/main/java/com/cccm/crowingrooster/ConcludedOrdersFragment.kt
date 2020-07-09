@@ -63,9 +63,9 @@ class ConcludedOrdersFragment : Fragment() {
                     return R.layout.open_orders_item_layout
                 }
 
-                override fun getOnClickLayout(): () -> Unit {
+                override fun getOnClickLayout(): (List<Any>) -> Unit {
                     val dialog = ConcludedOrderDetailsDialogFragment()
-                    return { ->
+                    return { it ->
                         dialog.show(
                             requireActivity().supportFragmentManager,
                             "ConcludeOrderDetails"

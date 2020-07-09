@@ -34,7 +34,7 @@
                     android:textSize="24sp" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/product_img"
                     android:layout_width="match_parent"
                     android:layout_height="123dp"
 
@@ -57,7 +57,7 @@
                     android:textColor="@color/on_primary" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/description_product"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -41,7 +41,8 @@ class DeliveriesFragment : Fragment() {
         val tabAdapter =
             GenericTabAdapter(
                 listOfFragment,
-                this
+                this,
+                ""
             )
         viewPager = bind.deliveriesPager
         tabLayout = bind.deliveriesTablayout

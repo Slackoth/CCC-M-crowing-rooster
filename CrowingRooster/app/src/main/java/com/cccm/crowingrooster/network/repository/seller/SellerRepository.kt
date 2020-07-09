@@ -11,12 +11,12 @@ import org.threeten.bp.ZonedDateTime
 
 class SellerRepository(private val sellerDao: SellerDao) {
 
-    fun getSpecific(code: String): LiveData<Seller> {
+    fun getSpecific(code: String?): LiveData<Seller> {
         refreshSeller(code)
         return sellerDao.getSeller(code)
     }
 
-    private fun refreshSeller(code: String) {
+    private fun refreshSeller(code: String?) {
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             GlobalScope.launch {
                 try {
