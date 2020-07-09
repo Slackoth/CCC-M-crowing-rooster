@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.search_battery
 
 import android.app.SearchManager
 import android.content.Context
@@ -11,24 +11,25 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentBatterySearchBinding
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Battery
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 
-
-class BatterySearchFragment : Fragment() {
+class CarSearchFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
     var batteryList: MutableList<Any> = mutableListOf()
-
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_successful_orders, container, false)
@@ -43,22 +44,6 @@ class BatterySearchFragment : Fragment() {
         recyclerView = bind.recyclerView
         batteryList.addAll(
             listOf(
-                Battery(
-                    modelo = "22FF",
-                    voltaje = "12",
-                    CCA = "760",
-                    capacidad = "760",
-                    imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg"
-                ),
-
-                Battery(
-                    modelo = "22FF",
-                    voltaje = "12",
-                    CCA = "760",
-                    capacidad = "760",
-                    imgUrl = "https://1.bp.blogspot.com/-vwP_aXHxt64/VH9ksXQ6lUI/AAAAAAAAA6w/o1xM86UehJk/s1600/juguete.jpg"
-                )
-
 
             )
         )
@@ -73,9 +58,9 @@ class BatterySearchFragment : Fragment() {
                 return R.layout.searchbt_item_layout
             }
 
-            override fun getOnClickLayout(): () -> Unit {
+            override fun getOnClickLayout(): (List<Any>) -> Unit {
                 return {
-                    this@BatterySearchFragment.findNavController()
+                    this@CarSearchFragment.findNavController()
                         .navigate(R.id.productFragment)                }
             }
 
@@ -98,8 +83,6 @@ class BatterySearchFragment : Fragment() {
 //            else LinearLayoutManager.VERTICAL, false)
 
         return bind.root
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -127,8 +110,8 @@ class BatterySearchFragment : Fragment() {
                 return true
             }
 
-          override fun onQueryTextChange(newText: String?): Boolean {
-              return false           }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false           }
 
         })
 
@@ -140,45 +123,4 @@ class BatterySearchFragment : Fragment() {
 
     }
 
-
-
 }
-
-
-
-
-
-
-/*override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater): Boolean {
-
-    val inflater = menuInflater
-    inflater.inflate(R.menu.search_menu, menu)
-
-    val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-    val searchItem = menu?.findItem(R.id.action_search)
-    val searchView= searchItem?.actionView as SearchView
-
-    searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
-
-    searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
-
-       override fun onQueryTextSubmit(query: String?): Boolean {
-
-           searchView.clearFocus()
-           searchView.setQuery( "", false)
-           val collapseActionView = searchItem.collapseActionView()
-
-           Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_LONG).show()
-
-           return true
-       }
-
-       override fun onQueryTextChange(newText: String?): Boolean {
-           return false
-       }
-
-   })
-
-   return false
-
-}*/

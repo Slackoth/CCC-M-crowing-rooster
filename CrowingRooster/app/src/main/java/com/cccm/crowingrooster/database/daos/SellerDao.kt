@@ -13,5 +13,5 @@ interface SellerDao {
     fun insert(seller: Seller)
 
     @Query("SELECT * FROM seller WHERE code = :code")
-    fun getSeller(code: String): LiveData<Seller>
+    fun getSeller(code: String?): LiveData<Seller>
 }

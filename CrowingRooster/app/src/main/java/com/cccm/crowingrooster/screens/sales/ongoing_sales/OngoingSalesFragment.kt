@@ -2,6 +2,7 @@ package com.cccm.crowingrooster.screens.sales.ongoing_sales
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SalePreviewDao
@@ -25,6 +27,7 @@ import com.cccm.crowingrooster.network.repository.seller.SalePreviewRepository
 import com.cccm.crowingrooster.screens.seller_client_list.SellerClientListViewModel
 import com.cccm.crowingrooster.screens.seller_client_list.SellerClientViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 /**
  * A simple [Fragment] subclass.
@@ -39,6 +42,9 @@ class OngoingSalesFragment : Fragment() {
     private lateinit var salePreviewDao: SalePreviewDao
     private lateinit var salePreviewRepository: SalePreviewRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
+    private lateinit var refreshLayout: SwipeRefreshLayout
+    private var sellerCode: String? = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +54,12 @@ class OngoingSalesFragment : Fragment() {
             inflater, R.layout.fragment_ongoing_sales,
             container, false
         )
+
+        if (arguments != null) {
+            sellerCode = arguments?.getString("code")
+        }
+
+        Log.d("ongoingsales","$sellerCode")
 
 //        (activity as MainActivity).run {
 //            showTopBar()
@@ -59,13 +71,14 @@ class OngoingSalesFragment : Fragment() {
         bind.apply {
             recyclerView = salePreviewRv
             lifecycleOwner = this@OngoingSalesFragment
+            refreshLayout = ongoingSaleDetailsSrl
         }
 
         app = requireActivity().application
         salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
         salePreviewRepository = SalePreviewRepository.getInstance(salePreviewDao)
 
-        viewModelFactory = OngoingSalesViewModelFactory(salePreviewRepository,app)
+        viewModelFactory = OngoingSalesViewModelFactory(salePreviewRepository,app,sellerCode)
         viewModel = ViewModelProvider(this,viewModelFactory).get(OngoingSalesViewModel::class.java)
 
         initRecyclerview()
@@ -81,6 +94,11 @@ class OngoingSalesFragment : Fragment() {
             }
         })
 
+        refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
+
 
         return bind.root
     }
@@ -95,11 +113,21 @@ class OngoingSalesFragment : Fragment() {
                 )
             }
 
-            override fun getOnClickLayout(): () -> Unit {
-                return { ->
-                    this@OngoingSalesFragment.findNavController()
-                        .navigate(R.id.ongoingSalesDetailsFragment)
+            override fun getOnClickLayout(): (params: List<Any>) -> Unit {
+                return { params ->
+                    val globalAction = NavGraphDirections.
+                    actionGlobalOngoingSalesFragmentToOngoingSalesDetailsFragment()
 
+                    globalAction.sellerCode = sellerCode.toString()
+                    globalAction.orderId = params[0].toString()
+                    globalAction.saleId = params[1].toString()
+
+                    try {
+                        this@OngoingSalesFragment.findNavController().navigate(globalAction)
+                    }
+                    catch (e: Exception) {
+                        Log.d("Emensaje","${e.message}")
+                    }
 
                 }
             }

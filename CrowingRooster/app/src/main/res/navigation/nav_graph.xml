@@ -5,6 +5,10 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/logInFragment">
 
+    <action android:id="@+id/action_global_ongoingSalesFragment_to_ongoingSalesDetailsFragment"
+        app:destination="@+id/ongoingSalesDetailsFragment"/>
+<!--    <action android:id="@+id/action_global_successfulSalesFragment_to_saleDetailsDialogFrament"/>-->
+
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.cccm.crowingrooster.screens.login.LogInFragment"
@@ -41,13 +45,21 @@
         <action
             android:id="@+id/action_sellerMainScreen_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <argument
+            android:name="sellerCode"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
 
     <fragment
         android:id="@+id/sellerProfileFragment"
         android:name="com.cccm.crowingrooster.screens.seller_profile.SellerProfileFragment"
         android:label="SellerProfileFragment"
-        tools:layout="@layout/fragment_seller_profile"/>
+        tools:layout="@layout/fragment_seller_profile">
+        <argument android:name="sellerCode"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
     <fragment
 
         android:id="@+id/productFragment"
@@ -67,7 +79,12 @@
         android:id="@+id/salesFragment"
         android:name="com.cccm.crowingrooster.screens.sales.SalesFragment"
         android:label="SalesFragment"
-        tools:layout="@layout/fragment_sales"/>
+        tools:layout="@layout/fragment_sales">
+        <argument
+            android:name="sellerCode"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
     <fragment
         android:id="@+id/ongoingSalesFragment"
         android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.OngoingSalesFragment"
@@ -76,6 +93,10 @@
         <action
             android:id="@+id/action_ongoingSalesFragment_to_ongoingSalesDetailsFragment"
             app:destination="@id/ongoingSalesDetailsFragment" />
+        <argument
+            android:name="sellerCode"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/ongoingSalesDetailsFragment"
@@ -85,6 +106,21 @@
         <action
             android:id="@+id/action_ongoingSalesDetailsFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <argument
+            android:name="sellerCode"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="orderId"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="saleId"
+            app:argType="string"
+            android:defaultValue="default" />
+        <action
+            android:id="@+id/action_ongoingSalesDetailsFragment_to_ongoingSalesFragment"
+            app:destination="@id/ongoingSalesFragment" />
     </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
@@ -100,7 +136,12 @@
         android:id="@+id/sellerClientListFragment"
         android:name="com.cccm.crowingrooster.screens.seller_client_list.SellerClientListFragment"
         android:label="SellerClientListFragment"
-        tools:layout="@layout/fragment_seller_client_list"/>
+        tools:layout="@layout/fragment_seller_client_list">
+        <argument
+            android:name="sellerCode"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
     <fragment
         android:id="@+id/chartFragment"
         android:name="com.cccm.crowingrooster.screens.chart.ChartFragment"
@@ -113,37 +154,41 @@
 
     <fragment
         android:id="@+id/OrdersFragment"
-        android:name="com.cccm.crowingrooster.OrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.OrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_orders"
         >
         <action
             android:id="@+id/action_OrdersFragment_to_successfulOrdersFragment"
             app:destination="@id/successfulOrdersFragment" />
+        <argument
+            android:name="buyerCode"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
 
     <fragment
         android:id="@+id/successfulOrdersFragment"
-        android:name="com.cccm.crowingrooster.SuccessfulOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.successful_orders.SuccessfulOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_successful_order"/>
 
 
     <fragment
         android:id="@+id/OngoingOrdersFragment"
-        android:name="com.cccm.crowingrooster.OngoingOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_ongoing_orders"/>
 
     <fragment
         android:id="@+id/ongoingOrdersDetailsFragment"
-        android:name="com.cccm.crowingrooster.OngoingOrdersDetailsFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.Ongoing_orders.ongoing_order_details.OngoingOrdersDetailsFragment"
         android:label="OngoingOrdersDetailsFragment"
         tools:layout="@layout/fragment_ongoing_orders_details"/>
 
     <fragment
         android:id="@+id/CanceledOrdersFragment"
-        android:name="com.cccm.crowingrooster.CanceledOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.orders.canceled_orders.CanceledOrdersFragment"
         android:label="OrdersFragment"
         tools:layout="@layout/fragment_canceled_orders"/>
     <fragment
@@ -159,6 +204,13 @@
         <action
             android:id="@+id/action_buyerMainScreenFragment_to_BuyerProfileFragment"
             app:destination="@id/BuyerProfileFragment"/>
+        <argument
+            android:name="buyerCode"
+            app:argType="string"
+            android:defaultValue="default" />
+        <action
+            android:id="@+id/action_buyerMainScreenFragment_to_OrdersFragment"
+            app:destination="@id/OrdersFragment" />
     </fragment>
 
     <fragment
@@ -175,7 +227,7 @@
 
     <fragment
         android:id="@+id/SearchFragment"
-        android:name="com.cccm.crowingrooster.SearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search"
         >
@@ -186,13 +238,13 @@
 
     <fragment
         android:id="@+id/BatterySearchFragment"
-        android:name="com.cccm.crowingrooster.BatterySearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.BatterySearchFragment"
         android:label="SerachFragment"
         tools:layout="@layout/fragment_battery_search"/>
 
     <fragment
         android:id="@+id/CarSearchFragment"
-        android:name="com.cccm.crowingrooster.CarSearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.CarSearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_car_search"/>
 
@@ -200,7 +252,12 @@
         android:id="@+id/BuyerProfileFragment"
         android:name="com.cccm.crowingrooster.BuyerProfileFragment"
         android:label="BuyerProfileFragment"
-        tools:layout="@layout/fragment_buyer_profile"/>
+        tools:layout="@layout/fragment_buyer_profile">
+        <argument
+            android:name="buyerCode"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
 
     <fragment
         android:id="@+id/openOrdersFragment"
@@ -250,5 +307,14 @@
             android:id="@+id/action_registerFragment_to_deliveriesFragment"
             app:destination="@id/deliveriesFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/confirmSaleFragment"
+        android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.confirm_sale.ConfirmSaleFragment"
+        android:label="ConfirmSaleFragment"
+        tools:layout="@layout/fragment_confirm_sale" >
+<!--        <action-->
+<!--            android:id="@+id/action_confirmSaleFragment_to_ongoingSalesFragment"-->
+<!--            app:destination="@id/ongoingSalesFragment" />-->
+    </dialog>
 
 </navigation>

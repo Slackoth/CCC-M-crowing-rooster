@@ -6,7 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".OrderDetailsDialogFragment"
+        tools:context=".screens.orders.successful_orders.successful_order_details.SuccessfulOrderDetailsDialogFragment"
         android:background="@color/primary_dark"
         android:orientation="vertical">
 

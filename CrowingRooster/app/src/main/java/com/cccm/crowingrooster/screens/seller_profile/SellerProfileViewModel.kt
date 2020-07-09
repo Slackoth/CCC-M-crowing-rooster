@@ -6,9 +6,9 @@ import androidx.lifecycle.AndroidViewModel
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
 
 class SellerProfileViewModel(
-    sellerRepository: SellerRepository,
-    app: Application
+    private val sellerRepository: SellerRepository,
+    app: Application,
+    private val sellerCode: String?
 ): AndroidViewModel(app) {
-    val seller = sellerRepository.getSpecific("V-2020-0")
-
+    val seller = sellerRepository.getSpecific(sellerCode)
 }

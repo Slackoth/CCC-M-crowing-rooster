@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster.screens.login
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,7 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.UserDao
 import com.cccm.crowingrooster.databinding.FragmentLogInBinding
+import com.cccm.crowingrooster.network.repository.login.LogInRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -24,6 +28,11 @@ class LogInFragment : Fragment() {
     private lateinit var userEditT: EditText
     private lateinit var passEt: EditText
     private lateinit var viewModel: LogInViewModel
+    private lateinit var viewModelFactory: LogInViewModelFactory
+    private lateinit var userDao: UserDao
+    private lateinit var app: Application
+    private lateinit var logInRepository: LogInRepository
+    private lateinit var type: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,69 +41,83 @@ class LogInFragment : Fragment() {
         val bind = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in,
             container,false)
-        viewModel= ViewModelProvider(this).get(LogInViewModel::class.java)
+
+        app = requireActivity().application
+        userDao = CrowingRoosterDataBase.getInstance(app).userDao
+        logInRepository = LogInRepository.getInstance(userDao)
+
+        viewModelFactory = LogInViewModelFactory(logInRepository,app)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(LogInViewModel::class.java)
+
+        viewModel.setUser()
 
         bind.apply {
             userEditT = userEt
             passEt = passwordEt
 
-            loginBtt.setOnClickListener {
+            registerTv.setOnClickListener{
+                it.findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
+            }
+            (activity as MainActivity).run {
+                hideTopBar()
+            }
+
+            bind.loginBtt.setOnClickListener {
                 if (userEditT.text.toString().isEmpty() || passEt.text.toString().isEmpty()) {
                     Toast.makeText(context, "Porfavor llenar Ambos campos.", Toast.LENGTH_SHORT).show()
 
                 }
                 else {
                     ProcessSignIn()
+                    val user = viewModel.getSpecific(userEditT.text.toString())
+                    Log.d("Need to eendd",userEditT.text.toString())
+                    type = user.type
 
-                    val useruid= FirebaseAuth.getInstance().uid
-                    val userType= FirebaseDatabase.getInstance().getReference("/users/$useruid")
+                    val userUid= FirebaseAuth.getInstance().uid
+                    FirebaseDatabase.getInstance().getReference("/users/$userUid")
 
-
-                    if (userEt.text.toString().toUpperCase() == "SELLER@EXAMPLE.COM") {
-                        it.findNavController()
-                            .navigate(R.id.action_logInFragment_to_sellerMainScreen)
-                    }
-                    if (userEt.text.toString().toUpperCase() == "BUYER@EXAMPLE.COM") {
-                        it.findNavController()
-                            .navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
-                    }
-                    if (userEt.text.toString().toUpperCase() == "DEALER@EXAMPLE.COM") {
-                        it.findNavController()
+                    when(type) {
+                        "Comprador" ->  {
+                            val action = LogInFragmentDirections
+                                .actionLogInFragmentToBuyerMainScreenFragment()
+                            action.buyerCode = user.code
+                            it.findNavController()
+                                .navigate(action)
+                            //.navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
+                        }
+                        "Vendedor" ->  {
+                            val action = LogInFragmentDirections.
+                            actionLogInFragmentToSellerMainScreen()
+                            action.sellerCode = user.code
+                            it.findNavController()
+                                .navigate(action)
+                            //.navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                        }
+                        else -> it.findNavController()
                             .navigate(R.id.action_logInFragment_to_openOrdersFragment)
                     }
                 }
             }
-
-            registerTv.setOnClickListener{
-                it.findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
-
-            }
-        (activity as MainActivity).run {
-            hideTopBar()
-
         }
+
         return bind.root
-        }
-
     }
-        private fun ProcessSignIn(){
+
+    private fun ProcessSignIn(){
         val email= userEditT.text.toString()
         val pswd= passEt.text.toString()
 
-        //Log.d("MainActivity","User: "+email)
-        //Log.d("MainActivity","Password: "+pswd)
+        Log.d("MainActivity","User: "+email)
+        Log.d("MainActivity","Password: "+pswd)
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,pswd)
             .addOnCompleteListener{
-                //Log.d("MainActivity", "User Auth Process Correct")
+                Log.d("MainActivity", "User Auth Process Correct")
 
-
-
-
-                if(!it.isSuccessful)    return@addOnCompleteListener
+                if(!it.isSuccessful) return@addOnCompleteListener
             }
             .addOnFailureListener{
-                //Log.d("MainActivity", "User Credentials incorrect")
+                Log.d("MainActivity", "User Credentials incorrect")
                 Toast.makeText(context, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
                 return@addOnFailureListener
             }

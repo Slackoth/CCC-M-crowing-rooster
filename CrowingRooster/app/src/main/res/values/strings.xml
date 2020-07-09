@@ -106,6 +106,9 @@
     <string name="show_battery_format">%1$s-%2$s-%3$s</string>
     <string name="Estilosproducto">Estilos Disponibles</string>
 
+    <string name="address">Dirección</string>
+
+
 
     <string-array name="payment_array">
         <item>Efectivo</item>

@@ -9,11 +9,12 @@ import com.cccm.crowingrooster.screens.seller_client_list.SellerClientListViewMo
 
 class OngoingSalesViewModelFactory(
     private val salePreviewRepository: SalePreviewRepository,
-    private val app: Application
+    private val app: Application,
+    private val sellerCode: String?
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(OngoingSalesViewModel::class.java)) {
-            return OngoingSalesViewModel(salePreviewRepository,app) as T
+            return OngoingSalesViewModel(salePreviewRepository,app,sellerCode) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
