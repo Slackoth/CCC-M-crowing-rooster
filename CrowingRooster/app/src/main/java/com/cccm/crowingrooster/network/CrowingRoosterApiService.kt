@@ -1,9 +1,6 @@
 package com.cccm.crowingrooster.network
 
-import com.cccm.crowingrooster.database.entities.SaleDetails
-import com.cccm.crowingrooster.database.entities.SalePreview
-import com.cccm.crowingrooster.database.entities.Seller
-import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.database.entities.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -11,7 +8,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://192.168.1.22:3000/"
+private const val BASE_URL = "http://192.168.1.4:3000/"
+    //"http://192.168.1.22:3000/"
     //"http://192.168.1.5:3000/"
 
 private val moshi = Moshi.Builder()
@@ -57,6 +55,16 @@ interface CrowingRoosterApiService {
         @Query("codigo") codigo: String,
         @Query("ordenId") ordenId: String
     ): List<SaleDetails>
+
+    @GET("deliverypreview/ongoing")
+    suspend fun getOngoingDeliveryPreviewAsync(
+        @Query("codigo") codigo: String
+    ): List<DeliveryPreview>
+
+    @GET("deliverypreview/successful")
+    suspend fun getSuccessfulDeliveryPreviewAsync(
+        @Query("codigo") codigo: String
+    ): List<DeliveryPreview>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
