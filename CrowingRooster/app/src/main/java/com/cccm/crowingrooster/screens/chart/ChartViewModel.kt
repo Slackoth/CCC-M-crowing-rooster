@@ -13,11 +13,18 @@ import com.cccm.crowingrooster.network.repository.seller.SellerFreeRepository
 
 class ChartViewModel (
     pedidoRepository: PedidoRepository,
-    sellerFreeRepository: SellerFreeRepository,
+    SellerFreeRepository: SellerFreeRepository,
     app: Application
 ): AndroidViewModel(app){
 
     var pedidos: LiveData<List<Pedido>> = pedidoRepository.getSpecific("16")
+    var freeSeller= SellerFreeRepository.getSpecific()
+
+
+
+    fun Proceedtonegociation(){
+
+    }
 
 
      init {

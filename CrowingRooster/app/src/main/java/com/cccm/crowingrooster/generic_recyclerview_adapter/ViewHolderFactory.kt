@@ -188,6 +188,7 @@ object ViewHolderFactory {
         private val quantity: EditText = itemView.findViewById(R.id.quantity_text_ch)
 
         override fun bind(listObject: Pedido, onClickLayout: () -> Unit, context: Context) {
+
             Log.d("ChartObject","Si lo tira carajoajaoajoaj")
             Glide.with(context).load(listObject.desc_bateria).into(product)
             desc.text = listObject.img_bateria

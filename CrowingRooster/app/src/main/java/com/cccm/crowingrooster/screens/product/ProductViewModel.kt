@@ -27,6 +27,7 @@ class ProductViewModel(
 
     fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String){
         var Pedido: Pedido= Pedido(0,cant, id_battery,IdUser,img,Desc, titulo)
+
         if(PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value==null){
             Log.d("Pedido", "Ta lleno")
             PedidoRepository.getInstance(pedidoDao).Insertar(Pedido)

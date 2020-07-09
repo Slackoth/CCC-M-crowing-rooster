@@ -79,6 +79,7 @@ class ChartFragment : Fragment() {
         viewModelFactory = ChartViewModelFactory(PedidoRepository,SellerFreeRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ChartViewModel::class.java)
 
+
        viewModel.pedidos.observe(viewLifecycleOwner, Observer {
            if(it!= null){
                //Log.d("Chart", it[1].desc_bateria)
@@ -86,40 +87,15 @@ class ChartFragment : Fragment() {
            }
        })
 
-
-
+        bind.ProceedPay.setOnClickListener {
+            viewModel.Proceedtonegociation()
+            Log.d("Proceed", "Äl menos llega" )
+        }
 
 
         recyclerView = bind.recyclerViewChart
-//        chartList.addAll(
-//            listOf(
-//                ProductChart(
-//                    "Baterias rasho",
-//                    "Spicy jalapeno bacon ipsum dolor amet corned beef leberkas ribeye biltong capicola chicken shoulder meatloaf pork belly. ",
-//                    5,
-//                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-//                ),
-//                ProductChart(
-//                    "Baterias Trueno",
-//                    "huck swine pancetta kevin, beef pork loin pork chop short ribs chislic pork.huck swine pancetta kevin, beef pork loin pork chop short ribs chislic pork.",
-//                    1,
-//                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-//                ),
-//                ProductChart(
-//                    "Baterias Rayito",
-//                    "Brisket spare ribs alcatra short loin jowl venison pork loin beef ribs pastrami drumstick chuck",
-//                    2,
-//                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-//                ),
-//                ProductChart(
-//                    "Baterias Esclavas del Blanco",
-//                    "Beef biltong kevin bacon ribeye t-bone short loin drumstick brisket shankle shank.",
-//                    6,
-//                    "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/54371128_2605774029452750_1474735591550615552_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_ohc=0YEa9J_uk_EAX_DjfCX&_nc_ht=scontent-mia3-1.xx&oh=b4f0a9a730d6915d632424f62451adf1&oe=5EE56BEB"
-//                )
-//
-//            )
-//        )
+
+
 
         //Creating the RecyclerView Adapter
         adapter= object : GenericRecyclerViewAdapter<Pedido>(viewModel.pedidos.value, requireContext()) {
@@ -149,6 +125,7 @@ class ChartFragment : Fragment() {
                 R.drawable.recyclerview_divider
             )
         )
+//        recyclerView.adapter.clear()
         recyclerView.adapter = adapter
 
         return bind.root
