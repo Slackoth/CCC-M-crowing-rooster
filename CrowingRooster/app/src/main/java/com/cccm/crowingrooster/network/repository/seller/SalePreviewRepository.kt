@@ -16,6 +16,8 @@ class SalePreviewRepository(private val salePreviewDao: SalePreviewDao) {
 
     fun getAll(code: String, state: String): LiveData<List<SalePreview>> {
         refreshSalePreview(code,state)
+        val mipene = salePreviewDao.getAll(state)
+
         return salePreviewDao.getAll(state)
     }
 

@@ -19,6 +19,4 @@ data class SalePreview(
     var orderCode: String,
     @Json(name = "estado")
     var state: String
-
-
 )

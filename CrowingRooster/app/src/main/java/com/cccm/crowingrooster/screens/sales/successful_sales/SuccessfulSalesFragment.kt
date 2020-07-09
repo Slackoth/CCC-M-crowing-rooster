@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SalePreviewDao
@@ -38,6 +39,7 @@ class SuccessfulSalesFragment : Fragment() {
     private lateinit var salePreviewDao: SalePreviewDao
     private lateinit var salePreviewRepository: SalePreviewRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
+    private lateinit var refreshLayout: SwipeRefreshLayout
 
 
     @SuppressLint("LogNotTimber")
@@ -63,6 +65,7 @@ class SuccessfulSalesFragment : Fragment() {
 
         bind.apply {
             recyclerView = succesfulSalesRv
+            refreshLayout = succesfulSalesSrl
             lifecycleOwner = this@SuccessfulSalesFragment
         }
 
@@ -78,6 +81,13 @@ class SuccessfulSalesFragment : Fragment() {
                 else -> bind.salePreviewListProgressBar.visibility = View.GONE
             }
         })
+
+        refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
+
+
 
 //        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
 //        recyclerView.layoutManager = LinearLayoutManager(requireContext(),

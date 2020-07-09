@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SalePreviewDao
@@ -41,6 +42,7 @@ class OngoingSalesFragment : Fragment() {
     private lateinit var salePreviewDao: SalePreviewDao
     private lateinit var salePreviewRepository: SalePreviewRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SalePreview>
+    private lateinit var refreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +63,7 @@ class OngoingSalesFragment : Fragment() {
         bind.apply {
             recyclerView = salePreviewRv
             lifecycleOwner = this@OngoingSalesFragment
+            refreshLayout = ongoingSaleDetailsSrl
         }
 
         app = requireActivity().application
@@ -83,6 +86,11 @@ class OngoingSalesFragment : Fragment() {
             }
         })
 
+        refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
+
 
         return bind.root
     }
@@ -101,10 +109,11 @@ class OngoingSalesFragment : Fragment() {
                 return { ->
 //                    var action = OngoingSalesFragmentDirections
 //                        .actionOngoingSalesFragmentToOngoingSalesDetailsFragment()
-                    val globalAction = NavGraphDirections.actionGlobalOngoingSalesFragmentToOngoingSalesDetailsFragment()
+                    val globalAction = NavGraphDirections.
+                    actionGlobalOngoingSalesFragmentToOngoingSalesDetailsFragment()
                     globalAction.code = "V-2020-0"
-                    globalAction.orderId = "O-2020-1"
-                    globalAction.saleId = "VT-2020-2"
+                    globalAction.orderId = "O-2020-3"
+                    globalAction.saleId = "VT-2020-3"
 
 //                    action.code = "V-2020-0"
 //                    action.orderId = "O-2020-1"

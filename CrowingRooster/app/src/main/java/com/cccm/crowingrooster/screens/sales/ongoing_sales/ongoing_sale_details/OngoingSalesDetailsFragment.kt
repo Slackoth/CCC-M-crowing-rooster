@@ -12,8 +12,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.SaleDetailsDao
@@ -24,9 +26,11 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewA
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.network.repository.seller.SaleDetailsRepository
 import com.cccm.crowingrooster.screens.sales.ongoing_sales.confirm_sale.ConfirmSaleFragment
+import com.cccm.crowingrooster.screens.sales.ongoing_sales.confirm_sale.ConfirmSaleFragmentDirections
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogViewModel
 import com.cccm.crowingrooster.screens.sales.successful_sales.successful_sale_details.SaleDetailsDialogViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 /**
  * A simple [Fragment] subclass.
@@ -42,6 +46,7 @@ class OngoingSalesDetailsFragment : Fragment() {
     private lateinit var saleMiniOrdersDao: SaleMiniOrdersDao
     private lateinit var saleDetailsRepository: SaleDetailsRepository
     private lateinit var adapter: GenericRecyclerViewAdapter<SaleMiniOrders>
+    private var args: OngoingSalesDetailsFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +62,7 @@ class OngoingSalesDetailsFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.seller_drawer_menu_navigation)
         }
 
-        val args = arguments?.let { OngoingSalesDetailsFragmentArgs.fromBundle(it) }
+        args = arguments?.let { OngoingSalesDetailsFragmentArgs.fromBundle(it) }
 
         app = requireActivity().application
         saleDetailsDao = CrowingRoosterDataBase.getInstance(app).saleDetailsDao
@@ -72,9 +77,14 @@ class OngoingSalesDetailsFragment : Fragment() {
             emailEt.inputType = InputType.TYPE_NULL
             dateEt.inputType = InputType.TYPE_NULL
             recyclerView = ongoingSaleDetailsRv
+
             //TODO: ClickListeners for the buttons
             confirmBtt.setOnClickListener {
                 val dialog = ConfirmSaleFragment()
+                val dialogArgs = Bundle()
+                dialogArgs.putString("saleId",args?.saleId)
+                dialogArgs.putString("code",args?.code)
+                dialog.arguments = dialogArgs
                 dialog.show(requireActivity().supportFragmentManager,"ConfirmDialog")
             }
             charBtt.setOnClickListener {

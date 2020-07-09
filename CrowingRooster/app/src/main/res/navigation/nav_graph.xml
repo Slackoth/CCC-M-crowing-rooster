@@ -79,6 +79,10 @@
         <action
             android:id="@+id/action_ongoingSalesFragment_to_ongoingSalesDetailsFragment"
             app:destination="@id/ongoingSalesDetailsFragment" />
+        <argument
+            android:name="code"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/ongoingSalesDetailsFragment"
@@ -100,6 +104,9 @@
             android:name="saleId"
             app:argType="string"
             android:defaultValue="default" />
+        <action
+            android:id="@+id/action_ongoingSalesDetailsFragment_to_ongoingSalesFragment"
+            app:destination="@id/ongoingSalesFragment" />
     </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
@@ -265,5 +272,14 @@
             android:id="@+id/action_registerFragment_to_deliveriesFragment"
             app:destination="@id/deliveriesFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/confirmSaleFragment"
+        android:name="com.cccm.crowingrooster.screens.sales.ongoing_sales.confirm_sale.ConfirmSaleFragment"
+        android:label="ConfirmSaleFragment"
+        tools:layout="@layout/fragment_confirm_sale" >
+<!--        <action-->
+<!--            android:id="@+id/action_confirmSaleFragment_to_ongoingSalesFragment"-->
+<!--            app:destination="@id/ongoingSalesFragment" />-->
+    </dialog>
 
 </navigation>
