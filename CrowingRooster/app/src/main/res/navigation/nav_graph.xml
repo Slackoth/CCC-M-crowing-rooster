@@ -224,29 +224,11 @@
             app:destination="@id/chatLogFragment" />
     </fragment>
 
-
-    <fragment
-        android:id="@+id/SearchFragment"
-        android:name="com.cccm.crowingrooster.screens.search_battery.SearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"
-        >
-        <action
-            android:id="@+id/action_SearchFragment_to_BatterySearchFragment"
-            app:destination="@id/BatterySearchFragment" />
-    </fragment>
-
     <fragment
         android:id="@+id/BatterySearchFragment"
         android:name="com.cccm.crowingrooster.screens.search_battery.BatterySearchFragment"
         android:label="SerachFragment"
         tools:layout="@layout/fragment_battery_search"/>
-
-    <fragment
-        android:id="@+id/CarSearchFragment"
-        android:name="com.cccm.crowingrooster.screens.search_battery.CarSearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_car_search"/>
 
     <fragment
         android:id="@+id/BuyerProfileFragment"

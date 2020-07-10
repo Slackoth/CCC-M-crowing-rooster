@@ -67,7 +67,7 @@ class BuyerMainScreenFragment : Fragment() {
         }
 
         batteryBt.setOnClickListener {
-            it.findNavController().navigate(R.id.SearchFragment)
+            it.findNavController().navigate(R.id.catalogueFragment)
         }
 
         profileBt.setOnClickListener {

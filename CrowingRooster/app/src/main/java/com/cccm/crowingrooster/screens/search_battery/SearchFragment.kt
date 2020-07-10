@@ -16,12 +16,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 class SearchFragment : Fragment () {
-    private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentSearchBinding
     private var listOfFragment: MutableList<Fragment> = mutableListOf(
-        BatterySearchFragment(),
-        CarSearchFragment()
+        BatterySearchFragment()
     )
 
     override fun onCreateView(
@@ -45,28 +43,6 @@ class SearchFragment : Fragment () {
         return bind.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //super.onViewCreated(view, savedInstanceState)
-        val tabAdapter =
-            GenericTabAdapter(
-                listOfFragment,
-                this,
-                ""
-            )
-        viewPager = bind.searchPager
-        tabLayout = bind.searchTablayout
-
-        viewPager.adapter = tabAdapter
-        TabLayoutMediator(tabLayout,viewPager,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                when(position) {
-                    0-> tab.text = getString(R.string.battery_search)
-                    1-> tab.text = getString(R.string.car_search)
-                    else -> tab.text = "Rooster is in problems"
-                }
-            }).attach()
-
-    }
 
 
 

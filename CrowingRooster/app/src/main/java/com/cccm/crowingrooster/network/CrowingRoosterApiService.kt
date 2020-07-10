@@ -117,6 +117,11 @@ interface CrowingRoosterApiService {
         @Query("codigo") codigo: String?
     ): List<OrderPreview>
 
+    @GET("catalogue")
+    suspend fun getBatteriesCatalogue(
+        @Query("codigo") model: String
+    ): List<BatteryInfo>
+
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
             retrofit.create(CrowingRoosterApiService::class.java)
