@@ -80,10 +80,10 @@ interface CrowingRoosterApiService {
         @Query("codigo") codigo: String?
     ): List<OrderPreview>
 
-    @GET("orderpreview/canceled")
-    suspend fun getCanceledOrderPreviewAsync(
-        @Query("codigo") codigo: String?
-    ): List<OrderPreview>
+//    @GET("orderpreview/canceled")
+//    suspend fun getCanceledOrderPreviewAsync(
+//        @Query("codigo") codigo: String?
+//    ): List<OrderPreview>
 
     @GET("orderdetails/successful")
     suspend fun getSuccessfulOrderDetailsAsync(
@@ -97,13 +97,12 @@ interface CrowingRoosterApiService {
         @Query("ordenId") ordenId: String?
     ): List<OrderDetails>
 
-    @GET("orderdetails/canceled")
-    suspend fun getCanceledOrderDetailsAsync(
-        @Query("codigo") codigo: String?,
-        @Query("ordenId") ordenId: String?
-    ): List<OrderDetails>
-
-
+//    @GET("orderdetails/canceled")
+//    suspend fun getCanceledOrderDetailsAsync(
+//        @Query("codigo") codigo: String?,
+//        @Query("ordenId") ordenId: String?
+//    ): List<OrderDetails>
+    
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
             retrofit.create(CrowingRoosterApiService::class.java)

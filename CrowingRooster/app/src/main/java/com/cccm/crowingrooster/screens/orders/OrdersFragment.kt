@@ -22,8 +22,8 @@ class OrdersFragment : Fragment () {
     private lateinit var bind: FragmentOrdersBinding
     private var listOfFragment: MutableList<Fragment> = mutableListOf(
         SuccessfulOrdersFragment(),
-        OngoingOrdersFragment(),
-        CanceledOrdersFragment()
+        OngoingOrdersFragment()/*
+        CanceledOrdersFragment()*/
     )
     private var args: OrdersFragmentArgs? = null
 
@@ -68,7 +68,7 @@ class OrdersFragment : Fragment () {
                 when(position) {
                     0-> tab.text = getString(R.string.successful_orders)
                     1-> tab.text = getString(R.string.ongoing_orders)
-                    2 -> tab.text= getString(R.string.canceled_orders)
+                    /*2 -> tab.text= getString(R.string.canceled_orders)*/
                     else -> tab.text = "UN GALLO CON TENIS JAJAJAJAJA"
                 }
             }).attach()
