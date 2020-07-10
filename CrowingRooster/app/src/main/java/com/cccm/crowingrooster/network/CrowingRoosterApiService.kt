@@ -5,6 +5,7 @@ import com.cccm.crowingrooster.database.entities.*
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.order.OrderDetails
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.squareup.moshi.Moshi
@@ -18,7 +19,6 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 private const val BASE_URL = "http://192.168.1.4:3000/"
-    //"http://192.168.1.22:3000/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -112,15 +112,31 @@ interface CrowingRoosterApiService {
         @Query("codigo") codigo: String?
     ): List<OrderPreview>
 
-    @GET("orderpreview/canceled")
-    suspend fun getCanceledOrderPreviewAsync(
-        @Query("codigo") codigo: String?
-    ): List<OrderPreview>
+//    @GET("orderpreview/canceled")
+//    suspend fun getCanceledOrderPreviewAsync(
+//        @Query("codigo") codigo: String?
+//    ): List<OrderPreview>
 
-    @GET("catalogue")
-    suspend fun getBatteriesCatalogue(
-        @Query("codigo") model: String
-    ): List<BatteryInfo>
+    @GET("orderdetails/successful")
+    suspend fun getSuccessfulOrderDetailsAsync(
+        @Query("codigo") codigo: String?,
+        @Query("ordenId") ordenId: String?
+    ): List<OrderDetails>
+
+    @GET("orderdetails/ongoing")
+    suspend fun getOngoingOrderDetailsAsync(
+        @Query("codigo") codigo: String?,
+        @Query("ordenId") ordenId: String?
+    ): List<OrderDetails>
+
+//    @GET("orderdetails/canceled")
+//    suspend fun getCanceledOrderDetailsAsync(
+//        @Query("codigo") codigo: String?,
+//        @Query("ordenId") ordenId: String?
+//    ): List<OrderDetails>
+
+    @GET("catalogue/all")
+    suspend fun getBatteriesCatalogue(): List<BatteryInfo>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

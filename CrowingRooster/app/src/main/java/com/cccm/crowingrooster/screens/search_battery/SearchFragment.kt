@@ -43,6 +43,28 @@ class SearchFragment : Fragment () {
         return bind.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //super.onViewCreated(view, savedInstanceState)
+        val tabAdapter =
+            GenericTabAdapter(
+                listOfFragment,
+                this,
+                ""
+            )
+        viewPager = bind.searchPager
+        tabLayout = bind.searchTablayout
+
+        viewPager.adapter = tabAdapter
+        TabLayoutMediator(tabLayout,viewPager,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                when(position) {
+                    0-> tab.text = getString(R.string.battery_search)
+                    else -> tab.text = "Rooster is in problems"
+                }
+            }).attach()
+
+    }
+
 
 
 
