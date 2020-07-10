@@ -2,9 +2,12 @@ package com.cccm.crowingrooster.screens.orders.successful_orders
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.R
@@ -49,15 +52,27 @@ class SuccessfulOrdersFragment : Fragment() {
             buyerCode = arguments?.getString("code")
         }
 
-        recyclerView = bind.recyclerView
+        Log.d("sOrderFrag","${buyerCode}")
 
-        initRecyclerview()
+        recyclerView = bind.recyclerView
 
         app = requireActivity().application
         orderPreviewDao = CrowingRoosterDataBase.getInstance(app).orderPreviewDao
         orderPreviewRepository = OrderPreviewRepository.getInstance(orderPreviewDao)
 
         viewModelFactory = SuccessfulOrdersViewModelFactory(orderPreviewRepository,app,buyerCode)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(SuccessfulOrdersViewModel::class.java)
+
+        initRecyclerview()
+
+        viewModel.orderPreviews.observe(viewLifecycleOwner, Observer {
+            if(it != null) {
+                adapter.setDataSource(it)
+            }
+            else {
+                Log.d("sOrderFrag","NOP")
+            }
+        })
 
 //        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
 //        recyclerView.layoutManager = LinearLayoutManager(requireContext(),
@@ -96,9 +111,8 @@ class SuccessfulOrdersFragment : Fragment() {
                 val dialogArgs = Bundle()
                 return { params ->
                     dialogArgs.putString("buyerCode",buyerCode)
-//                    dialogArgs.putString("buyerCode",buyerCode)
-//                    dialogArgs.putString("buyerCode",buyerCode)
-//
+                    dialogArgs.putString("orderId",params[0].toString())
+                    dialog.arguments = dialogArgs
                     dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog")
                 }
 

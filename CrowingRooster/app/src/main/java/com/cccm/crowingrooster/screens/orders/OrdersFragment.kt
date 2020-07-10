@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.screens.orders
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.inflate
@@ -45,6 +46,8 @@ class OrdersFragment : Fragment () {
         args = arguments?.let {
             OrdersFragmentArgs.fromBundle(it)
         }
+
+        Log.d("orderFrag","${args?.buyerCode}")
 
         return bind.root
     }

@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.screens.buyer_main_screen
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -51,7 +52,7 @@ class BuyerMainScreenFragment : Fragment() {
             BuyerMainScreenFragmentArgs.fromBundle(it)
         }
 
-
+        Log.d("buyerMain","${args?.buyerCode}")
 
         ordersBt.setOnClickListener {
             val action = BuyerMainScreenFragmentDirections

@@ -15,6 +15,8 @@ import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.database.entities.SalePreview
 import com.cccm.crowingrooster.database.entities.SellerClient
 import com.cccm.crowingrooster.database.entities.SaleMiniOrders
+import com.cccm.crowingrooster.database.entities.order.OrderMiniOrder
+import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
 
 
@@ -205,7 +207,7 @@ object ViewHolderFactory {
     }
 
     class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Order> {
+        GenericRecyclerViewAdapter.Binder<OrderPreview> {
 
         private val orderEt: EditText = itemView.findViewById(R.id.orden_et)
         private val dateEt: EditText = itemView.findViewById(R.id.date_et)
@@ -213,20 +215,18 @@ object ViewHolderFactory {
         private val product: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.order_item_layout)
 
-        override fun bind(listObject: Order, onClickLayout: (List<Any>) -> Unit, context: Context) {
-            orderEt.setText(listObject.num_order.toString())
+        override fun bind(listObject: OrderPreview, onClickLayout: (List<Any>) -> Unit, context: Context) {
+            orderEt.setText(listObject.code)
             dateEt.setText(listObject.date)
-            quantityEt.setText(listObject.quantity.toString())
-            Glide.with(context).load(listObject.imgUrl).into(product)
+            quantityEt.setText(listObject.quantity)
+            //Glide.with(context).load(listObject.imgUrl).into(product)
 
             orderEt.inputType = InputType.TYPE_NULL
             dateEt.inputType = InputType.TYPE_NULL
             quantityEt.inputType = InputType.TYPE_NULL
             layout.setOnClickListener {
-                onClickLayout(listOf<Any>())
+                onClickLayout(listOf<Any>(listObject.code))
             }
-
-
         }
     }
 
@@ -282,14 +282,19 @@ object ViewHolderFactory {
 
 
     internal class OngoingOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<OrderDetails> {
+        GenericRecyclerViewAdapter.Binder<OrderMiniOrder> {
 
         private val quantityTv: TextView = itemView.findViewById(R.id.quantity_tv)
         private val modelTv: TextView = itemView.findViewById(R.id.model_tv)
 
-        override fun bind(listObject: OrderDetails, func: (List<Any>) -> Unit, context: Context) {
+        override fun bind(listObject: OrderMiniOrder, func: (List<Any>) -> Unit, context: Context) {
             quantityTv.text = listObject.quantity.toString()
-            modelTv.text = listObject.model
+            modelTv.text = modelTv.context.resources.getString(
+                R.string.show_battery_format,
+                listObject.model,
+                listObject.polarity,
+                listObject.quality
+            )
         }
 
     }

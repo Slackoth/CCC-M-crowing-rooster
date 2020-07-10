@@ -30,9 +30,11 @@ class OrderPreviewRepository(private val orderPreviewDao: OrderPreviewDao) {
                         else -> CrowingRoosterApiService.CrowingRoosterApi
                             .retrofitService.getCanceledOrderPreviewAsync(code)
                     }
+                    Log.d("orderPrevRep","$orderPreviews")
 
                     for (orderPreview in orderPreviews) {
                         orderPreviewDao.insert(orderPreview)
+                        Log.d("orderPrevRep","$orderPreview")
                     }
                 }
                 catch (e: Exception) {
