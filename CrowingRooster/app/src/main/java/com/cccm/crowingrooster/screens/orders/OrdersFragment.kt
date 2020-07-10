@@ -3,14 +3,13 @@ package com.cccm.crowingrooster.screens.orders
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentOrdersBinding
 import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
-import com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersFragment
+import com.cccm.crowingrooster.screens.orders.ongoing_orders.OngoingOrdersFragment
 import com.cccm.crowingrooster.screens.orders.canceled_orders.CanceledOrdersFragment
 import com.cccm.crowingrooster.screens.orders.successful_orders.SuccessfulOrdersFragment
 import com.google.android.material.tabs.TabLayout
