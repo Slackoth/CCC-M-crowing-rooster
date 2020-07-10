@@ -58,13 +58,13 @@ class LogInFragment : Fragment() {
             registerTv.setOnClickListener{
                 it.findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
             }
-        (activity as MainActivity).run {
-            hideTopBar()
-        }
+            (activity as MainActivity).run {
+                hideTopBar()
+            }
 
-        bind.loginBtt.setOnClickListener {
-            if (userEditT.text.toString().isEmpty() || passEt.text.toString().isEmpty()) {
-                Toast.makeText(context, "Porfavor llenar Ambos campos.", Toast.LENGTH_SHORT).show()
+            bind.loginBtt.setOnClickListener {
+                if (userEditT.text.toString().isEmpty() || passEt.text.toString().isEmpty()) {
+                    Toast.makeText(context, "Porfavor llenar Ambos campos.", Toast.LENGTH_SHORT).show()
 
             }
             else {
@@ -101,6 +101,7 @@ class LogInFragment : Fragment() {
                 }
             }
         }
+
         return bind.root
     }
 

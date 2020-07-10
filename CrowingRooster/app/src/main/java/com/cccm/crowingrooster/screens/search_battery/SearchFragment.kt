@@ -20,8 +20,7 @@ class SearchFragment : Fragment () {
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentSearchBinding
     private var listOfFragment: MutableList<Fragment> = mutableListOf(
-        BatterySearchFragment(),
-        CarSearchFragment()
+        BatterySearchFragment()
     )
 
     override fun onCreateView(
@@ -61,7 +60,6 @@ class SearchFragment : Fragment () {
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when(position) {
                     0-> tab.text = getString(R.string.battery_search)
-                    1-> tab.text = getString(R.string.car_search)
                     else -> tab.text = "Rooster is in problems"
                 }
             }).attach()

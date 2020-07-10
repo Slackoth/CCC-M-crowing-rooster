@@ -10,7 +10,7 @@
     <string name="successful_orders">Exitosos</string>
     <string name="ongoing_orders">Pendientes</string>
     <string name="canceled_orders">Cancelados</string>
-    <string name="battery_search">Por Bateria</string>
+    <string name="battery_search">Catálogo de Baterías</string>
     <string name="search">Búsqueda</string>
     <string name="car_search">Por Carro</string>
 
@@ -104,12 +104,19 @@
     <string name="send_text">Send</string>
     <string name="company">Compañía</string>
     <string name="show_battery_format">%1$s-%2$s-%3$s</string>
+    <string name="Estilosproducto">Estilos Disponibles</string>
+
     <string name="address">Dirección</string>
+
 
 
     <string-array name="payment_array">
         <item>Efectivo</item>
         <item>Tarjeta</item>
+    </string-array>
+    <string-array name="ArrayEstilos">
+        <item>Standard</item>
+        <item>Premium</item>
     </string-array>
 
 </resources>

@@ -7,9 +7,11 @@ import com.cccm.crowingrooster.network.repository.seller.SellerRepository
 import com.cccm.crowingrooster.screens.seller_client_list.SellerClientListViewModel
 
 class SellerProfileViewModelFactory(
+
     private val sellerRepository: SellerRepository,
     private val app: Application,
     private val sellerCode: String?
+
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SellerProfileViewModel::class.java)) {

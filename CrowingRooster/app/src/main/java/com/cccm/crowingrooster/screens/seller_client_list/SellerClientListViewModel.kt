@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cccm.crowingrooster.database.entities.SellerClient
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Product
 import com.cccm.crowingrooster.network.repository.seller.SellerClientRepository
 import kotlinx.coroutines.*
 

@@ -16,6 +16,7 @@ class SaleDetailsRepository(
     private val saleMiniOrdersDao: SaleMiniOrdersDao
 ) {
 
+
     fun getSpecific(code: String?, orderId: String?, state: String): LiveData<SaleDetails> {
         refreshSuccessfulSaleDetails(code,orderId,state)
         return saleDetailsDao.getSpecific(code)
@@ -26,6 +27,7 @@ class SaleDetailsRepository(
     }
 
     private fun refreshSuccessfulSaleDetails(code: String?, orderId: String?, state: String) {
+
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             GlobalScope.launch {
                 try {

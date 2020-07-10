@@ -253,12 +253,6 @@
         tools:layout="@layout/fragment_battery_search"/>
 
     <fragment
-        android:id="@+id/CarSearchFragment"
-        android:name="com.cccm.crowingrooster.screens.search_battery.CarSearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_car_search"/>
-
-    <fragment
         android:id="@+id/BuyerProfileFragment"
         android:name="com.cccm.crowingrooster.BuyerProfileFragment"
         android:label="BuyerProfileFragment"
@@ -300,7 +294,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatLogFragment"
-        android:name="com.cccm.crowingrooster.screens.chat.ChatLogFragment"
+        android:name="com.cccm.crowingrooster.screens.chat.ChatLog.ChatLogFragment"
         android:label="ChatLogFragment" />
     <fragment
         android:id="@+id/registerFragment"
