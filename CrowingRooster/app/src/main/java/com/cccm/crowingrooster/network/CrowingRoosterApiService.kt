@@ -102,7 +102,7 @@ interface CrowingRoosterApiService {
 //        @Query("codigo") codigo: String?,
 //        @Query("ordenId") ordenId: String?
 //    ): List<OrderDetails>
-    
+
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
             retrofit.create(CrowingRoosterApiService::class.java)
