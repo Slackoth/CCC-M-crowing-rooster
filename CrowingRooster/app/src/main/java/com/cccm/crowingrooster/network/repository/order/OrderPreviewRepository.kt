@@ -27,8 +27,7 @@ class OrderPreviewRepository(private val orderPreviewDao: OrderPreviewDao) {
                             .retrofitService.getSuccessfulOrderPreviewAsync(code)
                         "Pendiente" -> CrowingRoosterApiService.CrowingRoosterApi
                             .retrofitService.getOngoingOrderPreviewAsync(code)
-                        else -> CrowingRoosterApiService.CrowingRoosterApi
-                            .retrofitService.getCanceledOrderPreviewAsync(code)
+                        else -> listOf()
                     }
                     Log.d("orderPrevRep","$orderPreviews")
 

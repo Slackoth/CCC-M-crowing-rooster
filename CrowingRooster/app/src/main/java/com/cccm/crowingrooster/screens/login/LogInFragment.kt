@@ -68,39 +68,41 @@ class LogInFragment : Fragment() {
 
             }
             else {
-                    ProcessSignIn()
-                    val user = viewModel.getSpecific(userEditT.text.toString())
-                    type = user.type
+                ProcessSignIn()
+                val user = viewModel.getSpecific(userEditT.text.toString())
+                type = if(user != null) {
+                    user.type
+                } else {
+                    "Repartidor"
+                }
+                val userUid= FirebaseAuth.getInstance().uid
+                FirebaseDatabase.getInstance().getReference("/users/$userUid")
 
-                    val userUid= FirebaseAuth.getInstance().uid
-                    FirebaseDatabase.getInstance().getReference("/users/$userUid")
-
-                    when(type) {
-                        "Comprador" ->  {
-                            val action = LogInFragmentDirections
-                                .actionLogInFragmentToBuyerMainScreenFragment()
-                            action.buyerCode = user.code
-                            it.findNavController()
-                                .navigate(action)
-                            //.navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
-                        }
-                        "Vendedor" ->  {
-                            val action = LogInFragmentDirections.
-                            actionLogInFragmentToSellerMainScreen()
-                            action.sellerCode = user.code
-                            it.findNavController()
-                                .navigate(action)
-                            //.navigate(R.id.action_logInFragment_to_sellerMainScreen)
-                        }
-                        else -> it.findNavController()
-                            .navigate(R.id.action_logInFragment_to_openOrdersFragment)
+                when(type) {
+                    "Comprador" ->  {
+                        val action = LogInFragmentDirections
+                            .actionLogInFragmentToBuyerMainScreenFragment()
+                        action.buyerCode = user.code
+                        it.findNavController()
+                            .navigate(action)
+                        //.navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
+                    }
+                    "Vendedor" ->  {
+                        val action = LogInFragmentDirections.
+                        actionLogInFragmentToSellerMainScreen()
+                        action.sellerCode = user.code
+                        it.findNavController()
+                            .navigate(action)
+                        //.navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                    }
+                    else -> it.findNavController()
+                        .navigate(R.id.action_logInFragment_to_openOrdersFragment)
                     }
                 }
             }
         }
-
         return bind.root
-        }
+    }
 
     private fun ProcessSignIn(){
         val email= userEditT.text.toString()
@@ -122,4 +124,4 @@ class LogInFragment : Fragment() {
             }
     }
 
-    }
+}

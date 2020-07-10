@@ -39,8 +39,7 @@ class OrderDetailsRepository(
                             .retrofitService.getSuccessfulOrderDetailsAsync(code,orderId)
                         "Pendiente" -> CrowingRoosterApiService.CrowingRoosterApi
                             .retrofitService.getOngoingOrderDetailsAsync(code,orderId)
-                        else -> CrowingRoosterApiService.CrowingRoosterApi
-                            .retrofitService.getCanceledOrderDetailsAsync(code,orderId)
+                        else -> listOf()
                     }
                     Log.d("orderDetails","$orderDetails")
                     Log.d("orderDetails","${orderDetails[0].orderMiniOrder}")
