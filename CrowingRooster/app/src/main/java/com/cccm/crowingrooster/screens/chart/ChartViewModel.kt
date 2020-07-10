@@ -24,6 +24,7 @@ class ChartViewModel (
 
     fun Proceedtonegociation(){
 
+
     }
 
 

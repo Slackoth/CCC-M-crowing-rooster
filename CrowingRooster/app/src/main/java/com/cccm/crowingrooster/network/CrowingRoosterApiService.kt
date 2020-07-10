@@ -87,6 +87,11 @@ interface CrowingRoosterApiService {
 //        suspend fun sendInsertPedido(@Body PedidoBody:PedidoBody)
 //
 
+    @POST("createorder")
+    suspend fun createorder(
+        @Body Pedido:Pedido
+    )
+
 
     @POST("confirmsale")
     suspend fun sendConfirmSale(

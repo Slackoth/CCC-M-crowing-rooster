@@ -69,7 +69,7 @@ class LogInFragment : Fragment() {
                 }
                 else {
                     ProcessSignIn()
-                    val user = viewModel.getSpecific(userEditT.text.toString())
+                    val user = viewModel.getSpecific(userEditT.text.toString()) //mayus Pipo  PiPo   !=-----> pipo
                     Log.d("Need to eendd",userEditT.text.toString())
                     type = user.type
 
