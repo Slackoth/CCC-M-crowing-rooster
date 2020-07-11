@@ -23,7 +23,7 @@ import retrofit2.http.Query
 
 import retrofit2.http.*
 
-private const val BASE_URL = "http://192.168.1.19:3000/"
+private const val BASE_URL = "http://192.168.1.20:3000/"
 //private const val BASE_URL = "http://192.168.0.20:3000/"
 //"http://192.168.0.14:3000/"
 //"http://192.168.1.22:3000/"

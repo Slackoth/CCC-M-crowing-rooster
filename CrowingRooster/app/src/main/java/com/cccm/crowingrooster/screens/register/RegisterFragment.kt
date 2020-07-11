@@ -152,8 +152,8 @@ class RegisterFragment : Fragment() {
         ref.setValue(user)
             .addOnSuccessListener {
                 registerInApi(profileImageUrl)
-                this@RegisterFragment.findNavController().navigate(NavGraphDirections
-                    .actionGlobalRegisterFragmentToLogInFragment())
+                this@RegisterFragment.findNavController().navigate(RegisterFragmentDirections
+                    .actionRegisterFragmentToLogInFragment())
                 Log.d(TAG, "Finally we saved the user to Firebase Database")
             }
             .addOnFailureListener {
