@@ -90,22 +90,22 @@ class CatalogueFragment : Fragment() {
         return bind.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 
         inflater.inflate(R.menu.search_menu, menu)
 
         val manager = (activity as MainActivity).getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchItem = menu?.findItem(R.id.action_search)
-        val searchView= searchItem?.actionView as SearchView
+        //val searchView= searchItem?.actionView as SearchView
 
-        searchView.setSearchableInfo(manager.getSearchableInfo((activity as MainActivity).componentName))
+        //searchView.setSearchableInfo(manager.getSearchableInfo((activity as MainActivity).componentName))
 
-        searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
+        /*searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
 
-                searchView.clearFocus()
-                searchView.setQuery( "", false)
+                //searchView.clearFocus()
+                //searchView.setQuery( "", false)
                 val collapseActionView = searchItem.collapseActionView()
 
                 Toast.makeText(requireContext(), "Looking for $query", Toast.LENGTH_LONG).show()
@@ -116,10 +116,10 @@ class CatalogueFragment : Fragment() {
           override fun onQueryTextChange(newText: String?): Boolean {
               return false           }
 
-        })
+        })*/
 
         super.onCreateOptionsMenu(menu, inflater)
-    }
+    }*/
 
     private fun initRecyclerView() {
         adapter = object : GenericRecyclerViewAdapter<Catalogue>(viewModel.batteriesOnStock.value, requireContext()) {
