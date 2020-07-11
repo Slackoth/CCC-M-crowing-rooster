@@ -72,7 +72,11 @@ class BuyerMainScreenFragment : Fragment() {
         }
 
         profileBt.setOnClickListener {
-            it.findNavController().navigate(R.id.BuyerProfileFragment)
+            val action = BuyerMainScreenFragmentDirections
+                .actionBuyerMainScreenFragmentToBuyerProfileFragment()
+            action.buyerCode = args?.buyerCode.toString()
+            it.findNavController().navigate(action)
+            //.navigate(R.id.BuyerProfileFragment)
         }
 
 

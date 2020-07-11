@@ -31,7 +31,7 @@ class SellerProfileFragment : Fragment() {
     private lateinit var viewModelFactory: SellerProfileViewModelFactory
     private lateinit var viewModel: SellerProfileViewModel
     private lateinit var sellerDao: SellerDao
-    private var args: SellerMainScreenArgs? = null
+    private var args: SellerProfileFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +51,7 @@ class SellerProfileFragment : Fragment() {
         }
 
         args = arguments?.let {
-            SellerMainScreenArgs.fromBundle(it)
+            SellerProfileFragmentArgs.fromBundle(it)
         }
 
         Log.d("profile","${args?.sellerCode}")

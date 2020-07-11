@@ -4,6 +4,7 @@ package com.cccm.crowingrooster.network
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.order.Buyer
 import com.cccm.crowingrooster.database.entities.order.OrderDetails
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
@@ -134,6 +135,11 @@ interface CrowingRoosterApiService {
 //        @Query("codigo") codigo: String?,
 //        @Query("ordenId") ordenId: String?
 //    ): List<OrderDetails>
+
+    @GET("buyer")
+    suspend fun getBuyerAsync(
+        @Query("codigo") codigo: String?
+    ): List<Buyer>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

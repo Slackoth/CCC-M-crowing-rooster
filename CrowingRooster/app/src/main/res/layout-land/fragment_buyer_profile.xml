@@ -362,13 +362,13 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/buyer_address_tv"
+                                android:id="@+id/buyer_phone_tv"
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
-                                android:text="dirección"
+                                android:text="@string/telephone"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
                                 android:textStyle="bold"
@@ -376,7 +376,7 @@
                                 app:layout_constraintTop_toTopOf="parent"/>
 
                             <TextView
-                                android:id="@+id/buyer_address_btt"
+                                android:id="@+id/buyer_phone_btt"
                                 android:clickable="true"
                                 android:textStyle="bold"
                                 android:layout_width="wrap_content"
@@ -396,7 +396,7 @@
                                 app:strokeColor="@color/secondary_light"/>
 
                             <TextView
-                                android:id="@+id/buyer_address_desc_tv"
+                                android:id="@+id/buyer_real_phone_tv"
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
@@ -410,9 +410,9 @@
                                 app:layout_constraintEnd_toStartOf="@+id/guideline27"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/buyer_address_tv"
+                                app:layout_constraintTop_toBottomOf="@+id/buyer_phone_tv"
                                 app:layout_constraintVertical_bias="0.5"
-                                android:text="Vancouver Canada"/>
+                                tools:text="Vancouver Canada"/>
 
                             <androidx.constraintlayout.widget.Guideline
                                 android:id="@+id/guideline27"
