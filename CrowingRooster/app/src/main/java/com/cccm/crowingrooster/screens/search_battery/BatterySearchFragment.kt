@@ -18,6 +18,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Battery
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class BatterySearchFragment : Fragment() {
@@ -36,8 +37,15 @@ class BatterySearchFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_successful_orders, container, false)
         val bind = DataBindingUtil.inflate<FragmentBatterySearchBinding>(
             inflater, R.layout.fragment_battery_search,
-            container, false
-        )
+            container, false)
+
+        (activity as MainActivity).run {
+            supportActionBar?.title = "Catálogo".capitalize()
+
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
+            showTopBar()
+        }
 
         //Log.d(TAG, "onCreate: Started")
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.successful_sales)
@@ -100,8 +108,6 @@ class BatterySearchFragment : Fragment() {
 //            else LinearLayoutManager.VERTICAL, false)
 
         return bind.root
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -141,46 +147,4 @@ class BatterySearchFragment : Fragment() {
 //        return true
 
     }
-
-
-
 }
-
-
-
-
-
-
-/*override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater): Boolean {
-
-    val inflater = menuInflater
-    inflater.inflate(R.menu.search_menu, menu)
-
-    val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-    val searchItem = menu?.findItem(R.id.action_search)
-    val searchView= searchItem?.actionView as SearchView
-
-    searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
-
-    searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
-
-       override fun onQueryTextSubmit(query: String?): Boolean {
-
-           searchView.clearFocus()
-           searchView.setQuery( "", false)
-           val collapseActionView = searchItem.collapseActionView()
-
-           Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_LONG).show()
-
-           return true
-       }
-
-       override fun onQueryTextChange(newText: String?): Boolean {
-           return false
-       }
-
-   })
-
-   return false
-
-}*/

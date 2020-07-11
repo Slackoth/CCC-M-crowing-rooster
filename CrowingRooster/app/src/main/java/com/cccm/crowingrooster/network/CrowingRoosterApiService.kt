@@ -136,7 +136,7 @@ interface CrowingRoosterApiService {
 //    ): List<OrderDetails>
 
     @GET("catalogue/all")
-    suspend fun getBatteriesCatalogue(): List<BatteryInfo>
+    suspend fun getBatteriesCatalogue(): List<Catalogue>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
