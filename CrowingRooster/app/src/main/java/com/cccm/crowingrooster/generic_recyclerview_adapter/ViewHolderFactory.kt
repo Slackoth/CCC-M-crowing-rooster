@@ -12,13 +12,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
-import com.cccm.crowingrooster.database.entities.Pedido
-import com.cccm.crowingrooster.database.entities.SalePreview
-import com.cccm.crowingrooster.database.entities.SellerClient
-import com.cccm.crowingrooster.database.entities.SaleMiniOrders
+import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.Catalogue
 import com.cccm.crowingrooster.database.entities.order.OrderMiniOrder
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
+import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Battery
 
 
 object ViewHolderFactory {
@@ -56,7 +55,7 @@ object ViewHolderFactory {
             R.layout.open_orders_item_layout -> OpenOrderViewHolder(
                 view
             )
-            R.layout.searchbt_item_layout -> BatteryViewHolder(
+            R.layout.searchbt_item_layout -> CatalogueViewHolder(
                 view
             )
 
@@ -353,26 +352,25 @@ object ViewHolderFactory {
         }
     }
 
-
-    class BatteryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Battery> {
+    class CatalogueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Catalogue> {
 
         private val modeloEt: EditText = itemView.findViewById(R.id.modelo_Et)
-        private val voltajeEt: EditText = itemView.findViewById(R.id.voltaje_Et)
+        private val DimensionesEt: EditText = itemView.findViewById(R.id.dimensiones_et)
         private val CCAEt: EditText = itemView.findViewById(R.id.CCA_Et)
         private val capacidadEt: EditText = itemView.findViewById(R.id.capacidad_Et)
         private val batteryimg: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.searchbt_item_layout)
 
-        override fun bind(listObject: Battery, onClickLayout: (List<Any>) -> Unit, context: Context) {
+        override fun bind(listObject: Catalogue, onClickLayout: (List<Any>) -> Unit, context: Context) {
             modeloEt.setText(listObject.modelo)
-            voltajeEt.setText(listObject.voltaje)
-            CCAEt.setText(listObject.CCA)
-            capacidadEt.setText(listObject.capacidad)
-            Glide.with(batteryimg.context).load(listObject.imgUrl).into(batteryimg)
+            DimensionesEt.setText(listObject.dimensiones)
+            CCAEt.setText(listObject.cca.toString())
+            capacidadEt.setText(listObject.capacidad_reserva.toString())
+            Glide.with(batteryimg.context).load(listObject.product_img).into(batteryimg)
 
             modeloEt.inputType = InputType.TYPE_NULL
-            voltajeEt.inputType = InputType.TYPE_NULL
+            DimensionesEt.inputType = InputType.TYPE_NULL
             CCAEt.inputType = InputType.TYPE_NULL
             capacidadEt.inputType = InputType.TYPE_NULL
 

@@ -107,7 +107,7 @@
     <string name="Estilosproducto">Estilos Disponibles</string>
 
     <string name="address">Dirección</string>
-
+    <string name="Dimensions">Dim (cmxcmxcm):</string>
 
 
     <string-array name="payment_array">

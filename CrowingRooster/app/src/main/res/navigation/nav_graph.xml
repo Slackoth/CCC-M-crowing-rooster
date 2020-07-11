@@ -236,7 +236,7 @@
 
     <fragment
         android:id="@+id/BatterySearchFragment"
-        android:name="com.cccm.crowingrooster.screens.search_battery.BatterySearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.CatalogueFragment"
         android:label="SerachFragment"
         tools:layout="@layout/fragment_battery_search"/>
 

@@ -24,7 +24,7 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
-User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class],version = 30,exportSchema = false)
+User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class],version = 31,exportSchema = false)
 
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
@@ -46,6 +46,7 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val orderPreviewDao: OrderPreviewDao
     abstract val orderDetailsDao: OrderDetailsDao
     abstract val orderMiniOrdersDao: OrderMiniOrderDao
+    abstract val catalogueDao: CatalogueDao
 
     companion object {
         @Volatile

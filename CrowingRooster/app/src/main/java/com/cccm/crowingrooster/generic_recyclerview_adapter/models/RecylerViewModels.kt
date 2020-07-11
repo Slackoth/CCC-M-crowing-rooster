@@ -17,7 +17,7 @@ data class Chat(var username:String, var Mssge:String, var unreadmmsge:Int,var p
 data class OpenOrder(var OrderDate: String, var OrderAddress: String, var OrderImg: String)
 data class OrderDetails(var quantity: Int, var model: String)
 data class Battery(var modelo: String, var voltaje: String, var CCA: String, var capacidad: String, var imgUrl: String)
-
+data class Catalogue(var modelo: String, var voltaje: String, var CCA: String, var capacidad: String, var imgUrl: String)
 
 @Parcelize
 class UserDatabase(
