@@ -107,7 +107,12 @@
     <string name="Estilosproducto">Estilos Disponibles</string>
 
     <string name="address">Dirección</string>
-
+    <string name="already_account">¿Ya tienes una cuenta?</string>
+    <string name="select_photo">Seleccionar foto</string>
+    <string name="username">Username</string>
+    <string name="registrar">Registrar</string>
+    <string name="dui">Dui</string>
+    <string name="phone">Teléfono</string>
 
 
     <string-array name="payment_array">

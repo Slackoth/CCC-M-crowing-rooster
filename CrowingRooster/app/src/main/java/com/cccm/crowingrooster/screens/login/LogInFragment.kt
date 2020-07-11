@@ -69,6 +69,7 @@ class LogInFragment : Fragment() {
             }
             else {
                 ProcessSignIn()
+                type = ""
                 val user = viewModel.getSpecific(userEditT.text.toString())
                 type = if(user != null) {
                     user.type
