@@ -69,18 +69,21 @@ class LogInFragment : Fragment() {
                 }
                 else {
                     ProcessSignIn()
-                    val user = viewModel.getSpecific(userEditT.text.toString()) //mayus Pipo  PiPo   !=-----> pipo
-                    Log.d("Need to eendd",userEditT.text.toString())
-//                    type = user.type
-
+                    type = ""
+                    val user = viewModel.getSpecific(userEditT.text.toString())
+                    type = if(user != null) {
+                        user.type
+                    } else {
+                        "Repartidor"
+                    }
                     val userUid= FirebaseAuth.getInstance().uid
                     FirebaseDatabase.getInstance().getReference("/users/$userUid")
 
-                    when("Comprador") {
+                    when(type) {
                         "Comprador" ->  {
                             val action = LogInFragmentDirections
                                 .actionLogInFragmentToBuyerMainScreenFragment()
-                            //action.buyerCode = user.code
+                            action.buyerCode = user.code
                             it.findNavController()
                                 .navigate(action)
                             //.navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
@@ -88,7 +91,7 @@ class LogInFragment : Fragment() {
                         "Vendedor" ->  {
                             val action = LogInFragmentDirections.
                             actionLogInFragmentToSellerMainScreen()
-                            //  action.sellerCode = user.code
+                            action.sellerCode = user.code
                             it.findNavController()
                                 .navigate(action)
                             //.navigate(R.id.action_logInFragment_to_sellerMainScreen)

@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.network
 
 
+import androidx.lifecycle.LiveData
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.*
@@ -102,7 +103,8 @@ interface CrowingRoosterApiService {
         @Body PedidoDatabaseBody:PedidoDatabaseBody
     )
 
-
+    @GET("seller/free")
+    suspend fun getSellerfree():List<SellerFree>
 
     @POST("confirmsale")
     suspend fun sendConfirmSale(

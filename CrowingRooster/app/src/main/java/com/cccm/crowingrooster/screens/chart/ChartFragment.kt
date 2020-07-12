@@ -55,6 +55,7 @@ class ChartFragment : Fragment() {
     private lateinit var adapter: GenericRecyclerViewAdapter<Pedido>
     private lateinit var ordertoChartDao: OrdertoChartDao
     lateinit var ListaPedidos :List<Pedido>
+     var email:String=""
 
 
 
@@ -97,8 +98,18 @@ class ChartFragment : Fragment() {
            }
        })
 
+
+
+        viewModel.freeSeller.observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+                Log.d("SellerId", it.email +"quiza no tira nada")
+                viewModel.getSellerUId(it.email)
+            }
+        })
+
+
         bind.ProceedPay.setOnClickListener {
-            viewModel.doOrderInsert(OrdertoChartDao = ordertoChartDao, listaPedidos = ListaPedidos)
+            viewModel.doOrderInsert(OrdertoChartDao = ordertoChartDao, listaPedidos = ListaPedidos, code = GetOrderCode())
             Log.d("Proceed", "Äl menos llega" )
             viewModel.CreateChat()
             it.findNavController().navigate(R.id.action_chartFragment_to_chatFragment)
@@ -124,7 +135,6 @@ class ChartFragment : Fragment() {
                 return {
                     this@ChartFragment.findNavController()
                         .navigate(R.id.action_chartFragment_to_productFragment)
-
                 }
             }
         }
@@ -141,6 +151,19 @@ class ChartFragment : Fragment() {
         recyclerView.adapter = adapter
 
         return bind.root
+    }
+
+    fun GetOrderCode(): String{
+        var code:String=""
+
+        viewModel.codigo.observe(viewLifecycleOwner, Observer {
+            if(it!= null){
+                Log.d("SellerId", it +"quiza no tira nada *3333")
+                code= it
+            }
+        })
+
+        return code
     }
 
 }

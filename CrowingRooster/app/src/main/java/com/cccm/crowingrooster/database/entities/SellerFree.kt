@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class SellerFree(
     @PrimaryKey
     val email:String,
-    val cant_pedidos:Int
+    val cant:Int
 )

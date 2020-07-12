@@ -19,11 +19,13 @@ import com.cccm.crowingrooster.database.entities.Pedido as Pedido
 
 class ProductViewModel(
     BatteryRepository  : BatteryRepository,
-    PedidoRepository: PedidoRepository,
+    pedidoRepo: PedidoRepository,
     app: Application
 ): AndroidViewModel(app) {
 
     var battery: LiveData<Battery> = BatteryRepository.getSpecific(2)
+
+//    pedidoRepo.
 
     fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String){
         var Pedido: Pedido= Pedido(0,cant, id_battery,IdUser,img,Desc, titulo)

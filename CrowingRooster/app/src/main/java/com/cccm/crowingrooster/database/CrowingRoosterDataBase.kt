@@ -21,7 +21,7 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 
-@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 29 ,exportSchema = false)
+@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 30 ,exportSchema = false)
 
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {

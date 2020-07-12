@@ -14,6 +14,6 @@ interface SellerFreeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(SellerFree:SellerFree)
 
-    @Query("SELECT * FROM seller_free" )
+    @Query("SELECT * FROM seller_free /*limit 1*/" )
     fun getone(): LiveData<SellerFree>
 }
