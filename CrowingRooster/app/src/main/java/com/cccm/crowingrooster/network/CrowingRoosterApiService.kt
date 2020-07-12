@@ -5,18 +5,16 @@ import androidx.lifecycle.LiveData
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.*
-<<<<<<< HEAD
+
 import com.cccm.crowingrooster.database.entities.order.OrderCode
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.cccm.crowingrooster.network.body.PedidoDatabaseBody
-=======
+
 import com.cccm.crowingrooster.database.entities.order.Buyer
 import com.cccm.crowingrooster.database.entities.order.OrderDetails
-import com.cccm.crowingrooster.database.entities.order.OrderPreview
-import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.cccm.crowingrooster.network.body.RegisterBuyer
->>>>>>> e6b8cfd52491c17fb9c9d07ec4b92353dd3b9f43
+
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -31,7 +29,7 @@ import retrofit2.http.Query
 
 import retrofit2.http.*
 
-private const val BASE_URL = "http://192.168.1.20:3000/"
+private const val BASE_URL = "http://192.168.0.14:3000/"
 //private const val BASE_URL = "http://192.168.0.20:3000/"
 //"http://192.168.0.14:3000/"
 //"http://192.168.1.22:3000/"

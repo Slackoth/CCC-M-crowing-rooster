@@ -28,14 +28,14 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
 User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class,
-    SellerFree::class,Buyer::class],version = 32,exportSchema = false)
+    SellerFree::class,Buyer::class,OrdertoChart::class],version = 33,exportSchema = false)
 
-<<<<<<< HEAD
-@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 30 ,exportSchema = false)
-=======
-//@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class],version = 28 ,exportSchema = false)
->>>>>>> e6b8cfd52491c17fb9c9d07ec4b92353dd3b9f43
-
+//lo <<<<<<< HEAD
+//@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 30 ,exportSchema = false)
+//=======
+////@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class],version = 28 ,exportSchema = false)
+//>>>>>>> e6b8cfd52491c17fb9c9d07ec4b92353dd3b9f43
+//
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
