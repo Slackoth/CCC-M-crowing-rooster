@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.database
 import android.content.Context
 import androidx.room.Database
+import androidx.room.FtsOptions
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
@@ -20,7 +21,7 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 
-@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class],version = 28 ,exportSchema = false)
+@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 29 ,exportSchema = false)
 
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
@@ -40,6 +41,8 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val userDao: UserDao
     abstract val orderPreviewDao: OrderPreviewDao
 
+    abstract val ordertoChartDao:OrdertoChartDao
+
     companion object {
         @Volatile
         private var INSTANCE: CrowingRoosterDataBase? = null
@@ -51,7 +54,6 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
                     instance = buildDataBase(context)
                     INSTANCE = instance
                 }
-
                 return instance
             }
         }

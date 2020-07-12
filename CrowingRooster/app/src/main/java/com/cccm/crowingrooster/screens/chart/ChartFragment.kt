@@ -11,6 +11,7 @@ import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.BatteryDao
+import com.cccm.crowingrooster.database.daos.OrdertoChartDao
 import com.cccm.crowingrooster.database.daos.PedidoDao
 import com.cccm.crowingrooster.database.daos.SellerFreeDao
 import com.cccm.crowingrooster.database.entities.Pedido
@@ -27,6 +29,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoratio
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.ProductChart
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.repository.pedido.OrderToChartRepository
 import com.cccm.crowingrooster.network.repository.pedido.PedidoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerFreeRepository
@@ -42,7 +45,7 @@ class ChartFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var chartList: MutableList<Any> = mutableListOf()
     private lateinit var app: Application
-    private lateinit var batteryRepository: BatteryRepository
+    private lateinit var orderToChartRepository: OrderToChartRepository
     private lateinit var SellerFreeRepository:SellerFreeRepository
     private lateinit var PedidoRepository:PedidoRepository
     private lateinit var viewModelFactory: ChartViewModelFactory
@@ -50,6 +53,9 @@ class ChartFragment : Fragment() {
     private lateinit var SellerFreeDao:SellerFreeDao
     private lateinit var pedidoDao: PedidoDao
     private lateinit var adapter: GenericRecyclerViewAdapter<Pedido>
+    private lateinit var ordertoChartDao: OrdertoChartDao
+    lateinit var ListaPedidos :List<Pedido>
+
 
 
 
@@ -73,23 +79,29 @@ class ChartFragment : Fragment() {
         app = requireActivity().application
         pedidoDao = CrowingRoosterDataBase.getInstance(app).PedidoDao
         SellerFreeDao= CrowingRoosterDataBase.getInstance(app).sellerFreeDao
-//        batteryInfoRepository= BatteryInfoRepository(batteryInfoDao)
+        ordertoChartDao=CrowingRoosterDataBase.getInstance(app).ordertoChartDao
+        orderToChartRepository = OrderToChartRepository(ordertoChartDao)
+
         PedidoRepository= PedidoRepository(pedidoDao)
         SellerFreeRepository= SellerFreeRepository(SellerFreeDao)
-        viewModelFactory = ChartViewModelFactory(PedidoRepository,SellerFreeRepository, app)
+        viewModelFactory = ChartViewModelFactory(PedidoRepository,SellerFreeRepository, orderToChartRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ChartViewModel::class.java)
+
 
 
        viewModel.pedidos.observe(viewLifecycleOwner, Observer {
            if(it!= null){
                //Log.d("Chart", it[1].desc_bateria)
+               ListaPedidos=it
                adapter.setDataSource(it)
            }
        })
 
         bind.ProceedPay.setOnClickListener {
-            viewModel.Proceedtonegociation()
+            viewModel.doOrderInsert(OrdertoChartDao = ordertoChartDao, listaPedidos = ListaPedidos)
             Log.d("Proceed", "Äl menos llega" )
+            viewModel.CreateChat()
+            it.findNavController().navigate(R.id.action_chartFragment_to_chatFragment)
         }
 
 

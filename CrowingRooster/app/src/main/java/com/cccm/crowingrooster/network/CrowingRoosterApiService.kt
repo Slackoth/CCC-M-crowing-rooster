@@ -4,8 +4,10 @@ package com.cccm.crowingrooster.network
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.order.OrderCode
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
+import com.cccm.crowingrooster.network.body.PedidoDatabaseBody
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -86,11 +88,20 @@ interface CrowingRoosterApiService {
 //    @POST("pedido/insert")
 //        suspend fun sendInsertPedido(@Body PedidoBody:PedidoBody)
 //
-
+    //order and pedido
     @POST("createorder")
-    suspend fun createorder(
-        @Body Pedido:Pedido
+    suspend fun CreateOrder(@Query("codigo") codigo: String?)
+
+    @GET("createorder/code")
+    suspend fun  getOrderCode(
+        @Query("codigo") codigo: String?
+    ):List<OrderCode>
+
+    @POST("createpedido")
+    suspend fun  sendPedido(
+        @Body PedidoDatabaseBody:PedidoDatabaseBody
     )
+
 
 
     @POST("confirmsale")
