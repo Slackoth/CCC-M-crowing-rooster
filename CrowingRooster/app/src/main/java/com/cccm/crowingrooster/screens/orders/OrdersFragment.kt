@@ -1,15 +1,15 @@
 package com.cccm.crowingrooster.screens.orders
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentOrdersBinding
 import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
-import com.cccm.crowingrooster.screens.orders.Ongoing_orders.OngoingOrdersFragment
+import com.cccm.crowingrooster.screens.orders.ongoing_orders.OngoingOrdersFragment
 import com.cccm.crowingrooster.screens.orders.canceled_orders.CanceledOrdersFragment
 import com.cccm.crowingrooster.screens.orders.successful_orders.SuccessfulOrdersFragment
 import com.google.android.material.tabs.TabLayout
@@ -22,8 +22,8 @@ class OrdersFragment : Fragment () {
     private lateinit var bind: FragmentOrdersBinding
     private var listOfFragment: MutableList<Fragment> = mutableListOf(
         SuccessfulOrdersFragment(),
-        OngoingOrdersFragment(),
-        CanceledOrdersFragment()
+        OngoingOrdersFragment()/*
+        CanceledOrdersFragment()*/
     )
     private var args: OrdersFragmentArgs? = null
 
@@ -46,6 +46,8 @@ class OrdersFragment : Fragment () {
             OrdersFragmentArgs.fromBundle(it)
         }
 
+        Log.d("orderFrag","${args?.buyerCode}")
+
         return bind.root
     }
 
@@ -66,7 +68,7 @@ class OrdersFragment : Fragment () {
                 when(position) {
                     0-> tab.text = getString(R.string.successful_orders)
                     1-> tab.text = getString(R.string.ongoing_orders)
-                    2 -> tab.text= getString(R.string.canceled_orders)
+                    /*2 -> tab.text= getString(R.string.canceled_orders)*/
                     else -> tab.text = "UN GALLO CON TENIS JAJAJAJAJA"
                 }
             }).attach()

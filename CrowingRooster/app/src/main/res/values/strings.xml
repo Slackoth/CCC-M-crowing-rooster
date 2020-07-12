@@ -10,7 +10,7 @@
     <string name="successful_orders">Exitosos</string>
     <string name="ongoing_orders">Pendientes</string>
     <string name="canceled_orders">Cancelados</string>
-    <string name="battery_search">Por Bateria</string>
+    <string name="battery_search">Catálogo de Baterías</string>
     <string name="search">Búsqueda</string>
     <string name="car_search">Por Carro</string>
 
@@ -107,7 +107,12 @@
     <string name="Estilosproducto">Estilos Disponibles</string>
 
     <string name="address">Dirección</string>
-
+    <string name="already_account">¿Ya tienes una cuenta?</string>
+    <string name="select_photo">Seleccionar foto</string>
+    <string name="username">Username</string>
+    <string name="registrar">Registrar</string>
+    <string name="dui">Dui</string>
+    <string name="phone">Teléfono</string>
 
 
     <string-array name="payment_array">

@@ -24,6 +24,7 @@ class SellerClientRepository (private val sellerClientDao: SellerClientDao) {
                     for (client in clients) {
                         sellerClientDao.insert(client)
                     }
+                    Log.d("clients","${clients}}")
                 }
                 catch (e: Exception) {
                     Log.d("Connection","No connection: ${e.message}")

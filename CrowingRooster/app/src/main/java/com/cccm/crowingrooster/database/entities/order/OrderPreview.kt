@@ -8,7 +8,7 @@ import com.squareup.moshi.Json
 data class OrderPreview(
     @Json(name = "codigo_orden")
     @PrimaryKey var code: String,
-    @Json(name = "fecha_entrega")
+    @Json(name = "fecha")
     var date: String,
     @Json(name = "cantidad")
     var quantity: String,

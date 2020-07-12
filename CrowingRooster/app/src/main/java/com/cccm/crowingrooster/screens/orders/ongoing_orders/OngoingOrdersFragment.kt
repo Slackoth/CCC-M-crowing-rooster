@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster.screens.orders.successful_orders
+package com.cccm.crowingrooster.screens.orders.ongoing_orders
 
 import android.app.Application
 import android.os.Bundle
@@ -8,30 +8,33 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cccm.crowingrooster.NavGraphDirections
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.order.OrderPreviewDao
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
-import com.cccm.crowingrooster.databinding.FragmentSuccessfulOrderBinding
+import com.cccm.crowingrooster.databinding.FragmentOngoingOrdersBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoration
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Order
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.network.repository.order.OrderPreviewRepository
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
-import com.cccm.crowingrooster.screens.orders.successful_orders.successful_order_details.SuccessfulOrderDetailsDialogFragment
+import java.lang.Exception
 
 
-class SuccessfulOrdersFragment : Fragment() {
+class OngoingOrdersFragment : Fragment () {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: SuccessfulOrdersViewModel
-    private lateinit var viewModelFactory: SuccessfulOrdersViewModelFactory
+
+    lateinit var recyclerView: RecyclerView
+    var orderList: MutableList<Any> = mutableListOf()
     private lateinit var orderPreviewRepository: OrderPreviewRepository
     private lateinit var orderPreviewDao: OrderPreviewDao
     private lateinit var app: Application
+    private lateinit var viewModel: OngoingOrdersViewModel
+    private lateinit var viewModelFactory: OngoingOrdersViewModelFactory
     private lateinit var adapter: GenericRecyclerViewAdapter<OrderPreview>
     private var buyerCode: String? = ""
 
@@ -39,29 +42,26 @@ class SuccessfulOrdersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_successful_orders, container, false)
-        val bind = DataBindingUtil.inflate<FragmentSuccessfulOrderBinding>(
-            inflater, R.layout.fragment_successful_order,
+        val bind = DataBindingUtil.inflate<FragmentOngoingOrdersBinding>(
+            inflater, R.layout.fragment_ongoing_orders,
             container, false
         )
-
         setHasOptionsMenu(true)
 
         if (arguments != null) {
             buyerCode = arguments?.getString("code")
         }
 
-        Log.d("sOrderFrag","${buyerCode}")
-
-        recyclerView = bind.recyclerView
-
         app = requireActivity().application
         orderPreviewDao = CrowingRoosterDataBase.getInstance(app).orderPreviewDao
         orderPreviewRepository = OrderPreviewRepository.getInstance(orderPreviewDao)
 
-        viewModelFactory = SuccessfulOrdersViewModelFactory(orderPreviewRepository,app,buyerCode)
-        viewModel = ViewModelProvider(this,viewModelFactory).get(SuccessfulOrdersViewModel::class.java)
+        viewModelFactory = OngoingOrdersViewModelFactory(orderPreviewRepository,app,buyerCode)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(OngoingOrdersViewModel::class.java)
+
+        recyclerView = bind.recyclerView
+
+        Log.d("onOrderFrag","${buyerCode}")
 
         initRecyclerview()
 
@@ -70,7 +70,7 @@ class SuccessfulOrdersFragment : Fragment() {
                 adapter.setDataSource(it)
             }
             else {
-                Log.d("sOrderFrag","NOP")
+                Log.d("onOrderFrag","NOP")
             }
         })
 
@@ -82,23 +82,6 @@ class SuccessfulOrdersFragment : Fragment() {
         return bind.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.successful_order_more_options_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.action_order_idorder_so, R.id.action_order_date_so -> {
-                val dialog =
-                    AscDescDialogFragment()
-                dialog.show(requireActivity().supportFragmentManager, "AscDescDialog")
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     private fun initRecyclerview() {
         //Creating the RecyclerView Adapter
         adapter = object : GenericRecyclerViewAdapter<OrderPreview>(viewModel.orderPreviews.value, requireContext()) {
@@ -107,15 +90,19 @@ class SuccessfulOrdersFragment : Fragment() {
             }
 
             override fun getOnClickLayout(): (List<Any>) -> Unit {
-                val dialog = SuccessfulOrderDetailsDialogFragment()
-                val dialogArgs = Bundle()
                 return { params ->
-                    dialogArgs.putString("buyerCode",buyerCode)
-                    dialogArgs.putString("orderId",params[0].toString())
-                    dialog.arguments = dialogArgs
-                    dialog.show(requireActivity().supportFragmentManager, "OrderDetailsDialog")
-                }
+                    val globalAction = NavGraphDirections
+                        .actionGlobalOngoingOrdersFragmentToOngoingOrderDetailsFragment()
+                    globalAction.buyerCode = buyerCode.toString()
+                    globalAction.orderId = params[0].toString()
 
+                    try {
+                        this@OngoingOrdersFragment.findNavController().navigate(globalAction)
+                    }
+                    catch (e: Exception) {
+                        Log.d("Emensaje","${e.message}")
+                    }
+                }
             }
 
             override fun getLayoutId(): Int {
@@ -134,12 +121,25 @@ class SuccessfulOrdersFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.ongoing_orders_more_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
+        return when(item.itemId) {
+            R.id.action_order_date, R.id.action_order_idorder -> {
+                val dialog =
+                    AscDescDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager,"AscDescDialog")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
 }
-
-
-
-
-
-
-
-
