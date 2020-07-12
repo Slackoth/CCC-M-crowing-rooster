@@ -14,6 +14,6 @@ interface BatteryDao {
     fun insert(battery: Battery)
 
     @Query("SELECT * FROM battery WHERE id_bateria = :id_bateria")
-    fun getBattery(id_bateria:Int): LiveData<Battery>
+    fun getBattery(id_bateria:Int?): LiveData<Battery>
 
 }

@@ -9,6 +9,9 @@
         app:destination="@+id/ongoingSalesDetailsFragment"/>
     <action android:id="@+id/action_global_ongoingOrdersFragment_to_ongoingOrderDetailsFragment"
         app:destination="@+id/ongoingOrdersDetailsFragment"/>
+    <action android:id="@+id/action_global_catalogueFragment_to_productFragment"
+        app:destination="@+id/productFragment"/>
+
 
     <fragment
         android:id="@+id/logInFragment"
@@ -70,6 +73,10 @@
         <action
             android:id="@+id/action_productFragment_to_chartFragment"
             app:destination="@id/chartFragment" />
+        <argument
+            android:name="id_battery"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/successfulSalesFragment"-->
@@ -125,7 +132,7 @@
     </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
-        android:name="com.cccm.crowingrooster.screens.catalogue.CatalogueFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.CatalogueFragment"
         android:label="CatalogueFragment"
         tools:layout="@layout/fragment_catalogue"
         >

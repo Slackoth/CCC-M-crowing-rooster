@@ -12,7 +12,10 @@ class CatalogueViewModel (
     private val app : Application
 ): AndroidViewModel(app) {
 
+
     var batteriesOnStock: LiveData<List<Catalogue>> = catalogueRepository.getAll()
+
+
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean>

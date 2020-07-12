@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.NavGraphDirections
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.CatalogueDao
@@ -26,6 +28,7 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewA
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.network.repository.catalogue.CatalogueRepository
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 
 class CatalogueFragment : Fragment() {
@@ -135,9 +138,16 @@ class CatalogueFragment : Fragment() {
             }
 
             override fun getOnClickLayout(): (List<Any>) -> Unit {
-                return {
-                    this@CatalogueFragment.findNavController()
-                        .navigate(R.id.productFragment)                }
+                return { params ->
+                    val globalAction = NavGraphDirections.actionGlobalCatalogueFragmentToProductFragment()
+                    globalAction.idBattery = params[0].toString().toInt()
+
+                    try {
+                        this@CatalogueFragment.findNavController().navigate(globalAction)
+
+                    }catch (e: Exception) {
+                        Log.d("Emensaje","${e.message}")}
+                }
             }
         }
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

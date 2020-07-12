@@ -375,7 +375,7 @@ object ViewHolderFactory {
             capacidadEt.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener {
-                onClickLayout(listOf<Any>())
+                onClickLayout(listOf<Any>(listObject.id_bateria))
             }
         }
     }

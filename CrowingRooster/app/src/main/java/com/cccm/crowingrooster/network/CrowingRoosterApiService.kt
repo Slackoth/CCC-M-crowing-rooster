@@ -77,7 +77,7 @@ interface CrowingRoosterApiService {
 
     @GET("product/specific")
     suspend fun getProductAsync(
-        @Query("codigo") id:Int
+        @Query("codigo") id:Int?
     ): List<Battery>
 
     @GET("product/info")

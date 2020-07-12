@@ -29,6 +29,8 @@ import com.cccm.crowingrooster.network.repository.product.BatteryInfoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
 import com.cccm.crowingrooster.screens.chat.ChatFragment
+import com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details.OngoingSalesDetailsFragmentArgs
+import com.cccm.crowingrooster.screens.search_battery.CatalogueFragment
 import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModel
 import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,6 +50,7 @@ class ProductFragment : Fragment() {
     private lateinit var viewModel: ProductViewModel
     private lateinit var batteryDao: BatteryDao
     private lateinit var pedidoDao: PedidoDao
+    private var args: ProductFragmentArgs? = null
     lateinit var spinner: Spinner
 
     override fun onCreateView(
@@ -67,6 +70,8 @@ class ProductFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
         }
 
+        args = arguments?.let { ProductFragmentArgs.fromBundle(it) }
+
 
         app = requireActivity().application
         batteryDao = CrowingRoosterDataBase.getInstance(app).batteryDao
@@ -74,7 +79,7 @@ class ProductFragment : Fragment() {
         pedidoDao= CrowingRoosterDataBase.getInstance(app).PedidoDao
 //        batteryInfoRepository= BatteryInfoRepository(batteryInfoDao)
         PedidoRepository= PedidoRepository(pedidoDao)
-        viewModelFactory = ProductViewModelFactory(batteryRepository,PedidoRepository, app)
+        viewModelFactory = ProductViewModelFactory(args?.idBattery, batteryRepository,PedidoRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ProductViewModel::class.java)
 
         var uid="16"
@@ -115,10 +120,6 @@ class ProductFragment : Fragment() {
 //            }
 //
 //        })
-
-
-
-
 
 
         //        binding.Estilos.setOnClickListener {

@@ -8,6 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import com.cccm.crowingrooster.database.daos.BatteryDao
 import com.cccm.crowingrooster.database.daos.PedidoDao
 import com.cccm.crowingrooster.database.entities.Battery
+import com.cccm.crowingrooster.database.entities.Catalogue
+import com.cccm.crowingrooster.network.repository.catalogue.CatalogueRepository
 import com.cccm.crowingrooster.network.repository.pedido.PedidoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryInfoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
@@ -18,14 +20,18 @@ import kotlinx.coroutines.Job
 import com.cccm.crowingrooster.database.entities.Pedido as Pedido
 
 class ProductViewModel(
+
+    id_bateria : Int?,
     BatteryRepository  : BatteryRepository,
     PedidoRepository: PedidoRepository,
     app: Application
 ): AndroidViewModel(app) {
 
-    var battery: LiveData<Battery> = BatteryRepository.getSpecific(2)
+
+    var battery: LiveData<Battery> = BatteryRepository.getSpecific(id_bateria)
 
     fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String){
+
         var Pedido: Pedido= Pedido(0,cant, id_battery,IdUser,img,Desc, titulo)
 
         if(PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value==null){
@@ -39,8 +45,6 @@ class ProductViewModel(
         }
 
     }
-
-
-
-
 }
+
+

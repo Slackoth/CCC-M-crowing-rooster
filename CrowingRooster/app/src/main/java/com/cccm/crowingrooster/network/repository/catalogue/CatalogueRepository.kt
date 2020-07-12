@@ -4,6 +4,7 @@ import android.provider.SyncStateContract.Helpers.insert
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.cccm.crowingrooster.database.daos.CatalogueDao
+import com.cccm.crowingrooster.database.entities.Battery
 import com.cccm.crowingrooster.database.entities.Catalogue
 import com.cccm.crowingrooster.network.CrowingRoosterApiService
 import kotlinx.coroutines.GlobalScope
@@ -11,6 +12,8 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.ZonedDateTime
 
 class CatalogueRepository (private val catalogueDao: CatalogueDao) {
+
+
     fun getAll(): LiveData<List<Catalogue>> {
         refreshCatalogue()
         return catalogueDao.getAll()
