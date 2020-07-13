@@ -33,7 +33,7 @@ class LogInRepository(private val userDao: UserDao) {
                 }
             }
             catch (e: Exception) {
-                Log.d("Connection","No connection: ${e.message}")
+                Log.d("Connectionx","No connection: ${e.message}")
             }
         }
     }

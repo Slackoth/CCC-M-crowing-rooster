@@ -113,8 +113,8 @@ class LogInFragment : Fragment() {
         val email= userEditT.text.toString()
         val pswd= passEt.text.toString()
 
-//        Log.d("MainActivity","User: "+email)
-//        Log.d("MainActivity","Password: "+pswd)
+        Log.d("MainActivity","User: "+email)
+        Log.d("MainActivity","Password: "+pswd)
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,pswd)
             .addOnCompleteListener{
@@ -123,8 +123,8 @@ class LogInFragment : Fragment() {
                 if(!it.isSuccessful) return@addOnCompleteListener
             }
             .addOnFailureListener{
-//                Log.d("MainActivity", "User Credentials incorrect")
-//
+             Log.d("MainActivity", "User Credentials incorrect")
+
                 Toast.makeText(context, "Credenciales Incorrectas. Intente de Nuevo", Toast.LENGTH_SHORT).show()
                 return@addOnFailureListener
             }
