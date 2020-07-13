@@ -7,81 +7,153 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_dark"
-        android:visibility="visible"
-        tools:visibility="visible">
+        android:background="@color/primary_dark">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="136dp">
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="-16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/ProductTitleText"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/Product_title"
-                    android:textAlignment="center"
-                    android:textColor="@color/on_primary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:id="@+id/product_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="123dp"
-
-
-                    android:textAlignment="center"
-                    app:srcCompat="@drawable/ic_rooster_colored_512dp"
-                    android:contentDescription="TODO" />
-
-                <Button
-                    android:id="@+id/Estilos"
-                    style="@style/Widget.MyApp.MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/Estilos"
-                    android:textColor="@color/on_primary" />
-
-                <TextView
-                    android:id="@+id/description_product"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/small_padding"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/sample_infobat"
-                    android:textColor="@color/on_primary" />
-
-                <Button
-                    android:id="@+id/AddTochart_buttom"
-                    style="@style/Widget.MyApp.MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/AddTocharText"
-                    android:textColor="@color/on_primary" />
-            </LinearLayout>
+                android:orientation="vertical" />
         </ScrollView>
 
+        <TextView
+            android:id="@+id/ProductTitleText"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/Product_title"
+            android:textAlignment="center"
+            android:textColor="@color/on_primary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/product_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19999999" />
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_width="128dp"
+            android:layout_height="105dp"
+            app:layout_constraintBottom_toTopOf="@id/description_product"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProductTitleText"
+            app:srcCompat="@drawable/ic_rooster_colored_512dp" />
+
+        <TextView
+            android:id="@+id/description_product"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="376dp"
+            android:layout_height="102dp"
+            android:layout_marginStart="@dimen/small_padding"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/sample_infobat"
+            android:textColor="@color/on_primary"
+            app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_img" />
+
+        <TextView
+            android:id="@+id/cantidad_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:textColor="@color/on_primary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
+            app:layout_constraintEnd_toStartOf="@+id/editTextquantity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_product" />
+
+        <EditText
+            android:id="@+id/editTextquantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="1"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColorHint="@color/on_primary"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_product"
+            app:layout_constraintVertical_bias="0.45" />
+
+        <Button
+            android:id="@+id/AddTochart_buttom"
+            style="@style/Widget.MyApp.MyButton"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/AddTocharText"
+            android:textColor="@color/on_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_product" />
+
+
+        <!--        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner-->
+<!--            android:id="@+id/Estilos"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:smsp_errorText="This is error text. You can show it as single line or multiple lines using attr smsp_multilineError"-->
+<!--            app:smsp_floatingLabelColor="#1976D2"-->
+<!--            app:smsp_floatingLabelText="Floating Label Text"-->
+<!--            app:smsp_hint="Hint Text"-->
+<!--            app:smsp_hintColor="#388E3C"-->
+<!--            app:smsp_itemColor="#512DA8"-->
+<!--            app:smsp_itemListColor="#7C4DFF"-->
+<!--            app:smsp_itemListHintBackgroundColor="#808080"-->
+<!--            app:smsp_itemListHintColor="#FFFFFF"-->
+<!--            app:smsp_multilineError="false"-->
+<!--            app:smsp_selectedItemListColor="#FF5252"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/description_product"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/product_img" />-->
+
+
+<!--        <Button-->
+<!--            android:id="@+id/Estilos"-->
+<!--            style="@style/Widget.MyApp.MyButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:fontFamily="@font/montserrat"-->
+<!--            android:text="@string/Estilos"-->
+<!--            android:textColor="@color/on_primary"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/description_product"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/product_img" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

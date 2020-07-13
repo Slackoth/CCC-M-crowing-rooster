@@ -10,8 +10,11 @@
         android:background="@color/primary_dark">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="-16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,12 +36,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19999999" />
 
         <ImageView
             android:id="@+id/product_img"
-            android:layout_width="196dp"
-            android:layout_height="195dp"
+            android:layout_width="181dp"
+            android:layout_height="174dp"
             app:layout_constraintBottom_toTopOf="@id/description_product"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,9 +64,37 @@
             android:textColor="@color/on_primary"
             app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.264"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_img" />
+
+        <TextView
+            android:id="@+id/cantidad_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:textColor="@color/on_primary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
+            app:layout_constraintEnd_toStartOf="@+id/editTextquantity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_product" />
+
+        <EditText
+            android:id="@+id/editTextquantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColorHint="@color/on_primary"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toTopOf="@+id/AddTochart_buttom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_product"
+            app:layout_constraintVertical_bias="0.45" />
 
         <Button
             android:id="@+id/AddTochart_buttom"

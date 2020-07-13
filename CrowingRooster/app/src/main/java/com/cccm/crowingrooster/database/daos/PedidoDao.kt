@@ -1,11 +1,11 @@
 package com.cccm.crowingrooster.database.daos
 
-import android.net.wifi.aware.PeerHandle
 import androidx.lifecycle.LiveData
-import androidx.room.*
-import com.cccm.crowingrooster.database.entities.Battery
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import com.cccm.crowingrooster.database.entities.Pedido
-import com.cccm.crowingrooster.database.entities.SalePreview
 
 
 @Dao
@@ -22,5 +22,8 @@ interface PedidoDao {
 
     @Update
     fun UpdatePedido(Pedido: Pedido)
+
+    @Query("DELETE FROM chart")
+    fun nukeTable()
 
 }

@@ -46,6 +46,10 @@ class PedidoRepository (private val PedidoDao: PedidoDao){
         return PedidoDao.UpdatePedido(Pedido)
     }
 
+    fun nukeThen_all(){
+        PedidoDao.nukeTable()
+    }
+
 
     companion object {
         private var INSTANCE: PedidoRepository? = null

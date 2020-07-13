@@ -28,6 +28,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.core.view.View
 
 
 class ChartViewModel (
@@ -37,10 +38,11 @@ class ChartViewModel (
     app: Application
 ): AndroidViewModel(app){
 
-    var pedidos: LiveData<List<Pedido>> = pedidoRepository.getSpecific("20")
+    var pedidos: LiveData<List<Pedido>> = pedidoRepository.getSpecific("23")
     var freeSeller:LiveData<SellerFree> = SellerFreeRepository.getSpecific()
     var FreeSelleruid:String= ""
     var codigo=OrderToChartRepository.getCode()
+    var pedidoRepository=pedidoRepository
 
 
     fun doOrderInsert(OrdertoChartDao:OrdertoChartDao, listaPedidos:List<Pedido>, code:String){
@@ -52,8 +54,14 @@ class ChartViewModel (
       var PedidoDatabaseBody=PedidoDatabaseBody ("C-2020-0",  it.cantidad_bateria, code,it.id_bateria)
             PedidoDatabaseRepository.getInstance().send(PedidoDatabaseBody)
         }
+        nukeChart()
+
 
     }
+    fun nukeChart(){
+        pedidoRepository.nukeThen_all()
+    }
+
 
 
     fun CreateChat(){
@@ -70,8 +78,6 @@ class ChartViewModel (
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d("Chart","Mensaje Subido Chartos")
-
-
             }
         toReference.setValue(chatMessage)
             .addOnSuccessListener {
@@ -115,6 +121,10 @@ class ChartViewModel (
 
 
 
+    }
+
+    fun IncreasedClicked(view:View){
+        Log.d("databuttom", "si me sumas bb")
     }
 
 

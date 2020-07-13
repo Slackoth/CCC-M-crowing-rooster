@@ -33,7 +33,7 @@
     <string name="title">titulo</string>
     <string name="model">Modelo</string>
     <string name="client">Cliente</string>
-    <string name="quantity">Cantidad</string>
+    <string name="quantity">Cantidad: </string>
     <string name="payment">Pago</string>
     <string name="cash">Efectivo</string>
     <string name="price">Precio</string>

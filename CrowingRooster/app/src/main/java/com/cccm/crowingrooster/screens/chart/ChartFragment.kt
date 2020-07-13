@@ -92,8 +92,9 @@ class ChartFragment : Fragment() {
 
        viewModel.pedidos.observe(viewLifecycleOwner, Observer {
            if(it!= null){
-               //Log.d("Chart", it[1].desc_bateria)
                ListaPedidos=it
+               adapter.notifyDataSetChanged()
+
                adapter.setDataSource(it)
            }
        })
@@ -121,6 +122,7 @@ class ChartFragment : Fragment() {
 
 
         //Creating the RecyclerView Adapter
+
         adapter= object : GenericRecyclerViewAdapter<Pedido>(viewModel.pedidos.value, requireContext()) {
 
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
@@ -162,6 +164,13 @@ class ChartFragment : Fragment() {
                 code= it
             }
         })
+
+
+
+
+
+
+
 
         return code
     }

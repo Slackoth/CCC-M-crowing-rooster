@@ -54,34 +54,16 @@
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
                                 android:text="Nombre"
-                                android:textAllCaps="true"
-                                android:textColor="@color/secondary_light"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/buyer_name_btt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="8dp"
-                                android:clickable="true"
-                                android:text="editar"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintHorizontal_bias="0.024"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0"
-                                app:strokeColor="@color/secondary_light" />
+                                app:layout_constraintVertical_bias="0.285" />
 
                             <TextView
                                 android:id="@+id/buyer_name_desc_tv"
@@ -132,34 +114,16 @@
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
                                 android:text="nombre empresa *"
-                                android:textAllCaps="true"
-                                android:textColor="@color/secondary_light"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/buyer_comp_btt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="8dp"
-                                android:clickable="true"
-                                android:text="editar"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintHorizontal_bias="0.065"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0"
-                                app:strokeColor="@color/secondary_light" />
+                                app:layout_constraintVertical_bias="0.053" />
 
                             <TextView
                                 android:id="@+id/buyer_comp_desc_tv"
@@ -210,34 +174,16 @@
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
                                 android:text="DUI"
-                                android:textAllCaps="true"
-                                android:textColor="@color/secondary_light"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/buyer_dui_btt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="8dp"
-                                android:clickable="true"
-                                android:text="editar"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintHorizontal_bias="0.044"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0"
-                                app:strokeColor="@color/secondary_light" />
+                                app:layout_constraintVertical_bias="0.125" />
 
                             <TextView
                                 android:id="@+id/buyer_dui_desc_tv"
@@ -288,34 +234,16 @@
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
                                 android:text="correo"
-                                android:textAllCaps="true"
-                                android:textColor="@color/secondary_light"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/buyer_email_btt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="8dp"
-                                android:clickable="true"
-                                android:text="editar"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintHorizontal_bias="0.049"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0"
-                                app:strokeColor="@color/secondary_light" />
+                                app:layout_constraintVertical_bias="0.107" />
 
                             <TextView
                                 android:id="@+id/buyer_email_desc_tv"
@@ -366,34 +294,16 @@
                                 style="@style/TextAppearance.AppCompat.Body1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
                                 android:text="@string/telephone"
-                                android:textAllCaps="true"
-                                android:textColor="@color/secondary_light"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/buyer_phone_btt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="8dp"
-                                android:clickable="true"
-                                android:text="@string/edit"
                                 android:textAllCaps="true"
                                 android:textColor="@color/secondary_light"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0"
-                                app:strokeColor="@color/secondary_light" />
+                                app:layout_constraintVertical_bias="0.285" />
 
                             <TextView
                                 android:id="@+id/buyer_real_phone_tv"
@@ -428,20 +338,6 @@
                 </LinearLayout>
 
             </ScrollView>
-
-            <Button
-                android:id="@+id/change_buyer_pass_btt"
-                style="@style/Widget.MyApp.MyButton"
-                android:text="cambiar contraseña"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:drawableLeft="@drawable/ic_key_black_filled_24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:layout_gravity="center"/>
 
         </LinearLayout>
 

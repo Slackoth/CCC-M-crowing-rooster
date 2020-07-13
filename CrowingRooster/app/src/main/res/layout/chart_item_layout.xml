@@ -9,6 +9,7 @@
     tools:background="@color/primary_dark">
 
 
+
     <ImageView
         android:id="@+id/Product_img_ch"
         android:layout_width="97dp"
@@ -87,40 +88,10 @@
             app:layout_constraintTop_toBottomOf="@+id/ProductDesc_chr"
             app:layout_constraintVertical_bias="0.428" />
 
-        <at.markushi.ui.CircleButton
-            android:id="@+id/increase_btn"
-            android:layout_width="52dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cb_color="@color/secondary_dark"
-            app:cb_pressedRingWidth="8dip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.337"
-            app:layout_constraintStart_toStartOf="@+id/guidelineDECREASE"
-            app:layout_constraintTop_toBottomOf="@+id/ProductDesc_chr"
-            app:layout_constraintVertical_bias="0.47" />
-
-        <at.markushi.ui.CircleButton
-            android:id="@+id/decrease_btn"
-            android:layout_width="52dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cb_color="@color/secondary_dark"
-            app:cb_pressedRingWidth="8dip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProductDesc_chr"
-            app:layout_constraintVertical_bias="0.47" />
-
         <EditText
             android:id="@+id/quantity_text_ch"
-            android:layout_width="50dp"
-            android:layout_height="31dp"
+            android:layout_width="151dp"
+            android:layout_height="29dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@color/on_primary"
@@ -131,10 +102,11 @@
             android:textColor="@color/color_surface"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/decrease_btn"
-            app:layout_constraintStart_toEndOf="@+id/increase_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toEndOf="@+id/cantidad_textchr"
             app:layout_constraintTop_toBottomOf="@+id/ProductDesc_chr"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineDECREASE"
@@ -142,36 +114,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="16dp" />
-
-        <TextView
-            android:id="@+id/decreaseText"
-            android:layout_width="41dp"
-            android:layout_height="33dp"
-            android:text="-"
-            android:textAlignment="center"
-            android:textColor="@color/on_primary"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/increase_btn"
-            app:layout_constraintHorizontal_bias="0.58"
-            app:layout_constraintStart_toStartOf="@+id/increase_btn"
-            app:layout_constraintTop_toTopOf="@+id/increase_btn"
-            app:layout_constraintVertical_bias="0.42000002" />
-
-        <TextView
-            android:id="@+id/IncreaseText"
-            android:layout_width="26dp"
-            android:layout_height="24dp"
-            android:text="+"
-            android:textAlignment="center"
-            android:textColor="@color/on_primary"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/decrease_btn"
-            app:layout_constraintEnd_toEndOf="@+id/decrease_btn"
-            app:layout_constraintHorizontal_bias="0.55"
-            app:layout_constraintStart_toStartOf="@+id/decrease_btn"
-            app:layout_constraintTop_toTopOf="@+id/decrease_btn"
-            app:layout_constraintVertical_bias="0.48000002" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

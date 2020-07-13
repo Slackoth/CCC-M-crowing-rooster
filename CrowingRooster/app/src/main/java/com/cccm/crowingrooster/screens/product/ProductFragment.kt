@@ -33,6 +33,7 @@ import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModel
 import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dialog_fullscreen_style_product.view.*
+import kotlinx.android.synthetic.main.fragment_product.view.*
 
 
 /**
@@ -49,6 +50,7 @@ class ProductFragment : Fragment() {
     private lateinit var batteryDao: BatteryDao
     private lateinit var pedidoDao: PedidoDao
     lateinit var spinner: Spinner
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,7 +79,22 @@ class ProductFragment : Fragment() {
         viewModelFactory = ProductViewModelFactory(batteryRepository,PedidoRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ProductViewModel::class.java)
 
-        var uid="20"
+
+
+        var valueexist= false
+        viewModel.DoesItExist.observe(viewLifecycleOwner, Observer {
+
+            if (it!=null){
+                Log.d("Consolaa", it.cantidad_bateria.toString())
+                valueexist=true
+                viewModel.PedidoExistente=it
+            }else {
+                Log.d("Consolaa", "ta vacio")
+            }
+        })
+
+
+        var uid="23"
         var Buid:Int=0
         var cant:Int=0
         var Desc:String=""
@@ -99,8 +116,6 @@ class ProductFragment : Fragment() {
                     Log.d("su putatatamjdasjdm", "me")
                 }
             })
-
-
 
         var Estilo:String
         var ArrayEstilos:ArrayList<String>
@@ -135,9 +150,12 @@ class ProductFragment : Fragment() {
     //            }
     //
     //        }
-
         binding.AddTochartButtom.setOnClickListener{
-            viewModel.SetIntoChart(cant,uid, Buid,pedidoDao, img, Desc, titulo)
+
+            var quantity= binding.editTextquantity.text.toString()
+
+
+            viewModel.SetIntoChart(cant,uid, Buid,pedidoDao, img, Desc, titulo, valueexist,quantity)
             it.findNavController().navigate(R.id.action_productFragment_to_chartFragment)
         }
 //        binding.apply {

@@ -24,19 +24,20 @@ class ProductViewModel(
 ): AndroidViewModel(app) {
 
     var battery: LiveData<Battery> = BatteryRepository.getSpecific(2)
+    var DoesItExist= pedidoRepo.doesItExist("23",2)
+    var PedidoExistente=Pedido(1,1,1,"","","","")
 
 //    pedidoRepo.
 
-    fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String){
+    fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String, flag:Boolean, quant:String){
         var Pedido: Pedido= Pedido(0,cant, id_battery,IdUser,img,Desc, titulo)
 
-        if(PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value==null){
-            Log.d("Pedido", "Ta lleno")
+        if(flag==false){
+            //Log.d("Pedido", DoesItExist)
             PedidoRepository.getInstance(pedidoDao).Insertar(Pedido)
         }else{
-            Log.d("Pedido", "Ta vacio")
-            Pedido=PedidoRepository.getInstance(pedidoDao).doesItExist(IdUser,id_battery).value!!
-            Pedido.cantidad_bateria= Pedido.cantidad_bateria+1
+            Pedido=PedidoExistente
+            Pedido.cantidad_bateria=  Pedido.cantidad_bateria +quant.toInt()
             PedidoRepository.getInstance(pedidoDao).update(Pedido)
         }
 

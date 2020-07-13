@@ -193,6 +193,8 @@ object ViewHolderFactory {
         private val desc: TextView = itemView.findViewById(R.id.ProductDesc_chr)
         private val ProdTitle: TextView = itemView.findViewById(R.id.productTitle_ch)
         private val quantity: EditText = itemView.findViewById(R.id.quantity_text_ch)
+//        private val increase: Button= itemView.findViewById(R.id.decrease_btn)
+//        private val deacrease: Button= itemView.findViewById(R.id.decrease_btn)
 
 
 
@@ -208,7 +210,9 @@ object ViewHolderFactory {
             desc.text = listObject.img_bateria
             ProdTitle.text = listObject.titulo
             quantity.setText(listObject.cantidad_bateria.toString())
+            Log.d("ChartObject",listObject.cantidad_bateria.toString())
             quantity.inputType = InputType.TYPE_NULL
+
 
 
         }
@@ -236,6 +240,9 @@ object ViewHolderFactory {
             layout.setOnClickListener {
                 onClickLayout(listOf<Any>(listObject.code))
             }
+
+
+
         }
     }
 
