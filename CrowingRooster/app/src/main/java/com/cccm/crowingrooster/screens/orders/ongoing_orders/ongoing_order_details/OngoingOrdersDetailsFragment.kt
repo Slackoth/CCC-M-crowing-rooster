@@ -1,6 +1,8 @@
 package com.cccm.crowingrooster.screens.orders.ongoing_orders.ongoing_order_details
 
 import android.app.Application
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -43,6 +45,7 @@ class OngoingOrdersDetailsFragment : Fragment() {
     private lateinit var orderDetailsRepository: OrderDetailsRepository
     private lateinit var viewModel: OngoingOrderDetailsViewModel
     private lateinit var viewModelFactory: OngoingOrderDetailsViewModelFactory
+    private var phone: String = ""
 
 
     override fun onCreateView(
@@ -70,6 +73,11 @@ class OngoingOrdersDetailsFragment : Fragment() {
             sellerEt.inputType = InputType.TYPE_NULL
             emailEt.inputType = InputType.TYPE_NULL
             dateEt.inputType = InputType.TYPE_NULL
+            callBtt.setOnClickListener {
+                val intent = Intent(Intent.ACTION_CALL)
+                intent.data = Uri.parse("tel:+503$phone")
+                startActivity(intent)
+            }
         }
 
         app = requireActivity().application
@@ -86,6 +94,7 @@ class OngoingOrdersDetailsFragment : Fragment() {
                 bind.emailEt.setText(it.email)
                 bind.totalQuantityTv.text = it.total
                 bind.dateEt.setText(it.date)
+                phone = it.phone
             }
             else {
                 Log.d("sOrderDetails","NO SIRVIO")

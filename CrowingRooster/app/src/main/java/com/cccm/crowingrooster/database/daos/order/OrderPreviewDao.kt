@@ -12,6 +12,6 @@ interface OrderPreviewDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(orderPreview: OrderPreview)
 
-    @Query("SELECT * FROM order_preview where state = :state")
-    fun getAll(state: String): LiveData<List<OrderPreview>>
+    @Query("SELECT * FROM order_preview where buyer = :buyer AND state = :state")
+    fun getAll(state: String,buyer:String?): LiveData<List<OrderPreview>>
 }

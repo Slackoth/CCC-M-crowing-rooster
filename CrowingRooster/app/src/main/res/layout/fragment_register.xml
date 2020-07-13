@@ -128,6 +128,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_edittext_register" />
 
 
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/company_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintBottom_toTopOf="@id/register_button_register"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_phone_et"
+                app:smsp_alwaysShowFloatingLabel="true"
+                app:smsp_arrowColor="@color/secondary"
+                app:smsp_floatingLabelColor="@color/secondary"
+                app:smsp_floatingLabelText="@string/payment"
+                app:smsp_hint="@string/companies"
+                app:smsp_hintColor="@color/on_primary"
+                app:smsp_itemColor="@color/on_primary"
+                app:smsp_itemListBackgroundColor="@color/primary_light"
+                app:smsp_itemListColor="@color/on_primary"
+                app:smsp_itemListHintBackgroundColor="@color/secondary"
+                app:smsp_itemListHintColor="@color/on_primary"
+                app:smsp_selectedItemListColor="@color/secondary_light"
+                app:smsp_underlineColor="@color/secondary" />
+
             <Button
                 android:id="@+id/register_button_register"
                 android:layout_width="0dp"

@@ -113,6 +113,7 @@
     <string name="registrar">Registrar</string>
     <string name="dui">Dui</string>
     <string name="phone">Teléfono</string>
+    <string name="companies">Compañías</string>
 
 
     <string-array name="payment_array">
