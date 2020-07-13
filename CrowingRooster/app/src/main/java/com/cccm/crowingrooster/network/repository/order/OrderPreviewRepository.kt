@@ -15,7 +15,7 @@ import org.threeten.bp.ZonedDateTime
 class OrderPreviewRepository(private val orderPreviewDao: OrderPreviewDao) {
     fun getAll(code: String?, state: String): LiveData<List<OrderPreview>> {
         refreshOrderPreview(code,state)
-        return orderPreviewDao.getAll(state)
+        return orderPreviewDao.getAll(state,code)
     }
 
     private fun refreshOrderPreview(code: String?,state: String) {

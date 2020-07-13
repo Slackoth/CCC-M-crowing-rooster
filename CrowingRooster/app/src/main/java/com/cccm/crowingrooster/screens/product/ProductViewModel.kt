@@ -23,12 +23,14 @@ class ProductViewModel(
 
     id_bateria : Int?,
     BatteryRepository  : BatteryRepository,
-    PedidoRepository: PedidoRepository,
+    pedidoRepo: PedidoRepository,
     app: Application
 ): AndroidViewModel(app) {
 
 
     var battery: LiveData<Battery> = BatteryRepository.getSpecific(id_bateria)
+
+//    pedidoRepo.
 
     fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String){
 

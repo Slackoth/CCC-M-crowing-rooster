@@ -18,5 +18,7 @@ data class SalePreview(
     @Json(name = "codigo_orden")
     var orderCode: String,
     @Json(name = "estado")
-    var state: String
+    var state: String,
+    @Json(name = "vendedor_codigo")
+    var seller: String
 )

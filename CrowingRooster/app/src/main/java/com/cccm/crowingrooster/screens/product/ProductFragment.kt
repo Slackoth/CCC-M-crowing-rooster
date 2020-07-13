@@ -82,7 +82,7 @@ class ProductFragment : Fragment() {
         viewModelFactory = ProductViewModelFactory(args?.idBattery, batteryRepository,PedidoRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ProductViewModel::class.java)
 
-        var uid="16"
+        var uid="20"
         var Buid:Int=0
         var cant:Int=0
         var Desc:String=""

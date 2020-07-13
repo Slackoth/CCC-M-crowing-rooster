@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.database
 import android.content.Context
 import androidx.room.Database
+import androidx.room.FtsOptions
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
@@ -15,17 +16,20 @@ import com.cccm.crowingrooster.database.entities.SellerClient
 
 import com.cccm.crowingrooster.database.daos.*
 import com.cccm.crowingrooster.database.daos.DeliveryMiniOrdersDao
+import com.cccm.crowingrooster.database.daos.order.BuyerDao
 import com.cccm.crowingrooster.database.daos.order.OrderDetailsDao
 import com.cccm.crowingrooster.database.daos.order.OrderMiniOrderDao
 import com.cccm.crowingrooster.database.daos.order.OrderPreviewDao
 import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.order.Buyer
 import com.cccm.crowingrooster.database.entities.order.OrderDetails
 import com.cccm.crowingrooster.database.entities.order.OrderMiniOrder
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
-User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class,DeliveryDetails::class,DeliveryMiniOrders::class],version = 40,exportSchema = false)
+User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class,DeliveryDetails::class,DeliveryMiniOrders::class,Buyer::class,OrdertoChart::class],version = 40,exportSchema = false)
+
 
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
@@ -49,6 +53,7 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val orderDetailsDao: OrderDetailsDao
     abstract val orderMiniOrdersDao: OrderMiniOrderDao
     abstract val catalogueDao: CatalogueDao
+    abstract val buyerDao: BuyerDao
 
     companion object {
         @Volatile

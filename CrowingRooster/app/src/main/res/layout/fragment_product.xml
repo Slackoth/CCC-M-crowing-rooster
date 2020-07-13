@@ -37,9 +37,9 @@
 
         <ImageView
             android:id="@+id/product_img"
-            android:layout_width="150dp"
-            android:layout_height="131dp"
-            app:layout_constraintBottom_toTopOf="@+id/Estilos"
+            android:layout_width="196dp"
+            android:layout_height="195dp"
+            app:layout_constraintBottom_toTopOf="@id/description_product"
 
             app:layout_constraintEnd_toEndOf="parent"
 
@@ -51,8 +51,8 @@
         <TextView
             android:id="@+id/description_product"
             style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="371dp"
+            android:layout_height="143dp"
             android:layout_marginStart="@dimen/small_padding"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
@@ -62,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.264"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Estilos" />
+            app:layout_constraintTop_toBottomOf="@id/product_img" />
 
         <Button
             android:id="@+id/AddTochart_buttom"
@@ -81,36 +81,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_product" />
-
-
-        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-            android:id="@+id/Estilos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/medium_margin"
-            android:layout_marginTop="@dimen/small_margin"
-            android:layout_marginRight="@dimen/medium_margin"
-            android:fontFamily="@font/montserrat"
-            app:layout_constraintBottom_toTopOf="@+id/description_product"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_img"
-            app:smsp_alwaysShowFloatingLabel="true"
-            app:smsp_arrowColor="@color/secondary"
-            app:smsp_floatingLabelColor="@color/secondary"
-            app:smsp_floatingLabelText="@string/payment"
-            app:smsp_hint="@string/Estilosproducto"
-            app:smsp_hintColor="@color/on_primary"
-            app:smsp_itemColor="@color/on_primary"
-            app:smsp_itemListBackgroundColor="@color/primary_light"
-            app:smsp_itemListColor="@color/on_primary"
-            app:smsp_itemListHintBackgroundColor="@color/secondary"
-            app:smsp_itemListHintColor="@color/on_primary"
-            app:smsp_selectedItemListColor="@color/secondary_light"
-            app:smsp_underlineColor="@color/secondary" />
-
-
 
 
         <!--        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner-->

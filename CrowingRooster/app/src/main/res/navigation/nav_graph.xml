@@ -12,6 +12,8 @@
     <action android:id="@+id/action_global_catalogueFragment_to_productFragment"
         app:destination="@+id/productFragment"/>
 
+<!--    <action android:id="@+id/action_global_registerFragment_to_logInFragment"-->
+<!--        app:destination="@+id/logInFragment"/>-->
 
     <fragment
         android:id="@+id/logInFragment"
@@ -20,13 +22,19 @@
         tools:layout="@layout/fragment_log_in" >
         <action
             android:id="@+id/action_logInFragment_to_sellerMainScreen"
-            app:destination="@id/sellerMainScreen" />
+            app:destination="@id/sellerMainScreen"
+            app:popUpTo="@id/logInFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_logInFragment_to_buyerMainScreenFragment"
-            app:destination="@id/buyerMainScreenFragment" />
+            app:destination="@id/buyerMainScreenFragment"
+            app:popUpTo="@id/logInFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_logInFragment_to_openOrdersFragment"
-            app:destination="@id/deliveriesFragment"/>
+            app:destination="@id/deliveriesFragment"
+            app:popUpTo="@id/logInFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_logInFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -158,6 +166,9 @@
         <action
             android:id="@+id/action_chartFragment_to_productFragment"
             app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_chartFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
 
     <fragment
@@ -249,7 +260,7 @@
 
     <fragment
         android:id="@+id/BuyerProfileFragment"
-        android:name="com.cccm.crowingrooster.BuyerProfileFragment"
+        android:name="com.cccm.crowingrooster.screens.buyer_profile.BuyerProfileFragment"
         android:label="BuyerProfileFragment"
         tools:layout="@layout/fragment_buyer_profile">
         <argument
@@ -294,7 +305,7 @@
         android:label="ChatLogFragment" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.cccm.crowingrooster.screens.Register.RegisterFragment"
+        android:name="com.cccm.crowingrooster.screens.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -306,6 +317,11 @@
         <action
             android:id="@+id/action_registerFragment_to_deliveriesFragment"
             app:destination="@id/deliveriesFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_logInFragment"
+            app:destination="@id/logInFragment"
+            app:popUpTo="@id/logInFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <dialog
         android:id="@+id/confirmSaleFragment"
