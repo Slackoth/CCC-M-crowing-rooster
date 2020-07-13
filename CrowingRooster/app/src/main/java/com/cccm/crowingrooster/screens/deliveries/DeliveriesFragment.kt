@@ -1,14 +1,18 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.deliveries
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentDeliveriesBinding
 import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
+import com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OpenOrdersFragment
+import com.cccm.crowingrooster.screens.deliveries.successful_deliveries.SuccessfulDeliveriesFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -17,19 +21,28 @@ class DeliveriesFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentDeliveriesBinding
-    private var listOfFragment: MutableList<Fragment> = mutableListOf(OpenOrdersFragment(), ConcludedOrdersFragment())
+    private var listOfFragment: MutableList<Fragment> = mutableListOf(
+        //OpenOrdersFragment(),
+        SuccessfulDeliveriesFragment()
+    )
+    private var args: DeliveriesFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bind = DataBindingUtil.inflate(inflater, R.layout.fragment_deliveries, container, false)
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_deliveries, container, false)
 
         (activity as MainActivity).run {
             showTopBar()
             supportActionBar?.title = "Entregas".capitalize()
             drawerLocked(true)
+        }
+
+        args = arguments?.let {
+            DeliveriesFragmentArgs.fromBundle(it)
         }
 
         setHasOptionsMenu(true)
@@ -42,7 +55,7 @@ class DeliveriesFragment : Fragment() {
             GenericTabAdapter(
                 listOfFragment,
                 this,
-                ""
+                args?.deliveryManCode
             )
         viewPager = bind.deliveriesPager
         tabLayout = bind.deliveriesTablayout

@@ -17,7 +17,6 @@ import com.cccm.crowingrooster.database.entities.Catalogue
 import com.cccm.crowingrooster.database.entities.order.OrderMiniOrder
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
-import com.cccm.crowingrooster.generic_recyclerview_adapter.models.Battery
 
 
 object ViewHolderFactory {
@@ -52,10 +51,13 @@ object ViewHolderFactory {
            /* R.layout.chat_item_layout -> ChatOrderView(
                 view
             )*/
-            R.layout.open_orders_item_layout -> OpenOrderViewHolder(
+            R.layout.delivery_item_layout -> DeliveryViewHolder(
                 view
             )
             R.layout.searchbt_item_layout -> CatalogueViewHolder(
+                view
+            )
+            R.layout.delivery_details_item_layout -> DeliveryMiniOrderViewHolder(
                 view
             )
 
@@ -116,6 +118,27 @@ object ViewHolderFactory {
             )
         }
 
+    }
+
+    internal class DeliveryMiniOrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<DeliveryMiniOrders> {
+        private val quantityTv: TextView = itemView.findViewById(R.id.sdd_quantity_tv)
+        private val modelTv: TextView = itemView.findViewById(R.id.sdd_model_tv)
+
+        override fun bind(
+            listObject: DeliveryMiniOrders,
+            func: (List<Any>) -> Unit,
+            context: Context
+        ) {
+            Log.d("ListObject en d", "$listObject")
+            quantityTv.text = listObject.quality.toString()
+            modelTv.text = modelTv.context.resources.getString(
+                R.string.show_battery_format,
+                listObject.model,
+                listObject.polarity,
+                listObject.quality
+            )
+        }
     }
 
     internal class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
@@ -331,23 +354,29 @@ object ViewHolderFactory {
 
     }*/
 
-    class OpenOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<OpenOrder> {
-        private val openOrderDateEt: EditText = itemView.findViewById(R.id.oo_date_et)
-        private val openOrderAddressEt: EditText = itemView.findViewById(R.id.oo_address_et)
-        private val openOrderImg: ImageView = itemView.findViewById(R.id.oo_ib)
-        private val openOrderLayout: ConstraintLayout = itemView.findViewById(R.id.oo_item_layout)
+    class DeliveryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<DeliveryPreview> {
+        private val deliveryStateEt: EditText = itemView.findViewById(R.id.delivery_state_et)
+        private val deliveryAddressEt: EditText = itemView.findViewById(R.id.delivery_address_et)
+        private val deliveryImg: ImageView = itemView.findViewById(R.id.delivery_imgView)
+        private val deliveryLayout: ConstraintLayout = itemView.findViewById(R.id.delivery_item_layout)
+        var lastClickTime: Long = 0;
 
-        override fun bind(listObject: OpenOrder, onClickLayout: (List<Any>) -> Unit, context: Context) {
-            openOrderDateEt.setText(listObject.OrderDate)
-            openOrderAddressEt.setText(listObject.OrderAddress)
-            Glide.with(context).load(listObject.OrderImg).into(openOrderImg)
+        override fun bind(listObject: DeliveryPreview, onClickLayout: (List<Any>) -> Unit, context: Context) {
+            deliveryStateEt.setText(listObject.state)
+            deliveryAddressEt.setText(listObject.deliveryAddress)
+            Glide.with(context).load(listObject.product_img).into(deliveryImg)
 
-            openOrderDateEt.inputType = InputType.TYPE_NULL
-            openOrderAddressEt.inputType = InputType.TYPE_NULL
+            deliveryStateEt.inputType = InputType.TYPE_NULL
+            deliveryAddressEt.inputType = InputType.TYPE_NULL
 
-            openOrderLayout.setOnClickListener {
-                onClickLayout(listOf<Any>())
+            deliveryLayout.setOnClickListener {
+                if(SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return@setOnClickListener
+                }
+                lastClickTime = SystemClock.elapsedRealtime()
+                val params = listOf<Any>(listObject.deliveryManId,listObject.deliveryId)
+                onClickLayout(params)
             }
         }
     }

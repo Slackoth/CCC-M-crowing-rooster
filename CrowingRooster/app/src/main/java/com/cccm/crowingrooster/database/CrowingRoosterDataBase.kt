@@ -14,6 +14,7 @@ import com.cccm.crowingrooster.database.entities.SellerClient
 
 
 import com.cccm.crowingrooster.database.daos.*
+import com.cccm.crowingrooster.database.daos.DeliveryMiniOrdersDao
 import com.cccm.crowingrooster.database.daos.order.OrderDetailsDao
 import com.cccm.crowingrooster.database.daos.order.OrderMiniOrderDao
 import com.cccm.crowingrooster.database.daos.order.OrderPreviewDao
@@ -24,7 +25,7 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
-User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class],version = 33,exportSchema = false)
+User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class,DeliveryDetails::class,DeliveryMiniOrders::class],version = 40,exportSchema = false)
 
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
@@ -36,7 +37,8 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val saleDetailsDao: SaleDetailsDao
     abstract val saleMiniOrdersDao: SaleMiniOrdersDao
     abstract val deliveryPreviewDao: DeliveryPreviewDao
-
+    abstract val deliveryDetailsDao: DeliveryDetailsDao
+    abstract  val deliveryMiniOrders: DeliveryMiniOrdersDao
     abstract val BatteryInfoDao:BatteryInfoDao
     abstract val PedidoDao:PedidoDao
     abstract val sellerFreeDao:SellerFreeDao

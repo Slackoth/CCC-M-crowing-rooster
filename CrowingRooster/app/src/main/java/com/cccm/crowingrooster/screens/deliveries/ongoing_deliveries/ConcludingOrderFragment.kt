@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentConcludingOrderBinding
 
 class ConcludingOrderFragment: DialogFragment() {
@@ -18,8 +19,8 @@ class ConcludingOrderFragment: DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bind = DataBindingUtil.inflate(inflater, R.layout.fragment_concluding_order, container, false)
-
+        bind = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_concluding_order, container, false)
         bind.apply {
             cancelTextView = cancelConcludingOrderTv
         }

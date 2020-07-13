@@ -107,6 +107,10 @@
 
     <string name="address">Dirección</string>
     <string name="Dimensions">Dim (cmxcmxcm):</string>
+    <string name="state">Estado</string>
+    <string name="delivery_address">Dirección de entrega</string>
+    <string name="delivery">Entrega</string>
+    <string name="deliverydetails">Detalles de la entrega</string>
 
 
     <string-array name="payment_array">

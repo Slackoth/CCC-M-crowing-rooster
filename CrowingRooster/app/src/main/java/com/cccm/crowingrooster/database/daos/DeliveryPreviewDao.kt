@@ -12,6 +12,6 @@ interface DeliveryPreviewDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(deliveryPreview: DeliveryPreview)
 
-    @Query("select * from delivery_preview where state = :state")
-    fun getAll(state: String): LiveData<List<DeliveryPreview>>
+    @Query("select * from delivery_preview where state = :state and deliveryManId = :code")
+    fun getAll(code: String, state: String): LiveData<List<DeliveryPreview>>
 }

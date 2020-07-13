@@ -70,10 +70,8 @@ class LogInFragment : Fragment() {
             else {
                 ProcessSignIn()
                 val user = viewModel.getSpecific(userEditT.text.toString())
-                type = if(user != null) {
-                    user.type
-                } else {
-                    "Repartidor"
+                if(user != null) {
+                    type = user.type
                 }
                 val userUid= FirebaseAuth.getInstance().uid
                 FirebaseDatabase.getInstance().getReference("/users/$userUid")
@@ -95,8 +93,13 @@ class LogInFragment : Fragment() {
                             .navigate(action)
                         //.navigate(R.id.action_logInFragment_to_sellerMainScreen)
                     }
-                    else -> it.findNavController()
-                        .navigate(R.id.action_logInFragment_to_openOrdersFragment)
+                    "Repartidor" -> {
+                        val action = LogInFragmentDirections
+                            .actionLogInFragmentToOpenOrdersFragment()
+                        action.deliveryManCode = user.code
+                        it.findNavController().navigate(action)
+                    }
+                        //.navigate(R.id.action_logInFragment_to_openOrdersFragment)
                     }
                 }
             }

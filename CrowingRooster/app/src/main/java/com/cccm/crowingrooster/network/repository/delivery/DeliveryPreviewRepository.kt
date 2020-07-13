@@ -12,7 +12,7 @@ import org.threeten.bp.ZonedDateTime
 class DeliveryPreviewRepository (private val deliveryPreviewDao: DeliveryPreviewDao) {
     fun getAll(code: String, state: String): LiveData<List<DeliveryPreview>> {
         refreshDeliveryPreview(code,state)
-        return deliveryPreviewDao.getAll(state)
+        return deliveryPreviewDao.getAll(code,state)
     }
 
     private fun refreshDeliveryPreview(code: String, state: String) {

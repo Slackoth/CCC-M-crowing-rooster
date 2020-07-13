@@ -19,7 +19,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://192.168.0.20:3000/"
+private const val BASE_URL = "http://192.168.1.4:3000/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -67,13 +67,25 @@ interface CrowingRoosterApiService {
 
     @GET("deliverypreview/ongoing")
     suspend fun getOngoingDeliveryPreviewAsync(
-        @Query("codigo") codigo: String
+        @Query("codigo") codigo: String?
     ): List<DeliveryPreview>
 
     @GET("deliverypreview/successful")
     suspend fun getSuccessfulDeliveryPreviewAsync(
-        @Query("codigo") codigo: String
+        @Query("codigo") codigo: String?
     ): List<DeliveryPreview>
+
+    @GET("deliverydetails/successful")
+    suspend fun getSuccessfulDeliveryDetailsAsync(
+        @Query("codigo") codigo: String?,
+        @Query("idEntrega") entregaId: Int?
+    ): List<DeliveryDetails>
+
+    @GET("deliverydetails/ongoing")
+    suspend fun getOngoingDeliveryDetailsAsync(
+        @Query("codigo") codigo: String?,
+        @Query("idEntrega") entregaId: Int?
+    ): List<DeliveryDetails>
 
     @GET("product/specific")
     suspend fun getProductAsync(
@@ -101,6 +113,11 @@ interface CrowingRoosterApiService {
     @GET("users")
     suspend fun verifyUser(
         //@Query("email") email: String
+    ): List<User>
+
+    @GET("users/deliveryMan")
+    suspend fun verifyDeliveryMan(
+
     ): List<User>
 
     @GET("orderpreview/successful")
