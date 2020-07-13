@@ -72,7 +72,7 @@ class RegisterFragment : Fragment() {
             }
         }
          val spinnerAdapt = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,
-             mutableListOf<String>("PENE","VERGA"))
+             mutableListOf<String>("mala","materia"))
         spinnerAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         bind.companySp.adapter = spinnerAdapt
 
