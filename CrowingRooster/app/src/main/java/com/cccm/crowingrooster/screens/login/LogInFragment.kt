@@ -32,7 +32,7 @@ class LogInFragment : Fragment() {
     private lateinit var userDao: UserDao
     private lateinit var app: Application
     private lateinit var logInRepository: LogInRepository
-    private lateinit var type: String
+    private  var type: String=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,38 +66,41 @@ class LogInFragment : Fragment() {
                 if (userEditT.text.toString().isEmpty() || passEt.text.toString().isEmpty()) {
                     Toast.makeText(context, "Porfavor llenar Ambos campos.", Toast.LENGTH_SHORT).show()
 
+            }
+            else {
+                ProcessSignIn()
+                val user = viewModel.getSpecific(userEditT.text.toString())
+                if(user != null) {
+                    type = user.type
                 }
-                else {
-                    ProcessSignIn()
-                    type = ""
-                    val user = viewModel.getSpecific(userEditT.text.toString())
-                    type = if(user != null) {
-                        user.type
-                    } else {
-                        "Repartidor"
-                    }
-                    val userUid= FirebaseAuth.getInstance().uid
-                    FirebaseDatabase.getInstance().getReference("/users/$userUid")
+                val userUid= FirebaseAuth.getInstance().uid
+                FirebaseDatabase.getInstance().getReference("/users/$userUid")
 
-                    when(type) {
-                        "Comprador" ->  {
-                            val action = LogInFragmentDirections
-                                .actionLogInFragmentToBuyerMainScreenFragment()
-                            action.buyerCode = user.code
-                            it.findNavController()
-                                .navigate(action)
-                            //.navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
-                        }
-                        "Vendedor" ->  {
-                            val action = LogInFragmentDirections.
-                            actionLogInFragmentToSellerMainScreen()
-                            action.sellerCode = user.code
-                            it.findNavController()
-                                .navigate(action)
-                            //.navigate(R.id.action_logInFragment_to_sellerMainScreen)
-                        }
-                        else -> it.findNavController()
-                            .navigate(R.id.action_logInFragment_to_openOrdersFragment)
+
+                when(type) {
+                    "Comprador" ->  {
+                        val action = LogInFragmentDirections
+                            .actionLogInFragmentToBuyerMainScreenFragment()
+                        action.buyerCode = user.code
+                        it.findNavController()
+                            .navigate(action)
+                        //.navigate(R.id.action_logInFragment_to_buyerMainScreenFragment)
+                    }
+                    "Vendedor" ->  {
+                        val action = LogInFragmentDirections.
+                        actionLogInFragmentToSellerMainScreen()
+                        action.sellerCode = user.code
+                        it.findNavController()
+                            .navigate(action)
+                        //.navigate(R.id.action_logInFragment_to_sellerMainScreen)
+                    }
+                    "Repartidor" -> {
+                        val action = LogInFragmentDirections
+                            .actionLogInFragmentToOpenOrdersFragment()
+                        action.deliveryManCode = user.code
+                        it.findNavController().navigate(action)
+                    }
+                        //.navigate(R.id.action_logInFragment_to_openOrdersFragment)
                     }
                 }
             }

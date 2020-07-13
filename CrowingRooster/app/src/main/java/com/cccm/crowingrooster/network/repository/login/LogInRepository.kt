@@ -19,9 +19,16 @@ class LogInRepository(private val userDao: UserDao) {
             try {
                 val users = CrowingRoosterApiService.CrowingRoosterApi
                     .retrofitService.verifyUser()
+                val userDeliveryMan = CrowingRoosterApiService.CrowingRoosterApi
+                    .retrofitService.verifyDeliveryMan()
                 Log.d("users","$users")
+                Log.d("delivery man", "$userDeliveryMan")
                 for (user in users ) {
                     Log.d("user","$user")
+                    userDao.insert(user)
+                }
+                for (user in userDeliveryMan) {
+                    Log.d("delivery man", "$user")
                     userDao.insert(user)
                 }
             }

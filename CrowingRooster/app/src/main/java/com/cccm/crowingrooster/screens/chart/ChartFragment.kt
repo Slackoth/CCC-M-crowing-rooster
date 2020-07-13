@@ -80,7 +80,7 @@ class ChartFragment : Fragment() {
         app = requireActivity().application
         pedidoDao = CrowingRoosterDataBase.getInstance(app).PedidoDao
         SellerFreeDao= CrowingRoosterDataBase.getInstance(app).sellerFreeDao
-        ordertoChartDao=CrowingRoosterDataBase.getInstance(app).ordertoChartDao
+        ordertoChartDao=CrowingRoosterDataBase.getInstance(app).OrdertoChartDao
         orderToChartRepository = OrderToChartRepository(ordertoChartDao)
 
         PedidoRepository= PedidoRepository(pedidoDao)

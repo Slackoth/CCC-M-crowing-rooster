@@ -1,4 +1,4 @@
-package com.cccm.crowingrooster
+package com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries
 
 import android.os.Bundle
 import android.text.InputType
@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.cccm.crowingrooster.databinding.FragmentConcludingOrderBinding
+import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentOpenOrdersDetailsBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -52,7 +53,8 @@ class OpenOrdersDetailsFragment : Fragment() {
         quantityEditT.inputType = InputType.TYPE_NULL
 
         concludeButton.setOnClickListener {
-            val dialog = ConcludingOrderFragment()
+            val dialog =
+                ConcludingOrderFragment()
             dialog.show(requireActivity().supportFragmentManager, "ConcludeDialog")
         }
 

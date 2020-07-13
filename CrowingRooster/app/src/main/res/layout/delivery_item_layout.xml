@@ -2,22 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/oo_item_layout"
+    android:id="@+id/delivery_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:background="@color/primary_dark">
 
     <ImageView
-        android:id="@+id/oo_ib"
+        android:id="@+id/delivery_imgView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
-        android:padding="10dp"
+        android:padding="@dimen/small_padding"
         android:scaleType="fitCenter"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,15 +28,15 @@
         app:layout_constraintVertical_bias="0.5" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/oo_date_input"
+        android:id="@+id/delivery_state_input"
         style="@style/TextInputLayoutAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Fecha de entrega"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:hint="@string/state"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,33 +45,33 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/oo_date_et"
+            android:id="@+id/delivery_state_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:text="25/05/2020"
+            android:text="Exitosa"
             android:textColor="@color/on_primary" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/oo_address_input"
+        android:id="@+id/delivery_address_input"
         style="@style/TextInputLayoutAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Dirección de entrega"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/delivery_address"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@id/oo_date_input"
+        app:layout_constraintTop_toBottomOf="@id/delivery_state_input"
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/oo_address_et"
+            android:id="@+id/delivery_address_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"

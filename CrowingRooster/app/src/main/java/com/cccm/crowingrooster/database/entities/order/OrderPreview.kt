@@ -13,5 +13,7 @@ data class OrderPreview(
     @Json(name = "cantidad")
     var quantity: String,
     @Json(name = "estado")
-    var state: String
+    var state: String,
+    @Json(name = "comprador")
+    var buyer: String
 )

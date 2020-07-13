@@ -17,6 +17,4 @@ class LogInViewModel(
     fun setUser() {
         logInRepository.setUser()
     }
-
-
 }

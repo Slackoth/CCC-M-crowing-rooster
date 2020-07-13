@@ -82,8 +82,7 @@
     <string name="quantitydefault">1</string>
     <string name="message">mensaje</string>
     <string name="logoff">Cerrar sesión</string>
-    <string name="search_by_battery">Búsqueda de baterías</string>
-    <string name="search_by_vehicle">Búsqueda por vehículos</string>
+    <string name="search_by_battery">Catálogo de Baterías</string>
     <string name="order_by_order">Ordenar por número de orden</string>
 
     <string name="defaultnamechat">Christiano Fatimo Contreras</string>
@@ -113,6 +112,12 @@
     <string name="registrar">Registrar</string>
     <string name="dui">Dui</string>
     <string name="phone">Teléfono</string>
+    <string name="companies">Compañías</string>
+    <string name="Dimensions">Dim (cmxcmxcm):</string>
+    <string name="state">Estado</string>
+    <string name="delivery_address">Dirección de entrega</string>
+    <string name="delivery">Entrega</string>
+    <string name="deliverydetails">Detalles de la entrega</string>
 
 
     <string-array name="payment_array">

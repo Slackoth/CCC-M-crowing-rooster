@@ -18,12 +18,13 @@ import kotlinx.coroutines.Job
 import com.cccm.crowingrooster.database.entities.Pedido as Pedido
 
 class ProductViewModel(
+    id_battery: Int,
     BatteryRepository  : BatteryRepository,
     pedidoRepo: PedidoRepository,
     app: Application
 ): AndroidViewModel(app) {
 
-    var battery: LiveData<Battery> = BatteryRepository.getSpecific(2)
+    var battery: LiveData<Battery> = BatteryRepository.getSpecific(id_battery)
     var DoesItExist= pedidoRepo.doesItExist("23",2)
     var PedidoExistente=Pedido(1,1,1,"","","","")
 

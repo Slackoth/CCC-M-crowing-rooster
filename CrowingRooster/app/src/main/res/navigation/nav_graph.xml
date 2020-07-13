@@ -9,6 +9,9 @@
         app:destination="@+id/ongoingSalesDetailsFragment"/>
     <action android:id="@+id/action_global_ongoingOrdersFragment_to_ongoingOrderDetailsFragment"
         app:destination="@+id/ongoingOrdersDetailsFragment"/>
+    <action android:id="@+id/action_global_catalogueFragment_to_productFragment"
+        app:destination="@+id/productFragment"/>
+
 <!--    <action android:id="@+id/action_global_registerFragment_to_logInFragment"-->
 <!--        app:destination="@+id/logInFragment"/>-->
 
@@ -78,6 +81,10 @@
         <action
             android:id="@+id/action_productFragment_to_chartFragment"
             app:destination="@id/chartFragment" />
+        <argument
+            android:name="id_battery"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/successfulSalesFragment"-->
@@ -133,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
-        android:name="com.cccm.crowingrooster.screens.catalogue.CatalogueFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.CatalogueFragment"
         android:label="CatalogueFragment"
         tools:layout="@layout/fragment_catalogue"
         >
@@ -245,21 +252,9 @@
             app:destination="@id/chatLogFragment" />
     </fragment>
 
-
-    <fragment
-        android:id="@+id/SearchFragment"
-        android:name="com.cccm.crowingrooster.screens.search_battery.SearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"
-        >
-        <action
-            android:id="@+id/action_SearchFragment_to_BatterySearchFragment"
-            app:destination="@id/BatterySearchFragment" />
-    </fragment>
-
     <fragment
         android:id="@+id/BatterySearchFragment"
-        android:name="com.cccm.crowingrooster.screens.search_battery.BatterySearchFragment"
+        android:name="com.cccm.crowingrooster.screens.search_battery.CatalogueFragment"
         android:label="SerachFragment"
         tools:layout="@layout/fragment_battery_search"/>
 
@@ -276,31 +271,32 @@
 
     <fragment
         android:id="@+id/openOrdersFragment"
-        android:name="com.cccm.crowingrooster.OpenOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OpenOrdersFragment"
         android:label="OpenOrdersFragment"
         tools:layout="@layout/fragment_open_orders">
         <action
             android:id="@+id/action_openOrdersFragment_to_openOrdersDetailsFragment"
-            app:destination="@id/openOrdersDetailsFragment"/>
+            app:destination="@id/navigation2"/>
     </fragment>
     <fragment
-        android:id="@+id/openOrdersDetailsFragment"
-        android:name="com.cccm.crowingrooster.OpenOrdersDetailsFragment"
-        android:label="OpenOrdersDetailsFragment"
-        tools:layout="@layout/fragment_open_orders_details"/>
-    <fragment
         android:id="@+id/deliveriesFragment"
-        android:name="com.cccm.crowingrooster.DeliveriesFragment"
+        android:name="com.cccm.crowingrooster.screens.deliveries.DeliveriesFragment"
         android:label="DeliveriesFragment"
         tools:layout="@layout/fragment_deliveries">
         <action
             android:id="@+id/action_deliveriesFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
+        <argument android:name="deliveryManCode"
+            app:argType="string"
+            android:defaultValue="poop" />
+        <argument android:name="idEntrega"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
-        android:id="@+id/concludedOrdersFragment"
-        android:name="com.cccm.crowingrooster.ConcludedOrdersFragment"
-        android:label="ConcludedOrdersFragment"
+        android:id="@+id/successfulDeliveriesFragment"
+        android:name="com.cccm.crowingrooster.screens.deliveries.successful_deliveries.SuccessfulDeliveriesFragment"
+        android:label="SuccessfulDeliveriesFragment"
         tools:layout="@layout/fragment_concluded_orders">
     </fragment>
     <fragment
@@ -336,5 +332,21 @@
 <!--            android:id="@+id/action_confirmSaleFragment_to_ongoingSalesFragment"-->
 <!--            app:destination="@id/ongoingSalesFragment" />-->
     </dialog>
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/navigation">
+        <navigation
+            android:id="@+id/navigation"
+            app:startDestination="@id/openOrdersDetailsFragment">
+            <fragment
+                android:id="@+id/openOrdersDetailsFragment"
+                android:name="com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OpenOrdersDetailsFragment"
+                android:label="OpenOrdersDetailsFragment"
+                tools:layout="@layout/fragment_open_orders_details" />
+        </navigation>
+    </navigation>
+    <dialog
+        android:id="@+id/successfulDeliveryDetailsDialogFragment"
+        android:name="com.cccm.crowingrooster.screens.deliveries.successful_deliveries.successful_delivery_details.SuccessfulDeliveryDetailsDialogFragment"
+        android:label="SuccessfulDeliveryDetailsDialogFragment" />
 
 </navigation>

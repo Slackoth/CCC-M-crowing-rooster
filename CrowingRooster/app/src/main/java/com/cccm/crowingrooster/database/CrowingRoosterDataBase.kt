@@ -15,6 +15,7 @@ import com.cccm.crowingrooster.database.entities.SellerClient
 
 
 import com.cccm.crowingrooster.database.daos.*
+import com.cccm.crowingrooster.database.daos.DeliveryMiniOrdersDao
 import com.cccm.crowingrooster.database.daos.order.BuyerDao
 import com.cccm.crowingrooster.database.daos.order.OrderDetailsDao
 import com.cccm.crowingrooster.database.daos.order.OrderMiniOrderDao
@@ -27,15 +28,9 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
-User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class,
-    SellerFree::class,Buyer::class,OrdertoChart::class],version = 33,exportSchema = false)
+User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class,DeliveryDetails::class,DeliveryMiniOrders::class,Buyer::class,OrdertoChart::class],version = 40,exportSchema = false)
 
-//lo <<<<<<< HEAD
-//@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 30 ,exportSchema = false)
-//=======
-////@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class],version = 28 ,exportSchema = false)
-//>>>>>>> e6b8cfd52491c17fb9c9d07ec4b92353dd3b9f43
-//
+
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
@@ -45,19 +40,21 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val salePreviewDao: SalePreviewDao
     abstract val saleDetailsDao: SaleDetailsDao
     abstract val saleMiniOrdersDao: SaleMiniOrdersDao
-
+    abstract val deliveryPreviewDao: DeliveryPreviewDao
+    abstract val deliveryDetailsDao: DeliveryDetailsDao
+    abstract  val deliveryMiniOrders: DeliveryMiniOrdersDao
     abstract val BatteryInfoDao:BatteryInfoDao
     abstract val PedidoDao:PedidoDao
     abstract val sellerFreeDao:SellerFreeDao
+    abstract val OrdertoChartDao:OrdertoChartDao
 
 
     abstract val userDao: UserDao
     abstract val orderPreviewDao: OrderPreviewDao
     abstract val orderDetailsDao: OrderDetailsDao
     abstract val orderMiniOrdersDao: OrderMiniOrderDao
+    abstract val catalogueDao: CatalogueDao
     abstract val buyerDao: BuyerDao
-
-    abstract val ordertoChartDao:OrdertoChartDao
 
     companion object {
         @Volatile
@@ -70,6 +67,7 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
                     instance = buildDataBase(context)
                     INSTANCE = instance
                 }
+
                 return instance
             }
         }

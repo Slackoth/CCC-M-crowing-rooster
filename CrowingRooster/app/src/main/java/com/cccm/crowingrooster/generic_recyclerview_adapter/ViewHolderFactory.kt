@@ -12,10 +12,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.*
-import com.cccm.crowingrooster.database.entities.Pedido
-import com.cccm.crowingrooster.database.entities.SalePreview
-import com.cccm.crowingrooster.database.entities.SellerClient
-import com.cccm.crowingrooster.database.entities.SaleMiniOrders
+import com.cccm.crowingrooster.database.entities.*
+import com.cccm.crowingrooster.database.entities.Catalogue
 import com.cccm.crowingrooster.database.entities.order.OrderMiniOrder
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.*
@@ -53,10 +51,13 @@ object ViewHolderFactory {
            /* R.layout.chat_item_layout -> ChatOrderView(
                 view
             )*/
-            R.layout.open_orders_item_layout -> OpenOrderViewHolder(
+            R.layout.delivery_item_layout -> DeliveryViewHolder(
                 view
             )
-            R.layout.searchbt_item_layout -> BatteryViewHolder(
+            R.layout.searchbt_item_layout -> CatalogueViewHolder(
+                view
+            )
+            R.layout.delivery_details_item_layout -> DeliveryMiniOrderViewHolder(
                 view
             )
 
@@ -117,6 +118,27 @@ object ViewHolderFactory {
             )
         }
 
+    }
+
+    internal class DeliveryMiniOrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<DeliveryMiniOrders> {
+        private val quantityTv: TextView = itemView.findViewById(R.id.sdd_quantity_tv)
+        private val modelTv: TextView = itemView.findViewById(R.id.sdd_model_tv)
+
+        override fun bind(
+            listObject: DeliveryMiniOrders,
+            func: (List<Any>) -> Unit,
+            context: Context
+        ) {
+            Log.d("ListObject en d", "$listObject")
+            quantityTv.text = listObject.quality.toString()
+            modelTv.text = modelTv.context.resources.getString(
+                R.string.show_battery_format,
+                listObject.model,
+                listObject.polarity,
+                listObject.quality
+            )
+        }
     }
 
     internal class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
@@ -339,52 +361,57 @@ object ViewHolderFactory {
 
     }*/
 
-    class OpenOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<OpenOrder> {
-        private val openOrderDateEt: EditText = itemView.findViewById(R.id.oo_date_et)
-        private val openOrderAddressEt: EditText = itemView.findViewById(R.id.oo_address_et)
-        private val openOrderImg: ImageView = itemView.findViewById(R.id.oo_ib)
-        private val openOrderLayout: ConstraintLayout = itemView.findViewById(R.id.oo_item_layout)
+    class DeliveryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<DeliveryPreview> {
+        private val deliveryStateEt: EditText = itemView.findViewById(R.id.delivery_state_et)
+        private val deliveryAddressEt: EditText = itemView.findViewById(R.id.delivery_address_et)
+        private val deliveryImg: ImageView = itemView.findViewById(R.id.delivery_imgView)
+        private val deliveryLayout: ConstraintLayout = itemView.findViewById(R.id.delivery_item_layout)
+        var lastClickTime: Long = 0;
 
-        override fun bind(listObject: OpenOrder, onClickLayout: (List<Any>) -> Unit, context: Context) {
-            openOrderDateEt.setText(listObject.OrderDate)
-            openOrderAddressEt.setText(listObject.OrderAddress)
-            Glide.with(context).load(listObject.OrderImg).into(openOrderImg)
+        override fun bind(listObject: DeliveryPreview, onClickLayout: (List<Any>) -> Unit, context: Context) {
+            deliveryStateEt.setText(listObject.state)
+            deliveryAddressEt.setText(listObject.deliveryAddress)
+            Glide.with(context).load(listObject.product_img).into(deliveryImg)
 
-            openOrderDateEt.inputType = InputType.TYPE_NULL
-            openOrderAddressEt.inputType = InputType.TYPE_NULL
+            deliveryStateEt.inputType = InputType.TYPE_NULL
+            deliveryAddressEt.inputType = InputType.TYPE_NULL
 
-            openOrderLayout.setOnClickListener {
-                onClickLayout(listOf<Any>())
+            deliveryLayout.setOnClickListener {
+                if(SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return@setOnClickListener
+                }
+                lastClickTime = SystemClock.elapsedRealtime()
+                val params = listOf<Any>(listObject.deliveryManId,listObject.deliveryId)
+                onClickLayout(params)
             }
         }
     }
 
-
-    class BatteryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericRecyclerViewAdapter.Binder<Battery> {
+    class CatalogueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        GenericRecyclerViewAdapter.Binder<Catalogue> {
 
         private val modeloEt: EditText = itemView.findViewById(R.id.modelo_Et)
-        private val voltajeEt: EditText = itemView.findViewById(R.id.voltaje_Et)
+        private val DimensionesEt: EditText = itemView.findViewById(R.id.dimensiones_et)
         private val CCAEt: EditText = itemView.findViewById(R.id.CCA_Et)
         private val capacidadEt: EditText = itemView.findViewById(R.id.capacidad_Et)
         private val batteryimg: ImageView = itemView.findViewById(R.id.img)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.searchbt_item_layout)
 
-        override fun bind(listObject: Battery, onClickLayout: (List<Any>) -> Unit, context: Context) {
+        override fun bind(listObject: Catalogue, onClickLayout: (List<Any>) -> Unit, context: Context) {
             modeloEt.setText(listObject.modelo)
-            voltajeEt.setText(listObject.voltaje)
-            CCAEt.setText(listObject.CCA)
-            capacidadEt.setText(listObject.capacidad)
-            Glide.with(batteryimg.context).load(listObject.imgUrl).into(batteryimg)
+            DimensionesEt.setText(listObject.dimensiones)
+            CCAEt.setText(listObject.cca.toString())
+            capacidadEt.setText(listObject.capacidad_reserva.toString())
+            Glide.with(batteryimg.context).load(listObject.product_img).into(batteryimg)
 
             modeloEt.inputType = InputType.TYPE_NULL
-            voltajeEt.inputType = InputType.TYPE_NULL
+            DimensionesEt.inputType = InputType.TYPE_NULL
             CCAEt.inputType = InputType.TYPE_NULL
             capacidadEt.inputType = InputType.TYPE_NULL
 
             layout.setOnClickListener {
-                onClickLayout(listOf<Any>())
+                onClickLayout(listOf<Any>(listObject.id_bateria))
             }
         }
     }

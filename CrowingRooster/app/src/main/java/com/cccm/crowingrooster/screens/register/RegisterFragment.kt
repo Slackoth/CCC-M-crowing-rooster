@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,7 @@ import com.cccm.crowingrooster.database.daos.order.BuyerDao
 import com.cccm.crowingrooster.database.entities.order.Buyer
 import com.cccm.crowingrooster.databinding.FragmentRegisterBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.models.UserDatabase
+import com.cccm.crowingrooster.network.body.Company
 import com.cccm.crowingrooster.network.body.RegisterBuyer
 import com.cccm.crowingrooster.network.repository.order.RegisterBuyerRepository
 import com.cccm.crowingrooster.screens.sales.successful_sales.TAG
@@ -69,6 +71,21 @@ class RegisterFragment : Fragment() {
                 performRegister()
             }
         }
+         val spinnerAdapt = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,
+             mutableListOf<String>("mala","materia"))
+        spinnerAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        bind.companySp.adapter = spinnerAdapt
+
+        viewModel.companies.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            Log.d("registerList","$it")
+            var array = mutableListOf<String>()
+            for (company in it) {
+                array.add(company.company)
+            }
+            spinnerAdapt.setNotifyOnChange(true)
+            spinnerAdapt.clear()
+            spinnerAdapt.addAll(array)
+        })
 
         return bind.root
     }
@@ -165,7 +182,7 @@ class RegisterFragment : Fragment() {
         val registerBuyer = RegisterBuyer(
             bind.usernameEdittextRegister.text.toString(),
             bind.registerNameEt.text.toString(),
-            "Jellybutter",
+            bind.companySp.selectedItem.toString() ?: "",
             bind.registerDuiEt.text.toString(),
             bind.emailEdittextRegister.text.toString(),
             bind.registerPhoneEt.text.toString(),

@@ -5,15 +5,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.cccm.crowingrooster.database.entities.Battery
+import com.cccm.crowingrooster.database.entities.Catalogue
 
 @Dao
-interface BatteryDao {
-
+interface CatalogueDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(battery: Battery)
+    fun insert(catalogue: Catalogue)
 
-    @Query("SELECT * FROM battery WHERE id_bateria = :id_bateria")
-    fun getBattery(id_bateria:Int?): LiveData<Battery>
-
+    @Query("select * from batteries_catalogue")
+    fun getAll(): LiveData<List<Catalogue>>
 }

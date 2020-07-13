@@ -17,12 +17,12 @@ import org.threeten.bp.ZonedDateTime
 
 class BatteryRepository (private val BatteryDao: BatteryDao){
 
-fun getSpecific(id: Int): LiveData<Battery> {
+fun getSpecific(id: Int?): LiveData<Battery> {
     refreshBattery(id)
     return BatteryDao.getBattery(id)
 }
 
-    private fun refreshBattery(id: Int) {
+    private fun refreshBattery(id: Int?) {
         Log.d("Caca", "Batteries.toString()")
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             Log.d("Caca", "*x2")

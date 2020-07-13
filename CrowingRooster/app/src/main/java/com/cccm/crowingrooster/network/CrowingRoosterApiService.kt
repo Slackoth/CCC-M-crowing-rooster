@@ -1,13 +1,15 @@
 package com.cccm.crowingrooster.network
 
-
 import androidx.lifecycle.LiveData
+import com.cccm.crowingrooster.database.entities.*
+
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.order.OrderCode
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
+import com.cccm.crowingrooster.network.body.Company
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.cccm.crowingrooster.network.body.PedidoDatabaseBody
 
@@ -81,10 +83,31 @@ interface CrowingRoosterApiService {
         @Query("ordenId") ordenId: String?
     ): List<SaleDetails>
 
+    @GET("deliverypreview/ongoing")
+    suspend fun getOngoingDeliveryPreviewAsync(
+        @Query("codigo") codigo: String?
+    ): List<DeliveryPreview>
+
+    @GET("deliverypreview/successful")
+    suspend fun getSuccessfulDeliveryPreviewAsync(
+        @Query("codigo") codigo: String?
+    ): List<DeliveryPreview>
+
+    @GET("deliverydetails/successful")
+    suspend fun getSuccessfulDeliveryDetailsAsync(
+        @Query("codigo") codigo: String?,
+        @Query("idEntrega") entregaId: Int?
+    ): List<DeliveryDetails>
+
+    @GET("deliverydetails/ongoing")
+    suspend fun getOngoingDeliveryDetailsAsync(
+        @Query("codigo") codigo: String?,
+        @Query("idEntrega") entregaId: Int?
+    ): List<DeliveryDetails>
 
     @GET("product/specific")
     suspend fun getProductAsync(
-        @Query("codigo") id:Int
+        @Query("codigo") id:Int?
     ): List<Battery>
 
     @GET("product/info")
@@ -123,6 +146,11 @@ interface CrowingRoosterApiService {
     @GET("users")
     suspend fun verifyUser(
         //@Query("email") email: String
+    ): List<User>
+
+    @GET("users/deliveryMan")
+    suspend fun verifyDeliveryMan(
+
     ): List<User>
 
     @GET("orderpreview/successful")
@@ -167,6 +195,12 @@ interface CrowingRoosterApiService {
     suspend fun registerBuyer(
         @Body registerBuyer: RegisterBuyer
     )
+
+    @GET("users/company")
+    suspend fun getCompany(): List<Company>
+
+    @GET("catalogue/all")
+    suspend fun getBatteriesCatalogue(): List<Catalogue>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

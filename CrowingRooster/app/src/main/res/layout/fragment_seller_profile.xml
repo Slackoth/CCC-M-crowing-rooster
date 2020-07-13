@@ -119,25 +119,25 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
-                                <TextView
-                                    android:id="@+id/name_btt"
-                                    android:clickable="true"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/small_margin"
-                                    android:layout_marginEnd="@dimen/small_margin"
-                                    android:layout_marginBottom="@dimen/small_margin"
-                                    android:text="@string/edit"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/secondary_light"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="1.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintVertical_bias="0.0"
-                                    app:strokeColor="@color/secondary_light" />
+<!--                                <TextView-->
+<!--                                    android:id="@+id/name_btt"-->
+<!--                                    android:clickable="true"-->
+<!--                                    android:fontFamily="@font/montserrat_bold"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="@dimen/small_margin"-->
+<!--                                    android:layout_marginEnd="@dimen/small_margin"-->
+<!--                                    android:layout_marginBottom="@dimen/small_margin"-->
+<!--                                    android:text="@string/edit"-->
+<!--                                    android:textAllCaps="true"-->
+<!--                                    android:textColor="@color/secondary_light"-->
+<!--                                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                    app:layout_constraintHorizontal_bias="1.0"-->
+<!--                                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                                    app:layout_constraintVertical_bias="0.0"-->
+<!--                                    app:strokeColor="@color/secondary_light" />-->
 
                                 <TextView
                                     android:id="@+id/name_desc_tv"
@@ -198,24 +198,24 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
-                                android:id="@+id/tel_btt"
-                                android:clickable="true"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/small_margin"
-                                android:layout_marginEnd="@dimen/small_margin"
-                                android:layout_marginBottom="@dimen/small_margin"
-                                android:text="@string/edit"
-                                android:textAllCaps="true"
-                                android:textColor="@color/secondary_light"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/tel_btt"-->
+<!--                                android:clickable="true"-->
+<!--                                android:fontFamily="@font/montserrat_bold"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="@dimen/small_margin"-->
+<!--                                android:layout_marginEnd="@dimen/small_margin"-->
+<!--                                android:layout_marginBottom="@dimen/small_margin"-->
+<!--                                android:text="@string/edit"-->
+<!--                                android:textAllCaps="true"-->
+<!--                                android:textColor="@color/secondary_light"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent"-->
+<!--                                app:layout_constraintVertical_bias="0.0" />-->
 
                             <TextView
                                 android:id="@+id/tel_desc_tv"
@@ -276,24 +276,24 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
-                                <TextView
-                                    android:id="@+id/email_btt"
-                                    android:clickable="true"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/small_margin"
-                                    android:layout_marginEnd="@dimen/small_margin"
-                                    android:layout_marginBottom="@dimen/small_margin"
-                                    android:text="@string/edit"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/secondary_light"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="1.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintVertical_bias="0.0" />
+<!--                                <TextView-->
+<!--                                    android:id="@+id/email_btt"-->
+<!--                                    android:clickable="true"-->
+<!--                                    android:fontFamily="@font/montserrat_bold"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="@dimen/small_margin"-->
+<!--                                    android:layout_marginEnd="@dimen/small_margin"-->
+<!--                                    android:layout_marginBottom="@dimen/small_margin"-->
+<!--                                    android:text="@string/edit"-->
+<!--                                    android:textAllCaps="true"-->
+<!--                                    android:textColor="@color/secondary_light"-->
+<!--                                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                    app:layout_constraintHorizontal_bias="1.0"-->
+<!--                                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                                    app:layout_constraintVertical_bias="0.0" />-->
 
                                 <TextView
                                     android:id="@+id/email_desc_tv"
@@ -329,20 +329,20 @@
 
                 </ScrollView>
 
-                <Button
-                    android:id="@+id/change_pass_btt"
-                    style="@style/Widget.MyApp.MyButton"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/change_password"
-                    android:layout_marginTop="@dimen/small_margin"
-                    android:layout_marginLeft="@dimen/medium_margin"
-                    android:layout_marginRight="@dimen/medium_margin"
-                    android:layout_marginBottom="@dimen/medium_margin"
-                    android:drawableLeft="@drawable/ic_key_black_filled_24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:layout_gravity="center"/>
+<!--                <Button-->
+<!--                    android:id="@+id/change_pass_btt"-->
+<!--                    style="@style/Widget.MyApp.MyButton"-->
+<!--                    android:fontFamily="@font/montserrat_bold"-->
+<!--                    android:text="@string/change_password"-->
+<!--                    android:layout_marginTop="@dimen/small_margin"-->
+<!--                    android:layout_marginLeft="@dimen/medium_margin"-->
+<!--                    android:layout_marginRight="@dimen/medium_margin"-->
+<!--                    android:layout_marginBottom="@dimen/medium_margin"-->
+<!--                    android:drawableLeft="@drawable/ic_key_black_filled_24dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_weight="0.1"-->
+<!--                    android:layout_gravity="center"/>-->
 
             </LinearLayout>
 
@@ -362,9 +362,9 @@
                     android:layout_marginTop="@dimen/medium_margin"
                     android:layout_marginEnd="@dimen/medium_margin"
                     android:layout_marginBottom="@dimen/medium_margin"
-                    android:src="@drawable/ic_person_white_24dp"
                     app:civ_border_color="@color/primary_dark"
                     app:civ_border_width="@dimen/x_small_margin"
+                    android:src="@drawable/mr_peanutbutter"
                     app:layout_constraintBottom_toTopOf="@+id/guideline13"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
