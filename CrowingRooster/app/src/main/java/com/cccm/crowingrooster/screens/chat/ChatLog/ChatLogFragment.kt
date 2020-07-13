@@ -91,6 +91,7 @@ class ChatLogFragment : Fragment() {
     }
 
     private fun listenAllMessages(){
+
         val fromId= FirebaseAuth.getInstance().uid.toString()
         //val toId= "4awXCfrkKKcBwORmVMo7mU8IPL13"// uid de seller, por ahorita
         val toId= ChatFragment.clickedUser?.uid
@@ -120,6 +121,7 @@ class ChatLogFragment : Fragment() {
                                 )
                             )
                         }
+
 
                     }
 
