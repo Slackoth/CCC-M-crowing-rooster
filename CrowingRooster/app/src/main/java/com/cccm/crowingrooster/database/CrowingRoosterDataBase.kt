@@ -28,14 +28,10 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
 User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class,
-    SellerFree::class,Buyer::class,OrdertoChart::class],version = 33,exportSchema = false)
+    SellerFree::class,Buyer::class,OrdertoChart::class],version = 34,exportSchema = false)
 
-//lo <<<<<<< HEAD
-//@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class, OrdertoChart::class],version = 30 ,exportSchema = false)
-//=======
-////@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class],version = 28 ,exportSchema = false)
-//>>>>>>> e6b8cfd52491c17fb9c9d07ec4b92353dd3b9f43
-//
+//@Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class, User::class,OrderPreview::class, Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class],version = 28 ,exportSchema = false)
+
 
 abstract class CrowingRoosterDataBase: RoomDatabase() {
 
@@ -57,8 +53,6 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
     abstract val orderMiniOrdersDao: OrderMiniOrderDao
     abstract val buyerDao: BuyerDao
 
-    abstract val ordertoChartDao:OrdertoChartDao
-
     companion object {
         @Volatile
         private var INSTANCE: CrowingRoosterDataBase? = null
@@ -70,6 +64,7 @@ abstract class CrowingRoosterDataBase: RoomDatabase() {
                     instance = buildDataBase(context)
                     INSTANCE = instance
                 }
+
                 return instance
             }
         }

@@ -8,6 +8,7 @@ import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.order.OrderCode
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
+import com.cccm.crowingrooster.network.body.Company
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.cccm.crowingrooster.network.body.PedidoDatabaseBody
 
@@ -167,6 +168,9 @@ interface CrowingRoosterApiService {
     suspend fun registerBuyer(
         @Body registerBuyer: RegisterBuyer
     )
+
+    @GET("users/company")
+    suspend fun getCompany(): List<Company>
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {
