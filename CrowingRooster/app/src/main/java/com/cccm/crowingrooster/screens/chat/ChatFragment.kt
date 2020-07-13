@@ -129,7 +129,7 @@ class ChatFragment : Fragment() {
 
 
         adapter.setOnItemClickListener { item, view ->
-            Log.d(TAG, "123")
+           // Log.d(TAG, "123")
             view.findNavController().navigate(R.id.action_chatFragment_to_chatLogFragment)
 
             val row = item as LatestMessageRow
@@ -150,7 +150,7 @@ class ChatFragment : Fragment() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 currentUser = p0.getValue(UserDatabase::class.java)
-                Log.d("LatestMessages", "Current user ${currentUser?.profileImageUrl}")
+                //Log.d("LatestMessages", "Current user ${currentUser?.profileImageUrl}")
 
             }
 

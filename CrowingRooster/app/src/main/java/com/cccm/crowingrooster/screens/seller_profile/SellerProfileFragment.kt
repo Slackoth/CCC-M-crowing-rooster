@@ -54,7 +54,7 @@ class SellerProfileFragment : Fragment() {
             SellerProfileFragmentArgs.fromBundle(it)
         }
 
-        Log.d("profile","${args?.sellerCode}")
+        //Log.d("profile","${args?.sellerCode}")
 
         app = requireActivity().application
         sellerDao = CrowingRoosterDataBase.getInstance(app).sellerDao
@@ -70,7 +70,7 @@ class SellerProfileFragment : Fragment() {
                 bind.nameDescTv.text = it.name
                 bind.telDescTv.text = it.phone
                 bind.emailDescTv.text = it.email
-                Glide.with(bind.profileCiv.context).load("https://firebasestorage.googleapis.com/v0/b/mychatproject-e1e97.appspot.com/o/images%2F24129647_1504235786322582_7392171607409515945_n.jpg?alt=media&token=aedf6188-cc95-489d-9dd4-02ff1dbdb545").into(bind.profileCiv)
+                Glide.with(bind.profileCiv.context).load(it.img).into(bind.profileCiv)
             }
             else {
                 Log.d("profileFragment","NO SE QUE PASO")

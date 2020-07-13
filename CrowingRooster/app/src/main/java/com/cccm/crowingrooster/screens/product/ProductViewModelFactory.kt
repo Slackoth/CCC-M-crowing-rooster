@@ -10,13 +10,14 @@ import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModel
 
 class ProductViewModelFactory(
     private val id_bateria: Int?,
+    private val buyerCode:String?,
     private  val batteryRepository : BatteryRepository,
     private val PedidoRepository: PedidoRepository,
     private val app: Application
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
-            return ProductViewModel(id_bateria!!, batteryRepository, PedidoRepository,app) as T
+            return ProductViewModel(id_bateria!!, buyerCode!!, batteryRepository, PedidoRepository,app) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

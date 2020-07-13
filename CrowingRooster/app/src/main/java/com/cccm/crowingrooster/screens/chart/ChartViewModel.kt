@@ -45,13 +45,13 @@ class ChartViewModel (
     var pedidoRepository=pedidoRepository
 
 
-    fun doOrderInsert(OrdertoChartDao:OrdertoChartDao, listaPedidos:List<Pedido>, code:String){
+    fun doOrderInsert(OrdertoChartDao:OrdertoChartDao, listaPedidos:List<Pedido>, code:String, codeUser:String){
         var Orderep= OrderToChartRepository.getInstance(OrdertoChartDao)
         Orderep.Insert()
 //        var code =Orderep.getCode()
         var PedidoDatabaseRepository=  PedidoDatabaseRepository
         for(it in listaPedidos){
-      var PedidoDatabaseBody=PedidoDatabaseBody ("C-2020-0",  it.cantidad_bateria, code,it.id_bateria)
+      var PedidoDatabaseBody=PedidoDatabaseBody (codeUser,  it.cantidad_bateria, code,it.id_bateria)
             PedidoDatabaseRepository.getInstance().send(PedidoDatabaseBody)
         }
         nukeChart()
@@ -77,27 +77,27 @@ class ChartViewModel (
         val toReference= FirebaseDatabase.getInstance().getReference("/user_messages/$toId/$fromId").push()
         reference.setValue(chatMessage)
             .addOnSuccessListener {
-                Log.d("Chart","Mensaje Subido Chartos")
+                //Log.d("Chart","Mensaje Subido Chartos")
             }
         toReference.setValue(chatMessage)
             .addOnSuccessListener {
-                Log.d("Chart","Chartos")
+                //Log.d("Chart","Chartos")
             }
     }
 
     fun getSellerUId(email:String){
-        Log.d("Useruid", email)
+        //Log.d("Useruid", email)
         val sellerRef= FirebaseDatabase.getInstance().getReference("/users")
         sellerRef.addChildEventListener(object :ChildEventListener{
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 //TODO("Not yet implemented")
                 val UserDatabase= p0.getValue(UserDatabase::class.java)
                 if (UserDatabase != null) {
-                    Log.d("Useruid", "no es unulo UserDB")
+                    //Log.d("Useruid", "no es unulo UserDB")
                     if (UserDatabase.username==email.toLowerCase()){
-                        Log.d("Useruid", UserDatabase.username)
+                      //  Log.d("Useruid", UserDatabase.username)
                         FreeSelleruid= UserDatabase.uid
-                        Log.d("Useruid", FreeSelleruid + " Este deberia ser el uid ")
+                        //Log.d("Useruid", FreeSelleruid + " Este deberia ser el uid ")
                     }
                 }
 
@@ -124,7 +124,7 @@ class ChartViewModel (
     }
 
     fun IncreasedClicked(view:View){
-        Log.d("databuttom", "si me sumas bb")
+       // Log.d("databuttom", "si me sumas bb")
     }
 
 

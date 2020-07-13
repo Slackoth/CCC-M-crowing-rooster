@@ -19,18 +19,20 @@ import com.cccm.crowingrooster.database.entities.Pedido as Pedido
 
 class ProductViewModel(
     id_battery: Int,
+    buyerCode:String,
     BatteryRepository  : BatteryRepository,
     pedidoRepo: PedidoRepository,
     app: Application
 ): AndroidViewModel(app) {
 
     var battery: LiveData<Battery> = BatteryRepository.getSpecific(id_battery)
-    var DoesItExist= pedidoRepo.doesItExist("23",2)
+    var DoesItExist= pedidoRepo.doesItExist(buyerCode,id_battery)
     var PedidoExistente=Pedido(1,1,1,"","","","")
 
 //    pedidoRepo.
 
     fun SetIntoChart(cant:Int, IdUser:String, id_battery:Int, pedidoDao: PedidoDao, Desc:String, img:String, titulo:String, flag:Boolean, quant:String){
+
         var Pedido: Pedido= Pedido(0,cant, id_battery,IdUser,img,Desc, titulo)
 
         if(flag==false){
@@ -40,6 +42,7 @@ class ProductViewModel(
             Pedido=PedidoExistente
             Pedido.cantidad_bateria=  Pedido.cantidad_bateria +quant.toInt()
             PedidoRepository.getInstance(pedidoDao).update(Pedido)
+            Log.d("product", Pedido.cantidad_bateria.toString())
         }
 
     }

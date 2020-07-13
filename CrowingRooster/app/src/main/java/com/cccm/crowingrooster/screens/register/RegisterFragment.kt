@@ -97,7 +97,7 @@ class RegisterFragment : Fragment() {
             Toast.makeText(context, "Foto guardada", Toast.LENGTH_SHORT).show()
 
                 uri= data.data
-                Log.d("registerFrag", uri.toString())
+                //Log.d("registerFrag", uri.toString())
 
             val inputStream = uri?.let { activity?.contentResolver?.openInputStream(it) }
             val drawable = Drawable.createFromStream(inputStream, uri.toString())
@@ -119,7 +119,7 @@ class RegisterFragment : Fragment() {
             return
         }
 
-        Log.d(TAG, "Attempting to create user with email: $email")
+        //Log.d(TAG, "Attempting to create user with email: $email")
 
         //recordar el tolowercase para estatus, saludos
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -127,12 +127,12 @@ class RegisterFragment : Fragment() {
                 if (!it.isSuccessful) return@addOnCompleteListener
 
                 // else if successful
-                Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
+          //      Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
                 uploadimageCloud()
             }
             .addOnFailureListener{
-                Log.d(TAG, "Failed to create user: ${it.message}")
+                //Log.d(TAG, "Failed to create user: ${it.message}")
                 Toast.makeText(context, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
@@ -145,16 +145,16 @@ class RegisterFragment : Fragment() {
 
         ref.putFile(uri!!)
             .addOnSuccessListener {
-                Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
+                //Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
                 ref.downloadUrl.addOnSuccessListener {
-                    Log.d(TAG, "File Location: $it")
+                  //  Log.d(TAG, "File Location: $it")
 
                     saveUserToDatabase(it.toString())
                 }
             }
             .addOnFailureListener {
-                Log.d(TAG, "Failed to upload image to storage: ${it.message}")
+                //Log.d(TAG, "Failed to upload image to storage: ${it.message}")
             }
     }
 
@@ -171,10 +171,10 @@ class RegisterFragment : Fragment() {
                 registerInApi(profileImageUrl)
                 this@RegisterFragment.findNavController().navigate(RegisterFragmentDirections
                     .actionRegisterFragmentToLogInFragment())
-                Log.d(TAG, "Finally we saved the user to Firebase Database")
+                //Log.d(TAG, "Finally we saved the user to Firebase Database")
             }
             .addOnFailureListener {
-                Log.d(TAG, "Failed to set value to database: ${it.message}")
+                //Log.d(TAG, "Failed to set value to database: ${it.message}")
             }
     }
 

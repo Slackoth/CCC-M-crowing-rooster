@@ -53,7 +53,7 @@ class BuyerProfileFragment : Fragment() {
             BuyerProfileFragmentArgs.fromBundle(it)
         }
 
-        Log.d("buProfile","${args?.buyerCode}")
+        //Log.d("buProfile","${args?.buyerCode}")
 
         app = requireActivity().application
         buyerDao = CrowingRoosterDataBase.getInstance(app).buyerDao
@@ -64,7 +64,7 @@ class BuyerProfileFragment : Fragment() {
 
         viewModel.buyer.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                Log.d("buyerPTM","$it")
+          //      Log.d("buyerPTM","$it")
                 bind.buyerNameDescTv.text = it.name
                 bind.buyerCompDescTv.text = it.company
                 bind.buyerDuiDescTv.text = it.dui
@@ -73,7 +73,7 @@ class BuyerProfileFragment : Fragment() {
                 Glide.with(bind.buyerProfileCiv.context).load(it.img).into(bind.buyerProfileCiv)
             }
             else {
-                Log.d("buProfileFragment","NO SE QUE PASO")
+            //    Log.d("buProfileFragment","NO SE QUE PASO")
             }
         })
 

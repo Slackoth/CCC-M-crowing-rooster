@@ -27,6 +27,8 @@ import com.cccm.crowingrooster.generic_recyclerview_adapter.DividerItemDecoratio
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
 import com.cccm.crowingrooster.network.repository.catalogue.CatalogueRepository
+import com.cccm.crowingrooster.screens.buyer_main_screen.BuyerMainScreenFragmentArgs
+import com.cccm.crowingrooster.screens.product.ProductFragmentArgs
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
 
@@ -42,6 +44,7 @@ class CatalogueFragment : Fragment() {
     private lateinit var viewModelFactory: CatalogueViewModelFactory
     private lateinit var refreshLayout: SwipeRefreshLayout
     private lateinit var adapter: GenericRecyclerViewAdapter<Catalogue>
+    private var args: CatalogueFragmentArgs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,6 +76,9 @@ class CatalogueFragment : Fragment() {
             refreshLayout = catalogueSrl
         }
 
+        args = arguments?.let {
+            CatalogueFragmentArgs.fromBundle(it)
+        }
         initRecyclerView()
 
         refreshLayout.setOnRefreshListener {
@@ -141,6 +147,8 @@ class CatalogueFragment : Fragment() {
                 return { params ->
                     val globalAction = NavGraphDirections.actionGlobalCatalogueFragmentToProductFragment()
                     globalAction.idBattery = params[0].toString().toInt()
+                    globalAction.buyerCode= args!!.buyerCode
+
 
                     try {
                         this@CatalogueFragment.findNavController().navigate(globalAction)

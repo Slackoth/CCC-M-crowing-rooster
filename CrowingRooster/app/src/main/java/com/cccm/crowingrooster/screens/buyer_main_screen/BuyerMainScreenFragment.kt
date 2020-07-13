@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.NavGraphDirections
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentBuyerMainScreenBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,12 +53,17 @@ class BuyerMainScreenFragment : Fragment() {
             BuyerMainScreenFragmentArgs.fromBundle(it)
         }
 
-        Log.d("buyerMain","${args?.buyerCode}")
+
+        val globalAction = NavGraphDirections.actionGlobalBuyerMainScreenToCatalogueFragment()
+        globalAction.buyerCode= args?.buyerCode ?:"Default"
+//
+//        Log.d("buyerMain","${args?.buyerCode}" )
 
         ordersBt.setOnClickListener {
             val action = BuyerMainScreenFragmentDirections
                 .ActionBuyerMainScreenFragmentToOrdersFragment()
-            action.buyerCode = args?.buyerCode.toString()
+            action.buyerCode = args!!.buyerCode
+//            Log.d("buyerMain","${action.buyerCode}" )
 
             it.findNavController().navigate(action)
                 //.navigate(R.id.OrdersFragment)
@@ -68,13 +74,15 @@ class BuyerMainScreenFragment : Fragment() {
         }
 
         batteryBt.setOnClickListener {
-            it.findNavController().navigate(R.id.BatterySearchFragment)
+            val action= BuyerMainScreenFragmentDirections.actionGlobalBuyerMainScreenToCatalogueFragment()
+            action.buyerCode= args!!.buyerCode
+                it.findNavController().navigate(R.id.BatterySearchFragment)
         }
 
         profileBt.setOnClickListener {
             val action = BuyerMainScreenFragmentDirections
                 .actionBuyerMainScreenFragmentToBuyerProfileFragment()
-            action.buyerCode = args?.buyerCode.toString()
+            action.buyerCode = args!!.buyerCode
             it.findNavController().navigate(action)
             //.navigate(R.id.BuyerProfileFragment)
         }

@@ -33,6 +33,7 @@ import com.cccm.crowingrooster.network.repository.pedido.OrderToChartRepository
 import com.cccm.crowingrooster.network.repository.pedido.PedidoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerFreeRepository
+import com.cccm.crowingrooster.screens.product.ProductFragmentArgs
 import com.cccm.crowingrooster.screens.product.ProductViewModel
 import com.cccm.crowingrooster.screens.product.ProductViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,10 +56,8 @@ class ChartFragment : Fragment() {
     private lateinit var adapter: GenericRecyclerViewAdapter<Pedido>
     private lateinit var ordertoChartDao: OrdertoChartDao
     lateinit var ListaPedidos :List<Pedido>
+    private var args: ChartFragmentArgs? = null
      var email:String=""
-
-
-
 
 
     override fun onCreateView(
@@ -77,6 +76,11 @@ class ChartFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
         }
 
+
+        args = arguments?.let { ChartFragmentArgs.fromBundle(it) }
+
+
+
         app = requireActivity().application
         pedidoDao = CrowingRoosterDataBase.getInstance(app).PedidoDao
         SellerFreeDao= CrowingRoosterDataBase.getInstance(app).sellerFreeDao
@@ -92,9 +96,9 @@ class ChartFragment : Fragment() {
 
        viewModel.pedidos.observe(viewLifecycleOwner, Observer {
            if(it!= null){
+               adapter.notifyDataSetChanged()
                ListaPedidos=it
                adapter.notifyDataSetChanged()
-
                adapter.setDataSource(it)
            }
        })
@@ -103,21 +107,29 @@ class ChartFragment : Fragment() {
 
         viewModel.freeSeller.observe(viewLifecycleOwner, Observer {
             if(it!=null){
-                Log.d("SellerId", it.email +"quiza no tira nada")
+                //Log.d("SellerId", it.email +"quiza no tira nada")
                 viewModel.getSellerUId(it.email)
             }
         })
 
 
+
         bind.ProceedPay.setOnClickListener {
-            viewModel.doOrderInsert(OrdertoChartDao = ordertoChartDao, listaPedidos = ListaPedidos, code = GetOrderCode())
-            Log.d("Proceed", "Äl menos llega" )
+            var UserCode= args!!.buyerCode
+            viewModel.doOrderInsert(OrdertoChartDao = ordertoChartDao, listaPedidos = ListaPedidos, code = GetOrderCode(),
+                codeUser = UserCode
+            )
+            //Log.d("Proceed", "Äl menos llega" )
             viewModel.CreateChat()
             it.findNavController().navigate(R.id.action_chartFragment_to_chatFragment)
         }
 
 
         recyclerView = bind.recyclerViewChart
+
+
+
+
 
 
 

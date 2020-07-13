@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.NavGraphDirections
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.BatteryDao
@@ -28,6 +29,7 @@ import com.cccm.crowingrooster.network.repository.pedido.PedidoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryInfoRepository
 import com.cccm.crowingrooster.network.repository.product.BatteryRepository
 import com.cccm.crowingrooster.network.repository.seller.SellerRepository
+import com.cccm.crowingrooster.screens.buyer_main_screen.BuyerMainScreenFragmentArgs
 import com.cccm.crowingrooster.screens.chat.ChatFragment
 import com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details.OngoingSalesDetailsFragmentArgs
 import com.cccm.crowingrooster.screens.search_battery.CatalogueFragment
@@ -65,6 +67,8 @@ class ProductFragment : Fragment() {
             R.layout.fragment_product, container, false
         )
 
+
+
         (activity as MainActivity).run {
             showTopBar()
             supportActionBar?.title = getString(R.string.Producto)
@@ -72,8 +76,10 @@ class ProductFragment : Fragment() {
             navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
         }
 
-        args = arguments?.let { ProductFragmentArgs.fromBundle(it) }
 
+        args = arguments?.let {
+           ProductFragmentArgs.fromBundle(it)
+        }
 
         app = requireActivity().application
         batteryDao = CrowingRoosterDataBase.getInstance(app).batteryDao
@@ -81,7 +87,9 @@ class ProductFragment : Fragment() {
         pedidoDao= CrowingRoosterDataBase.getInstance(app).PedidoDao
 //        batteryInfoRepository= BatteryInfoRepository(batteryInfoDao)
         PedidoRepository= PedidoRepository(pedidoDao)
-        viewModelFactory = ProductViewModelFactory(args?.idBattery, batteryRepository,PedidoRepository, app)
+
+
+        viewModelFactory = ProductViewModelFactory(args?.idBattery,args?.buyerCode, batteryRepository,PedidoRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ProductViewModel::class.java)
 
 
@@ -90,16 +98,16 @@ class ProductFragment : Fragment() {
         viewModel.DoesItExist.observe(viewLifecycleOwner, Observer {
 
             if (it!=null){
-                Log.d("Consolaa", it.cantidad_bateria.toString())
+               // Log.d("Consolaa", it.cantidad_bateria.toString())
                 valueexist=true
                 viewModel.PedidoExistente=it
             }else {
-                Log.d("Consolaa", "ta vacio")
+                //Log.d("Consolaa", "ta vacio")
             }
         })
 
 
-        var uid="23"
+        var uid= args!!.buyerCode
         var Buid:Int=0
         var cant:Int=0
         var Desc:String=""
@@ -118,7 +126,7 @@ class ProductFragment : Fragment() {
                     img= it.product_img
                     titulo=it.modelo
                 }else{
-                    Log.d("su putatatamjdasjdm", "me")
+                  //  Log.d("su putatatamjdasjdm", "me")
                 }
             })
 
@@ -135,6 +143,9 @@ class ProductFragment : Fragment() {
 //            }
 //
 //        })
+        val globalAction = NavGraphDirections.actionGlobalProductFragmentToChartFragment()
+        globalAction.buyerCode= args?.buyerCode.toString()
+
 
 
         //        binding.Estilos.setOnClickListener {
@@ -154,8 +165,6 @@ class ProductFragment : Fragment() {
         binding.AddTochartButtom.setOnClickListener{
 
             var quantity= binding.editTextquantity.text.toString()
-
-
             viewModel.SetIntoChart(cant,uid, Buid,pedidoDao, img, Desc, titulo, valueexist,quantity)
             it.findNavController().navigate(R.id.action_productFragment_to_chartFragment)
         }
