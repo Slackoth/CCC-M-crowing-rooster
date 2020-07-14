@@ -25,8 +25,10 @@ class DeliveryPreviewRepository (private val deliveryPreviewDao: DeliveryPreview
                         else -> CrowingRoosterApiService.CrowingRoosterApi
                             .retrofitService.getOngoingDeliveryPreviewAsync(code)
                     }
+                    Log.d("deliveryPrevs", "${deliveryPreviews}")
 
                     for (deliveryPreview in deliveryPreviews) {
+                        Log.d("deliveryPrev", "${deliveryPreview}")
                         deliveryPreviewDao.insert(deliveryPreview)
                     }
                 }

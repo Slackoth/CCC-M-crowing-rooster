@@ -296,7 +296,7 @@
 
     <fragment
         android:id="@+id/openOrdersFragment"
-        android:name="com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OpenOrdersFragment"
+        android:name="com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OngoingDeliveryFragment"
         android:label="OpenOrdersFragment"
         tools:layout="@layout/fragment_open_orders">
         <action
@@ -364,7 +364,7 @@
             app:startDestination="@id/openOrdersDetailsFragment">
             <fragment
                 android:id="@+id/openOrdersDetailsFragment"
-                android:name="com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OpenOrdersDetailsFragment"
+                android:name="com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.ongoing_deliveries_details.OngoingDeliveryDetailsFragment"
                 android:label="OpenOrdersDetailsFragment"
                 tools:layout="@layout/fragment_open_orders_details" />
         </navigation>

@@ -24,6 +24,18 @@ class DeliveryDetailsRepository (
         return deliveryMiniOrdersDao.getAll(state,entregaId)
     }
 
+    fun confirmDelivery(code:String?,deliveryId:Int?) {
+        GlobalScope.launch {
+            try {
+                CrowingRoosterApiService.CrowingRoosterApi
+                    .retrofitService.confirmDeliveryAsync(code,deliveryId)
+            }
+            catch (e: Exception) {
+                Log.d("Connectionx","No connection: ${e.message}")
+            }
+        }
+    }
+
     private  fun refreshSuccessfulDeliveryDetails(deliveryManCode: String?, entregaId: Int?, state: String) {
         if (isFetchedNeeded(ZonedDateTime.now().minusHours(1))) {
             GlobalScope.launch {
@@ -35,14 +47,14 @@ class DeliveryDetailsRepository (
                             .retrofitService.getOngoingDeliveryDetailsAsync(deliveryManCode, entregaId)
                     }
                     Log.d("deliveryDetails" , "$deliveryDetails")
-                    Log.d("deliveryDetails", "${deliveryDetails[0].minidelivery}")
+                    Log.d("deliveryDetailsMini", "${deliveryDetails[0].minidelivery}")
 
                     for (delivery in deliveryDetails) {
                         Log.d("delivery", "$delivery")
                         deliveryDetailsDao.insert(delivery)
                     }
                     for (miniOrder in deliveryDetails[0].minidelivery) {
-                        Log.d("miniOrder", "$miniOrder")
+                        Log.d("miniOrderDel", "$miniOrder")
                         deliveryMiniOrdersDao.insert(miniOrder)
                     }
                 }

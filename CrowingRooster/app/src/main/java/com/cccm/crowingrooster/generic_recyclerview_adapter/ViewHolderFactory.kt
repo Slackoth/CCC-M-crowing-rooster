@@ -131,7 +131,7 @@ object ViewHolderFactory {
             context: Context
         ) {
             Log.d("ListObject en d", "$listObject")
-            quantityTv.text = listObject.quality.toString()
+            quantityTv.text = listObject.quantity.toString()
             modelTv.text = modelTv.context.resources.getString(
                 R.string.show_battery_format,
                 listObject.model,

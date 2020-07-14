@@ -1,7 +1,6 @@
 package com.cccm.crowingrooster.screens.deliveries
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -11,7 +10,7 @@ import com.cccm.crowingrooster.*
 import com.cccm.crowingrooster.databinding.FragmentDeliveriesBinding
 import com.cccm.crowingrooster.generic_tab_adapter.GenericTabAdapter
 import com.cccm.crowingrooster.screens.ascending_descending_search.AscDescDialogFragment
-import com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OpenOrdersFragment
+import com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.OngoingDeliveryFragment
 import com.cccm.crowingrooster.screens.deliveries.successful_deliveries.SuccessfulDeliveriesFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -22,7 +21,7 @@ class DeliveriesFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var bind: FragmentDeliveriesBinding
     private var listOfFragment: MutableList<Fragment> = mutableListOf(
-        //OpenOrdersFragment(),
+        OngoingDeliveryFragment(),
         SuccessfulDeliveriesFragment()
     )
     private var args: DeliveriesFragmentArgs? = null
