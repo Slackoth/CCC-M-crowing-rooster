@@ -40,7 +40,7 @@
                     android:id="@+id/price_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="$5000"
+                    android:tooltipText="444"
                     android:textColor="@color/on_primary" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -151,7 +151,7 @@
                     android:id="@+id/address_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="802 Winding Way Street Minot, ND 58701"
+                    tools:tooltipText="802 Winding Way Street Minot, ND 58701"
                     android:textColor="@color/on_primary" />
 
             </com.google.android.material.textfield.TextInputLayout>

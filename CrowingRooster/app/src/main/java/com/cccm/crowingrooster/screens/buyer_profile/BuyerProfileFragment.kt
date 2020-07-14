@@ -1,5 +1,6 @@
 package com.cccm.crowingrooster.screens.buyer_profile
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
 import android.util.Log
@@ -33,6 +34,7 @@ class BuyerProfileFragment : Fragment() {
     private lateinit var buyerDao: BuyerDao
     private var args: BuyerProfileFragmentArgs? = null
 
+    @SuppressLint("LogNotTimber")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,13 +55,13 @@ class BuyerProfileFragment : Fragment() {
             BuyerProfileFragmentArgs.fromBundle(it)
         }
 
-        //Log.d("buProfile","${args?.buyerCode}")
+       Log.d("buyerproooooofile","${args?.buyerCode}"   + "no  tira datqaaaaaaa")
 
         app = requireActivity().application
         buyerDao = CrowingRoosterDataBase.getInstance(app).buyerDao
         buyerProfileRepository = BuyerProfileRepository.getInstance(buyerDao)
 
-        viewModelFactory = BuyerProfileViewModelFactory(buyerProfileRepository,app,args?.buyerCode ?: "")
+        viewModelFactory = BuyerProfileViewModelFactory(buyerProfileRepository,app,args!!.buyerCode )
         viewModel = ViewModelProvider(this,viewModelFactory).get(BuyerProfileViewModel::class.java)
 
         viewModel.buyer.observe(viewLifecycleOwner, Observer {
