@@ -181,8 +181,8 @@
                                 android:id="@+id/sdd_price_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="$400"
-                                android:textColor="@color/on_primary"/>
+                                android:text="400"
+                                android:textColor="@color/on_primary" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 

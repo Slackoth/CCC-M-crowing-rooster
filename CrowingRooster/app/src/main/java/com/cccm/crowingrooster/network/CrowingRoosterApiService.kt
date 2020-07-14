@@ -9,13 +9,10 @@ import com.cccm.crowingrooster.database.entities.*
 
 import com.cccm.crowingrooster.database.entities.order.OrderCode
 import com.cccm.crowingrooster.database.entities.order.OrderPreview
-import com.cccm.crowingrooster.network.body.Company
-import com.cccm.crowingrooster.network.body.ConfirmSaleBody
-import com.cccm.crowingrooster.network.body.PedidoDatabaseBody
 
 import com.cccm.crowingrooster.database.entities.order.Buyer
 import com.cccm.crowingrooster.database.entities.order.OrderDetails
-import com.cccm.crowingrooster.network.body.RegisterBuyer
+import com.cccm.crowingrooster.network.body.*
 
 
 import com.squareup.moshi.Moshi
@@ -204,7 +201,8 @@ interface CrowingRoosterApiService {
     @POST("confirmdelivery")
     suspend fun confirmDeliveryAsync(
         @Query("codigo") codigo: String?,
-        @Query("entregaId") entregaId: Int?
+        @Query("entregaId") entregaId: Int?,
+        @Body confirmDeliveryBody: ConfirmDeliveryBody?
     )
 
     object CrowingRoosterApi {

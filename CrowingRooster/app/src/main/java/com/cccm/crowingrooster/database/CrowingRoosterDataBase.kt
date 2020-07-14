@@ -28,7 +28,7 @@ import com.cccm.crowingrooster.database.entities.order.OrderPreview
 
 
 @Database(entities = [SellerClient::class,Seller::class,SalePreview::class, SaleDetails::class,SaleMiniOrders::class,
-User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class,DeliveryDetails::class,DeliveryMiniOrders::class,Buyer::class,OrdertoChart::class],version = 42,exportSchema = false)
+User::class,OrderPreview::class,OrderDetails::class,OrderMiniOrder::class,Battery::class, BatteryInfo::class, Pedido::class, SellerFree::class,DeliveryPreview::class,Catalogue::class,DeliveryDetails::class,DeliveryMiniOrders::class,Buyer::class,OrdertoChart::class],version = 43,exportSchema = false)
 
 
 

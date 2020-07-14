@@ -7,6 +7,7 @@ import com.cccm.crowingrooster.database.daos.DeliveryMiniOrdersDao
 import com.cccm.crowingrooster.database.entities.DeliveryDetails
 import com.cccm.crowingrooster.database.entities.DeliveryMiniOrders
 import com.cccm.crowingrooster.network.CrowingRoosterApiService
+import com.cccm.crowingrooster.network.body.ConfirmDeliveryBody
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.threeten.bp.ZonedDateTime
@@ -24,11 +25,11 @@ class DeliveryDetailsRepository (
         return deliveryMiniOrdersDao.getAll(state,entregaId)
     }
 
-    fun confirmDelivery(code:String?,deliveryId:Int?) {
+    fun confirmDelivery(code:String?,deliveryId:Int?, ConfirmDel:ConfirmDeliveryBody) {
         GlobalScope.launch {
             try {
                 CrowingRoosterApiService.CrowingRoosterApi
-                    .retrofitService.confirmDeliveryAsync(code,deliveryId)
+                    .retrofitService.confirmDeliveryAsync(code,deliveryId, ConfirmDel)
             }
             catch (e: Exception) {
                 Log.d("Connectionx","No connection: ${e.message}")

@@ -29,6 +29,7 @@ import com.cccm.crowingrooster.database.entities.DeliveryMiniOrders
 import com.cccm.crowingrooster.databinding.FragmentOpenOrdersDetailsBinding
 import com.cccm.crowingrooster.generic_recyclerview_adapter.GenericRecyclerViewAdapter
 import com.cccm.crowingrooster.generic_recyclerview_adapter.ViewHolderFactory
+import com.cccm.crowingrooster.network.body.ConfirmDeliveryBody
 import com.cccm.crowingrooster.network.repository.delivery.DeliveryDetailsRepository
 import com.cccm.crowingrooster.screens.deliveries.ongoing_deliveries.ConcludingOrderFragment
 import com.google.android.material.textfield.TextInputEditText
@@ -75,7 +76,15 @@ class OngoingDeliveryDetailsFragment : DialogFragment() {
                 dialog?.dismiss()
             }
             confirmBtt.setOnClickListener {
-                viewModel.confirmDelivery(deliveryManCode,deliveryId)
+                var price = bind.sddPriceEt.text.toString()
+                price= price.replace("$","")
+
+                var ConfirmDeliveryBody=ConfirmDeliveryBody(price.toDouble(), bind.sddPaymentEt.text.toString() )
+
+
+
+                viewModel.confirmDelivery(deliveryManCode,deliveryId, ConfirmDeliveryBody)
+
                 Toast.makeText(requireContext(),"Se ha confirmado la entrega",Toast.LENGTH_SHORT).show()
                 val globalAction = NavigationDirections
                     .actionGlobalOngoingDeliveryDetailsFragmentToDeliveriesFragment()

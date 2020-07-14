@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cccm.crowingrooster.database.entities.DeliveryDetails
 import com.cccm.crowingrooster.database.entities.DeliveryMiniOrders
+import com.cccm.crowingrooster.network.body.ConfirmDeliveryBody
 import com.cccm.crowingrooster.network.repository.delivery.DeliveryDetailsRepository
 
 class OngoingDeliveryDetailsViewModel(
@@ -28,7 +29,7 @@ class OngoingDeliveryDetailsViewModel(
         deliveryDetails = deliveryDetailsRepository.getSpecific(deliveryManCode,deliveryId,"Pendiente")
     }
 
-    fun confirmDelivery(code:String?,deliveryId: Int?) {
-        deliveryDetailsRepository.confirmDelivery(code,deliveryId)
+    fun confirmDelivery(code:String?,deliveryId: Int?, ConfirmDel:ConfirmDeliveryBody) {
+        deliveryDetailsRepository.confirmDelivery(code,deliveryId, ConfirmDel)
     }
 }
