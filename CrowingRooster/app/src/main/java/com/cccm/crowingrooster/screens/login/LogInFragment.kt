@@ -81,6 +81,7 @@ class LogInFragment : Fragment() {
                     "Comprador" ->  {
                         val action = LogInFragmentDirections
                             .actionLogInFragmentToBuyerMainScreenFragment()
+                            Log.d("ya", user.code)
                         action.buyerCode = user.code
                         it.findNavController()
                             .navigate(action)

@@ -254,7 +254,7 @@ object ViewHolderFactory {
             orderEt.setText(listObject.code)
             dateEt.setText(listObject.date)
             quantityEt.setText(listObject.quantity)
-            //Glide.with(context).load(listObject.imgUrl).into(product)
+            Glide.with(context).load(listObject.img).into(product)
 
             orderEt.inputType = InputType.TYPE_NULL
             dateEt.inputType = InputType.TYPE_NULL
