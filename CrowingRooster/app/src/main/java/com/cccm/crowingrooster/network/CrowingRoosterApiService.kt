@@ -32,6 +32,10 @@ import retrofit2.http.Query
 import retrofit2.http.*
 
 private const val BASE_URL ="http://crowing-rooster-api.herokuapp.com/"
+//private const val BASE_URL ="http://192.168.0.16:3000/"
+
+// "http://crowing-rooster-api.herokuapp.com/"
+//private const val BASE_URL = "http://192.168.1.20:3000/"
 
 
 private val moshi = Moshi.Builder()
@@ -196,6 +200,12 @@ interface CrowingRoosterApiService {
 
     @GET("catalogue/all")
     suspend fun getBatteriesCatalogue(): List<Catalogue>
+
+    @POST("confirmdelivery")
+    suspend fun confirmDeliveryAsync(
+        @Query("codigo") codigo: String?,
+        @Query("entregaId") entregaId: Int?
+    )
 
     object CrowingRoosterApi {
         val retrofitService: CrowingRoosterApiService by lazy {

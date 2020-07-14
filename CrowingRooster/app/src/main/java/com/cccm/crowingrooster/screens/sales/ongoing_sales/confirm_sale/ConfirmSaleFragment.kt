@@ -80,7 +80,7 @@ class ConfirmSaleFragment: DialogFragment() {
         }
         bind.confirmTv.setOnClickListener{
             confirm()
-            dismiss()
+            dialog?.dismiss()
         }
 
         bind.hourEt.setOnClickListener {
@@ -104,6 +104,11 @@ class ConfirmSaleFragment: DialogFragment() {
         }
 
         return bind.root
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        (parentFragment as DialogInterface.OnDismissListener).onDismiss(dialog)
     }
 
     private fun confirm() {

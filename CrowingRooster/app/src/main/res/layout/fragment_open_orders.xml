@@ -6,11 +6,15 @@
         android:layout_height="match_parent"
         android:background="@color/primary_dark">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_oo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/ongoing_order_srl"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_oo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </layout>
