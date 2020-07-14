@@ -74,6 +74,11 @@ class OngoingOrdersFragment : Fragment () {
             }
         })
 
+        bind.ongoingDeliveriesSrl.setOnRefreshListener {
+            viewModel.refresh()
+            bind.ongoingDeliveriesSrl.isRefreshing = false
+        }
+
 //        TODO: In case someday we need to change the orientation of the RecyclerView. DO NOT DELETE IT
 //        recyclerView.layoutManager = LinearLayoutManager(requireContext(),
 //            if (orientation == Configuration.ORIENTATION_LANDSCAPE) LinearLayoutManager.HORIZONTAL

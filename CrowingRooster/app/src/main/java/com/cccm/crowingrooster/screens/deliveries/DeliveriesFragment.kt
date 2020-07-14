@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.screens.deliveries
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -43,6 +44,8 @@ class DeliveriesFragment : Fragment() {
         args = arguments?.let {
             DeliveriesFragmentArgs.fromBundle(it)
         }
+
+        Log.d("delFrag", "${args?.deliveryManCode}")
 
         setHasOptionsMenu(true)
 

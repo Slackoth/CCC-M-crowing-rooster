@@ -1,6 +1,7 @@
 package com.cccm.crowingrooster.screens.sales.ongoing_sales.ongoing_sale_details
 
 import android.app.Application
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,7 +37,7 @@ import java.lang.Exception
 /**
  * A simple [Fragment] subclass.
  */
-class OngoingSalesDetailsFragment : Fragment() {
+class OngoingSalesDetailsFragment : Fragment(),DialogInterface.OnDismissListener {
 
     private lateinit var bind: FragmentOngoingSalesDetailsBinding
     private lateinit var recyclerView: RecyclerView
@@ -87,7 +89,7 @@ class OngoingSalesDetailsFragment : Fragment() {
                 dialogArgs.putString("saleId",args?.saleId)
                 dialogArgs.putString("sellerCode",args?.sellerCode)
                 dialog.arguments = dialogArgs
-                dialog.show(requireActivity().supportFragmentManager,"ConfirmDialog")
+                dialog.show(this@OngoingSalesDetailsFragment.childFragmentManager,"ConfirmDialog")
             }
             charBtt.setOnClickListener {
                 it.findNavController().navigate(OngoingSalesDetailsFragmentDirections.actionOngoingSalesDetailsFragmentToChatFragment())
@@ -147,6 +149,14 @@ class OngoingSalesDetailsFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         //recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),R.drawable.recyclerview_divider))
         recyclerView.adapter = adapter
+    }
+
+    override fun onDismiss(dialog: DialogInterface?) {
+        Toast.makeText(requireContext(),"Se ha confirmado la venta",Toast.LENGTH_SHORT).show()
+        val globalAction =  NavGraphDirections
+            .actionGlobalOngoingSalesDetailsFragmentToSalesFragment()
+        globalAction.sellerCode = args?.sellerCode.toString()
+        this.findNavController().navigate(globalAction)
     }
 
 }

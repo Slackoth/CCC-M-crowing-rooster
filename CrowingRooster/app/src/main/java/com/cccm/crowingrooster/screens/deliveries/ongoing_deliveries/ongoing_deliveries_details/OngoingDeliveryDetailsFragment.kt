@@ -9,14 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cccm.crowingrooster.MainActivity
+import com.cccm.crowingrooster.NavigationDirections
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.database.CrowingRoosterDataBase
 import com.cccm.crowingrooster.database.daos.DeliveryDetailsDao
@@ -72,6 +76,12 @@ class OngoingDeliveryDetailsFragment : DialogFragment() {
             }
             confirmBtt.setOnClickListener {
                 viewModel.confirmDelivery(deliveryManCode,deliveryId)
+                Toast.makeText(requireContext(),"Se ha confirmado la entrega",Toast.LENGTH_SHORT).show()
+                val globalAction = NavigationDirections
+                    .actionGlobalOngoingDeliveryDetailsFragmentToDeliveriesFragment()
+                globalAction.deliveryManCode = deliveryManCode.toString()
+                this@OngoingDeliveryDetailsFragment.findNavController().navigate(globalAction)
+                dialog?.dismiss()
             }
         }
 

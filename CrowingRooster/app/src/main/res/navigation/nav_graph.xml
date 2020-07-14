@@ -15,9 +15,18 @@
         app:destination="@+id/catalogueFragment"/>
     <action android:id="@+id/action_global_ProductFragment_to_ChartFragment"
         app:destination="@+id/chartFragment"/>
+    <action android:id="@+id/action_global_ongoingDeliveryDetailsFragment_to_deliveriesFragment"
+        app:destination="@+id/deliveriesFragment"
+        app:popUpTo="@id/deliveriesFragment"
+        app:popUpToInclusive="true"/>
+    <action android:id="@+id/action_global_ongoingSalesDetailsFragment_to_salesFragment"
+        app:destination="@+id/salesFragment"
+        app:popUpTo="@id/salesFragment"
+        app:popUpToInclusive="true"/>
 
 
-<!--    <action android:id="@+id/action_global_registerFragment_to_logInFragment"-->
+
+    <!--    <action android:id="@+id/action_global_registerFragment_to_logInFragment"-->
 <!--        app:destination="@+id/logInFragment"/>-->
 
     <fragment
