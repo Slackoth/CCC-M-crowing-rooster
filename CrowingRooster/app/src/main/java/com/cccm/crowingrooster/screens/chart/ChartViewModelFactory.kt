@@ -10,6 +10,7 @@ import com.cccm.crowingrooster.network.repository.seller.SellerRepository
 import com.cccm.crowingrooster.screens.seller_profile.SellerProfileViewModel
 
 class ChartViewModelFactory(
+    private val buyerCode:String,
     private val PedidoRepository: PedidoRepository,
     private val SellerFreeRepository:SellerFreeRepository,
     private val OrderTochartRepository:OrderToChartRepository,
@@ -17,7 +18,7 @@ class ChartViewModelFactory(
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ChartViewModel::class.java)) {
-            return ChartViewModel( PedidoRepository, SellerFreeRepository,OrderTochartRepository,app) as T
+            return ChartViewModel( buyerCode, PedidoRepository, SellerFreeRepository,OrderTochartRepository,app) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

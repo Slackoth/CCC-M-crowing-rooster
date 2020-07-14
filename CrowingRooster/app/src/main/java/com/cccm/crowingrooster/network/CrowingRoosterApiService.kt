@@ -31,7 +31,9 @@ import retrofit2.http.Query
 
 import retrofit2.http.*
 
-private const val BASE_URL = "http://crowing-rooster-api.herokuapp.com/"
+private const val BASE_URL ="http://192.168.0.16:3000/"
+
+// "http://crowing-rooster-api.herokuapp.com/"
 
 
 private val moshi = Moshi.Builder()

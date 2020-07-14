@@ -32,13 +32,14 @@ import com.google.firebase.database.core.view.View
 
 
 class ChartViewModel (
+    buyerCode:String,
     pedidoRepository: PedidoRepository,
     SellerFreeRepository: SellerFreeRepository,
     OrderToChartRepository:OrderToChartRepository,
     app: Application
 ): AndroidViewModel(app){
 
-    var pedidos: LiveData<List<Pedido>> = pedidoRepository.getSpecific("23")
+    var pedidos: LiveData<List<Pedido>> = pedidoRepository.getSpecific(buyerCode)
     var freeSeller:LiveData<SellerFree> = SellerFreeRepository.getSpecific()
     var FreeSelleruid:String= ""
     var codigo=OrderToChartRepository.getCode()
