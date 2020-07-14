@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.cccm.crowingrooster.NavGraphDirections
@@ -69,6 +70,7 @@ class RegisterFragment : Fragment() {
 
             registerButtonRegister.setOnClickListener{
                 performRegister()
+                it.findNavController().navigate(R.id.action_registerFragment_to_logInFragment)
             }
         }
          val spinnerAdapt = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,

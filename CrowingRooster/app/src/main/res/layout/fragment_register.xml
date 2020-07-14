@@ -14,6 +14,27 @@
             android:background="@color/primary_dark"
             tools:context=".screens.register.RegisterFragment">
 
+
+            <EditText
+                android:id="@+id/password_edittext_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/register_size"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:background="@drawable/rounded_edittext_register_login"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/medium_margin"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toTopOf="@+id/register_name_et"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_edittext_register" />
+
             <EditText
                 android:id="@+id/username_edittext_register"
                 android:layout_width="0dp"
@@ -30,8 +51,10 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toTopOf="@+id/email_edittext_register"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/selectphoto_button_register" />
+                app:layout_constraintTop_toBottomOf="@+id/selectphoto_button_register"
+                app:layout_constraintVertical_bias="0.38" />
 
             <EditText
                 android:id="@+id/email_edittext_register"
@@ -49,9 +72,9 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toTopOf="@+id/password_edittext_register"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/username_edittext_register" />
-
 
             <EditText
                 android:id="@+id/register_name_et"
@@ -68,6 +91,7 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toTopOf="@+id/register_dui_et"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_edittext_register" />
 
@@ -86,6 +110,7 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toTopOf="@+id/register_phone_et"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/register_name_et" />
 
@@ -105,28 +130,9 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/register_dui_et" />
-
-            <EditText
-                android:id="@+id/password_edittext_register"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/register_size"
-                android:layout_marginStart="@dimen/medium_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:layout_marginBottom="@dimen/small_margin"
-                android:background="@drawable/rounded_edittext_register_login"
-                android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:paddingStart="@dimen/medium_margin"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toTopOf="@+id/register_name_et"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_edittext_register" />
-
 
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
                 android:id="@+id/company_sp"
@@ -185,6 +191,21 @@
                 app:layout_constraintStart_toStartOf="@+id/register_button_register"
                 app:layout_constraintTop_toBottomOf="@+id/register_button_register" />
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/selectphoto_imageview_register"
+                android:layout_width="@dimen/register_photo"
+                android:layout_height="@dimen/register_photo"
+                android:layout_marginStart="@dimen/medium_margin"
+
+                android:layout_marginEnd="@dimen/medium_margin"
+                app:civ_border_width="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/register_button_register"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.053" />
+
             <Button
                 android:id="@+id/selectphoto_button_register"
                 android:layout_width="@dimen/register_photo"
@@ -199,27 +220,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.50"
+                app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.1" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/selectphoto_imageview_register"
-                android:layout_width="@dimen/register_photo"
-                android:layout_height="@dimen/register_photo"
-                android:layout_marginStart="@dimen/medium_margin"
-                android:layout_marginTop="@dimen/medium_margin"
-
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:layout_marginBottom="@dimen/medium_margin"
-                app:civ_border_width="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.1" />
+                app:layout_constraintVertical_bias="0.031" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,9 +69,7 @@ class ChatLogFragment : Fragment() {
 
         listenAllMessages()
         adapter.notifyDataSetChanged()
-
         recyclerView.adapter=adapter
-
         Log.d("tagazo",
             ChatFragment.clickedUser?.uid.toString() )
 
