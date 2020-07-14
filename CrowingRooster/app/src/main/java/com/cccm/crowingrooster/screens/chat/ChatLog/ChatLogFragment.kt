@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
 import com.cccm.crowingrooster.databinding.FragmentChatLogBinding
 import com.cccm.crowingrooster.screens.chat.ChatFragment
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ChatLogFragment : Fragment() {
@@ -47,6 +49,17 @@ class ChatLogFragment : Fragment() {
             actionSendMessage(bind.edittextChatLog.text.toString())
             bind.edittextChatLog.text.clear()
         }
+
+
+        (activity as MainActivity).run {
+            showTopBar()
+            supportActionBar?.title = ChatFragment.clickedUser!!.username
+            navigation_view.menu.clear()
+            navigation_view.inflateMenu(R.menu.buyer_drawer_menu_navigation)
+        }
+
+
+
 
         //setContentView<FragmentChatLogBinding>(Activity(),R.layout.fragment_chat_log) // add this line
         recyclerView =bind.recyclerViewChatLog
