@@ -79,6 +79,8 @@ class ChartFragment : Fragment() {
 
         args = arguments?.let { ChartFragmentArgs.fromBundle(it) }
 
+        var buyerCode= args!!.buyerCode
+
 
 
         app = requireActivity().application
@@ -89,7 +91,7 @@ class ChartFragment : Fragment() {
 
         PedidoRepository= PedidoRepository(pedidoDao)
         SellerFreeRepository= SellerFreeRepository(SellerFreeDao)
-        viewModelFactory = ChartViewModelFactory(PedidoRepository,SellerFreeRepository, orderToChartRepository, app)
+        viewModelFactory = ChartViewModelFactory(buyerCode, PedidoRepository,SellerFreeRepository, orderToChartRepository, app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ChartViewModel::class.java)
 
 
