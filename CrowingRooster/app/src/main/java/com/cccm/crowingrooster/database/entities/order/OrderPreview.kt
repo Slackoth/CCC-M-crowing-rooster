@@ -15,5 +15,6 @@ data class OrderPreview(
     @Json(name = "estado")
     var state: String,
     @Json(name = "comprador")
-    var buyer: String
+    var buyer: String,
+    var img:String
 )
