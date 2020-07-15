@@ -87,17 +87,17 @@ class SuccessfulDeliveryDetailsDialogFragment : DialogFragment() {
                 bind.sddTotalQuantityTv.text = it.totalQuantity.toString()
             }
             else {
-                Log.d("error", "no sirve")
+                //Log.d("error", "no sirve")
             }
         })
 
         viewModel.miniOrders.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                Log.d("mini verga", "$it")
+               // Log.d("mini verga", "$it")
                 adapter.setDataSource(it)
             }
             else {
-                Log.d("error en mini", "no sirve")
+              //  Log.d("error en mini", "no sirve")
             }
         })
 

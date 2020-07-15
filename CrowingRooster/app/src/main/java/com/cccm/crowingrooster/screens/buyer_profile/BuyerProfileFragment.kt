@@ -55,7 +55,7 @@ class BuyerProfileFragment : Fragment() {
             BuyerProfileFragmentArgs.fromBundle(it)
         }
 
-       Log.d("buyerproooooofile","${args?.buyerCode}"   + "no  tira datqaaaaaaa")
+       //Log.d("buyerproooooofile","${args?.buyerCode}"   + "no  tira datqaaaaaaa")
 
         app = requireActivity().application
         buyerDao = CrowingRoosterDataBase.getInstance(app).buyerDao

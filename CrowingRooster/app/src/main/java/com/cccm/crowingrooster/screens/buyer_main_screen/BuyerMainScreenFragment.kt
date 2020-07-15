@@ -56,7 +56,7 @@ class BuyerMainScreenFragment : Fragment() {
 
         val globalAction = NavGraphDirections.actionGlobalBuyerMainScreenToCatalogueFragment()
         globalAction.buyerCode= args!!.buyerCode
-        Log.d("buyerMain","${args?.buyerCode}" )
+        //Log.d("buyerMain","${args?.buyerCode}" )
 
         ordersBt.setOnClickListener {
             val action = BuyerMainScreenFragmentDirections

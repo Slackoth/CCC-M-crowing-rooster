@@ -174,7 +174,7 @@ class ChartFragment : Fragment() {
 
         viewModel.codigo.observe(viewLifecycleOwner, Observer {
             if(it!= null){
-                Log.d("SellerId", it +"quiza no tira nada *3333")
+                //Log.d("SellerId", it +"quiza no tira nada *3333")
                 code= it
             }
         })

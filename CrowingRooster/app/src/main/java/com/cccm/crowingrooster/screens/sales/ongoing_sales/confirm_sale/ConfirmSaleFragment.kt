@@ -64,7 +64,7 @@ class ConfirmSaleFragment: DialogFragment() {
             sellerCode = getString("sellerCode")
         }
 
-        Log.d("confirm","$saleId $sellerCode")
+        //Log.d("confirm","$saleId $sellerCode")
 
         app = requireActivity().application
         salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
@@ -124,6 +124,6 @@ class ConfirmSaleFragment: DialogFragment() {
                 bind.addressEt.text.toString(),
                 bind.paymentSp.selectedItem.toString()
             )
-        )
+        )   
     }
 }

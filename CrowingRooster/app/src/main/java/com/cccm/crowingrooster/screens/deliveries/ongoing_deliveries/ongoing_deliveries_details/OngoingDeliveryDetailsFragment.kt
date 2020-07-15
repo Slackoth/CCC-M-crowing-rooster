@@ -113,17 +113,17 @@ class OngoingDeliveryDetailsFragment : DialogFragment() {
                 bind.sddTotalQuantityTv.text = it.totalQuantity.toString()
             }
             else {
-                Log.d("error", "no sirve")
+               // Log.d("error", "no sirve")
             }
         })
 
         viewModel.miniOrders.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                Log.d("mini dos", "$it")
+                //Log.d("mini dos", "$it")
                 adapter.setDataSource(it)
             }
             else {
-                Log.d("mini dosdos", "no sirve")
+                //Log.d("mini dosdos", "no sirve")
             }
         })
 

@@ -115,11 +115,11 @@ class OngoingSalesDetailsFragment : Fragment(),DialogInterface.OnDismissListener
 
         viewModel.miniOrders.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                Log.d("MINI","$it")
+                //Log.d("MINI","$it")
                 adapter.setDataSource(it)
             }
             else {
-                Log.d("ERROR","NO SIRVE")
+               // Log.d("ERROR","NO SIRVE")
             }
 
         })

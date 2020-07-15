@@ -46,7 +46,7 @@ class OrdersFragment : Fragment () {
             OrdersFragmentArgs.fromBundle(it)
         }
 
-        Log.d("orderFrag","${args?.buyerCode}")
+     //   Log.d("orderFrag","${args?.buyerCode}")
 
         return bind.root
     }

@@ -95,18 +95,18 @@ class SaleDetailsDialogFragment : DialogFragment() {
                 bind.totalQuantityTv.text = it.totalQuantity.toString()
             }
             else {
-                Log.d("ERROR","NO SIRVE")
+             //   Log.d("ERROR","NO SIRVE")
             }
 
         })
 
         viewModel.miniOrders.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                Log.d("MINI","$it")
+                //Log.d("MINI","$it")
                 adapter.setDataSource(it)
             }
             else {
-                Log.d("ERROR","NO SIRVE")
+              //  Log.d("ERROR","NO SIRVE")
             }
 
         })

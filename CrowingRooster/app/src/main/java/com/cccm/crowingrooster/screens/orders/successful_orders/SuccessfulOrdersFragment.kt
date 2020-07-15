@@ -52,7 +52,7 @@ class SuccessfulOrdersFragment : Fragment() {
             buyerCode = arguments?.getString("code")
         }
 
-        Log.d("sOrderFrag","${buyerCode}")
+        //Log.d("sOrderFrag","${buyerCode}")
 
         recyclerView = bind.recyclerView
 
@@ -70,7 +70,7 @@ class SuccessfulOrdersFragment : Fragment() {
                 adapter.setDataSource(it)
             }
             else {
-                Log.d("sOrderFrag","NOP")
+              //  Log.d("sOrderFrag","NOP")
             }
         })
 

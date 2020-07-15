@@ -60,7 +60,7 @@ class OngoingSalesFragment : Fragment() {
             sellerCode = arguments?.getString("code")
         }
 
-        Log.d("ongoingsales","$sellerCode")
+       // Log.d("ongoingsales","$sellerCode")
 
 //        (activity as MainActivity).run {
 //            showTopBar()

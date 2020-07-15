@@ -70,8 +70,8 @@ class ChatLogFragment : Fragment() {
         listenAllMessages()
         adapter.notifyDataSetChanged()
         recyclerView.adapter=adapter
-        Log.d("tagazo",
-            ChatFragment.clickedUser?.uid.toString() )
+//        Log.d("tagazo",
+//            ChatFragment.clickedUser?.uid.toString() )
 
         return bind.root
     }
@@ -85,13 +85,13 @@ class ChatLogFragment : Fragment() {
         val toReference= FirebaseDatabase.getInstance().getReference("/user_messages/$toId/$fromId").push()
         reference.setValue(chatMessage)
             .addOnSuccessListener {
-                Log.d("ChatLogFragment","Mensaje Subido perros!!!!!!!")
+              //  Log.d("ChatLogFragment","Mensaje Subido perros!!!!!!!")
 
 
             }
         toReference.setValue(chatMessage)
             .addOnSuccessListener {
-                Log.d("ChatFragment","DoublePenetration ready!")
+               // Log.d("ChatFragment","DoublePenetration ready!")
             }
 
         val latestmessagesref= FirebaseDatabase.getInstance().getReference("/latest_messages/$fromId/$toId")
@@ -179,7 +179,7 @@ class ChatToItem(val text: String, val photo:String): Item<GroupieViewHolder>() 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         val MssgetoText:TextView=viewHolder.itemView.findViewById(R.id.textview_to_row)
         Glide.with(viewHolder.itemView).load(photo).into(viewHolder.itemView.findViewById(R.id.imageview_chat_to_row))
-        Log.d("Chatlog",photo)
+       // Log.d("Chatlog",photo)
 
         MssgetoText.text=text
 
