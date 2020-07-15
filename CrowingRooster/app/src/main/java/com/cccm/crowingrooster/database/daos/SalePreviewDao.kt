@@ -14,4 +14,5 @@ interface SalePreviewDao {
 
     @Query("SELECT * FROM sale_preview where seller = :seller AND state = :state")
     fun getAll(state: String,seller: String?): LiveData<List<SalePreview>>
+
 }
