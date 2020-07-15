@@ -59,10 +59,17 @@ El usuario vendedor solo cuenta con las pantallas para visualizar sus entregas p
 - En la pantalla de detalles de entrega, Al abrir la pantalla de diálogo correspondiente a una entrega exitosa el usuario puede ver los datos y cerrar el diálogo de detalles. En la pantalla de diálogo correspondiente una entrega pendiente además de tener las mismas características el usuario también puede confirmar que la entrega se realizó con éxito. En ambos casos el diálogo también puede cerrarse pulsando el botón atrás del dispositivo.
 
 ## Pantalla de chat
+
 ### Nota importante
-Decir que el chat esta en funcionamiento pero que no se logro instanciar una versión correcta de este cada vez que se confirmara un proceso de pedido 
-debido a que, las implementaciones que usamos de firebase no tenían acceso a funciones como getUserByEmail dandonos así un problema en obtener el uid de la base 
-Esta función no esta presente en kotlin 
+La pantalla "chat" esta en funcionamiento, sin embargo, no se logró instanciar una versión correcta de este cada vez que se confirmara un proceso de pedido, 
+debido a que las implementaciones que usamos de firebase no son soportadas en Kotlin, como el caso de la función "getUserByEmail" generando así un problema en obtener el uid del vendedor disponible, obtenido al azar de la API.
+
+### Lenguajes que soporta firebase:
+https://firebase.google.com/docs/auth/admin/manage-users
+
+### Usuarios en los que esta implementado:
+- buyer@example.com/Buyer1
+- seller@example.com/Seller
 ___
 
 ## Development
