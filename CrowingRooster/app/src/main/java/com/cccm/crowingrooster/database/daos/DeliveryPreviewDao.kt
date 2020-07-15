@@ -14,4 +14,9 @@ interface DeliveryPreviewDao {
 
     @Query("select * from delivery_preview where state = :state and deliveryManId = :code")
     fun getAll(code: String, state: String): LiveData<List<DeliveryPreview>>
+
+
+    @Query("DELETE FROM delivery_preview WHERE deliveryId = :delId")
+    fun deleteSale(delId: Int?)
+
 }

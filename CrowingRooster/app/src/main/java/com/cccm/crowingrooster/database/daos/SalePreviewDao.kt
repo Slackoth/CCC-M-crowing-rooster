@@ -15,4 +15,8 @@ interface SalePreviewDao {
     @Query("SELECT * FROM sale_preview where seller = :seller AND state = :state")
     fun getAll(state: String,seller: String?): LiveData<List<SalePreview>>
 
+
+    @Query("DELETE FROM sale_preview WHERE saleId = :saleId")
+    fun deleteSale(saleId: String?)
+
 }

@@ -90,6 +90,7 @@ class SuccessfulSalesFragment : Fragment() {
 
         refreshLayout.setOnRefreshListener {
             viewModel.refresh()
+            Thread.sleep(4000)
             refreshLayout.isRefreshing = false
         }
 

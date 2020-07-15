@@ -28,6 +28,7 @@ import com.cccm.crowingrooster.screens.seller_client_list.SellerClientListViewMo
 import com.cccm.crowingrooster.screens.seller_client_list.SellerClientViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
+import kotlin.concurrent.thread
 
 /**
  * A simple [Fragment] subclass.
@@ -94,8 +95,11 @@ class OngoingSalesFragment : Fragment() {
             }
         })
 
+
         refreshLayout.setOnRefreshListener {
+
             viewModel.refresh()
+            Thread.sleep(4000)
             refreshLayout.isRefreshing = false
         }
 
