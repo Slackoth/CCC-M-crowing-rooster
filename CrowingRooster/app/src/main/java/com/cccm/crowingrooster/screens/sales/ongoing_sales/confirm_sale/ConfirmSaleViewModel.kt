@@ -28,6 +28,7 @@ class ConfirmSaleViewModel(
         payment = confirmSaleBody.payment
         //uiScope.launch {
         confirmSaleRepository.send(confirmSaleBody,saleId)
+        confirmSaleRepository.deleteSale(saleId)
         //}
     }
 

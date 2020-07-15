@@ -19,6 +19,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.cccm.crowingrooster.MainActivity
 import com.cccm.crowingrooster.R
+import com.cccm.crowingrooster.database.CrowingRoosterDataBase
+import com.cccm.crowingrooster.database.daos.SalePreviewDao
 import com.cccm.crowingrooster.databinding.FragmentConfirmSaleBinding
 import com.cccm.crowingrooster.network.body.ConfirmSaleBody
 import com.cccm.crowingrooster.network.repository.seller.ConfirmSaleRepository
@@ -40,6 +42,7 @@ class ConfirmSaleFragment: DialogFragment() {
     private lateinit var viewModelFactory: ConfirmSaleViewModelFactory
     private lateinit var confirmSaleRepository: ConfirmSaleRepository
     private lateinit var app: Application
+    private lateinit var salePreviewDao: SalePreviewDao
     private var saleId: String? = ""
     private var sellerCode: String? = ""
     private var flag: Boolean = false
@@ -64,7 +67,8 @@ class ConfirmSaleFragment: DialogFragment() {
         Log.d("confirm","$saleId $sellerCode")
 
         app = requireActivity().application
-        confirmSaleRepository = ConfirmSaleRepository.getInstance()
+        salePreviewDao = CrowingRoosterDataBase.getInstance(app).salePreviewDao
+        confirmSaleRepository = ConfirmSaleRepository.getInstance(salePreviewDao)
         viewModelFactory = ConfirmSaleViewModelFactory(confirmSaleRepository,saleId,app)
         viewModel = ViewModelProvider(this,viewModelFactory).get(ConfirmSaleViewModel::class.java)
 
